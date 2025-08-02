@@ -10,7 +10,11 @@ import {
   Code, 
   Database, 
   Cloud, 
-  Zap 
+  Zap,
+  Sun,
+  Moon,
+  Monitor,
+  ChevronDown
 } from "lucide-react"
 
 interface DynamicIconProps {
@@ -31,6 +35,10 @@ const iconMap: { [key: string]: React.ComponentType<any> } = {
   Database,
   Cloud,
   Zap,
+  Sun,
+  Moon,
+  Monitor,
+  ChevronDown,
 }
 
 export function DynamicIcon({ name, className = "", size = 16 }: DynamicIconProps) {
