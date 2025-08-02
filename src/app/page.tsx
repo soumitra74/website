@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, Linkedin, MapPin, Calendar, Users, Award, Code, Database, Cloud, Zap } from "lucide-react"
+import { ArrowRight, Mail, Linkedin, MapPin, Calendar, Users, Award, Code, Database, Cloud, Zap, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -30,6 +30,13 @@ export default async function HomePage() {
                     {link.text}
                   </a>
                 ))}
+                <a 
+                  href="/ask-me"
+                  className="flex items-center gap-2 text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors font-medium"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Ask Me (beta)
+                </a>
               </div>
               <ThemeToggle />
             </div>

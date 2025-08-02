@@ -14,7 +14,13 @@ import {
   Sun,
   Moon,
   Monitor,
-  ChevronDown
+  ChevronDown,
+  Send,
+  ArrowLeft,
+  Bot,
+  User,
+  Loader2,
+  MessageCircle
 } from "lucide-react"
 
 interface DynamicIconProps {
@@ -39,6 +45,12 @@ const iconMap: { [key: string]: React.ComponentType<any> } = {
   Moon,
   Monitor,
   ChevronDown,
+  Send,
+  ArrowLeft,
+  Bot,
+  User,
+  Loader2,
+  MessageCircle,
 }
 
 export function DynamicIcon({ name, className = "", size = 16 }: DynamicIconProps) {
