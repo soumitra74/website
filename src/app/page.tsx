@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { getContent, ContentData } from "@/lib/content"
+import Image from "next/image"
 
 export default async function HomePage() {
   const content: ContentData = await getContent()
@@ -49,8 +50,15 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-6">
-              <div className="w-32 h-32 mx-auto bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-white text-4xl font-bold mb-6">
-                {content.hero.initials}
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-lg mb-6">
+                <Image
+                  src="/images/profile.png"
+                  alt="Soumitra Ghosh"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover"
+                  priority
+                />
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">

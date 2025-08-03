@@ -7,6 +7,7 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { ChatTypingIndicator } from '@/components/chat-typing-indicator'
 import Link from 'next/link'
 import { getChatbotContent, generateResponse, ChatbotData } from '@/lib/chatbot'
+import Image from 'next/image'
 
 interface Message {
   id: string
@@ -111,8 +112,17 @@ export default function AskMePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+              <Link href="/" className="flex items-center gap-3 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
                 <ArrowLeft className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-600">
+                  <Image
+                    src="/images/profile.png"
+                    alt="Soumitra Ghosh"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <span className="text-xl font-bold text-slate-900 dark:text-white">{chatbotData.navigation.back_link}</span>
               </Link>
             </div>
