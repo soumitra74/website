@@ -50,7 +50,7 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-6">
-              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-lg mb-6">
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-800 dark:border-white shadow-lg mb-6">
                 <Image
                   src="/images/profile.png"
                   alt="Soumitra Ghosh"
