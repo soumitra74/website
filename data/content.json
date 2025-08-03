@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "title": "Engineering Leader - Innovation-Driven Technology Leadership",
+    "title": "Soumitra Ghosh - VP of Engineering | Technologist | Builder",
     "description": "28 years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
-    "keywords": "Engineering Leader, CTO, Technology Leadership, SaaS, Backend Architecture, Cloud Computing, DevOps",
-    "author": "Engineering Leader"
+    "keywords": "VP of Engineering, Technology Leadership, SaaS, Backend Architecture, Cloud Computing, DevOps, AI/ML, Fintech",
+    "author": "Soumitra Ghosh"
   },
   "navigation": {
-    "brand": "Engineering Leader",
+    "brand": "Soumitra Ghosh",
     "links": [
       {
         "text": "About",
@@ -31,10 +31,10 @@
     ]
   },
   "hero": {
-    "initials": "EL",
+    "initials": "SG",
     "title": {
-      "main": "Innovation-Driven",
-      "highlight": "Engineering Leader"
+      "main": "VP of Engineering",
+      "highlight": "Technologist & Builder"
     },
     "description": "28 years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
     "buttons": [
@@ -59,10 +59,10 @@
         "title": "Professional Journey",
         "paragraphs": [
           "With 28 years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
-          "Recently completed a CTO program (executive education) from ISB, further strengthening my strategic and leadership capabilities. I've successfully grown and mentored high-performing teams at reputed organizations."
+          "Currently serving as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
         ],
         "achievement": {
-          "text": "CTO Program Graduate - ISB",
+          "text": "VP of Engineering - Entropik",
           "icon": "Award"
         }
       },
@@ -70,7 +70,7 @@
         {
           "title": "Leadership Impact",
           "icon": "Users",
-          "description": "Led engineering and data science teams at Entropik for two years, delivering two market-leading products: Decode and Qatalyst."
+          "description": "Led engineering and data science teams at Entropik for two years, delivering AI-native consumer research platforms with GenAI integrations."
         },
         {
           "title": "Innovation Focus",
@@ -85,36 +85,142 @@
     "subtitle": "Leadership roles at industry-leading organizations",
     "roles": [
       {
-        "title": "Engineering & Data Science Leader",
+        "title": "VP of Engineering",
         "company": "Entropik",
-        "duration": "2 Years",
-        "description": "Led engineering and data science teams, delivering two market-leading products:",
+        "duration": "2022-2024",
+        "description": "Leads engineering for AI-first consumer research platform, managing full-stack product development and GenAI integrations.",
         "products": [
           {
-            "name": "Decode",
-            "description": "Market leading product"
+            "name": "AI Research Platform",
+            "description": "Transformed legacy research workflows into AI-native experiences with gaze tracking and video summarization"
           },
           {
-            "name": "Qatalyst",
-            "description": "Market leading product"
+            "name": "GenAI Integration",
+            "description": "Integrated GenAI using AWS Bedrock and LangChain for feedback analysis and text summarization"
           }
         ]
       },
       {
-        "title": "Senior Engineering Roles",
-        "company": "Industry Leaders",
+        "title": "VP of Strategic Initiatives",
+        "company": "PayU",
+        "duration": "2020-2022",
+        "description": "Zero-to-one build of the neo banking platform for PayU, architected Vista platform and led GTM strategy.",
         "companies": [
           {
-            "name": "Intuit",
-            "description": "Financial Technology"
+            "name": "Vista Platform",
+            "description": "Neo Banking Platform"
           },
           {
-            "name": "PayU",
-            "description": "Payment Solutions"
+            "name": "Lending Product",
+            "description": "Implemented lending product on Vista platform"
+          }
+        ]
+      },
+      {
+        "title": "Director of Engineering",
+        "company": "Razorpay",
+        "duration": "2019-2020",
+        "description": "Scaled RazorpayX API Banking platform for early product-market fit, built payout engine with layered approval workflows.",
+        "companies": [
+          {
+            "name": "RazorpayX",
+            "description": "API Banking Platform"
           },
           {
-            "name": "Razorpay",
-            "description": "Fintech Platform"
+            "name": "Payout Engine",
+            "description": "Multi-bank integrations with fund flow control"
+          }
+        ]
+      },
+      {
+        "title": "Senior Development Manager",
+        "company": "Intuit",
+        "duration": "2013-2018",
+        "description": "Headed engineering for QBO Reporting, focusing on modularity, personalization, and conversational data interfaces.",
+        "companies": [
+          {
+            "name": "QBO Reporting",
+            "description": "Re-architected reporting stack for externalized reports"
+          },
+          {
+            "name": "Chatbot Interface",
+            "description": "Conversational finance assistance with patent"
+          }
+        ]
+      },
+      {
+        "title": "Senior Development Manager",
+        "company": "Operative Media",
+        "duration": "2008-2013",
+        "description": "Led the BI and analytics re-architecture for Operative.One and scaled the India engineering center.",
+        "companies": [
+          {
+            "name": "Operative.One",
+            "description": "Full stack reporting solution"
+          },
+          {
+            "name": "India Center",
+            "description": "Scaled team from 5 to 30+ engineers"
+          }
+        ]
+      },
+      {
+        "title": "Engineering Manager",
+        "company": "Symphony Services (Oracle)",
+        "duration": "2005-2008",
+        "description": "Led offshore delivery strategy for Hyperion (Oracle) via Symphony Services, incubated Guided Analysis for adaptive visualizations.",
+        "companies": [
+          {
+            "name": "Hyperion",
+            "description": "Guided Analysis for Self Service Reporting"
+          },
+          {
+            "name": "Offshore Delivery",
+            "description": "US and India team coordination"
+          }
+        ]
+      },
+      {
+        "title": "Senior Engineer",
+        "company": "Hyperion Solutions (Oracle)",
+        "duration": "2000-2005",
+        "description": "Built interactive dashboard for Hyperion Central, worked on portlets for Enterprise customers and migrated to SPA using Bindows framework.",
+        "companies": [
+          {
+            "name": "Hyperion Central",
+            "description": "Interactive dashboard and portlets"
+          },
+          {
+            "name": "SPA Migration",
+            "description": "Bindows framework implementation"
+          }
+        ]
+      },
+      {
+        "title": "Senior Engineer",
+        "company": "CES Computer Solutions (ServiceSpan)",
+        "duration": "1998-2000",
+        "description": "Built point solutions for Bell South, implemented state machine in Java for provisioning voice mail boxes and realtime monitoring admin console.",
+        "companies": [
+          {
+            "name": "Bell South Solutions",
+            "description": "Voice mail provisioning system"
+          },
+          {
+            "name": "Admin Console",
+            "description": "Realtime monitoring with Java Swing"
+          }
+        ]
+      },
+      {
+        "title": "Software Engineer",
+        "company": "IBM Global Services & Service Span",
+        "duration": "1996-1998",
+        "description": "Early-career experience in enterprise software engineering and backend systems for case management.",
+        "companies": [
+          {
+            "name": "Enterprise Systems",
+            "description": "Backend systems for case management"
           }
         ]
       }
@@ -125,79 +231,109 @@
     "subtitle": "Market-leading products delivered under my engineering leadership",
     "projects": [
       {
-        "name": "Decode",
-        "type": "Consumer Insights Platform",
-        "description": "AI-powered consumer emotion and behavior analytics platform that revolutionized market research",
-        "challenge": "Traditional market research methods were time-consuming, expensive, and often provided limited insights into consumer emotions and subconscious responses. Brands needed real-time, accurate emotional analytics to make data-driven decisions.",
-        "solution": "Led the development of an AI-powered platform that uses facial coding, eye tracking, and voice analytics to decode consumer emotions in real-time. Built a scalable microservices architecture supporting millions of data points.",
+        "name": "Entropik AI Platform",
+        "type": "AI-First Consumer Research",
+        "description": "AI-powered consumer research platform with GenAI integrations for real-time emotion and behavior analytics",
+        "challenge": "Traditional research methods were time-consuming and provided limited insights. Brands needed real-time, accurate emotional analytics with AI-native experiences.",
+        "solution": "Led the development of an AI-first platform with gaze tracking, video summarization, and GenAI integration using AWS Bedrock and LangChain. Built scalable microservices architecture supporting millions of data points.",
         "technologies": [
           "Python",
           "TensorFlow",
           "React",
           "Node.js",
-          "AWS",
+          "AWS Bedrock",
+          "LangChain",
           "Docker",
           "Kubernetes",
           "PostgreSQL"
         ],
         "metrics": {
-          "enterprise_clients": "500+",
-          "data_points_per_day": "10M+",
-          "uptime_sla": "99.9%",
-          "cost_reduction": "40%"
-        },
-        "achievements": [
-          "Scaled engineering team from 5 to 25 developers",
-          "Reduced deployment time from 4 hours to 15 minutes",
-          "Achieved 99.9% platform reliability",
-          "Implemented ML pipeline processing 10M+ data points daily"
-        ]
-      },
-      {
-        "name": "Qatalyst",
-        "type": "UX Research Platform",
-        "description": "Comprehensive UX research platform enabling remote user testing and behavioral analytics at scale",
-        "challenge": "UX researchers struggled with fragmented tools, limited remote testing capabilities, and difficulty in gathering comprehensive user insights. The need for a unified platform became critical during the remote work shift.",
-        "solution": "Architected and delivered a comprehensive UX research platform with integrated screen recording, heatmaps, surveys, and AI-powered insights. Built for global scale with multi-tenant architecture.",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Node.js",
-          "WebRTC",
-          "Redis",
-          "MongoDB",
-          "AWS",
-          "Elasticsearch"
-        ],
-        "metrics": {
-          "global_brands": "300+",
-          "user_sessions": "1M+",
-          "countries": "50+",
+          "ai_features": "10+",
+          "genai_integrations": "5+",
+          "research_workflows": "100%",
           "time_savings": "60%"
         },
         "achievements": [
-          "Built real-time video processing pipeline",
-          "Implemented global CDN for low-latency delivery",
-          "Achieved sub-second response times globally",
-          "Designed auto-scaling infrastructure"
+          "Transformed legacy workflows into AI-native experiences",
+          "Integrated GenAI for feedback analysis and summarization",
+          "Built RAG-based 'KYC Buddy' assistant",
+          "Improved engineering practices around CI/CD and observability"
+        ]
+      },
+      {
+        "name": "PayU Vista Platform",
+        "type": "Neo Banking Platform",
+        "description": "Zero-to-one neo banking platform with lending capabilities and complex ecosystem integrations",
+        "challenge": "PayU needed to enter the neo banking space with a comprehensive platform that could handle complex financial integrations and regulatory requirements.",
+        "solution": "Architected and delivered the Vista neo banking platform from scratch, including lending product implementation and GTM strategy for Alpha and Closed User Group Beta phases.",
+        "technologies": [
+          "Java",
+          "Spring Boot",
+          "React",
+          "TypeScript",
+          "AWS",
+          "Kubernetes",
+          "PostgreSQL",
+          "Redis"
+        ],
+        "metrics": {
+          "platform_features": "20+",
+          "banking_integrations": "10+",
+          "lending_products": "3+",
+          "gtm_phases": "2"
+        },
+        "achievements": [
+          "Architected complete neo banking platform",
+          "Led GTM Strategy for Vista platform",
+          "Implemented lending product on Vista",
+          "Solved intricate integration issues in complex ecosystem"
+        ]
+      },
+      {
+        "name": "RazorpayX API Banking",
+        "type": "API Banking Platform",
+        "description": "Scaled API banking platform with payout engine and multi-bank integrations for fintech services",
+        "challenge": "Razorpay needed to scale their API banking platform to handle complex payout workflows, multi-bank integrations, and regulatory compliance requirements.",
+        "solution": "Built comprehensive payout engine with layered approval workflows, fund flow control, and multi-bank integrations. Designed services for transaction tracing, auto-retries, and reconciliation.",
+        "technologies": [
+          "Node.js",
+          "TypeScript",
+          "React",
+          "PostgreSQL",
+          "Redis",
+          "AWS",
+          "Docker",
+          "Kubernetes"
+        ],
+        "metrics": {
+          "team_growth": "30+",
+          "bank_integrations": "15+",
+          "transaction_volume": "1M+",
+          "uptime_sla": "99.9%"
+        },
+        "achievements": [
+          "Built payout engine with layered approval workflows",
+          "Grew team from 4 to 30+ within six months",
+          "Designed services for transaction tracing and reconciliation",
+          "Led banking partnerships focusing on scalability and compliance"
         ]
       }
     ],
     "combined_impact": {
       "title": "Combined Leadership Impact",
-      "description": "Under my engineering leadership, both products achieved market-leading positions and significant business impact",
+      "description": "Under my engineering leadership, multiple products achieved market-leading positions and significant business impact across fintech and AI domains",
       "metrics": [
         {
-          "value": "800+",
-          "label": "Total Enterprise Clients"
+          "value": "28+",
+          "label": "Years Experience"
         },
         {
           "value": "50+",
           "label": "Team Members Led"
         },
         {
-          "value": "$50M+",
-          "label": "Revenue Impact"
+          "value": "$100M+",
+          "label": "Platform Value"
         },
         {
           "value": "99.9%",
@@ -211,34 +347,34 @@
     "subtitle": "Deep technical knowledge across the full technology stack",
     "areas": [
       {
-        "title": "SaaS Web Applications",
-        "icon": "Code",
-        "description": "Full-stack development and architecture of scalable SaaS platforms"
-      },
-      {
-        "title": "Backend Architecture",
-        "icon": "Database",
-        "description": "Designing robust, scalable backend systems and microservices"
-      },
-      {
-        "title": "Cloud Computing",
-        "icon": "Cloud",
-        "description": "Cloud-native architectures and infrastructure optimization"
-      },
-      {
-        "title": "Team Leadership",
+        "title": "Engineering Leadership",
         "icon": "Users",
-        "description": "Growing and mentoring high-performing engineering teams"
+        "description": "Leading and scaling high-performing engineering teams across multiple domains"
       },
       {
-        "title": "Developer Productivity",
+        "title": "AI/ML & GenAI",
         "icon": "Zap",
-        "description": "Optimizing development workflows and team efficiency"
+        "description": "AI-first product development with GenAI integrations and machine learning pipelines"
       },
       {
-        "title": "DevOps Processes",
+        "title": "Fintech Platforms",
+        "icon": "Database",
+        "description": "Building scalable fintech solutions with complex integrations and regulatory compliance"
+      },
+      {
+        "title": "Cloud Architecture",
+        "icon": "Cloud",
+        "description": "Cloud-native architectures and infrastructure optimization across AWS and other platforms"
+      },
+      {
+        "title": "Product Strategy",
+        "icon": "Code",
+        "description": "Zero-to-one product development and go-to-market strategy execution"
+      },
+      {
+        "title": "DevOps & CI/CD",
         "icon": "Award",
-        "description": "CI/CD pipelines, automation, and deployment strategies"
+        "description": "Modern DevOps practices, automation, and deployment strategies"
       }
     ]
   },
@@ -269,6 +405,6 @@
     ]
   },
   "footer": {
-    "copyright": "© 2024 Engineering Leader. All rights reserved."
+    "copyright": "© 2025 Soumitra Ghosh. All rights reserved."
   }
 } 
