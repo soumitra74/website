@@ -35,8 +35,38 @@ export interface ChatbotData {
   }
 }
 
+// Client-side function for fetching chatbot content
 export async function getChatbotContent(): Promise<ChatbotData> {
   try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/chatbot`, {
+      cache: 'no-store'
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch chatbot content: ${response.status}`)
+    }
+
+    const content = await response.json()
+    return content
+  } catch (error) {
+    console.error('Error fetching chatbot content:', error)
+    throw error
+  }
+}
+
+// Server-side function for fetching chatbot content during build
+export async function getChatbotContentServer(): Promise<ChatbotData> {
+  try {
+    // During build time, read the file directly
+    if (process.env.NODE_ENV === 'production' || process.env.NEXT_PHASE === 'phase-production-build') {
+      const fs = await import('fs')
+      const path = await import('path')
+      const filePath = path.join(process.cwd(), 'data', 'chatbot.json')
+      const fileContent = fs.readFileSync(filePath, 'utf-8')
+      return JSON.parse(fileContent)
+    }
+    
+    // During development, use the API route
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/chatbot`, {
       cache: 'no-store'
     })

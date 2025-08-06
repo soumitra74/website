@@ -85,4 +85,92 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-slate-400 dark:bg-slate-500;
   }
+}
+
+@layer components {
+  /* Profile Picture with Horizontal Line */
+  
+  .profile-with-line {
+    position: relative;
+  }
+  
+  .profile-with-line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: #40e0d0; /* Turquoise color */
+    transform: translateY(-50%);
+    z-index: -2;
+    border-radius: 2.5px;
+  }
+  
+  /* Light Pulse Fade Animation */
+  
+  .profile-light-pulse-fade {
+    position: relative;
+  }
+  
+  .profile-light-pulse-fade::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 45deg,
+      rgba(16, 185, 129, 0.8) 45deg,
+      rgba(16, 185, 129, 1) 60deg,
+      rgba(16, 185, 129, 0.8) 60deg,
+      transparent 75deg,
+      transparent 360deg
+    );
+    animation: light-pulse-rotate 2.5s linear infinite;
+    z-index: -1;
+    filter: blur(3px);
+  }
+  
+  @keyframes light-pulse-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Small light pulse for navigation */
+  .profile-light-pulse-small {
+    position: relative;
+  }
+  
+  .profile-light-pulse-small::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 45deg,
+      rgba(16, 185, 129, 0.6) 45deg,
+      rgba(16, 185, 129, 0.8) 60deg,
+      rgba(16, 185, 129, 0.6) 60deg,
+      transparent 75deg,
+      transparent 360deg
+    );
+    animation: light-pulse-rotate 3s linear infinite;
+    z-index: -1;
+    filter: blur(1px);
+    opacity: 0.6;
+  }
 } 

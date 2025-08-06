@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ChatTypingIndicator } from '@/components/chat-typing-indicator'
 import Link from 'next/link'
-import { getChatbotContent, generateResponse, ChatbotData } from '@/lib/chatbot'
+import { getChatbotContent, generateResponse, ChatbotData } from '@/lib/chatbot-client'
 import Image from 'next/image'
 
 interface Message {
@@ -114,7 +114,7 @@ export default function AskMePage() {
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
                 <ArrowLeft className="w-4 h-4" />
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-600">
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-600 profile-light-pulse-small">
                   <Image
                     src="/images/profile.png"
                     alt="Soumitra Ghosh"

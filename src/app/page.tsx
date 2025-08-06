@@ -5,11 +5,11 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { getContent, ContentData } from "@/lib/content"
+import { getContentServer, ContentData } from "@/lib/content"
 import Image from "next/image"
 
 export default async function HomePage() {
-  const content: ContentData = await getContent()
+  const content: ContentData = await getContentServer()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
@@ -50,7 +50,7 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-6">
-              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-800 dark:border-white shadow-lg mb-6">
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-800 dark:border-white shadow-lg mb-6 profile-with-line profile-light-pulse-fade">
                 <Image
                   src="/images/profile.png"
                   alt="Soumitra Ghosh"
