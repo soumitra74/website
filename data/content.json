@@ -88,15 +88,15 @@
         "title": "VP of Engineering",
         "company": "Entropik",
         "duration": "2022-2024",
-        "description": "Leads engineering for AI-first consumer research platform, managing full-stack product development and GenAI integrations.",
+        "description": "Led engineering for AI-first consumer research platform, managing full-stack product development and GenAI integrations.",
         "products": [
           {
             "name": "AI Research Platform",
-            "description": "Transformed legacy research workflows into AI-native experiences with gaze tracking and video summarization"
+            "description": "Transformed legacy research workflows into AI-native experiences with facial coding, voice tonality, gaze tracking, STT and mouse tracking"
           },
           {
             "name": "GenAI Integration",
-            "description": "Integrated GenAI using AWS Bedrock and LangChain for feedback analysis and text summarization"
+            "description": "Integrated GenAI using GPT3.5 with LangChain for text summarization, knowledge graph, image stiching, data analytics and copilot"
           }
         ]
       },
@@ -112,7 +112,7 @@
           },
           {
             "name": "Lending Product",
-            "description": "Implemented lending product on Vista platform"
+            "description": "SME lending on Vista platform"
           }
         ]
       },
@@ -120,7 +120,7 @@
         "title": "Director of Engineering",
         "company": "Razorpay",
         "duration": "2019-2020",
-        "description": "Scaled RazorpayX API Banking platform for early product-market fit, built payout engine with layered approval workflows.",
+        "description": "Led RazorpayX API Banking platform for early product-market fit, built payout microservices with layered approval workflows and dyanmic routing.",
         "companies": [
           {
             "name": "RazorpayX",
@@ -139,12 +139,16 @@
         "description": "Headed engineering for QBO Reporting, focusing on modularity, personalization, and conversational data interfaces.",
         "companies": [
           {
-            "name": "QBO Reporting",
-            "description": "Re-architected reporting stack for externalized reports"
+            "name": "Redesigned Reports",
+            "description": "Re-architected reporting stack in SPA (Single Page Architecture"
+          },
+          {
+            "name": "Target State Architecture",
+            "description": "Reports Microservices and Reports APIs for scale and performance"
           },
           {
             "name": "Chatbot Interface",
-            "description": "Conversational finance assistance with patent"
+            "description": "Conversational assistance for business insights (patented)"
           }
         ]
       },
@@ -156,23 +160,27 @@
         "companies": [
           {
             "name": "Operative.One",
-            "description": "Full stack reporting solution"
+            "description": "Transformational project changing existing LAMP architecture to SpringBoot based SoA"
           },
           {
-            "name": "India Center",
-            "description": "Scaled team from 5 to 30+ engineers"
+            "name": "DW & BI",
+            "description": "Integrated MSBI stack for Reports, Dashboards, Data Feeds and Multi Dimensional Analytics"
+          },
+          {
+            "name": "GCC Growth",
+            "description": "Scaled team from 0 to 15+ engineers"
           }
         ]
       },
       {
         "title": "Engineering Manager",
-        "company": "Symphony Services (Oracle)",
+        "company": "Symphony Services (Hyperion IDC)",
         "duration": "2005-2008",
         "description": "Led offshore delivery strategy for Hyperion (Oracle) via Symphony Services, incubated Guided Analysis for adaptive visualizations.",
         "companies": [
           {
-            "name": "Hyperion",
-            "description": "Guided Analysis for Self Service Reporting"
+            "name": "Enterprise BI",
+            "description": "Incubated Guided Analysis for Self Service Reporting"
           },
           {
             "name": "Offshore Delivery",
@@ -184,15 +192,19 @@
         "title": "Senior Engineer",
         "company": "Hyperion Solutions (Oracle)",
         "duration": "2000-2005",
-        "description": "Built interactive dashboard for Hyperion Central, worked on portlets for Enterprise customers and migrated to SPA using Bindows framework.",
+        "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products",
         "companies": [
           {
-            "name": "Hyperion Central",
-            "description": "Interactive dashboard and portlets"
+            "name": "Webpage Viwer",
+            "description": "Coded an HTML and JS parser and a reverse-proxy for a webscraping portlet with CTA"
+          },
+          {
+            "name": "Hyperion Planning & Scorecard",
+            "description": "Integrated Hyperion Planning and Hyperion Scorecard views while maintaing browser interactions"
           },
           {
             "name": "SPA Migration",
-            "description": "Bindows framework implementation"
+            "description": "Replatformed Hyperion Central to a Single Page Architecture using Bindows framework"
           }
         ]
       },
@@ -200,7 +212,7 @@
         "title": "Senior Engineer",
         "company": "CES Computer Solutions (ServiceSpan)",
         "duration": "1998-2000",
-        "description": "Built point solutions for Bell South, implemented state machine in Java for provisioning voice mail boxes and realtime monitoring admin console.",
+        "description": "Built point solutions for Bell South, implemented state machine in Java for provisioning voice mail boxes",
         "companies": [
           {
             "name": "Bell South Solutions",
@@ -208,19 +220,19 @@
           },
           {
             "name": "Admin Console",
-            "description": "Realtime monitoring with Java Swing"
+            "description": "Realtime monitoring console for a remote services (a Java Swing application)"
           }
         ]
       },
       {
         "title": "Software Engineer",
-        "company": "IBM Global Services & Service Span",
+        "company": "IBM Global Services",
         "duration": "1996-1998",
-        "description": "Early-career experience in enterprise software engineering and backend systems for case management.",
+        "description": "Early-career experience in Java in Java Beans around the World project",
         "companies": [
           {
-            "name": "Enterprise Systems",
-            "description": "Backend systems for case management"
+            "name": "IBM Alphaworks",
+            "description": "Built complex Project Management Partpaks like Gantt Chart and Work Breakdown Structure"
           }
         ]
       }
@@ -235,28 +247,25 @@
         "type": "AI-First Consumer Research",
         "description": "AI-powered consumer research platform with GenAI integrations for real-time emotion and behavior analytics",
         "challenge": "Traditional research methods were time-consuming and provided limited insights. Brands needed real-time, accurate emotional analytics with AI-native experiences.",
-        "solution": "Led the development of an AI-first platform with gaze tracking, video summarization, and GenAI integration using AWS Bedrock and LangChain. Built scalable microservices architecture supporting millions of data points.",
+        "solution": "Led the development of an AI-first platform with gaze tracking, video summarization, and GenAI integration using AWS Bedrock and LangChain. Built scalable microservices architecture for video content analysis.",
         "technologies": [
           "Python",
-          "TensorFlow",
+          "FastAPI",
+          "DynamoDB",
           "React",
-          "Node.js",
-          "AWS Bedrock",
           "LangChain",
-          "Docker",
-          "Kubernetes",
-          "PostgreSQL"
+          "Docker"
         ],
         "metrics": {
-          "ai_features": "10+",
-          "genai_integrations": "5+",
-          "research_workflows": "100%",
-          "time_savings": "60%"
+          "aI_features": "10+",
+          "genAI_integrations": "5+",
+          "research_workflows": "90%+",
+          "time_savings": "60%+"
         },
         "achievements": [
           "Transformed legacy workflows into AI-native experiences",
-          "Integrated GenAI for feedback analysis and summarization",
-          "Built RAG-based 'KYC Buddy' assistant",
+          "Integrated GenAI for knowledge graph and summarization",
+          "Built RAG-based assistant",
           "Improved engineering practices around CI/CD and observability"
         ]
       },
@@ -270,16 +279,13 @@
           "Java",
           "Spring Boot",
           "React",
-          "TypeScript",
           "AWS",
-          "Kubernetes",
-          "PostgreSQL",
-          "Redis"
+          "MySQL"
         ],
         "metrics": {
           "platform_features": "20+",
-          "banking_integrations": "10+",
-          "lending_products": "3+",
+          "banking_integrations": "1",
+          "lending_products": "1",
           "gtm_phases": "2"
         },
         "achievements": [
@@ -294,20 +300,17 @@
         "type": "API Banking Platform",
         "description": "Scaled API banking platform with payout engine and multi-bank integrations for fintech services",
         "challenge": "Razorpay needed to scale their API banking platform to handle complex payout workflows, multi-bank integrations, and regulatory compliance requirements.",
-        "solution": "Built comprehensive payout engine with layered approval workflows, fund flow control, and multi-bank integrations. Designed services for transaction tracing, auto-retries, and reconciliation.",
+        "solution": "Built comprehensive payout engine with approval workflows, fund flow control, and multi-bank integrations. Designed services for transaction tracing, auto-retries, and reconciliation.",
         "technologies": [
-          "Node.js",
-          "TypeScript",
           "React",
-          "PostgreSQL",
+          "PHP",
+          "Golang",
           "Redis",
-          "AWS",
-          "Docker",
-          "Kubernetes"
+          "AWS"
         ],
         "metrics": {
           "team_growth": "30+",
-          "bank_integrations": "15+",
+          "bank_integrations": "3",
           "transaction_volume": "1M+",
           "uptime_sla": "99.9%"
         },
