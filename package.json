@@ -10,7 +10,7 @@
     "lint": "next lint",
     "export": "next export",
     "deploy": "gh-pages -d dist",
-    "generate": "next build && next export"
+    "generate": "next build"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.0.3",
