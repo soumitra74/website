@@ -202,7 +202,7 @@
       transparent 75deg,
       transparent 360deg
     );
-    animation: light-pulse-rotate 2.5s linear infinite;
+    animation: light-pulse-rotate 5s linear infinite;
     z-index: -1;
     filter: blur(3px);
   }
