@@ -257,8 +257,8 @@
           "Docker"
         ],
         "metrics": {
+          "new_Products": "2",
           "aI_features": "10+",
-          "genAI_integrations": "5+",
           "research_workflows": "90%+",
           "time_savings": "60%+"
         },
