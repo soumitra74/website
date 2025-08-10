@@ -103,6 +103,7 @@ export interface ContentData {
       text: string
       icon: string
       variant: string
+      href?: string
     }>
     status: Array<{
       text: string
