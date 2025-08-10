@@ -323,24 +323,24 @@
       }
     ],
     "combined_impact": {
-      "title": "Combined Leadership Impact",
+      "title": "Leadership Impact",
       "description": "Under my engineering leadership, multiple products achieved market-leading positions and significant business impact across fintech and AI domains",
       "metrics": [
         {
-          "value": "28+",
-          "label": "Years Experience"
+          "value": "4",
+          "label": "Zero-to-One Builds"
         },
         {
-          "value": "50+",
+          "value": "65+",
           "label": "Team Members Led"
         },
         {
-          "value": "$100M+",
-          "label": "Platform Value"
+          "value": "$2.5M+",
+          "label": "New Product ARR"
         },
         {
-          "value": "99.9%",
-          "label": "Platform Reliability"
+          "value": "2",
+          "label": "Large Scale Initiatives"
         }
       ]
     }
@@ -388,12 +388,14 @@
       {
         "text": "Send Email",
         "icon": "Mail",
-        "variant": "primary"
+        "variant": "primary",
+        "href": "mailto:soumitra@ghosh.blog"
       },
       {
         "text": "LinkedIn Profile",
         "icon": "Linkedin",
-        "variant": "outline"
+        "variant": "outline",
+        "href": "https://www.linkedin.com/in/soumitraghosh"
       }
     ],
     "status": [
