@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { AnimatedBackground } from "@/components/ui/animated-background"
 import { getContentServer, ContentData } from "@/lib/content"
 import Image from "next/image"
 
@@ -12,9 +13,11 @@ export default async function HomePage() {
   const content: ContentData = await getContentServer()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ambient:ambient-gradient-bg ambient:dark:ambient-gradient-bg-dark transition-colors duration-300 relative">
+      <AnimatedBackground />
+      
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 ambient:glass-nav ambient:dark:glass-nav-dark backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="text-xl font-bold text-slate-900 dark:text-white transition-colors">
@@ -46,11 +49,11 @@ export default async function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-6">
-              <div className="w-32 h-32 mx-auto shadow-lg mb-6 profile-with-line profile-light-pulse-fade">
+              <div className="w-32 h-32 mx-auto shadow-lg mb-6 profile-with-line profile-light-pulse-fade ambient:glass-glow floating-glass">
                 <Image
                   src="/images/profile.png"
                   alt="Soumitra Ghosh"
@@ -73,7 +76,7 @@ export default async function HomePage() {
               <Button 
                 key={index}
                 size="lg" 
-                className={button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800'}
+                className={`${button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800'} ambient:glass-button ambient:dark:glass-button-dark`}
                 asChild={!!button.href}
               >
                 {button.href ? (
@@ -96,7 +99,7 @@ export default async function HomePage() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.about.title}</h2>
@@ -121,7 +124,7 @@ export default async function HomePage() {
 
             <div className="space-y-6">
               {content.about.content.cards.map((card, index) => (
-                <Card key={index} className="dark:bg-slate-800 dark:border-slate-700 transition-colors">
+                <Card key={index} className="dark:bg-slate-800 dark:border-slate-700 ambient:glass-card ambient:dark:glass-card-dark transition-colors floating-glass-delayed">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 dark:text-white transition-colors">
                       <DynamicIcon name={card.icon} className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
@@ -141,7 +144,7 @@ export default async function HomePage() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.experience.title}</h2>
@@ -150,7 +153,7 @@ export default async function HomePage() {
 
           <div className="space-y-8">
             {content.experience.roles.map((role, index) => (
-              <Card key={index} className="border-l-4 border-l-emerald-500 dark:bg-slate-800 dark:border-slate-700 transition-colors">
+              <Card key={index} className="border-l-4 border-l-emerald-500 dark:bg-slate-800 dark:border-slate-700 ambient:glass-card ambient:dark:glass-card-dark transition-colors floating-glass">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
@@ -179,7 +182,7 @@ export default async function HomePage() {
                   {role.companies && (
                     <div className="grid md:grid-cols-3 gap-6">
                       {role.companies.map((company, companyIndex) => (
-                        <div key={companyIndex} className="text-center p-4 bg-slate-50 dark:bg-slate-700 rounded-lg transition-colors">
+                        <div key={companyIndex} className="text-center p-4 bg-slate-50 dark:bg-slate-700 ambient:glass-card ambient:dark:glass-card-dark rounded-lg transition-colors">
                           <div className="font-bold text-lg text-slate-900 dark:text-white transition-colors">{company.name}</div>
                           <p className="text-slate-600 dark:text-slate-300 text-sm transition-colors">{company.description}</p>
                         </div>
@@ -194,7 +197,7 @@ export default async function HomePage() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.portfolio.title}</h2>
@@ -241,7 +244,7 @@ export default async function HomePage() {
                   </div>
 
                   <div className={index % 2 === 0 ? "lg:order-first" : ""}>
-                    <Card className={`p-6 bg-gradient-to-br ${index === 0 ? 'from-emerald-50 to-emerald-100 border-emerald-200 dark:from-emerald-900/20 dark:to-emerald-800/20 dark:border-emerald-700' : 'from-purple-50 to-purple-100 border-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 dark:border-purple-700'} transition-colors`}>
+                    <Card className={`p-6 bg-gradient-to-br ${index === 0 ? 'from-emerald-50 to-emerald-100 border-emerald-200 dark:from-emerald-900/20 dark:to-emerald-800/20 dark:border-emerald-700' : 'from-purple-50 to-purple-100 border-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 dark:border-purple-700'} ambient:glass-card ambient:dark:glass-card-dark transition-colors floating-glass-delayed`}>
                       <div className="space-y-6">
                         <div className="text-center">
                           <div className={`w-16 h-16 ${index === 0 ? 'bg-emerald-600' : 'bg-purple-600'} rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4`}>
@@ -252,14 +255,14 @@ export default async function HomePage() {
 
                         <div className="grid grid-cols-2 gap-4 text-center">
                           {Object.entries(project.metrics).map(([key, value], metricIndex) => (
-                            <div key={metricIndex} className="bg-white dark:bg-slate-800 p-4 rounded-lg transition-colors">
+                            <div key={metricIndex} className="bg-white dark:bg-slate-800 ambient:glass-card ambient:dark:glass-card-dark p-4 rounded-lg transition-colors">
                               <div className={`text-2xl font-bold ${index === 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-purple-600 dark:text-purple-400'} transition-colors`}>{value}</div>
                               <div className="text-sm text-slate-600 dark:text-slate-300 transition-colors">{key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</div>
                             </div>
                           ))}
                         </div>
 
-                        <div className="bg-white dark:bg-slate-800 p-4 rounded-lg transition-colors">
+                        <div className="bg-white dark:bg-slate-800 ambient:glass-card ambient:dark:glass-card-dark p-4 rounded-lg transition-colors">
                           <h6 className="font-semibold text-slate-900 dark:text-white mb-2 transition-colors">Leadership Achievements</h6>
                           <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1 transition-colors">
                             {project.achievements.map((achievement, achievementIndex) => (
@@ -276,7 +279,7 @@ export default async function HomePage() {
             ))}
 
             {/* Combined Impact */}
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 mt-16 transition-colors">
+            <div className="bg-slate-50 dark:bg-slate-800 ambient:glass-card ambient:dark:glass-card-dark rounded-2xl p-8 mt-16 transition-colors floating-glass">
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.portfolio.combined_impact.title}</h3>
                 <p className="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto transition-colors">
@@ -298,7 +301,7 @@ export default async function HomePage() {
       </section>
 
       {/* Expertise Section */}
-      <section id="expertise" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <section id="expertise" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.expertise.title}</h2>
@@ -307,7 +310,7 @@ export default async function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {content.expertise.areas.map((area, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50">
+              <Card key={index} className="text-center hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
                 <CardHeader>
                   <DynamicIcon name={area.icon} className="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4 transition-colors" />
                   <CardTitle className="dark:text-white transition-colors">{area.title}</CardTitle>
@@ -322,7 +325,7 @@ export default async function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 dark:bg-slate-950 text-white transition-colors duration-300">
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 dark:bg-slate-950 ambient:glass-bg ambient:dark:glass-bg-dark text-white transition-colors duration-300 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.contact.title}</h2>
           <p className="text-xl text-slate-300 dark:text-slate-400 mb-8 transition-colors">
@@ -334,7 +337,7 @@ export default async function HomePage() {
               <Button
                 key={index}
                 size="lg"
-                className={button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-600 dark:border-slate-500 text-slate-300 dark:text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 bg-transparent'}
+                className={`${button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-600 dark:border-slate-500 text-slate-300 dark:text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 bg-transparent'} ambient:glass-button ambient:dark:glass-button-dark`}
                 asChild={!!button.href}
               >
                 {button.href ? (
@@ -366,7 +369,7 @@ export default async function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 dark:bg-black text-slate-400 dark:text-slate-500 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 dark:text-slate-500 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <p>{content.footer.copyright}</p>
         </div>

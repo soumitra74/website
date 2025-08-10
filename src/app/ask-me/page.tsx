@@ -5,6 +5,7 @@ import { Send, ArrowLeft, Bot, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ChatTypingIndicator } from '@/components/chat-typing-indicator'
+import { AnimatedBackground } from '@/components/ui/animated-background'
 import Link from 'next/link'
 import { getChatbotContent, generateResponse, ChatbotData } from '@/lib/chatbot-client'
 import Image from 'next/image'
@@ -96,8 +97,9 @@ export default function AskMePage() {
 
   if (!chatbotData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300 flex items-center justify-center">
-        <div className="text-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ambient:ambient-gradient-bg ambient:dark:ambient-gradient-bg-dark transition-colors duration-300 flex items-center justify-center relative">
+        <AnimatedBackground />
+        <div className="text-center relative z-10">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600 mx-auto mb-4"></div>
           <p className="text-slate-600 dark:text-slate-400">Loading chatbot...</p>
         </div>
@@ -106,15 +108,17 @@ export default function AskMePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ambient:ambient-gradient-bg ambient:dark:ambient-gradient-bg-dark transition-colors duration-300 relative">
+      <AnimatedBackground />
+      
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
+      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 ambient:glass-nav ambient:dark:glass-nav-dark backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
                 <ArrowLeft className="w-4 h-4" />
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-600 profile-light-pulse-small">
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-600 profile-light-pulse-small ambient:glass-glow">
                   <Image
                     src="/images/profile.png"
                     alt="Soumitra Ghosh"
@@ -135,7 +139,7 @@ export default function AskMePage() {
       </nav>
 
       {/* Chat Interface */}
-      <div className="max-w-4xl mx-auto h-[calc(100vh-80px)] flex flex-col">
+      <div className="max-w-4xl mx-auto h-[calc(100vh-80px)] flex flex-col relative z-10">
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.map((message) => (
@@ -146,7 +150,7 @@ export default function AskMePage() {
               }`}
             >
               {message.role === 'assistant' && (
-                <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 ambient:glass-glow">
                   <Bot className="w-4 h-4 text-white" />
                 </div>
               )}
@@ -154,7 +158,7 @@ export default function AskMePage() {
                 className={`max-w-[80%] rounded-lg px-4 py-3 ${
                   message.role === 'user'
                     ? 'bg-emerald-600 text-white'
-                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white'
+                    : 'bg-white dark:bg-slate-800 ambient:glass-card ambient:dark:glass-card-dark border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white'
                 } transition-colors`}
               >
                 <p className="text-sm leading-relaxed">{message.content}</p>
@@ -167,7 +171,7 @@ export default function AskMePage() {
                 </p>
               </div>
               {message.role === 'user' && (
-                <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center flex-shrink-0 ambient:glass-glow">
                   <User className="w-4 h-4 text-white" />
                 </div>
               )}
@@ -180,7 +184,7 @@ export default function AskMePage() {
         </div>
 
         {/* Input */}
-        <div className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+        <div className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark p-4">
           <form onSubmit={handleSubmit} className="flex gap-3">
             <div className="flex-1 relative">
               <input
@@ -188,13 +192,13 @@ export default function AskMePage() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={chatbotData.chat.input_placeholder}
-                className="w-full px-4 py-3 pr-12 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3 pr-12 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 ambient:glass-input ambient:dark:glass-input-dark text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
                 disabled={isLoading}
               />
               <Button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 p-0 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 dark:disabled:bg-slate-600"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 p-0 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 dark:disabled:bg-slate-600 ambient:glass-button ambient:dark:glass-button-dark"
               >
                 <Send className="w-4 h-4" />
               </Button>

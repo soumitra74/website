@@ -27,8 +27,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Update document class for Tailwind CSS
     const root = document.documentElement
-    root.classList.remove('light', 'dark')
-    root.classList.add(newEffectiveTheme)
+    root.classList.remove('light', 'dark', 'ambient')
+    
+    if (theme === 'ambient') {
+      root.classList.add('ambient', newEffectiveTheme)
+    } else {
+      root.classList.add(newEffectiveTheme)
+    }
     
     // Update meta theme-color
     const metaThemeColor = document.querySelector('meta[name="theme-color"]')
@@ -42,7 +47,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (theme !== 'ambient') return
 
     const updateAmbientTheme = () => {
-      setEffectiveTheme(getEffectiveTheme(theme))
+      const newEffectiveTheme = getEffectiveTheme(theme)
+      setEffectiveTheme(newEffectiveTheme)
+      
+      // Update document class for ambient theme
+      const root = document.documentElement
+      root.classList.remove('light', 'dark')
+      root.classList.add('ambient', newEffectiveTheme)
     }
 
     // Update every minute for ambient mode

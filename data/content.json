@@ -245,6 +245,7 @@
       {
         "name": "Entropik AI Platform",
         "type": "AI-First Consumer Research",
+        "image": "decode.png",
         "description": "AI-powered consumer research platform with GenAI integrations for real-time emotion and behavior analytics",
         "challenge": "Traditional research methods were time-consuming and provided limited insights. Brands needed real-time, accurate emotional analytics with AI-native experiences.",
         "solution": "Led the development of an AI-first platform with gaze tracking, video summarization, and GenAI integration using AWS Bedrock and LangChain. Built scalable microservices architecture for video content analysis.",
@@ -266,12 +267,13 @@
           "Transformed legacy workflows into AI-native experiences",
           "Integrated GenAI for knowledge graph and summarization",
           "Built RAG-based assistant",
-          "Improved engineering practices around CI/CD and observability"
+          "DORA Elite engineering practices around CI/CD and observability"
         ]
       },
       {
         "name": "PayU Vista Platform",
         "type": "Neo Banking Platform",
+        "image": "vista.png",
         "description": "Zero-to-one neo banking platform with lending capabilities and complex ecosystem integrations",
         "challenge": "PayU needed to enter the neo banking space with a comprehensive platform that could handle complex financial integrations and regulatory requirements.",
         "solution": "Architected and delivered the Vista neo banking platform from scratch, including lending product implementation and GTM strategy for Alpha and Closed User Group Beta phases.",
@@ -298,6 +300,7 @@
       {
         "name": "RazorpayX API Banking",
         "type": "API Banking Platform",
+        "image": "razorpayx.png",
         "description": "Scaled API banking platform with payout engine and multi-bank integrations for fintech services",
         "challenge": "Razorpay needed to scale their API banking platform to handle complex payout workflows, multi-bank integrations, and regulatory compliance requirements.",
         "solution": "Built comprehensive payout engine with approval workflows, fund flow control, and multi-bank integrations. Designed services for transaction tracing, auto-retries, and reconciliation.",

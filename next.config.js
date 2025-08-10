@@ -5,7 +5,9 @@ const nextConfig = {
     output: 'export',
     trailingSlash: true,
     // basePath: isProd ? '/website' : '',
-    images: {
+    // basePath: process.env.DEPLOY_TARGET === 'gh-pages' ? `/${repoName}` : '',
+    // assetPrefix: process.env.DEPLOY_TARGET === 'gh-pages' ? `/${repoName}/` : '',
+      images: {
       unoptimized: true,
     },  
     distDir: 'dist',
