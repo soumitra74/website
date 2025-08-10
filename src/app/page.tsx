@@ -50,13 +50,13 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-6">
-              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-800 dark:border-white shadow-lg mb-6 profile-with-line profile-light-pulse-fade">
+              <div className="w-32 h-32 mx-auto shadow-lg mb-6 profile-with-line profile-light-pulse-fade">
                 <Image
                   src="/images/profile.png"
                   alt="Soumitra Ghosh"
                   width={128}
                   height={128}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-full"
                   priority
                 />
               </div>
@@ -68,25 +68,29 @@ export default async function HomePage() {
             <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors">
               {content.hero.description}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {content.hero.buttons.map((button, index) => (
-                <Button 
-                  key={index}
-                  size="lg" 
-                  className={button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800'}
-                >
-                  <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
-                  {button.href ? (
-                    <a href={button.href} className="flex items-center">
-                      {button.text}
-                      {button.icon === 'ArrowRight' && <DynamicIcon name="ArrowRight" className="w-4 h-4 ml-2" />}
-                    </a>
-                  ) : (
-                    button.text
-                  )}
-                </Button>
-              ))}
-            </div>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {content.hero.buttons.map((button, index) => (
+              <Button 
+                key={index}
+                size="lg" 
+                className={button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800'}
+                asChild={!!button.href}
+              >
+                {button.href ? (
+                  <a href={button.href} className="flex items-center">
+                    <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
+                    {button.text}
+                    {button.icon === 'ArrowRight' && <DynamicIcon name="ArrowRight" className="w-4 h-4 ml-2" />}
+                  </a>
+                ) : (
+                  <>
+                    <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
+                    {button.text}
+                  </>
+                )}
+              </Button>
+            ))}
+          </div>
           </div>
         </div>
       </section>
@@ -331,9 +335,19 @@ export default async function HomePage() {
                 key={index}
                 size="lg"
                 className={button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-600 dark:border-slate-500 text-slate-300 dark:text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 bg-transparent'}
+                asChild={!!button.href}
               >
-                <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
-                {button.text}
+                {button.href ? (
+                  <a href={button.href} className="flex items-center">
+                    <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
+                    {button.text}
+                  </a>
+                ) : (
+                  <>
+                    <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
+                    {button.text}
+                  </>
+                )}
               </Button>
             ))}
           </div>

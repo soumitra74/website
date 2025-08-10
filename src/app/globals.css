@@ -92,6 +92,14 @@
   
   .profile-with-line {
     position: relative;
+    background: linear-gradient(45deg, #40e0d0, #10b981, #3b82f6, #8b5cf6);
+    padding: 4px;
+    border-radius: 50%;
+    animation: gradient-border-rotate 13s linear infinite;
+  }
+  
+  .profile-with-line img {
+    border-radius: 50%;
   }
   
   .profile-with-line::after {
@@ -105,6 +113,24 @@
     transform: translateY(-50%);
     z-index: -2;
     border-radius: 2.5px;
+  }
+  
+  @keyframes gradient-border-rotate {
+    0%, 37.5% {
+      background: linear-gradient(45deg, #40e0d0, #10b981, #3b82f6, #8b5cf6);
+    }
+    12.5% {
+      background: linear-gradient(135deg, #40e0d0, #10b981, #3b82f6, #8b5cf6);
+    }
+    25% {
+      background: linear-gradient(225deg, #40e0d0, #10b981, #3b82f6, #8b5cf6);
+    }
+    37.5% {
+      background: linear-gradient(315deg, #40e0d0, #10b981, #3b82f6, #8b5cf6);
+    }
+    100% {
+      background: linear-gradient(45deg, #40e0d0, #10b981, #3b82f6, #8b5cf6);
+    }
   }
   
   /* Light Pulse Fade Animation */
