@@ -96,6 +96,17 @@ export interface ContentData {
       description: string
     }>
   }
+  training: {
+    title: string
+    subtitle: string
+    certifications: Array<{
+      title: string
+      institution: string
+      duration: string
+      description: string
+      achievement?: string
+    }>
+  }
   contact: {
     title: string
     description: string
