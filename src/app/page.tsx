@@ -337,7 +337,15 @@ export default async function HomePage() {
               <Button
                 key={index}
                 size="lg"
-                className={`${button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-600 dark:border-slate-500 text-slate-300 dark:text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 bg-transparent'} ambient:glass-button ambient:dark:glass-button-dark`}
+                className={`${
+                  button.variant === 'primary' 
+                    ? 'bg-emerald-600 hover:bg-emerald-700' 
+                    : button.text === 'LinkedIn Profile'
+                      ? 'border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-transparent'
+                      : button.text === 'Medium Profile'
+                        ? 'border-orange-600 dark:border-orange-500 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20 bg-transparent'
+                        : 'border-slate-600 dark:border-slate-500 text-slate-300 dark:text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 bg-transparent'
+                } ambient:glass-button ambient:dark:glass-button-dark`}
                 asChild={!!button.href}
               >
                 {button.href ? (

@@ -41,7 +41,8 @@
       {
         "text": "Get In Touch",
         "variant": "primary",
-        "icon": "Mail"
+        "icon": "Mail",
+        "href": "#contact"
       },
       {
         "text": "View Portfolio",
@@ -160,7 +161,7 @@
         "companies": [
           {
             "name": "Operative.One",
-            "description": "Transformational project changing existing LAMP architecture to SpringBoot based SoA"
+            "description": "Architecture odernisation from legacy LAMP to SpringBoot based SoA"
           },
           {
             "name": "DW & BI",
@@ -399,6 +400,12 @@
         "icon": "Linkedin",
         "variant": "outline",
         "href": "https://www.linkedin.com/in/soumitraghosh"
+      },
+      {
+        "text": "Medium Profile",
+        "icon": "Medium",
+        "variant": "outline",
+        "href": "https://medium.com/@soumitra.ghosh.iit"
       }
     ],
     "status": [
