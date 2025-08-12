@@ -25,6 +25,10 @@
         "href": "#expertise"
       },
       {
+        "text": "Training",
+        "href": "#training"
+      },
+      {
         "text": "Contact",
         "href": "#contact"
       }
@@ -382,6 +386,31 @@
         "title": "DevOps & CI/CD",
         "icon": "Award",
         "description": "Modern DevOps practices, automation, and deployment strategies"
+      }
+    ]
+  },
+  "training": {
+    "title": "Training & Certifications",
+    "subtitle": "Continuous learning and professional development",
+    "certifications": [
+      {
+        "title": "B. Tech. (Electronics)",
+        "institution": "IIT Kharagpur",
+        "duration": "1992-1996",
+        "description": "Bachelor of Technology in Electronics Engineering",
+        "achievement": "AIR: 255"
+      },
+      {
+        "title": "Executive Education",
+        "institution": "ISB CTO Program",
+        "duration": "July 2024",
+        "description": "Chief Technology Officer Executive Program"
+      },
+      {
+        "title": "GenAI for Business Leaders",
+        "institution": "Great Learning Institute",
+        "duration": "Feb 2025",
+        "description": "Generative AI for Business Leadership and Strategy"
       }
     ]
   },
