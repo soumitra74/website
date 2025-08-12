@@ -107,6 +107,29 @@ export interface ContentData {
       achievement?: string
     }>
   }
+  events: {
+    title: string
+    subtitle: string
+    stats: Array<{
+      label: string
+      icon: string
+      color: string
+    }>
+    events: Array<{
+      id: number
+      title: string
+      type: string
+      date: string
+      location: string
+      description: string
+      role: string
+      attendees: string
+      institution: string
+      image: string
+      tags: string[]
+      highlights: string[]
+    }>
+  }
   contact: {
     title: string
     description: string

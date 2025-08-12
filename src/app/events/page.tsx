@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -7,86 +5,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { DynamicIcon } from '@/components/ui/dynamic-icon'
+import { getContentServer, ContentData } from '@/lib/content'
 import Link from 'next/link'
 import Image from 'next/image'
 
-// Events data - you can move this to a separate JSON file later
-const eventsData = [
-  {
-    id: 1,
-    title: "DataDog Observability Summit",
-    type: "Conference",
-    date: "March 2024",
-    location: "San Francisco, CA",
-    description: "Presented on 'Building Observability-First Engineering Culture' and shared insights on implementing comprehensive monitoring strategies for distributed systems.",
-    role: "Speaker",
-    attendees: "500+",
-    institution: "DataDog",
-    image: "/images/events/datadog-summit.jpg",
-    tags: ["Observability", "Monitoring", "Engineering Culture"],
-    highlights: [
-      "Keynote presentation on observability best practices",
-      "Panel discussion on modern monitoring strategies",
-      "Networking with industry leaders"
-    ]
-  },
-  {
-    id: 2,
-    title: "Product Tank Meetup",
-    type: "Community Event",
-    date: "January 2024",
-    location: "Bangalore, India",
-    description: "Shared experiences on 'Product-Led Engineering Leadership' and how to align engineering teams with product strategy for better outcomes.",
-    role: "Speaker",
-    attendees: "150+",
-    institution: "Product Tank",
-    image: "/images/events/product-tank.jpg",
-    tags: ["Product Strategy", "Leadership", "Community"],
-    highlights: [
-      "Interactive workshop on product-engineering alignment",
-      "Q&A session with product managers and engineers",
-      "Community building and networking"
-    ]
-  },
-  {
-    id: 3,
-    title: "SAP TechEd Conference",
-    type: "Technology Conference",
-    date: "November 2023",
-    location: "Las Vegas, NV",
-    description: "Presented on 'Enterprise AI Integration Strategies' and discussed practical approaches to implementing AI solutions in large-scale enterprise environments.",
-    role: "Speaker",
-    attendees: "1000+",
-    institution: "SAP",
-    image: "/images/events/sap-teched.jpg",
-    tags: ["Enterprise AI", "Integration", "Technology"],
-    highlights: [
-      "Technical deep-dive on AI integration patterns",
-      "Enterprise architecture best practices",
-      "Industry case studies and success stories"
-    ]
-  },
-  {
-    id: 4,
-    title: "Visionet Innovation Summit",
-    type: "Innovation Summit",
-    date: "September 2023",
-    location: "Mumbai, India",
-    description: "Led a fireside chat on 'The Future of Fintech Engineering' and explored emerging trends in financial technology and engineering practices.",
-    role: "Panelist",
-    attendees: "300+",
-    institution: "Visionet",
-    image: "/images/events/visionet-summit.jpg",
-    tags: ["Fintech", "Innovation", "Future Trends"],
-    highlights: [
-      "Fireside chat on fintech engineering trends",
-      "Innovation showcase and demos",
-      "Strategic discussions on industry evolution"
-    ]
-  }
-]
-
-export default function EventsPage() {
+export default async function EventsPage() {
+  const content: ContentData = await getContentServer()
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ambient:ambient-gradient-bg ambient:dark:ambient-gradient-bg-dark transition-colors duration-300 relative">
       <AnimatedBackground />
@@ -112,35 +37,28 @@ export default function EventsPage() {
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">
-            Events & Speaking
-          </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors">
-            Sharing insights and experiences at industry conferences, meetups, and innovation summits. 
-            From technical deep-dives to leadership discussions, I'm passionate about contributing to the tech community.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400">
-              <Users className="w-4 h-4 mr-2" />
-              15+ Events
-            </Badge>
-            <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
-              <Calendar className="w-4 h-4 mr-2" />
-              Speaker & Panelist
-            </Badge>
-            <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400">
-              <MapPin className="w-4 h-4 mr-2" />
-              Global Reach
-            </Badge>
-          </div>
+                     <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">
+             {content.events.title}
+           </h1>
+           <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors">
+             {content.events.subtitle}
+           </p>
+           <div className="flex flex-wrap justify-center gap-4 mb-12">
+             {content.events.stats.map((stat, index) => (
+               <Badge key={index} className={`bg-${stat.color}-100 text-${stat.color}-800 dark:bg-${stat.color}-900/20 dark:text-${stat.color}-400`}>
+                 <DynamicIcon name={stat.icon} className="w-4 h-4 mr-2" />
+                 {stat.label}
+               </Badge>
+             ))}
+           </div>
         </div>
       </section>
 
       {/* Events Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {eventsData.map((event, index) => (
+                     <div className="grid md:grid-cols-2 gap-8">
+             {content.events.events.map((event, index) => (
               <Card key={event.id} className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
                 <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-t-lg overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">

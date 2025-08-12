@@ -454,6 +454,94 @@
       }
     ]
   },
+  "events": {
+    "title": "Events & Speaking",
+    "subtitle": "Sharing insights and experiences at industry conferences, meetups, and innovation summits. From technical deep-dives to leadership discussions, I'm passionate about contributing to the tech community.",
+    "stats": [
+      {
+        "label": "5+ Events",
+        "icon": "Users",
+        "color": "emerald"
+      },
+      {
+        "label": "Speaker & Panelist",
+        "icon": "Calendar",
+        "color": "blue"
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "title": "DataDog Live",
+        "type": "Conference",
+        "date": "May 2024",
+        "location": "Bangalore, India",
+        "description": "Engineering Leadership and Culture",
+        "role": "Panelist",
+        "attendees": "500+",
+        "institution": "DataDog",
+        "image": "/images/events/datadog-live-2024.jpg",
+        "tags": ["Observability", "Monitoring", "Engineering Culture"],
+        "highlights": [
+          "Panel discussion on modern monitoring strategies",
+          "Managing and nurturing high performing teams",
+          "DevSecOps and Observability"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Product Tank Meetup",
+        "type": "Community Event",
+        "date": "February 2024",
+        "location": "Bangalore, India",
+        "description": "Leveraging User Metrics for Effective Product Prioritization",
+        "role": "Speaker",
+        "attendees": "30+",
+        "institution": "Product Tank",
+        "image": "/images/events/product-tank-2024.jpg",
+        "tags": ["Product Management", "Market Research", "Emotion AI"],
+        "highlights": [
+          "Uncovering the transformative power of user analytics on business decisions",
+          "Product Prioritisation principles and frameworks",
+          "Community building and networking"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "SAP TechEd",
+        "type": "Brown Bag Session",
+        "date": "November 2023",
+        "location": "Bangalore, India",
+        "description": "Impact of AI solutions in product managagment in enterprise",
+        "role": "Panelist",
+        "attendees": "30+",
+        "institution": "SAP",
+        "image": "/images/events/sap-teched.jpg",
+        "tags": ["Product Management", "Entropik", "Technology"],
+        "highlights": [
+          "Technical deep-dive on AI integration patterns",
+          "Industry case studies and success stories"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Visionet Tech Fest",
+        "type": "Innovation Summit",
+        "date": "December 2024",
+        "location": "Bangalore, India",
+        "description": "GenAI",
+        "role": "Panelist",
+        "attendees": "300+",
+        "institution": "Visionet",
+        "image": "/images/events/visionet-summit.jpg",
+        "tags": ["LLM", "Innovation", "Future Trends"],
+        "highlights": [
+          "Innovation showcase and demos",
+          "Strategic discussions on industry evolution"
+        ]
+      }
+    ]
+  },
   "footer": {
     "copyright": "© 2025 Soumitra Ghosh. All rights reserved."
   }
