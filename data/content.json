@@ -53,6 +53,12 @@
         "variant": "outline",
         "icon": "ArrowRight",
         "href": "#portfolio"
+      },
+      {
+        "text": "Events & Speaking",
+        "variant": "outline",
+        "icon": "Calendar",
+        "href": "/events"
       }
     ]
   },

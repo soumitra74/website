@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedBackground } from "@/components/ui/animated-background"
 import { getContentServer, ContentData } from "@/lib/content"
 import Image from "next/image"
+import Link from "next/link"
 
 export default async function HomePage() {
   const content: ContentData = await getContentServer()
@@ -80,11 +81,11 @@ export default async function HomePage() {
                 asChild={!!button.href}
               >
                 {button.href ? (
-                  <a href={button.href} className="flex items-center">
+                  <Link href={button.href} className="flex items-center">
                     <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
                     {button.text}
                     {button.icon === 'ArrowRight' && <DynamicIcon name="ArrowRight" className="w-4 h-4 ml-2" />}
-                  </a>
+                  </Link>
                 ) : (
                   <>
                     <DynamicIcon name={button.icon} className="w-4 h-4 mr-2" />
