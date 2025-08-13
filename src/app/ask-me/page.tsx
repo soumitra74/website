@@ -7,7 +7,9 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { ChatTypingIndicator } from '@/components/chat-typing-indicator'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import Link from 'next/link'
-import { getChatbotContent, generateResponseWithSearch, ChatbotData } from '@/lib/chatbot-client'
+import { getChatbotContent, generateResponse } from '@/lib/chatbot-client'
+import { ChatbotData } from '@/lib/types'
+import { getContent, ContentData } from '@/lib/content'
 import Image from 'next/image'
 
 interface Message {
@@ -22,6 +24,7 @@ export default function AskMePage() {
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [chatbotData, setChatbotData] = useState<ChatbotData | null>(null)
+  const [contentData, setContentData] = useState<ContentData | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -32,24 +35,29 @@ export default function AskMePage() {
     scrollToBottom()
   }, [messages])
 
-  // Load chatbot content on component mount
+  // Load chatbot and content data on component mount
   useEffect(() => {
-    const loadChatbotContent = async () => {
+    const loadData = async () => {
       try {
-        const content = await getChatbotContent()
-        setChatbotData(content)
+        const [chatbotContent, contentContent] = await Promise.all([
+          getChatbotContent(),
+          getContent()
+        ])
+        
+        setChatbotData(chatbotContent)
+        setContentData(contentContent)
         
         // Set initial welcome message
         setMessages([
           {
             id: '1',
-            content: content.chat.welcome_message,
+            content: chatbotContent.chat.welcome_message,
             role: 'assistant',
             timestamp: new Date()
           }
         ])
       } catch (error) {
-        console.error('Failed to load chatbot content:', error)
+        console.error('Failed to load data:', error)
         // Fallback welcome message
         setMessages([
           {
@@ -62,7 +70,7 @@ export default function AskMePage() {
       }
     }
 
-    loadChatbotContent()
+    loadData()
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -80,39 +88,41 @@ export default function AskMePage() {
     setInput('')
     setIsLoading(true)
 
-    // Generate AI response using search functionality
-    try {
-      const response = await generateResponseWithSearch(input.trim())
-      
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: response,
-        role: 'assistant',
-        timestamp: new Date()
+    // Simulate AI response with configurable delay
+    const delay = chatbotData.ui.loading_delay.min + Math.random() * chatbotData.ui.loading_delay.max
+    
+    setTimeout(async () => {
+      try {
+        const response = await generateResponse(input.trim(), chatbotData, contentData || undefined)
+        const assistantMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          content: response,
+          role: 'assistant',
+          timestamp: new Date()
+        }
+        setMessages(prev => [...prev, assistantMessage])
+      } catch (error) {
+        console.error('Error generating response:', error)
+        // Fallback response
+        const assistantMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          content: "I'm sorry, I'm having trouble processing your request right now. Please try again.",
+          role: 'assistant',
+          timestamp: new Date()
+        }
+        setMessages(prev => [...prev, assistantMessage])
       }
-      setMessages(prev => [...prev, assistantMessage])
-    } catch (error) {
-      console.error('Error generating response:', error)
-      // Fallback to a generic response
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: "I'm sorry, I'm having trouble processing your request right now. Please try again in a moment.",
-        role: 'assistant',
-        timestamp: new Date()
-      }
-      setMessages(prev => [...prev, assistantMessage])
-    } finally {
       setIsLoading(false)
-    }
+    }, delay)
   }
 
-  if (!chatbotData) {
+  if (!chatbotData || !contentData) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ambient:ambient-gradient-bg ambient:dark:ambient-gradient-bg-dark transition-colors duration-300 flex items-center justify-center relative">
         <AnimatedBackground />
         <div className="text-center relative z-10">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600 mx-auto mb-4"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading chatbot...</p>
+          <p className="text-slate-600 dark:text-slate-400">Loading chatbot and content...</p>
         </div>
       </div>
     )

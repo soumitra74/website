@@ -16,6 +16,10 @@
   },
   "responses": {
     "context_aware": {
+      "introduction": {
+        "keywords": ["Soumitra", "Ghosh", "website"],
+        "response": "This website showcases my career graph. I plan to add more information in the coming days."
+      },
       "team_leadership": {
         "keywords": ["team", "leadership", "manage"],
         "response": "Great question about team leadership! I've found that successful engineering teams thrive on three key principles: clear communication, psychological safety, and continuous learning. Regular 1:1s, team retrospectives, and setting clear expectations are crucial. What specific leadership challenge are you facing?"
