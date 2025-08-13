@@ -1,0 +1,124 @@
+{
+  "name": "Soumitra Ghosh",
+  "title": "VP of Engineering | Technologist | Builder",
+  "sections": [
+    {
+      "company": "Entropik",
+      "title": "VP of Engineering",
+      "location": "Bangalore",
+      "summary": "Leads engineering for AI-first consumer research platform, managing full-stack product development and GenAI integrations.",
+      "highlights": [
+        "Transformed legacy research workflows into AI-native experiences with gaze tracking and video summarization.",
+        "Integrated GenAI using AWS Bedrock and LangChain for feedback analysis and text summarization.",
+        "Built a RAG-based 'KYC Buddy' assistant for summarizing global regulatory documents.",
+        "Improved engineering practices around CI/CD, observability, and modular architecture.",
+        "Mentored team leads through rapid scale-up and product pivots."
+      ],
+      "start_date": "2022-09-16",
+      "end_date": "2024-10-16"
+    },
+    {
+      "company": "PayU",
+      "title": "VP of Strategic Initiatives",
+      "location": "Bangalore",
+      "summary": "Zero-to-one build of the neo banking platform for PayU",
+      "highlights": [
+        "Architected Neo Banking platform for PayU (Vista)",
+        "Led GTM Strategy for Vista (Alpha and Closed User Group Beta",
+        "Implemented a lending product on Vista platform",
+        "Solved for intricate integration issues in a complex ecosystem"
+      ],
+      "start_date": "2020-05-01",
+      "end_date": "2022-09-15"
+    },
+    {
+      "company": "Razorpay",
+      "title": "Director of Engineering",
+      "location": "Bangalore",
+      "summary": "Scaled RazorpayX API Banking platform for early product-market fit",
+      "highlights": [
+        "Built payout engine with layered approval workflows, fund flow control, and multi-bank integrations.",
+        "Grew team from 4 to 30+ within six months.",
+        "Designed services for transaction tracing, auto-retries, and reconciliation.",
+        "Led banking partnerships focusing on scalability and compliance."
+      ],
+      "start_date": "2019-04-01",
+      "end_date": "2020-04-30"
+    },
+    {
+      "company": "Intuit",
+      "title": "Senior Development Manager",
+      "location": "Bangalore",
+      "summary": "Headed engineering for QBO Reporting, focusing on modularity, personalization, and conversational data interfaces.",
+      "highlights": [
+        "Re-architected reporting stack to support externalized and personalized reports.",
+        "Created a chatbot-led reporting interface for conversational finance assistance.",
+        "Awarded a patent on conversational data exploration.",
+        "Led cross-functional teams across India, US, and Canada.",
+        "Mentored engineers and drove engineering culture in a globally distributed setup."
+      ],
+      "start_date": "2013-09-01",
+      "end_date": "2018-11-30"
+    },
+    {
+      "company": "Operative Media",
+      "title": "Senior Development Manager",
+      "location": "Bangalore",
+      "summary": "Led the BI and analytics re-architecture for Operative.One and scaled the India engineering center.",
+      "highlights": [
+        "Implemented a full stack reporting solution for Operative.One",
+        "Scaled team from 5 to 30+ engineers with Agile practices",
+        "Collaborated with product and engineering leads across New York, Bangalore and Chennai.",
+        "Built hiring and onboarding processes for the India center."
+      ],
+      "start_date": "2008-08-01",
+      "end_date": "2013-08-30"
+    },
+    {
+      "company": "Symphony Services (Oracle)",
+      "title": "Engineering Manager",
+      "location": "Bangalore",
+      "summary": "Led offshore delivery strategy for Hyperion (Oracle) via Symphony Services",
+      "highlights": [
+        "Incubated Guided Analysis for adaptive visualizations for Self Service Reporting",
+        "Liaised between US and India teams for delivery of multiple workstreams"
+      ],
+      "start_date": "2005-08-01",
+      "end_date": "2008-08-30"
+    },
+    {
+      "company": "Hyperion Solutions (Oracle)",
+      "title": "Senior Engineer",
+      "location": "Stamford, CT",
+      "summary": "Built interactive dashboard for Hyperion Central",
+      "highlights": [
+        "Worked in Hyperion Central team building portlets for Enterprise customers",
+        "Built a web scraper to extract data from a website and save it in a database",
+        "Contributed to migrating to SPA using Bindows framework"
+      ],
+      "start_date": "2000-05-01",
+      "end_date": "2005-06-30"
+    },
+    {
+      "company": "CES Computer Solutions (ServiceSpan)",
+      "title": "Senior Engineer",
+      "location": "Melville, Long Island",
+      "summary": "Built point solutions for Bell South",
+      "highlights": [
+        "Implemented a state machine in Java for provisioning voice mail boxes",
+        "Used Java Swing for a realtime monitoring admin console"
+      ],
+      "start_date": "1998-10-01",
+      "end_date": "2000-04-30"
+    },
+    {
+      "company": "IBM Global Services & Service Span",
+      "title": "Software Engineer",
+      "location": "India",
+      "summary": "Early-career experience in enterprise software engineering and backend systems for case management.",
+      "highlights": [],
+      "start_date": "1996-08-01",
+      "end_date": "1998-05-30"
+    }
+  ]
+}

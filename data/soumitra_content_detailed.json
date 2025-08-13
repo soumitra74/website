@@ -1,0 +1,81 @@
+{
+  "landing_page_introduction": {
+    "title": "\ud83c\udfe0 Landing Page Introduction (`ghosh.blog/soumitra`)",
+    "intro": "**Hi, I\u2019m Soumitra Ghosh \u2014 a technologist, builder, and storyteller.**",
+    "body": "I lead with curiosity, build with intent, and mentor with passion. Over the past two decades, I\u2019ve helped scale fintech, adtech, and SaaS products, built high-performing engineering teams, and driven zero-to-one innovation across consumer and enterprise platforms.\n\nWhether architecting neobanking systems, mentoring hackathons, or designing AI-first experiences, I bring a deep appreciation for tech that moves fast \u2014 but with purpose."
+  },
+  "about_me": {
+    "title": "\ud83d\udc54 About Me",
+    "intro": "**Technologist | Innovation Mentor | Builder of Zero-to-One Products**",
+    "body": "I\u2019m Soumitra Ghosh, currently serving as the **VP of Engineering at Entropik**, where I lead product engineering in the space of AI-powered consumer research. Previously, I scaled RazorpayX from a fledgling API banking initiative to a robust payout platform with full-stack compliance, approval workflows, and multi-bank integrations.\n\nAcross roles at **Intuit, Razorpay, PayU, and Hyperion**, I\u2019ve worked hands-on in system design, SaaS, microservices, and cloud-native architectures. I\u2019ve been fortunate to lead and grow teams across India and the U.S., navigating both hyper-growth environments and deep tech pivots.\n\nI\u2019m an IIT Kharagpur alumnus (Electronics), a certified Scrum Master, and a recent graduate of ISB\u2019s CTO Program."
+  },
+  "career_highlights": {
+    "title": "\ud83d\ude80 Career Highlights",
+    "roles": [
+      {
+        "role": "Entropik (VP Engineering)",
+        "description": "Spearheading GenAI transformation in consumer research, managing full-stack engineering and product execution."
+      },
+      {
+        "role": "Razorpay (Director of Engineering)",
+        "description": "Built and launched RazorpayX payout infrastructure from scratch. Led a 30-member team, implemented experiment-driven development, and shipped features like approval layers, fund transfer services, and new bank integrations."
+      },
+      {
+        "role": "Intuit (Director of Engineering)",
+        "description": "Owned engineering for QuickBooks Online (QBO) Reports. Introduced report generation frameworks, chatbot-led reporting, and microservice re-architecture. Filed a patent in conversational data exploration."
+      },
+      {
+        "role": "Operative Media (Senior Dev Manager)",
+        "description": "Rebuilt the business intelligence engine for Operative.One. Key player in setting up the India engineering hub."
+      },
+      {
+        "role": "Hyperion (Senior Engineer, USA)",
+        "description": "Part of the early team working on enterprise reporting and analytics tools. Later contributed to Guided Analytics initiatives."
+      },
+      {
+        "role": "Early Career",
+        "description": "IBM Global Services \u2192 Service Span \u2192 Hyperion USA \u2192 Hyperion India \u2014 foundational years spent building enterprise-grade software and distributed systems."
+      }
+    ]
+  },
+  "thought_leadership_and_ip": {
+    "title": "\ud83e\udde0 Thought Leadership & IP",
+    "items": [
+      {
+        "type": "Patent (Pending)",
+        "description": "*\"Data Exploration in QBO using Conversational Interfaces\"*"
+      },
+      {
+        "type": "Conference Paper (CODS-COMAD)",
+        "description": "*Real-time Eye Gaze Tracking for Interactive Research Experiences* \u2014 co-authored and presented as part of Entropik's research arm."
+      },
+      {
+        "type": "Innovation Hackathons",
+        "description": "Regular mentor and judge at internal and external hackathons. Passionate about prototyping and guiding early-stage product ideas."
+      }
+    ]
+  },
+  "tech_stack_and_interests": {
+    "title": "\ud83d\udee0\ufe0f Tech Stack & Interests",
+    "skills": {
+      "Hands-on With": "Java, Golang, Spring, React, Kubernetes, AWS, GraphQL, Hibernate, GCP, LangChain, GenAI APIs.",
+      "Architecture Focus": "Microservices, API Platforms, BI/Analytics, Compliance-Driven Systems.",
+      "Tools of Choice": "GitHub, Jira, Confluence, Postman, LangGraph, Docker, BigQuery."
+    }
+  },
+  "beyond_work": {
+    "title": "\ud83e\uddf3 Beyond Work",
+    "activities": [
+      "**\ud83c\udfd3 Playing table tennis** with friends or my kids.",
+      "**\u270d\ufe0f Writing poetry** or short reflections (a habit from college days that never left me).",
+      "**\ud83c\udf0f Traveling with family**, exploring new cultures, and collecting stories.",
+      "**\ud83d\udcda Reading** \u2014 from Tagore and Neruda to books on systems thinking and team dynamics."
+    ]
+  },
+  "connect": {
+    "title": "\ud83d\udcec Let\u2019s Connect",
+    "linkedin": "https://linkedin.com/in/soumitraghosh",
+    "email": "soumitra@ghosh.blog",
+    "note": "I\u2019m always open to chats around GenAI, zero-to-one product journeys, or mentoring tech teams."
+  }
+}
