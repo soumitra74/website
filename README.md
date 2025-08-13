@@ -9,6 +9,8 @@ A modern, professional website showcasing the portfolio and expertise of an Engi
 - **Interactive Components**: Hover effects, smooth scrolling navigation, and engaging UI elements
 - **Portfolio Showcase**: Detailed case studies of major products (Decode & Qatalyst)
 - **Professional Sections**: About, Experience, Portfolio, Expertise, and Contact sections
+- **AI-Powered Chatbot**: Intelligent chatbot with Lunr.js search functionality
+- **Smart Search**: Searches in ContentData first, then falls back to ChatbotData
 - **Performance Optimized**: Built with Next.js 14 and optimized for speed
 
 ## Tech Stack
@@ -19,6 +21,7 @@ A modern, professional website showcasing the portfolio and expertise of an Engi
 - **Icons**: Lucide React icons
 - **TypeScript**: Full TypeScript support
 - **Animations**: Tailwind CSS animations and transitions
+- **Search**: Lunr.js for intelligent content search
 
 ## Getting Started
 
@@ -56,6 +59,10 @@ yarn dev
 ```
 ├── src/
 │   ├── app/
+│   │   ├── api/                 # API routes
+│   │   │   ├── chatbot/         # Chatbot API with search functionality
+│   │   │   └── content/         # Content API
+│   │   ├── ask-me/              # Chatbot interface
 │   │   ├── globals.css          # Global styles and Tailwind imports
 │   │   ├── layout.tsx           # Root layout component
 │   │   └── page.tsx             # Main homepage component
@@ -66,6 +73,9 @@ yarn dev
 │   │       ├── badge.tsx
 │   │       └── separator.tsx
 │   └── lib/
+│       ├── search.ts            # Lunr.js search functionality
+│       ├── chatbot.ts           # Chatbot data types and utilities
+│       ├── content.ts           # Content data types and utilities
 │       └── utils.ts             # Utility functions
 ├── public/                      # Static assets
 ├── package.json
@@ -101,6 +111,22 @@ To add new sections:
 2. Add navigation link in the nav component
 3. Style with Tailwind CSS classes
 4. Ensure responsive design
+
+### Chatbot Functionality
+
+The website includes an intelligent chatbot powered by client-side Lunr.js search:
+
+1. **Client-Side Search**: All search functionality runs in the browser using Lunr.js
+2. **Search Priority**: The chatbot searches in ContentData first (experience, portfolio, expertise, etc.)
+3. **Fallback**: If no relevant content is found, it falls back to predefined ChatbotData responses
+4. **Smart Responses**: Uses semantic search to provide contextual answers based on your actual experience
+5. **Static Export Compatible**: Works with static site generation and can be deployed to any static hosting
+
+To customize the chatbot:
+- Update `data/chatbot.json` for predefined responses
+- Modify `data/content.json` to add searchable content
+- The search functionality automatically indexes all content sections
+- Test the search functionality at `/test-search` during development
 
 ## Deployment
 

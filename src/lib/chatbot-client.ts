@@ -54,6 +54,39 @@ export async function getChatbotContent(): Promise<ChatbotData> {
   }
 }
 
+// Client-side search function using Lunr.js
+export async function generateResponseWithSearch(userInput: string): Promise<string> {
+  try {
+    // Load both content and chatbot data
+    const [contentResponse, chatbotResponse] = await Promise.all([
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/content`, {
+        cache: 'no-store'
+      }),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/chatbot`, {
+        cache: 'no-store'
+      })
+    ])
+
+    if (!contentResponse.ok || !chatbotResponse.ok) {
+      throw new Error('Failed to load data')
+    }
+
+    const contentData = await contentResponse.json()
+    const chatbotData = await chatbotResponse.json()
+
+    // Import the client-side search function dynamically to avoid SSR issues
+    const { generateResponseFromSearch } = await import('./client-search')
+    
+    // Generate response using client-side search
+    return generateResponseFromSearch(userInput, contentData, chatbotData)
+  } catch (error) {
+    console.error('Error generating response:', error)
+    // Fallback to client-side generation if search fails
+    throw error
+  }
+}
+
+// Legacy function for backward compatibility
 export function generateResponse(userInput: string, chatbotData: ChatbotData): string {
   const input = userInput.toLowerCase()
   

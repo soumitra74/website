@@ -7,7 +7,7 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { ChatTypingIndicator } from '@/components/chat-typing-indicator'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import Link from 'next/link'
-import { getChatbotContent, generateResponse, ChatbotData } from '@/lib/chatbot-client'
+import { getChatbotContent, generateResponseWithSearch, ChatbotData } from '@/lib/chatbot-client'
 import Image from 'next/image'
 
 interface Message {
@@ -80,19 +80,30 @@ export default function AskMePage() {
     setInput('')
     setIsLoading(true)
 
-    // Simulate AI response with configurable delay
-    const delay = chatbotData.ui.loading_delay.min + Math.random() * chatbotData.ui.loading_delay.max
-    
-    setTimeout(() => {
+    // Generate AI response using search functionality
+    try {
+      const response = await generateResponseWithSearch(input.trim())
+      
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: generateResponse(input.trim(), chatbotData),
+        content: response,
         role: 'assistant',
         timestamp: new Date()
       }
       setMessages(prev => [...prev, assistantMessage])
+    } catch (error) {
+      console.error('Error generating response:', error)
+      // Fallback to a generic response
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: "I'm sorry, I'm having trouble processing your request right now. Please try again in a moment.",
+        role: 'assistant',
+        timestamp: new Date()
+      }
+      setMessages(prev => [...prev, assistantMessage])
+    } finally {
       setIsLoading(false)
-    }, delay)
+    }
   }
 
   if (!chatbotData) {

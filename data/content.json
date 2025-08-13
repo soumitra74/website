@@ -70,7 +70,7 @@
         "title": "Professional Journey",
         "paragraphs": [
           "With 28 years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
-          "Currently serving as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
+          "Most recently served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
         ],
         "achievement": {
           "text": "VP of Engineering - Entropik",
@@ -337,7 +337,7 @@
       }
     ],
     "combined_impact": {
-      "title": "Leadership Impact",
+      "title": "Overall Leadership Impact",
       "description": "Under my engineering leadership, multiple products achieved market-leading positions and significant business impact across fintech and AI domains",
       "metrics": [
         {
@@ -345,8 +345,8 @@
           "label": "Zero-to-One Builds"
         },
         {
-          "value": "65+",
-          "label": "Team Members Led"
+          "value": "60+",
+          "label": "Max Team Size"
         },
         {
           "value": "$2.5M+",

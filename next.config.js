@@ -7,7 +7,7 @@ const nextConfig = {
     // basePath: isProd ? '/website' : '',
     // basePath: process.env.DEPLOY_TARGET === 'gh-pages' ? `/${repoName}` : '',
     // assetPrefix: process.env.DEPLOY_TARGET === 'gh-pages' ? `/${repoName}/` : '',
-      images: {
+    images: {
       unoptimized: true,
     },  
     distDir: 'dist',
