@@ -226,12 +226,12 @@
         "description": "Built point solutions for Bell South, implemented state machine in Java for provisioning voice mail boxes",
         "companies": [
           {
-            "name": "Bell South Solutions",
+            "name": "Bell South Projects",
             "description": "Voice mail provisioning system"
           },
           {
             "name": "Admin Console",
-            "description": "Realtime monitoring console for a remote services (a Java Swing application)"
+            "description": "Realtime monitoring for remote services (Java Swing application)"
           }
         ]
       },
