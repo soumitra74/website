@@ -8,8 +8,8 @@
     "page_title": "Ask Me (beta)"
   },
   "chat": {
-    "welcome_message": "Hello! I'm your AI assistant. I can help you with nagivating this website",
-    "input_placeholder": "Ask me anything about this website",
+    "welcome_message": "Hello! I'm a baby bot. I am learning. I can help you with keyword based search on this website",
+    "input_placeholder": "Ask me anything about Soumitra",
     "send_button": "Send",
     "typing_indicator": "Typing...",
     "beta_notice": "This is a beta feature. Some responses are simulated for demonstration purposes."

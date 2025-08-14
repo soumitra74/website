@@ -26,6 +26,7 @@ export default function AskMePage() {
   const [chatbotData, setChatbotData] = useState<ChatbotData | null>(null)
   const [contentData, setContentData] = useState<ContentData | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -35,17 +36,31 @@ export default function AskMePage() {
     scrollToBottom()
   }, [messages])
 
+  // Focus input when component loads and after responses
+  useEffect(() => {
+    if (chatbotData && contentData && !isLoading) {
+      // Small delay to ensure the input is rendered
+      const timer = setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus()
+        }
+      }, 100)
+      
+      return () => clearTimeout(timer)
+    }
+  }, [chatbotData, contentData, isLoading, messages])
+
   // Load chatbot and content data on component mount
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [chatbotContent, contentContent] = await Promise.all([
+        const [chatbotContent, allContent] = await Promise.all([
           getChatbotContent(),
           getContent()
         ])
         
         setChatbotData(chatbotContent)
-        setContentData(contentContent)
+        setContentData(allContent)
         
         // Set initial welcome message
         setMessages([
@@ -209,6 +224,7 @@ export default function AskMePage() {
           <form onSubmit={handleSubmit} className="flex gap-3">
             <div className="flex-1 relative">
               <input
+                ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
