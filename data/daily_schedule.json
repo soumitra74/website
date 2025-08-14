@@ -1,0 +1,411 @@
+{
+  "common_sections": {
+    "websites": [
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com"
+      },
+      {
+        "name": "Stack Overflow",
+        "url": "https://stackoverflow.com"
+      },
+      {
+        "name": "Medium",
+        "url": "https://medium.com"
+      },
+      {
+        "name": "TechCrunch",
+        "url": "https://techcrunch.com"
+      },
+      {
+        "name": "Hacker News",
+        "url": "https://news.ycombinator.com"
+      },
+      {
+        "name": "Quora",
+        "url": "https://quora.com"
+      },
+      {
+        "name": "Dev.to",
+        "url": "https://dev.to"
+      },
+      {
+        "name": "Hashnode",
+        "url": "https://hashnode.com"
+      },
+      {
+        "name": "Towards Data Science",
+        "url": "https://towardsdatascience.com"
+      },
+      {
+        "name": "AWS Blog",
+        "url": "https://aws.amazon.com/blogs"
+      },
+      {
+        "name": "Google Cloud Blog",
+        "url": "https://cloudblog.withgoogle.com"
+      },
+      {
+        "name": "Microsoft Azure Blog",
+        "url": "https://azure.microsoft.com/en-us/blog"
+      },
+      {
+        "name": "Kubernetes Blog",
+        "url": "https://kubernetes.io/blog"
+      },
+      {
+        "name": "Docker Blog",
+        "url": "https://www.docker.com/blog"
+      },
+      {
+        "name": "Redis Blog",
+        "url": "https://redis.com/blog"
+      },
+      {
+        "name": "MongoDB Blog",
+        "url": "https://www.mongodb.com/blog"
+      },
+      {
+        "name": "PostgreSQL Blog",
+        "url": "https://www.postgresql.org/about/news"
+      },
+      {
+        "name": "Elastic Blog",
+        "url": "https://www.elastic.co/blog"
+      },
+      {
+        "name": "Databricks Blog",
+        "url": "https://www.databricks.com/blog"
+      },
+      {
+        "name": "Uber Blog",
+        "url": "https://eng.uber.com"
+      },
+      {
+        "name": "CNN",
+        "url": "https://cnn.com"
+      },
+      {
+        "name": "Anandabazar",
+        "url": "https://anandabazar.com"
+      },
+      {
+        "name": "Al Jazeera",
+        "url": "https://aljazeera.com"
+      },
+      {
+        "name": "BBC",
+        "url": "https://bbc.com"
+      },
+      {
+        "name": "Ground News",
+        "url": "https://ground.news"
+      },
+      {
+        "name": "X (Twitter)",
+        "url": "https://x.com"
+      }
+    ],
+    "youtube_channels": [
+      {
+        "name": "Fireship",
+        "url": "https://www.youtube.com/@Fireship"
+      },
+      {
+        "name": "ThePrimeagen",
+        "url": "https://www.youtube.com/@ThePrimeagen"
+      },
+      {
+        "name": "CodeWithHarry",
+        "url": "https://www.youtube.com/@CodeWithHarry"
+      },
+      {
+        "name": "Programming with Mosh",
+        "url": "https://www.youtube.com/@programmingwithmosh"
+      },
+      {
+        "name": "AIdotEngineer",
+        "url": "https://www.youtube.com/@AIdotEngineer"
+      },
+      {
+        "name": "Dev Ed",
+        "url": "https://www.youtube.com/@developedbyed"
+      },
+      {
+        "name": "Web Dev Simplified",
+        "url": "https://www.youtube.com/@WebDevSimplified"
+      },
+      {
+        "name": "Kevin Powell",
+        "url": "https://www.youtube.com/@KevinPowell"
+      },
+      {
+        "name": "DesignCourse",
+        "url": "https://www.youtube.com/@DesignCourse"
+      },
+      {
+        "name": "Academind",
+        "url": "https://www.youtube.com/@academind"
+      },
+      {
+        "name": "freeCodeCamp",
+        "url": "https://www.youtube.com/@freecodecamp"
+      },
+      {
+        "name": "The Net Ninja",
+        "url": "https://www.youtube.com/@NetNinja"
+      },
+      {
+        "name": "Tech With Tim",
+        "url": "https://www.youtube.com/@TechWithTim"
+      },
+      {
+        "name": "Silicon Valley Girl",
+        "url": "https://www.youtube.com/@SiliconValleyGirl"
+      },
+      {
+        "name": "IBM Technology",
+        "url": "https://www.youtube.com/@IBMTechnology"
+      },
+      {
+        "name": "Julian Goldie",
+        "url": "https://www.youtube.com/@JulianGoldie"
+      },
+      {
+        "name": "Mathew Berman",
+        "url": "https://www.youtube.com/@mathewberman"
+      },
+      {
+        "name": "Space Matters",
+        "url": "https://www.youtube.com/@SpaceMatters"
+      },
+      {
+        "name": "Corey Schafer",
+        "url": "https://www.youtube.com/@coreyms"
+      },
+      {
+        "name": "Sentdex",
+        "url": "https://www.youtube.com/@sentdex"
+      },
+      {
+        "name": "Data School",
+        "url": "https://www.youtube.com/@DataSchool"
+      },
+      {
+        "name": "StatQuest",
+        "url": "https://www.youtube.com/@statquest"
+      },
+      {
+        "name": "3Blue1Brown",
+        "url": "https://www.youtube.com/@3blue1brown"
+      },
+      {
+        "name": "Computerphile",
+        "url": "https://www.youtube.com/@Computerphile"
+      },
+      {
+        "name": "Numberphile",
+        "url": "https://www.youtube.com/@numberphile"
+      },
+      {
+        "name": "Veritasium",
+        "url": "https://www.youtube.com/@veritasium"
+      },
+      {
+        "name": "Vsauce",
+        "url": "https://www.youtube.com/@Vsauce"
+      },
+      {
+        "name": "Kurzgesagt",
+        "url": "https://www.youtube.com/@kurzgesagt"
+      },
+      {
+        "name": "CGP Grey",
+        "url": "https://www.youtube.com/@CGPGrey"
+      },
+      {
+        "name": "Tom Scott",
+        "url": "https://www.youtube.com/@TomScottGo"
+      }
+    ],
+    "coding_activities": [
+      "Review pull requests",
+      "Write unit tests",
+      "Refactor legacy code",
+      "Update documentation",
+      "Code review sessions",
+      "Debug production issues",
+      "Performance optimization",
+      "Security audit",
+      "Database optimization",
+      "API development",
+      "Frontend development",
+      "Backend development",
+      "DevOps tasks",
+      "Infrastructure setup",
+      "Monitoring and alerting",
+      "Data analysis",
+      "Machine learning model training",
+      "A/B testing",
+      "Load testing",
+      "Integration testing"
+    ]
+  },
+  "daily_routines": {
+    "weekday": {
+      "8:00": "Wake up and morning routine",
+      "8:30": "Check emails and urgent messages",
+      "9:00": "Team standup meeting",
+      "9:30": "Deep work - coding/development",
+      "10:30": "Break - coffee and quick walk",
+      "11:00": "Code review and PR discussions",
+      "12:00": "Lunch break",
+      "13:00": "Architecture discussions and planning",
+      "14:00": "Deep work - system design",
+      "15:00": "One-on-one meetings with team members",
+      "16:00": "Product discussions and roadmap planning",
+      "17:00": "Review daily progress and plan tomorrow",
+      "18:00": "Evening walk or exercise",
+      "19:00": "Dinner with family",
+      "20:00": "Learning time - reading tech blogs/watching videos",
+      "21:00": "Personal coding projects",
+      "22:00": "Plan next day and wind down",
+      "23:00": "Sleep"
+    },
+    "weekend": {
+      "8:30": "Wake up and relaxed morning routine",
+      "9:00": "Family breakfast",
+      "10:00": "Personal reading time",
+      "11:00": "Table tennis with kids",
+      "12:00": "Lunch with family",
+      "13:00": "Afternoon nap or relaxation",
+      "14:30": "Personal coding projects",
+      "16:00": "Family activities or outing",
+      "18:00": "Evening walk",
+      "19:00": "Dinner",
+      "20:00": "Movie or TV series with family",
+      "21:30": "Light reading or writing poetry",
+      "22:30": "Sleep"
+    },
+    "holiday": {
+      "9:00": "Wake up and relaxed morning",
+      "9:30": "Family breakfast",
+      "10:30": "Personal time - reading or writing",
+      "12:00": "Lunch",
+      "13:00": "Afternoon activities - games, movies, or outing",
+      "16:00": "Tea time with family",
+      "17:00": "Evening walk or exercise",
+      "18:30": "Dinner preparation and cooking",
+      "19:30": "Family dinner",
+      "20:30": "Family activities or entertainment",
+      "22:00": "Light reading",
+      "23:00": "Sleep"
+    }
+  },
+  "indian_holidays": [
+    {
+      "date": "2025-01-26",
+      "name": "Republic Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2025-03-08",
+      "name": "Holi",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-04-14",
+      "name": "Ambedkar Jayanti",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2025-05-01",
+      "name": "Labour Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2025-08-15",
+      "name": "Independence Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2025-10-02",
+      "name": "Gandhi Jayanti",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2025-11-14",
+      "name": "Children's Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2025-12-25",
+      "name": "Christmas",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-01-15",
+      "name": "Pongal",
+      "type": "Regional Holiday"
+    },
+    {
+      "date": "2025-02-14",
+      "name": "Valentine's Day",
+      "type": "Cultural Holiday"
+    },
+    {
+      "date": "2025-03-25",
+      "name": "Ram Navami",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-04-09",
+      "name": "Ramadan Eid",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-05-01",
+      "name": "Maharashtra Day",
+      "type": "Regional Holiday"
+    },
+    {
+      "date": "2025-06-15",
+      "name": "Bakrid",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-07-17",
+      "name": "Muharram",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-08-26",
+      "name": "Raksha Bandhan",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-09-07",
+      "name": "Ganesh Chaturthi",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-10-23",
+      "name": "Diwali",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-11-27",
+      "name": "Guru Nanak Jayanti",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2025-12-25",
+      "name": "Christmas",
+      "type": "Religious Holiday"
+    }
+  ]
+}
