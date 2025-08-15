@@ -126,6 +126,7 @@ export interface ContentData {
       attendees: string
       institution: string
       image: string
+      photos?: string[]
       tags: string[]
       highlights: string[]
     }>

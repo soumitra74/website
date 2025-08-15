@@ -9,7 +9,7 @@ import { DynamicIcon } from '@/components/ui/dynamic-icon'
 import { getContentServer } from '@/lib/content-server'
 import { ContentData } from '@/lib/content'
 import Link from 'next/link'
-import Image from 'next/image'
+import { EventPhotoCarousel } from '@/components/event-photo-carousel'
 
 export default async function EventsPage() {
   const content: ContentData = await getContentServer()
@@ -61,14 +61,9 @@ export default async function EventsPage() {
                      <div className="grid md:grid-cols-2 gap-8">
              {content.events.events.map((event, index) => (
               <Card key={event.id} className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
-                <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-t-lg overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <Calendar className="w-12 h-12 text-slate-400 dark:text-slate-500 mx-auto mb-2" />
-                      <p className="text-slate-500 dark:text-slate-400 text-sm">Event Photo</p>
-                    </div>
-                  </div>
-                  <Badge className="absolute top-4 right-4 bg-emerald-600 text-white">
+                <div className="relative">
+                  <EventPhotoCarousel photos={event.photos || [event.image]} />
+                  <Badge className="absolute top-4 right-4 bg-emerald-600 text-white z-10">
                     {event.role}
                   </Badge>
                 </div>

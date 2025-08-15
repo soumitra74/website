@@ -480,7 +480,10 @@
         "role": "Panelist",
         "attendees": "500+",
         "institution": "DataDog",
-        "image": "/images/events/datadog-live-2024.jpg",
+        "image": "/images/events/datadog-live-banner.jpg",
+        "photos": [
+          "/images/events/datadog-live-banner.jpg"
+        ],
         "tags": ["Observability", "Monitoring", "Engineering Culture"],
         "highlights": [
           "Panel discussion on modern monitoring strategies",
@@ -498,7 +501,11 @@
         "role": "Speaker",
         "attendees": "30+",
         "institution": "Product Tank",
-        "image": "/images/events/product-tank-2024.jpg",
+        "image": "/images/events/ProductTank2004-group.jpg",
+        "photos": [
+          "/images/events/ProductTank2004-group.jpg",
+          "/images/events/ProductTank2004-banner.jpg"
+        ],
         "tags": ["Product Management", "Market Research", "Emotion AI"],
         "highlights": [
           "Uncovering the transformative power of user analytics on business decisions",
@@ -508,7 +515,7 @@
       },
       {
         "id": 3,
-        "title": "SAP TechEd",
+        "title": "SAP Product Day",
         "type": "Brown Bag Session",
         "date": "November 2023",
         "location": "Bangalore, India",
@@ -516,7 +523,10 @@
         "role": "Panelist",
         "attendees": "30+",
         "institution": "SAP",
-        "image": "/images/events/sap-teched.jpg",
+        "image": "/images/events/SAPProductDay-group.jpg",
+        "photos": [
+          "/images/events/SAPProductDay-banner.jpg"
+        ],
         "tags": ["Product Management", "Entropik", "Technology"],
         "highlights": [
           "Technical deep-dive on AI integration patterns",
@@ -533,7 +543,10 @@
         "role": "Panelist",
         "attendees": "300+",
         "institution": "Visionet",
-        "image": "/images/events/visionet-summit.jpg",
+        "image": "/images/events/visionet-summit.png",
+        "photos": [
+          "/images/events/visionet-summit.png"
+        ],
         "tags": ["LLM", "Innovation", "Future Trends"],
         "highlights": [
           "Innovation showcase and demos",
