@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { WebsiteEmbed } from '@/components/ui/website-embed'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -262,26 +263,26 @@ export default function SpotMePage() {
                     </Button>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-700">
-                    {currentActivity.type === 'website' ? (
-                      <iframe
-                        src={currentActivity.embedUrl}
-                        className="w-full h-full"
-                        title={currentActivity.title}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <iframe
-                        src={currentActivity.embedUrl.replace('/@', '/embed/')}
-                        className="w-full h-full"
-                        title={currentActivity.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    )}
-                  </div>
-                </CardContent>
+                                  <CardContent>
+                    <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-700">
+                      {currentActivity.type === 'website' ? (
+                        <WebsiteEmbed
+                          url={currentActivity.embedUrl || ''}
+                          title={currentActivity.title}
+                          description={currentActivity.description}
+                          className="w-full h-full"
+                        />
+                      ) : (
+                        <iframe
+                          src={currentActivity.embedUrl.replace('/@', '/embed/')}
+                          className="w-full h-full"
+                          title={currentActivity.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      )}
+                    </div>
+                  </CardContent>
               </Card>
             )}
           </div>

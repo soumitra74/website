@@ -5,6 +5,7 @@ import { X, ExternalLink, Play, BookOpen, Monitor } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { WebsiteEmbed } from '@/components/ui/website-embed'
 
 interface DailySchedule {
   common_sections: {
@@ -255,11 +256,11 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
                   <CardContent>
                     <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-700">
                       {currentActivity.type === 'website' ? (
-                        <iframe
-                          src={currentActivity.embedUrl}
-                          className="w-full h-full"
+                        <WebsiteEmbed
+                          url={currentActivity.embedUrl || ''}
                           title={currentActivity.title}
-                          loading="lazy"
+                          description={currentActivity.description}
+                          className="w-full h-full"
                         />
                       ) : (
                         <iframe
@@ -302,3 +303,5 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
     </div>
   )
 }
+
+
