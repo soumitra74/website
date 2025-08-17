@@ -1,0 +1,227 @@
+{
+  "metadata": {
+    "title": "Career Timeline - Soumitra Ghosh",
+    "description": "Interactive timeline showcasing career progression and key projects from 1995 to 2025",
+    "years": [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995]
+  },
+  "projects": {
+    "2025": {
+      "title": "AI-Powered Analytics Platform",
+      "description": "Leading development of next-gen analytics using machine learning and real-time data processing.",
+      "techStack": ["Python", "TensorFlow", "React", "Node.js", "PostgreSQL", "Docker"],
+      "screenshot": "/ai-analytics-dashboard.png",
+      "videoUrl": "https://example.com/ai-platform-demo.mp4",
+      "achievements": ["40% faster insights", "Real-time processing", "ML-driven predictions"]
+    },
+    "2024": {
+      "title": "Cloud Migration Initiative",
+      "description": "Orchestrated enterprise-wide migration to AWS, reducing costs by 40% and improving scalability.",
+      "techStack": ["AWS", "Terraform", "Kubernetes", "Jenkins", "Python", "Bash"],
+      "screenshot": "/aws-cloud-architecture.png",
+      "achievements": ["40% cost reduction", "99.9% uptime", "Auto-scaling implemented"]
+    },
+    "2023": {
+      "title": "Microservices Architecture",
+      "description": "Redesigned monolithic application into scalable microservices using Docker and Kubernetes.",
+      "techStack": ["Docker", "Kubernetes", "Go", "Redis", "MongoDB", "Istio"],
+      "screenshot": "/microservices-architecture.png",
+      "achievements": ["10x scalability", "Independent deployments", "Fault tolerance"]
+    },
+    "2022": {
+      "title": "Mobile App Development",
+      "description": "Built cross-platform mobile application serving 100K+ users with React Native.",
+      "techStack": ["React Native", "TypeScript", "Firebase", "Redux", "Jest"],
+      "screenshot": "/mobile-app-interface.png",
+      "achievements": ["100K+ users", "4.8 star rating", "Cross-platform"]
+    },
+    "2021": {
+      "title": "DevOps Transformation",
+      "description": "Implemented CI/CD pipelines and infrastructure as code, reducing deployment time by 80%.",
+      "techStack": ["Jenkins", "GitLab CI", "Ansible", "Terraform", "Prometheus"],
+      "screenshot": "/cicd-pipeline-dashboard.png",
+      "achievements": ["80% faster deployments", "Zero-downtime releases", "Automated testing"]
+    },
+    "2020": {
+      "title": "Remote Work Platform",
+      "description": "Developed collaboration platform during pandemic, enabling seamless remote work for 500+ employees.",
+      "techStack": ["React", "Node.js", "WebRTC", "Socket.io", "MongoDB"],
+      "screenshot": "/video-conferencing-interface.png",
+      "achievements": ["500+ concurrent users", "HD video calls", "Real-time collaboration"]
+    },
+    "2019": {
+      "title": "Blockchain Integration",
+      "description": "Integrated blockchain technology for supply chain transparency and smart contracts.",
+      "techStack": ["Solidity", "Web3.js", "Ethereum", "React", "Node.js"],
+      "screenshot": "/blockchain-supply-chain.png",
+      "achievements": ["Smart contracts", "Supply chain transparency", "Immutable records"]
+    },
+    "2018": {
+      "title": "Machine Learning Pipeline",
+      "description": "Built ML pipeline for predictive analytics, improving business forecasting accuracy by 60%.",
+      "techStack": ["Python", "Scikit-learn", "Apache Spark", "Kafka", "Elasticsearch"],
+      "screenshot": "/machine-learning-pipeline.png",
+      "achievements": ["60% accuracy improvement", "Real-time predictions", "Automated retraining"]
+    },
+    "2017": {
+      "title": "API Gateway Implementation",
+      "description": "Designed and implemented enterprise API gateway handling 1M+ requests daily.",
+      "techStack": ["Kong", "Lua", "Redis", "PostgreSQL", "Grafana"],
+      "screenshot": "/api-gateway-monitoring-dashboard.png",
+      "achievements": ["1M+ daily requests", "Sub-100ms latency", "Rate limiting"]
+    },
+    "2016": {
+      "title": "Big Data Analytics",
+      "description": "Developed real-time analytics platform processing terabytes of data using Hadoop and Spark.",
+      "techStack": ["Hadoop", "Apache Spark", "Kafka", "HBase", "Zeppelin"],
+      "screenshot": "/big-data-analytics-dashboard.png",
+      "achievements": ["Terabytes processed", "Real-time insights", "Distributed computing"]
+    },
+    "2015": {
+      "title": "E-commerce Platform",
+      "description": "Built scalable e-commerce solution handling Black Friday traffic spikes.",
+      "techStack": ["Java", "Spring Boot", "MySQL", "Redis", "Elasticsearch"],
+      "screenshot": "/ecommerce-website-interface.png",
+      "achievements": ["Black Friday ready", "Auto-scaling", "Payment integration"]
+    },
+    "2014": {
+      "title": "Mobile-First Redesign",
+      "description": "Led mobile-first redesign of legacy web application, improving user engagement by 150%.",
+      "techStack": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery"],
+      "screenshot": "/responsive-mobile-website.png",
+      "achievements": ["150% engagement boost", "Mobile-first", "Responsive design"]
+    },
+    "2013": {
+      "title": "Cloud Infrastructure",
+      "description": "Migrated on-premise infrastructure to cloud, establishing foundation for modern DevOps.",
+      "techStack": ["AWS EC2", "S3", "RDS", "CloudFormation", "Linux"],
+      "screenshot": "/cloud-infrastructure-diagram.png",
+      "achievements": ["Cloud migration", "Cost optimization", "High availability"]
+    },
+    "2012": {
+      "title": "Social Media Integration",
+      "description": "Integrated social media APIs and built viral marketing features.",
+      "techStack": ["PHP", "MySQL", "Facebook API", "Twitter API", "OAuth"],
+      "screenshot": "/social-media-dashboard.png",
+      "achievements": ["Viral features", "API integrations", "User growth"]
+    },
+    "2011": {
+      "title": "Performance Optimization",
+      "description": "Optimized database queries and caching, reducing page load times by 70%.",
+      "techStack": ["MySQL", "Memcached", "Apache", "PHP", "Varnish"],
+      "screenshot": "/performance-monitoring-graphs.png",
+      "achievements": ["70% faster load times", "Query optimization", "Caching strategy"]
+    },
+    "2010": {
+      "title": "Agile Transformation",
+      "description": "Led transition from waterfall to agile methodology, improving delivery speed by 50%.",
+      "techStack": ["Scrum", "JIRA", "Confluence", "Git", "Jenkins"],
+      "screenshot": "/agile-project-board.png",
+      "achievements": ["50% faster delivery", "Agile adoption", "Team collaboration"]
+    },
+    "2009": {
+      "title": "Web Services Architecture",
+      "description": "Designed SOA-based web services architecture for enterprise integration.",
+      "techStack": ["SOAP", "XML", "Java", "Apache Axis", "Oracle"],
+      "screenshot": "/placeholder-szc62.png",
+      "achievements": ["SOA implementation", "Enterprise integration", "Service reusability"]
+    },
+    "2008": {
+      "title": "Database Modernization",
+      "description": "Migrated legacy database systems to modern RDBMS with improved performance.",
+      "techStack": ["Oracle", "SQL Server", "PL/SQL", "ETL", "SSIS"],
+      "screenshot": "/database-migration-workflow.png",
+      "achievements": ["Legacy modernization", "Performance boost", "Data integrity"]
+    },
+    "2007": {
+      "title": "Security Framework",
+      "description": "Implemented comprehensive security framework including authentication and authorization.",
+      "techStack": ["LDAP", "SSL/TLS", "PKI", "Java", "Spring Security"],
+      "screenshot": "/security-framework-architecture.png",
+      "achievements": ["Security compliance", "Authentication system", "Authorization framework"]
+    },
+    "2006": {
+      "title": "Content Management System",
+      "description": "Built custom CMS for multi-site content management and workflow automation.",
+      "techStack": ["PHP", "MySQL", "Apache", "JavaScript", "CSS"],
+      "screenshot": "/cms-interface.png",
+      "achievements": ["Multi-site management", "Workflow automation", "Content versioning"]
+    },
+    "2005": {
+      "title": "Enterprise Integration",
+      "description": "Developed ERP integration solutions connecting disparate business systems.",
+      "techStack": ["Java", "XML", "XSLT", "Oracle", "WebLogic"],
+      "screenshot": "/enterprise-integration-diagram.png",
+      "achievements": ["System integration", "Data synchronization", "Business automation"]
+    },
+    "2004": {
+      "title": "Web Application Framework",
+      "description": "Created reusable web application framework reducing development time by 40%.",
+      "techStack": ["Java", "Struts", "JSP", "Servlets", "MySQL"],
+      "screenshot": "/web-app-framework.png",
+      "achievements": ["40% time savings", "Reusable components", "Framework architecture"]
+    },
+    "2003": {
+      "title": "Customer Portal",
+      "description": "Built self-service customer portal with account management and support features.",
+      "techStack": ["ASP.NET", "C#", "SQL Server", "IIS", "JavaScript"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Self-service portal", "Account management", "Support integration"]
+    },
+    "2002": {
+      "title": "Inventory Management System",
+      "description": "Developed real-time inventory tracking system for manufacturing operations.",
+      "techStack": ["Visual Basic", "SQL Server", "Crystal Reports", "COM+"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Real-time tracking", "Manufacturing integration", "Automated reporting"]
+    },
+    "2001": {
+      "title": "B2B E-commerce Platform",
+      "description": "Created B2B trading platform facilitating millions in transactions.",
+      "techStack": ["Java", "JSP", "Oracle", "Apache", "XML"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Million dollar transactions", "B2B marketplace", "Secure payments"]
+    },
+    "2000": {
+      "title": "Y2K Remediation",
+      "description": "Led Y2K compliance project ensuring business continuity during millennium transition.",
+      "techStack": ["COBOL", "JCL", "DB2", "CICS", "Mainframe"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Y2K compliance", "Zero downtime", "Legacy system updates"]
+    },
+    "1999": {
+      "title": "Data Warehouse Implementation",
+      "description": "Built enterprise data warehouse for business intelligence and reporting.",
+      "techStack": ["Oracle", "PL/SQL", "ETL", "Business Objects", "Unix"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Enterprise data warehouse", "BI reporting", "Data integration"]
+    },
+    "1998": {
+      "title": "Client-Server Migration",
+      "description": "Migrated mainframe applications to client-server architecture.",
+      "techStack": ["PowerBuilder", "Sybase", "C++", "Windows NT", "TCP/IP"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Mainframe migration", "Client-server architecture", "GUI implementation"]
+    },
+    "1997": {
+      "title": "Network Infrastructure",
+      "description": "Designed and implemented corporate network infrastructure and protocols.",
+      "techStack": ["TCP/IP", "Novell NetWare", "Windows NT", "Cisco", "Ethernet"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Network design", "Protocol implementation", "Infrastructure setup"]
+    },
+    "1996": {
+      "title": "Database Administration",
+      "description": "Managed enterprise databases and implemented backup/recovery procedures.",
+      "techStack": ["Oracle", "SQL", "Unix", "Shell Scripting", "Backup Tools"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Database management", "Backup procedures", "Performance tuning"]
+    },
+    "1995": {
+      "title": "System Integration",
+      "description": "Started career integrating legacy systems and modernizing business processes.",
+      "techStack": ["COBOL", "JCL", "VSAM", "CICS", "MVS"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Career start", "System integration", "Process modernization"]
+    }
+  }
+}
