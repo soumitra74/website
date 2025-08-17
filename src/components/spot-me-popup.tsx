@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { X, ExternalLink, Play, BookOpen, Monitor } from 'lucide-react'
+import { X, ExternalLink, Play, BookOpen, Monitor, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { WebsiteEmbed } from '@/components/ui/website-embed'
+import { convertToIST, getTimezoneInfo } from '@/lib/utils'
 
 interface DailySchedule {
   common_sections: {
@@ -49,6 +50,11 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
   const [scheduleData, setScheduleData] = useState<DailySchedule | null>(null)
   const [currentActivity, setCurrentActivity] = useState<CurrentActivity | null>(null)
   const [loading, setLoading] = useState(true)
+  const [timezoneInfo, setTimezoneInfo] = useState<{
+    localTime: string
+    istTime: string
+    timezone: string
+  } | null>(null)
 
   // Fetch schedule data
   useEffect(() => {
@@ -76,34 +82,49 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
   useEffect(() => {
     if (!scheduleData) return
 
-    const now = new Date()
-    const currentHour = now.getHours()
-    const currentMinute = now.getMinutes()
-    const timeString = `${currentHour.toString().padStart(2, '0')}:${currentMinute.toString().padStart(2, '0')}`
-    
-    // Determine day type
-    const dayOfWeek = now.getDay()
-    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6
-    const isHoliday = checkIfHoliday(now, scheduleData.indian_holidays)
-    
-    let routine: { [key: string]: string }
-    if (isHoliday) {
-      routine = scheduleData.daily_routines.holiday
-    } else if (isWeekend) {
-      routine = scheduleData.daily_routines.weekend
-    } else {
-      routine = scheduleData.daily_routines.weekday
+    const updateActivity = () => {
+      const now = new Date()
+      const istTime = convertToIST(now)
+      const currentHour = istTime.getHours()
+      const currentMinute = istTime.getMinutes()
+      const timeString = `${currentHour.toString().padStart(2, '0')}:${currentMinute.toString().padStart(2, '0')}`
+      
+      // Update timezone information
+      const tzInfo = getTimezoneInfo(now)
+      setTimezoneInfo(tzInfo)
+      
+      // Determine day type based on IST time
+      const dayOfWeek = istTime.getDay()
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6
+      const isHoliday = checkIfHoliday(istTime, scheduleData.indian_holidays)
+      
+      let routine: { [key: string]: string }
+      if (isHoliday) {
+        routine = scheduleData.daily_routines.holiday
+      } else if (isWeekend) {
+        routine = scheduleData.daily_routines.weekend
+      } else {
+        routine = scheduleData.daily_routines.weekday
+      }
+
+      // Find current activity
+      const currentActivityDescription = findCurrentActivity(timeString, routine)
+      
+      if (currentActivityDescription) {
+        const activity = generateActivity(currentActivityDescription, scheduleData)
+        setCurrentActivity(activity)
+      } else {
+        setCurrentActivity(null)
+      }
     }
 
-    // Find current activity
-    const currentActivityDescription = findCurrentActivity(timeString, routine)
-    
-    if (currentActivityDescription) {
-      const activity = generateActivity(currentActivityDescription, scheduleData)
-      setCurrentActivity(activity)
-    } else {
-      setCurrentActivity(null)
-    }
+    // Initial update
+    updateActivity()
+
+    // Set up interval to update every minute
+    const interval = setInterval(updateActivity, 60000)
+
+    return () => clearInterval(interval)
   }, [scheduleData])
 
   const checkIfHoliday = (date: Date, holidays: Array<{ date: string; name: string; type: string }>) => {
@@ -229,6 +250,14 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
                   <CardDescription className="text-base text-slate-600 dark:text-slate-300 transition-colors">
                     {currentActivity.description}
                   </CardDescription>
+                  {timezoneInfo && (
+                    <div className="flex items-center gap-2 mt-2 text-sm text-slate-500 dark:text-slate-400">
+                      <Clock className="w-4 h-4" />
+                      <span>Your time: {timezoneInfo.localTime} ({timezoneInfo.timezone})</span>
+                      <span>•</span>
+                      <span>Soumitra's time: {timezoneInfo.istTime}</span>
+                    </div>
+                  )}
                 </CardHeader>
               </Card>
 
@@ -297,6 +326,11 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
             <Badge variant="outline" className="dark:border-slate-600 dark:text-slate-300">
               Last updated: {new Date().toLocaleTimeString()}
             </Badge>
+            {timezoneInfo && (
+              <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                <span>Your timezone: {timezoneInfo.timezone}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
