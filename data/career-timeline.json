@@ -8,6 +8,8 @@
     "2025": {
       "title": "AI-Powered Analytics Platform",
       "description": "Leading development of next-gen analytics using machine learning and real-time data processing.",
+      "organization": "Current Role",
+      "logoUri": "/images/logos/current-role.svg",
       "techStack": ["Python", "TensorFlow", "React", "Node.js", "PostgreSQL", "Docker"],
       "screenshot": "/ai-analytics-dashboard.png",
       "videoUrl": "https://example.com/ai-platform-demo.mp4",
@@ -16,6 +18,8 @@
     "2024": {
       "title": "Cloud Migration Initiative",
       "description": "Orchestrated enterprise-wide migration to AWS, reducing costs by 40% and improving scalability.",
+      "organization": "Entropik",
+      "logoUri": "/images/logos/entropik.svg",
       "techStack": ["AWS", "Terraform", "Kubernetes", "Jenkins", "Python", "Bash"],
       "screenshot": "/aws-cloud-architecture.png",
       "achievements": ["40% cost reduction", "99.9% uptime", "Auto-scaling implemented"]
@@ -23,6 +27,8 @@
     "2023": {
       "title": "Microservices Architecture",
       "description": "Redesigned monolithic application into scalable microservices using Docker and Kubernetes.",
+      "organization": "Entropik",
+      "logoUri": "/images/logos/entropik.svg",
       "techStack": ["Docker", "Kubernetes", "Go", "Redis", "MongoDB", "Istio"],
       "screenshot": "/microservices-architecture.png",
       "achievements": ["10x scalability", "Independent deployments", "Fault tolerance"]
@@ -30,6 +36,8 @@
     "2022": {
       "title": "Mobile App Development",
       "description": "Built cross-platform mobile application serving 100K+ users with React Native.",
+      "organization": "Entropik",
+      "logoUri": "/images/logos/entropik.svg",
       "techStack": ["React Native", "TypeScript", "Firebase", "Redux", "Jest"],
       "screenshot": "/mobile-app-interface.png",
       "achievements": ["100K+ users", "4.8 star rating", "Cross-platform"]
@@ -37,6 +45,8 @@
     "2021": {
       "title": "DevOps Transformation",
       "description": "Implemented CI/CD pipelines and infrastructure as code, reducing deployment time by 80%.",
+      "organization": "PayU",
+      "logoUri": "/images/logos/payu.svg",
       "techStack": ["Jenkins", "GitLab CI", "Ansible", "Terraform", "Prometheus"],
       "screenshot": "/cicd-pipeline-dashboard.png",
       "achievements": ["80% faster deployments", "Zero-downtime releases", "Automated testing"]
@@ -44,6 +54,8 @@
     "2020": {
       "title": "Remote Work Platform",
       "description": "Developed collaboration platform during pandemic, enabling seamless remote work for 500+ employees.",
+      "organization": "PayU",
+      "logoUri": "/images/logos/payu.svg",
       "techStack": ["React", "Node.js", "WebRTC", "Socket.io", "MongoDB"],
       "screenshot": "/video-conferencing-interface.png",
       "achievements": ["500+ concurrent users", "HD video calls", "Real-time collaboration"]
@@ -51,6 +63,8 @@
     "2019": {
       "title": "Blockchain Integration",
       "description": "Integrated blockchain technology for supply chain transparency and smart contracts.",
+      "organization": "Razorpay",
+      "logoUri": "/images/logos/razorpay.svg",
       "techStack": ["Solidity", "Web3.js", "Ethereum", "React", "Node.js"],
       "screenshot": "/blockchain-supply-chain.png",
       "achievements": ["Smart contracts", "Supply chain transparency", "Immutable records"]
@@ -58,6 +72,8 @@
     "2018": {
       "title": "Machine Learning Pipeline",
       "description": "Built ML pipeline for predictive analytics, improving business forecasting accuracy by 60%.",
+      "organization": "Intuit",
+      "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Python", "Scikit-learn", "Apache Spark", "Kafka", "Elasticsearch"],
       "screenshot": "/machine-learning-pipeline.png",
       "achievements": ["60% accuracy improvement", "Real-time predictions", "Automated retraining"]
@@ -65,6 +81,8 @@
     "2017": {
       "title": "API Gateway Implementation",
       "description": "Designed and implemented enterprise API gateway handling 1M+ requests daily.",
+      "organization": "Intuit",
+      "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Kong", "Lua", "Redis", "PostgreSQL", "Grafana"],
       "screenshot": "/api-gateway-monitoring-dashboard.png",
       "achievements": ["1M+ daily requests", "Sub-100ms latency", "Rate limiting"]
@@ -72,6 +90,8 @@
     "2016": {
       "title": "Big Data Analytics",
       "description": "Developed real-time analytics platform processing terabytes of data using Hadoop and Spark.",
+      "organization": "Intuit",
+      "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Hadoop", "Apache Spark", "Kafka", "HBase", "Zeppelin"],
       "screenshot": "/big-data-analytics-dashboard.png",
       "achievements": ["Terabytes processed", "Real-time insights", "Distributed computing"]
@@ -79,6 +99,8 @@
     "2015": {
       "title": "E-commerce Platform",
       "description": "Built scalable e-commerce solution handling Black Friday traffic spikes.",
+      "organization": "Intuit",
+      "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Java", "Spring Boot", "MySQL", "Redis", "Elasticsearch"],
       "screenshot": "/ecommerce-website-interface.png",
       "achievements": ["Black Friday ready", "Auto-scaling", "Payment integration"]
@@ -86,6 +108,8 @@
     "2014": {
       "title": "Mobile-First Redesign",
       "description": "Led mobile-first redesign of legacy web application, improving user engagement by 150%.",
+      "organization": "Intuit",
+      "logoUri": "/images/logos/intuit.svg",
       "techStack": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery"],
       "screenshot": "/responsive-mobile-website.png",
       "achievements": ["150% engagement boost", "Mobile-first", "Responsive design"]
@@ -93,6 +117,8 @@
     "2013": {
       "title": "Cloud Infrastructure",
       "description": "Migrated on-premise infrastructure to cloud, establishing foundation for modern DevOps.",
+      "organization": "Intuit",
+      "logoUri": "/images/logos/intuit.svg",
       "techStack": ["AWS EC2", "S3", "RDS", "CloudFormation", "Linux"],
       "screenshot": "/cloud-infrastructure-diagram.png",
       "achievements": ["Cloud migration", "Cost optimization", "High availability"]
@@ -100,6 +126,8 @@
     "2012": {
       "title": "Social Media Integration",
       "description": "Integrated social media APIs and built viral marketing features.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["PHP", "MySQL", "Facebook API", "Twitter API", "OAuth"],
       "screenshot": "/social-media-dashboard.png",
       "achievements": ["Viral features", "API integrations", "User growth"]
@@ -107,6 +135,8 @@
     "2011": {
       "title": "Performance Optimization",
       "description": "Optimized database queries and caching, reducing page load times by 70%.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MySQL", "Memcached", "Apache", "PHP", "Varnish"],
       "screenshot": "/performance-monitoring-graphs.png",
       "achievements": ["70% faster load times", "Query optimization", "Caching strategy"]
@@ -114,6 +144,8 @@
     "2010": {
       "title": "Agile Transformation",
       "description": "Led transition from waterfall to agile methodology, improving delivery speed by 50%.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Scrum", "JIRA", "Confluence", "Git", "Jenkins"],
       "screenshot": "/agile-project-board.png",
       "achievements": ["50% faster delivery", "Agile adoption", "Team collaboration"]
@@ -121,6 +153,8 @@
     "2009": {
       "title": "Web Services Architecture",
       "description": "Designed SOA-based web services architecture for enterprise integration.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["SOAP", "XML", "Java", "Apache Axis", "Oracle"],
       "screenshot": "/placeholder-szc62.png",
       "achievements": ["SOA implementation", "Enterprise integration", "Service reusability"]
@@ -128,6 +162,8 @@
     "2008": {
       "title": "Database Modernization",
       "description": "Migrated legacy database systems to modern RDBMS with improved performance.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Oracle", "SQL Server", "PL/SQL", "ETL", "SSIS"],
       "screenshot": "/database-migration-workflow.png",
       "achievements": ["Legacy modernization", "Performance boost", "Data integrity"]
@@ -135,6 +171,8 @@
     "2007": {
       "title": "Security Framework",
       "description": "Implemented comprehensive security framework including authentication and authorization.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["LDAP", "SSL/TLS", "PKI", "Java", "Spring Security"],
       "screenshot": "/security-framework-architecture.png",
       "achievements": ["Security compliance", "Authentication system", "Authorization framework"]
@@ -142,86 +180,110 @@
     "2006": {
       "title": "Content Management System",
       "description": "Built custom CMS for multi-site content management and workflow automation.",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["PHP", "MySQL", "Apache", "JavaScript", "CSS"],
       "screenshot": "/cms-interface.png",
       "achievements": ["Multi-site management", "Workflow automation", "Content versioning"]
     },
     "2005": {
-      "title": "Enterprise Integration",
-      "description": "Developed ERP integration solutions connecting disparate business systems.",
-      "techStack": ["Java", "XML", "XSLT", "Oracle", "WebLogic"],
-      "screenshot": "/enterprise-integration-diagram.png",
-      "achievements": ["System integration", "Data synchronization", "Business automation"]
+      "title": "Hyperion Central",
+      "description": "Performance optimisation of SPA using Bindows framework",
+      "organization": "Hyperion Solutions",
+      "logoUri": "/images/logos/hyperion-solutions.svg",
+      "techStack": ["Java", "APIs", "XML", "DHTML", "Bindows", "Firebug"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["NFR", "Performance Tuning"]
     },
     "2004": {
-      "title": "Web Application Framework",
-      "description": "Created reusable web application framework reducing development time by 40%.",
-      "techStack": ["Java", "Struts", "JSP", "Servlets", "MySQL"],
-      "screenshot": "/web-app-framework.png",
-      "achievements": ["40% time savings", "Reusable components", "Framework architecture"]
+      "title": "Hyperion Central",
+      "description": "Rearchitecture to an SPA using Bindows framework. Also worked on performanace test suites.",
+      "organization": "Hyperion Solutions",
+      "logoUri": "/images/logos/hyperion-solutions.svg",
+      "techStack": ["Java", "APIs", "XML", "DHTML", "Bindows", "JUnit", "JProfiler", "WinRunner","LoadRunner"],
+      "screenshot": "/images/career-timeline/placeholder.svg",
+      "achievements": ["Framework Components", "Performance Testing"]
     },
     "2003": {
-      "title": "Customer Portal",
-      "description": "Built self-service customer portal with account management and support features.",
-      "techStack": ["ASP.NET", "C#", "SQL Server", "IIS", "JavaScript"],
+      "title": "Hyperion Central: Other portlets",
+      "description": "Integrated Hyperion Planning views and Hyperion Scorecard dashboards in respective portlets",
+      "organization": "Hyperion Solutions",
+      "logoUri": "/images/logos/hyperion-solutions.svg",
+      "techStack": ["Java", "JSP", "Servlets", "AppServer", "XML", "HTML", "JavaScript", "JUnit"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Self-service portal", "Account management", "Support integration"]
+      "achievements": ["Hyperion Planning portlet", "Hyperion Scorecard portlet"]
     },
     "2002": {
-      "title": "Inventory Management System",
-      "description": "Developed real-time inventory tracking system for manufacturing operations.",
-      "techStack": ["Visual Basic", "SQL Server", "Crystal Reports", "COM+"],
+      "title": "Hyperion Central: POV Portlet",
+      "description": "Implemented a POV toolbar to sync filters between multiple portlets on the same dashbaord page",
+      "organization": "Hyperion Solutions",
+      "logoUri": "/images/logos/hyperion-solutions.svg",
+      "techStack": ["Java", "JSP", "Servlets", "AppServer", "XML", "HTML", "JavaScript"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Real-time tracking", "Manufacturing integration", "Automated reporting"]
+      "achievements": ["POV portlet"]
     },
     "2001": {
-      "title": "B2B E-commerce Platform",
-      "description": "Created B2B trading platform facilitating millions in transactions.",
-      "techStack": ["Java", "JSP", "Oracle", "Apache", "XML"],
+      "title": "Hyperion Central: Web Page Viewer Portlet",
+      "description": "Worked on a content aggregation platofmr for Hyperion's enterprise product suite. I implemented a Web Page Viwer portlet: Web scraping of rich websites using a lightweight parser written in Java. Handled JS namespacing issues",
+      "organization": "Hyperion Solutions",
+      "logoUri": "/images/logos/hyperion-solutions.svg",
+      "techStack": ["Java", "JSP", "Servlets", "Apache HTTP Server", "XML", "HTML", "JavaScript"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Million dollar transactions", "B2B marketplace", "Secure payments"]
+      "achievements": ["Explorations and POCs", "Web Page Viewer portlet", "Scrollomatic", "Reverse Proxy", "JS Namespacing"]
     },
     "2000": {
-      "title": "Y2K Remediation",
-      "description": "Led Y2K compliance project ensuring business continuity during millennium transition.",
-      "techStack": ["COBOL", "JCL", "DB2", "CICS", "Mainframe"],
+      "title": "CES Home (Service Span)",
+      "description": "Feature development for Bell South.",
+      "organization": "CES Computer Solutions",
+      "logoUri": "/images/logos/ces-computer-solutions.svg",
+      "techStack": ["Java", "Swing"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Y2K compliance", "Zero downtime", "Legacy system updates"]
+      "achievements": ["FTP client", "Realtime Monitoring Applet"]
     },
     "1999": {
-      "title": "Data Warehouse Implementation",
-      "description": "Built enterprise data warehouse for business intelligence and reporting.",
-      "techStack": ["Oracle", "PL/SQL", "ETL", "Business Objects", "Unix"],
+      "title": "CES Home (Service Span)",
+      "description": "Feature development for Bell South.",
+      "organization": "CES Computer Solutions",
+      "logoUri": "/images/logos/ces-computer-solutions.svg",
+      "techStack": ["Java", "Swing"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Enterprise data warehouse", "BI reporting", "Data integration"]
+      "achievements": ["FTP client", "Realtime Monitoring Applet"]
     },
     "1998": {
-      "title": "Client-Server Migration",
-      "description": "Migrated mainframe applications to client-server architecture.",
-      "techStack": ["PowerBuilder", "Sybase", "C++", "Windows NT", "TCP/IP"],
+      "title": "Project Management Part Paks",
+      "description": "Gantt Chart and WBS beans for IBM AlphaWorks",
+      "organization": "TISL / IBM Global Services",
+      "logoUri": "/images/logos/ibm-global-services.svg",
+      "techStack": ["JDK", "Java Beans", "IBM Websphere"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Mainframe migration", "Client-server architecture", "GUI implementation"]
+      "achievements": ["JavaBeans Around The World", "AlphaWorks"]
     },
     "1997": {
-      "title": "Network Infrastructure",
-      "description": "Designed and implemented corporate network infrastructure and protocols.",
-      "techStack": ["TCP/IP", "Novell NetWare", "Windows NT", "Cisco", "Ethernet"],
+      "title": "Project Management Part Paks",
+      "description": "Gantt Chart and WBS beans for IBM AlphaWorks",
+      "organization": "TISL",
+      "logoUri": "/images/logos/tisl.svg",
+      "techStack": ["JDK", "Java Beans", "IBM Websphere"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Network design", "Protocol implementation", "Infrastructure setup"]
+      "achievements": ["JavaBeans Around The World", "AlphaWorks"]
     },
     "1996": {
-      "title": "Database Administration",
-      "description": "Managed enterprise databases and implemented backup/recovery procedures.",
-      "techStack": ["Oracle", "SQL", "Unix", "Shell Scripting", "Backup Tools"],
+      "title": "Software Engineer @ TISL",
+      "description": "First IT job, trained on Java and SDLC",
+      "organization": "TISL",
+      "logoUri": "/images/logos/tisl.svg",
+      "techStack": ["Java", "HTML", "JavaScript"],
       "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Database management", "Backup procedures", "Performance tuning"]
+      "achievements": ["Learning"]
     },
     "1995": {
-      "title": "System Integration",
-      "description": "Started career integrating legacy systems and modernizing business processes.",
-      "techStack": ["COBOL", "JCL", "VSAM", "CICS", "MVS"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Career start", "System integration", "Process modernization"]
+      "title": "A WAN paging system",
+      "description": "Final Year Project: A paging system integrating DTMF telephone signals for IIT campus",
+      "organization": "IIT Kharagpur",
+      "logoUri": "/images/logos/iit-kharagpur.svg",
+      "techStack": ["C", "Telephony"],
+      "screenshot": "/images/career-timeline/final-year-project.svg",
+      "achievements": ["Circuit Design", "Telephony Integration"]
     }
   }
 }

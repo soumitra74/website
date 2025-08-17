@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { getCareerTimelineData, CareerTimelineData } from "@/lib/career-timeline"
 import { getContent, ContentData } from "@/lib/content"
-import { MessageCircle } from "lucide-react"
+import { MessageCircle, Play, Square } from "lucide-react"
 import Link from "next/link"
 
 export default function CareerTimeline() {
@@ -17,7 +17,10 @@ export default function CareerTimeline() {
   const [timelineData, setTimelineData] = useState<CareerTimelineData | null>(null)
   const [content, setContent] = useState<ContentData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [isPlayingForward, setIsPlayingForward] = useState(false)
+  const [isPlayingBackward, setIsPlayingBackward] = useState(false)
   const circleRef = useRef<HTMLDivElement>(null)
+  const playIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   // Load data on component mount
   useEffect(() => {
@@ -37,6 +40,15 @@ export default function CareerTimeline() {
     }
 
     loadData()
+  }, [])
+
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (playIntervalRef.current) {
+        clearInterval(playIntervalRef.current)
+      }
+    }
   }, [])
 
   // Define all hooks before any conditional returns
@@ -69,7 +81,52 @@ export default function CareerTimeline() {
     }
   }, [selectedYear])
 
+  const stopPlayback = useCallback(() => {
+    if (playIntervalRef.current) {
+      clearInterval(playIntervalRef.current)
+      playIntervalRef.current = null
+    }
+    setIsPlayingForward(false)
+    setIsPlayingBackward(false)
+  }, [])
 
+  const handlePlayForward = useCallback(() => {
+    if (isPlayingForward) {
+      stopPlayback()
+      return
+    }
+
+    stopPlayback() // Stop any existing playback
+    setIsPlayingForward(true)
+    setIsPlayingBackward(false)
+
+    let currentIndex = years.indexOf(selectedYear)
+    if (currentIndex === -1) currentIndex = years.length - 1
+
+    playIntervalRef.current = setInterval(() => {
+      currentIndex = currentIndex === 0 ? years.length - 1 : currentIndex - 1
+      handleYearChange(years[currentIndex])
+    }, 2000) // 2 seconds interval
+  }, [isPlayingForward, selectedYear, years, handleYearChange, stopPlayback])
+
+  const handlePlayBackward = useCallback(() => {
+    if (isPlayingBackward) {
+      stopPlayback()
+      return
+    }
+
+    stopPlayback() // Stop any existing playback
+    setIsPlayingBackward(true)
+    setIsPlayingForward(false)
+
+    let currentIndex = years.indexOf(selectedYear)
+    if (currentIndex === -1) currentIndex = 0
+
+    playIntervalRef.current = setInterval(() => {
+      currentIndex = (currentIndex + 1) % years.length
+      handleYearChange(years[currentIndex])
+    }, 1000) // 1 second interval
+  }, [isPlayingBackward, selectedYear, years, handleYearChange, stopPlayback])
 
   // Early return after all hooks are defined
   if (loading || !timelineData || !content) {
@@ -138,7 +195,7 @@ export default function CareerTimeline() {
                 return (
                   <div
                     key={year}
-                    className="absolute text-xs font-mono text-slate-400 cursor-pointer hover:text-cyan-400 hover:scale-110 transition-all duration-200 select-none px-2 py-1 rounded"
+                    className="absolute text-xs font-mono cursor-pointer transition-all duration-200 select-none px-3 py-2 rounded-lg hover:bg-cyan-400/20 hover:scale-125 active:scale-110"
                     style={{
                       left: "50%",
                       top: "50%",
@@ -146,8 +203,11 @@ export default function CareerTimeline() {
                       color: isSelected ? "#22d3ee" : "#94a3b8",
                       fontWeight: isSelected ? "bold" : "normal",
                       textShadow: isSelected ? "0 0 10px rgba(34, 211, 238, 0.5)" : "none",
+                      backgroundColor: isSelected ? "rgba(34, 211, 238, 0.1)" : "transparent",
+                      border: isSelected ? "1px solid rgba(34, 211, 238, 0.3)" : "1px solid transparent",
                     }}
                     onClick={() => handleYearChange(year)}
+                    title={`Click to view ${year}`}
                   >
                     {String(year).slice(-2)}
                   </div>
@@ -284,6 +344,61 @@ export default function CareerTimeline() {
               </div>
             </Card>
           </div>
+        </div>
+      </div>
+
+      {/* Play Controls - 100px below the circle */}
+      <div className="flex justify-center mt-[100px] mb-8">
+        <div className="flex items-center gap-[100px]">
+          {/* Play Forward Button */}
+          <button
+            onClick={handlePlayForward}
+            disabled={isPlayingBackward}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              isPlayingForward
+                ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                : isPlayingBackward
+                ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                : 'bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl'
+            }`}
+          >
+            {isPlayingForward ? (
+              <>
+                <Square className="w-4 h-4" />
+                Stop Forward
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4" />
+                Play Forward
+              </>
+            )}
+          </button>
+
+          {/* Play Backward Button */}
+          <button
+            onClick={handlePlayBackward}
+            disabled={isPlayingForward}
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              isPlayingBackward
+                ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                : isPlayingForward
+                ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
+            }`}
+          >
+            {isPlayingBackward ? (
+              <>
+                <Square className="w-4 h-4" />
+                Stop Backward
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 rotate-180" />
+                Play Backward
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>
