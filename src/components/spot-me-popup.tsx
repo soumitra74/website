@@ -50,6 +50,7 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
   const [scheduleData, setScheduleData] = useState<DailySchedule | null>(null)
   const [currentActivity, setCurrentActivity] = useState<CurrentActivity | null>(null)
   const [loading, setLoading] = useState(true)
+  const [showContent, setShowContent] = useState(false)
   const [timezoneInfo, setTimezoneInfo] = useState<{
     localTime: string
     istTime: string
@@ -58,10 +59,14 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
 
   // Fetch schedule data
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen) {
+      setShowContent(false)
+      return
+    }
 
     const fetchScheduleData = async () => {
       setLoading(true)
+      setShowContent(false)
       try {
         const response = await fetch('/api/daily-schedule')
         if (response.ok) {
@@ -72,6 +77,10 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
         console.error('Error fetching schedule data:', error)
       } finally {
         setLoading(false)
+        // Add a slight delay before showing content
+        setTimeout(() => {
+          setShowContent(true)
+        }, 300)
       }
     }
 
@@ -233,8 +242,15 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600 mx-auto mb-4"></div>
               <p className="text-slate-600 dark:text-slate-400">Loading current activity...</p>
             </div>
+          ) : !showContent ? (
+            <div className="text-center py-12">
+              <div className="animate-pulse">
+                <div className="w-8 h-8 bg-emerald-200 dark:bg-emerald-800 rounded-full mx-auto mb-4"></div>
+                <p className="text-slate-600 dark:text-slate-400">Preparing your personalized view...</p>
+              </div>
+            </div>
           ) : currentActivity ? (
-            <div className="space-y-6">
+            <div className={`space-y-6 transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
               {/* Activity Card */}
               <Card className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700">
                 <CardHeader>
@@ -306,19 +322,21 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
               )}
             </div>
           ) : (
-            <Card className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700">
-              <CardContent className="py-12">
-                <div className="text-center">
-                  <BookOpen className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2 transition-colors">
-                    No Active Reading/Watching
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-400 transition-colors">
-                    Soumitra is currently not reading any websites or watching videos.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            <div className={`transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+              <Card className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700">
+                <CardContent className="py-12">
+                  <div className="text-center">
+                    <BookOpen className="w-16 h-16 text-slate-400 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2 transition-colors">
+                      No Active Reading/Watching
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 transition-colors">
+                      Soumitra is currently not reading any websites or watching videos.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           )}
 
           {/* Time Info */}
