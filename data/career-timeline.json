@@ -115,76 +115,76 @@
       "achievements": ["150% engagement boost", "Mobile-first", "Responsive design"]
     },
     "2013": {
-      "title": "Cloud Infrastructure",
-      "description": "Migrated on-premise infrastructure to cloud, establishing foundation for modern DevOps.",
-      "organization": "Intuit",
-      "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["AWS EC2", "S3", "RDS", "CloudFormation", "Linux"],
-      "screenshot": "/cloud-infrastructure-diagram.png",
-      "achievements": ["Cloud migration", "Cost optimization", "High availability"]
+      "title": "Operative.One BI Platform",
+      "description": "Led the BI initiative. Implemented Data Marts, ETL pipelines, Reports and Dashboards. Data Feed. Implemented a multi dimensional availability prediction platform (a key differentiator for Operative.One product suite)",
+      "organization": "Operative Media",
+      "logoUri": "/images/logos/operative-media.svg",
+      "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "SSAS", "MySQL", "MDX"],
+      "screenshot": "/placeholder-szc62.png",
+      "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Multi Dimensional Availability"]
     },
     "2012": {
-      "title": "Social Media Integration",
-      "description": "Integrated social media APIs and built viral marketing features.",
+      "title": "Operative.One BI Platform",
+      "description": "Led the BI initiative. Implemented Data Marts, ETL pipelines, Reports and Dashboards, Data Feed. Used advanced data modeling concepts like Snowflake schema, Conformed Dimensions, SCD, CDC, Lookup Tables. Started working on MD Avails",
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["PHP", "MySQL", "Facebook API", "Twitter API", "OAuth"],
-      "screenshot": "/social-media-dashboard.png",
-      "achievements": ["Viral features", "API integrations", "User growth"]
+      "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "SSAS", "MySQL", "Java", "Hibernate", "MDX"],
+      "screenshot": "/placeholder-szc62.png",
+      "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Operational Data Store", "Incremental Loading (of source data)", "Data Feed"]
     },
     "2011": {
-      "title": "Performance Optimization",
-      "description": "Optimized database queries and caching, reducing page load times by 70%.",
+      "title": "Operative.One BI Platform",
+      "description": "Led the BI initiative. Implemented Data Marts, ETL pipelines, Reports and Dashboards. Coded the auth itegration between SSRS and Java backend. Trained team Advanced Hibernate concepts",
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["MySQL", "Memcached", "Apache", "PHP", "Varnish"],
-      "screenshot": "/performance-monitoring-graphs.png",
-      "achievements": ["70% faster load times", "Query optimization", "Caching strategy"]
+      "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "MySQL", "Java", "Hibernate", "ExtJS", "NTLM"],
+      "screenshot": "/placeholder-szc62.png",
+      "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Cross Platform authN", "Hiring", "Organizational Leadership", "Basecamp Workshop on Hibernate"]
     },
     "2010": {
-      "title": "Agile Transformation",
-      "description": "Led transition from waterfall to agile methodology, improving delivery speed by 50%.",
+      "title": "Operative.One BI Platform",
+      "description": "Led the BI initiative. Implemented Data Marts, ETL pipelines, Reports. Trained team on Scrum and Agile practices, TSQL (Pluralsight)",
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["Scrum", "JIRA", "Confluence", "Git", "Jenkins"],
-      "screenshot": "/agile-project-board.png",
-      "achievements": ["50% faster delivery", "Agile adoption", "Team collaboration"]
+      "techStack": ["MSSQL", "Transact SQL", "SSIS", "MySQL", "Java", "Hibernate", "ExtJS"],
+      "screenshot": "/placeholder-szc62.png",
+      "achievements": ["AdTech", "Data Modeling", "Data Lineage", "Hiring", "Organizational Leadership", "Operative acquired Solbright"]
     },
     "2009": {
-      "title": "Web Services Architecture",
-      "description": "Designed SOA-based web services architecture for enterprise integration.",
+      "title": "Operative.One platform modernization",
+      "description": "Joined Operative Media's captive center in Bangalore. Led the India development team for Operative.One initiative.",
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["SOAP", "XML", "Java", "Apache Axis", "Oracle"],
+      "techStack": ["Java", "SpringGoot", "Hibernate", "MySQL", "Dozer", "SOA", "ExtJS"],
       "screenshot": "/placeholder-szc62.png",
-      "achievements": ["SOA implementation", "Enterprise integration", "Service reusability"]
+      "achievements": ["AdTech", "SOA", "System Design", "Hiring", "Organizational Leadership"]
     },
     "2008": {
-      "title": "Database Modernization",
-      "description": "Migrated legacy database systems to modern RDBMS with improved performance.",
-      "organization": "Operative Media",
+      "title": "Hyperion BI Tools",
+      "description": "Expanded the India Development Center for engineering work on several of Hyperion products",
+      "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["Oracle", "SQL Server", "PL/SQL", "ETL", "SSIS"],
-      "screenshot": "/database-migration-workflow.png",
-      "achievements": ["Legacy modernization", "Performance boost", "Data integrity"]
+      "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
+      "screenshot": "/cms-interface.png",
+      "achievements": ["Hyperion Reports", "Hyperion Central"]
     },
     "2007": {
-      "title": "Security Framework",
-      "description": "Implemented comprehensive security framework including authentication and authorization.",
-      "organization": "Operative Media",
+      "title": "Hyperion BI Tools",
+      "description": "Built a meta data driven data visualisation and insight exploration product. Led the offshore team of 8 engineers",
+      "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["LDAP", "SSL/TLS", "PKI", "Java", "Spring Security"],
-      "screenshot": "/security-framework-architecture.png",
-      "achievements": ["Security compliance", "Authentication system", "Authorization framework"]
+      "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
+      "screenshot": "/cms-interface.png",
+      "achievements": ["Guided Analysis", "Self Service Reporting"]
     },
     "2006": {
-      "title": "Content Management System",
-      "description": "Built custom CMS for multi-site content management and workflow automation.",
-      "organization": "Operative Media",
+      "title": "Hyperion BI Tools",
+      "description": "Incubated working on a meta data driven data visualisation product. Started hiring for the offshore team of engineers",
+      "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
-      "techStack": ["PHP", "MySQL", "Apache", "JavaScript", "CSS"],
+      "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
       "screenshot": "/cms-interface.png",
-      "achievements": ["Multi-site management", "Workflow automation", "Content versioning"]
+      "achievements": ["Guided Analysis", "Self Service Reporting", "ScrumAlliance Certification"]
     },
     "2005": {
       "title": "Hyperion Central",
