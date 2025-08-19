@@ -43,76 +43,76 @@
       "achievements": ["100K+ users", "4.8 star rating", "Cross-platform"]
     },
     "2021": {
-      "title": "DevOps Transformation",
-      "description": "Implemented CI/CD pipelines and infrastructure as code, reducing deployment time by 80%.",
+      "title": "Vista: NeoBank Platform",
+      "description": "MVP in 18 months. Closed User Group beta. Platform adoption/ zero-to-one journey",
       "organization": "PayU",
       "logoUri": "/images/logos/payu.svg",
-      "techStack": ["Jenkins", "GitLab CI", "Ansible", "Terraform", "Prometheus"],
+      "techStack": ["Jenkins", "GitLab CI", "Microservices", "Java", "Kafka", "ReactJS", "Highcharts", "D3.js" ],
       "screenshot": "/cicd-pipeline-dashboard.png",
-      "achievements": ["80% faster deployments", "Zero-downtime releases", "Automated testing"]
+      "achievements": ["Vista MVP", "Ecombooks Integration", "Domain Modeling", "AR & AP Flows", "Best Practices", "Engineering Metrics", "Automated testing"]
     },
     "2020": {
-      "title": "Remote Work Platform",
-      "description": "Developed collaboration platform during pandemic, enabling seamless remote work for 500+ employees.",
+      "title": "Vista: NeoBank Platform",
+      "description": "Started working on the neobank platform for PayU from ground up. Laid the functional and technical architecture blueprint. Shaped product vision. Roadmap planning",
       "organization": "PayU",
       "logoUri": "/images/logos/payu.svg",
-      "techStack": ["React", "Node.js", "WebRTC", "Socket.io", "MongoDB"],
-      "screenshot": "/video-conferencing-interface.png",
-      "achievements": ["500+ concurrent users", "HD video calls", "Real-time collaboration"]
+      "techStack": ["React", "Java", "Microservices", "Kafka", "MySQL"],
+      "screenshot": "/vista.png",
+      "achievements": ["Architecture Blueprint", "Org Building", "Roadmap Planning", "Partnership Management", "Remote Work"]
     },
     "2019": {
-      "title": "Blockchain Integration",
-      "description": "Integrated blockchain technology for supply chain transparency and smart contracts.",
+      "title": "RazorpayX, Payouts, Refunds, Recon",
+      "description": "Grew RazorpayX team from 4 to 30. Led Bank integrations for X and Payouts. Also worked on Post Payments features like Refunds and Reconciliation",
       "organization": "Razorpay",
       "logoUri": "/images/logos/razorpay.svg",
-      "techStack": ["Solidity", "Web3.js", "Ethereum", "React", "Node.js"],
-      "screenshot": "/blockchain-supply-chain.png",
-      "achievements": ["Smart contracts", "Supply chain transparency", "Immutable records"]
+      "techStack": ["PHP", "React", "Docker", "REST", "Go"],
+      "screenshot": "/razorpay-x.png",
+      "achievements": ["RazorpayX Beta", "Payout Microservice in Go", "Recon Rearchitecture"]
     },
     "2018": {
-      "title": "Machine Learning Pipeline",
-      "description": "Built ML pipeline for predictive analytics, improving business forecasting accuracy by 60%.",
+      "title": "QBO Reports Chatbot",
+      "description": "Built a Reports Chatbot using DialogFlow. Patented the idea of interative data exploration for insights using NLP. Also laid out a microservice based architecture for Reporting Service",
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["Python", "Scikit-learn", "Apache Spark", "Kafka", "Elasticsearch"],
-      "screenshot": "/machine-learning-pipeline.png",
-      "achievements": ["60% accuracy improvement", "Real-time predictions", "Automated retraining"]
+      "techStack": ["Kotlin", "DialogFlow", "REST", "Microservices", "React"],
+      "screenshot": "/qbo-reports-chatbot.png",
+      "achievements": ["Reports Chatbot", "Patent Application", "Microservice Architecture Blueprint", "Roadmap Planning"]
     },
     "2017": {
-      "title": "API Gateway Implementation",
-      "description": "Designed and implemented enterprise API gateway handling 1M+ requests daily.",
+      "title": "QBO Reports API",
+      "description": "Developed a Resource Model and a REST API layer for QBO Reports. Used best practices and clean design. Added rich functionalities like pagination, separation of data and visual attributes, action handlers etc. in the Reports API. Added comprehensive documentation for both internal and external use.",
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["Kong", "Lua", "Redis", "PostgreSQL", "Grafana"],
+      "techStack": ["REST", "Java", "Spring Boot", "Swagger", "Postman", "New Relic", "JMeter"],
       "screenshot": "/api-gateway-monitoring-dashboard.png",
-      "achievements": ["1M+ daily requests", "Sub-100ms latency", "Rate limiting"]
+      "achievements": ["1M+ daily requests", "2s TP99", "FC < 0.02%", "70%+ Unit Test Coverage", "Perf Test Suite", "Shift Left for QA"]
     },
     "2016": {
-      "title": "Big Data Analytics",
-      "description": "Developed real-time analytics platform processing terabytes of data using Hadoop and Spark.",
+      "title": "QBO Reports Modernisation",
+      "description": "Led a massive refactoring and layering effort to clean up cross module dependencies for QBO Reports, paving way for a Reports microservice in future. Improved platform stability and performance.",
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["Hadoop", "Apache Spark", "Kafka", "HBase", "Zeppelin"],
-      "screenshot": "/big-data-analytics-dashboard.png",
-      "achievements": ["Terabytes processed", "Real-time insights", "Distributed computing"]
+      "techStack": ["Java", "Spring Boot", "JavaScript", "Dojo", "ORM", "JProfiler", "New Relic", "JUnit", "JMock"],
+      "screenshot": "/qbo-platform-modernisation.png",
+      "achievements": ["Tiered Architecture", "Reports Service", "6000 TPS", "250 TB Data", "30+ Clusters"]
     },
     "2015": {
-      "title": "E-commerce Platform",
-      "description": "Built scalable e-commerce solution handling Black Friday traffic spikes.",
+      "title": "QBO: Management Reports",
+      "description": "Built a tag lib for embedding reports data in word documents. Created Report Books for accountant and business reporting usecases",
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["Java", "Spring Boot", "MySQL", "Redis", "Elasticsearch"],
+      "techStack": ["Java", "Spring Boot", "DocX", "Aspose"],
       "screenshot": "/ecommerce-website-interface.png",
-      "achievements": ["Black Friday ready", "Auto-scaling", "Payment integration"]
+      "achievements": ["Management Reports", "PDF Export"]
     },
     "2014": {
-      "title": "Mobile-First Redesign",
-      "description": "Led mobile-first redesign of legacy web application, improving user engagement by 150%.",
+      "title": "QBO Reports Harmonization",
+      "description": "Moved legacy QBO Reports web tier from struts to Spring Boot, servlets and rich SPA frontend",
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery"],
-      "screenshot": "/responsive-mobile-website.png",
-      "achievements": ["150% engagement boost", "Mobile-first", "Responsive design"]
+      "techStack": ["Spring Boot", "Java", "JavaScript", "Bootstrap", "jQuery", "Dojo", "Dgrid"],
+      "screenshot": "/qbo-harmonization.png",
+      "achievements": ["Reports Harmonization", "Single Page Architecture", "Large Scale Migration"]
     },
     "2013": {
       "title": "Operative.One BI Platform",
