@@ -273,6 +273,61 @@ export default function CareerTimeline() {
 
             {/* Glow Effect */}
             <div className="absolute inset-0 rounded-full shadow-2xl shadow-cyan-500/20"></div>
+
+            {/* Play Controls - 100px below the circle center */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-[100px]">
+              <div className="flex items-center gap-[100px]">
+                {/* Play Forward Button */}
+                <button
+                  onClick={handlePlayForward}
+                  disabled={isPlayingBackward}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                    isPlayingForward
+                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                      : isPlayingBackward
+                      ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                      : 'bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  {isPlayingForward ? (
+                    <>
+                      <Square className="w-4 h-4" />
+                      Stop
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-4 h-4" />
+                      Play
+                    </>
+                  )}
+                </button>
+
+                {/* Play Backward Button */}
+                <button
+                  onClick={handlePlayBackward}
+                  disabled={isPlayingForward}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                    isPlayingBackward
+                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                      : isPlayingForward
+                      ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                      : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  {isPlayingBackward ? (
+                    <>
+                      <Square className="w-4 h-4" />
+                      Stop
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-4 h-4 rotate-180" />
+                      Rewind
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Hover details card on the right side */}
@@ -344,61 +399,6 @@ export default function CareerTimeline() {
               </div>
             </Card>
           </div>
-        </div>
-      </div>
-
-      {/* Play Controls - 100px below the circle */}
-      <div className="flex justify-center mt-[100px] mb-8">
-        <div className="flex items-center gap-[100px]">
-          {/* Play Forward Button */}
-          <button
-            onClick={handlePlayForward}
-            disabled={isPlayingBackward}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-              isPlayingForward
-                ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
-                : isPlayingBackward
-                ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
-                : 'bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl'
-            }`}
-          >
-            {isPlayingForward ? (
-              <>
-                <Square className="w-4 h-4" />
-                Stop Forward
-              </>
-            ) : (
-              <>
-                <Play className="w-4 h-4" />
-                Play Forward
-              </>
-            )}
-          </button>
-
-          {/* Play Backward Button */}
-          <button
-            onClick={handlePlayBackward}
-            disabled={isPlayingForward}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-              isPlayingBackward
-                ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
-                : isPlayingForward
-                ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
-                : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
-            }`}
-          >
-            {isPlayingBackward ? (
-              <>
-                <Square className="w-4 h-4" />
-                Stop Backward
-              </>
-            ) : (
-              <>
-                <Play className="w-4 h-4 rotate-180" />
-                Play Backward
-              </>
-            )}
-          </button>
         </div>
       </div>
     </div>
