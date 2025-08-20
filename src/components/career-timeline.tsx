@@ -275,8 +275,8 @@ export default function CareerTimeline() {
             <div className="absolute inset-0 rounded-full shadow-2xl shadow-cyan-500/20"></div>
 
             {/* Play Controls - 100px below the circle center */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-[100px]">
-              <div className="flex items-center gap-[100px]">
+            <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-[50px]">
+              <div className="flex items-center gap-[150px]">
                 {/* Play Forward Button */}
                 <button
                   onClick={handlePlayForward}
