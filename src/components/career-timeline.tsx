@@ -2,12 +2,15 @@
 
 import { useState, useRef, useCallback, useEffect } from "react"
 import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { getCareerTimelineData, CareerTimelineData } from "@/lib/career-timeline"
 import { getContent, ContentData } from "@/lib/content"
-import { MessageCircle, Play, Square } from "lucide-react"
+import { MessageCircle, Play, Square, ArrowLeft, MapPin } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import SpotMePopup from "@/components/spot-me-popup"
 
 export default function CareerTimeline() {
   const [selectedYear, setSelectedYear] = useState(2025)
@@ -19,6 +22,8 @@ export default function CareerTimeline() {
   const [loading, setLoading] = useState(true)
   const [isPlayingForward, setIsPlayingForward] = useState(false)
   const [isPlayingBackward, setIsPlayingBackward] = useState(false)
+  const [isSpotMeOpen, setIsSpotMeOpen] = useState(false)
+  const [spotMeRefreshTrigger, setSpotMeRefreshTrigger] = useState(0)
   const circleRef = useRef<HTMLDivElement>(null)
   const playIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -90,6 +95,20 @@ export default function CareerTimeline() {
     setIsPlayingBackward(false)
   }, [])
 
+  const handleSpotMeClick = () => {
+    if (isSpotMeOpen) {
+      // If already open, refresh the content
+      setSpotMeRefreshTrigger(prev => prev + 1)
+    } else {
+      // Open the popup
+      setIsSpotMeOpen(true)
+    }
+  }
+
+  const handleSpotMeClose = () => {
+    setIsSpotMeOpen(false)
+  }
+
   const handlePlayForward = useCallback(() => {
     if (isPlayingForward) {
       stopPlayback()
@@ -150,28 +169,37 @@ export default function CareerTimeline() {
       <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 ambient:glass-nav ambient:dark:glass-nav-dark backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-xl font-bold text-slate-900 dark:text-white transition-colors">
-              {content.navigation.brand}
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-3 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+                <ArrowLeft className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-600 profile-light-pulse-small ambient:glass-glow">
+                  <Image
+                    src="/images/profile.png"
+                    alt="Soumitra Ghosh"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-xl font-bold text-slate-900 dark:text-white">Back to Home</span>
+              </Link>
             </div>
-            <div className="flex items-center space-x-8">
-              <div className="hidden md:flex space-x-8">
-                {content.navigation.links.map((link, index) => (
-                  <a 
-                    key={index}
-                    href={link.href} 
-                    className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
-                  >
-                    {link.text}
-                  </a>
-                ))}
-                <a 
-                  href="/ask-me"
-                  className="flex items-center gap-2 text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors font-medium"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Ask Me (beta)
-                </a>
-              </div>
+            
+            {/* Center CTA */}
+            <div className="flex-1 flex justify-center">
+              <Button
+                onClick={handleSpotMeClick}
+                variant="outline"
+                size="sm"
+                className="bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-200 shadow-sm hover:shadow-md"
+              >
+                <MapPin className="w-4 h-4 mr-2" />
+                Where is Soumitra?
+              </Button>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">Career Timeline</span>
               <ThemeToggle />
             </div>
           </div>
@@ -409,6 +437,13 @@ export default function CareerTimeline() {
           </div>
         </div>
       </div>
+
+      {/* SpotMe Popup */}
+      <SpotMePopup
+        isOpen={isSpotMeOpen}
+        onClose={handleSpotMeClose}
+        refreshTrigger={spotMeRefreshTrigger}
+      />
     </div>
   )
 }

@@ -78,7 +78,7 @@ export default async function HomePage() {
               <Button 
                 key={index}
                 size="lg" 
-                className={`${button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700 dark:bg-slate-500'} ambient:glass-button ambient:dark:glass-button-dark`}
+                className={`${button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700 dark:bg-slate-500'} ambient:glass-button ambient:dark:glass-button-dark ${button.text === 'Career Timeline' ? 'hidden md:flex' : ''}`}
                 asChild={!!button.href}
               >
                 {button.href ? (

@@ -55,6 +55,12 @@
         "href": "#portfolio"
       },
       {
+        "text": "Career Timeline",
+        "variant": "outline",
+        "icon": "Calendar",
+        "href": "/career-timeline"
+      },
+      {
         "text": "Events & Speaking",
         "variant": "outline",
         "icon": "Calendar",
