@@ -106,7 +106,7 @@ export default function CareerTimeline() {
     playIntervalRef.current = setInterval(() => {
       currentIndex = currentIndex === 0 ? years.length - 1 : currentIndex - 1
       handleYearChange(years[currentIndex])
-    }, 2000) // 2 seconds interval
+    }, 5000) // 2 seconds interval
   }, [isPlayingForward, selectedYear, years, handleYearChange, stopPlayback])
 
   const handlePlayBackward = useCallback(() => {
@@ -125,7 +125,7 @@ export default function CareerTimeline() {
     playIntervalRef.current = setInterval(() => {
       currentIndex = (currentIndex + 1) % years.length
       handleYearChange(years[currentIndex])
-    }, 1000) // 1 second interval
+    }, 5000) // 1 second interval
   }, [isPlayingBackward, selectedYear, years, handleYearChange, stopPlayback])
 
   // Early return after all hooks are defined
@@ -180,7 +180,7 @@ export default function CareerTimeline() {
 
       {/* Timeline Content */}
       <div className="flex items-center justify-center p-4">
-        <div className="relative flex items-center gap-8">
+        <div className="relative flex items-center gap-8 min-h-[800px]">
           {/* Main Circle Container */}
           <div ref={circleRef} className="relative w-96 h-96 md:w-[600px] md:h-[600px]">
             {/* Outer Ring with Year Markers */}
@@ -254,9 +254,13 @@ export default function CareerTimeline() {
               <Card
                 className={`bg-slate-800/80 border-slate-600/50 p-6 text-center max-w-sm transition-all duration-300 cursor-pointer ${
                   isTransitioning ? "opacity-0 scale-95 blur-sm" : "opacity-100 scale-100 blur-0"
-                }`}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
+                } ${isHovering ? "border-cyan-400/50 shadow-lg shadow-cyan-500/20" : ""}`}
+                onMouseEnter={() => {
+                  setIsHovering(true)
+                }}
+                onMouseLeave={() => {
+                  setIsHovering(false)
+                }}
               >
                 <div className="text-3xl font-bold text-cyan-400 mb-3 transition-all duration-300">{selectedYear}</div>
                 <h3 className="text-xl font-semibold text-white mb-4 leading-tight transition-all duration-300">
@@ -332,11 +336,15 @@ export default function CareerTimeline() {
 
           {/* Hover details card on the right side */}
           <div
-            className={`transition-all duration-300 ease-out ${
-              isHovering ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8 pointer-events-none"
+            className={`transition-all duration-300 ease-out z-50 ${
+              isHovering ? "opacity-100 translate-x-0" : "opacity-30 translate-x-8"
             }`}
           >
-            <Card className="w-80 bg-slate-800/90 border-slate-600/50 backdrop-blur-sm p-6 shadow-2xl">
+            <Card className="w-80 bg-slate-800/90 border-2 border-cyan-500/50 backdrop-blur-sm p-6 shadow-2xl">
+              {/* Debug indicator */}
+              {isHovering && (
+                <div className="absolute -top-2 -left-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+              )}
               <div className="space-y-4">
                 {/* Screenshot */}
                 {selectedProject.screenshot && (
@@ -372,7 +380,7 @@ export default function CareerTimeline() {
                     <h4 className="text-sm font-semibold text-cyan-400 mb-2">Key Achievements</h4>
                     <ul className="space-y-1">
                       {selectedProject.achievements.map((achievement, index) => (
-                        <li key={index} className="text-xs text-slate-300 flex items-start">
+                        <li key={index} className="text-xs text-slate-100 flex items-start">
                           <span className="text-cyan-400 mr-2">•</span>
                           {achievement}
                         </li>
