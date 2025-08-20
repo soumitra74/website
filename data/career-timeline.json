@@ -11,7 +11,7 @@
       "organization": "Knio, Zideas",
       "logoUri": "/images/logos/zideas.svg",
       "techStack": ["Python", "React", "PostgreSQL", "Docker", "LLM", "GPT4o", "Crew.ai", "Cursor AI", "Elastic Search", "Pinecone"],
-      "screenshot": "/knio-app.png",
+      "screenshot": "/images/career-timeline/knio-app.png",
       "videoUrl": "https://example.com/ai-platform-demo.mp4",
       "achievements": ["RAG system", "Hallucination Reduction", "Agentic AI"]
     },
@@ -21,7 +21,7 @@
       "organization": "Entropik",
       "logoUri": "/images/logos/entropik.svg",
       "techStack": ["AWS", "Terraform", "Docker", "Jenkins", "Python", "React", "Bash", "Clarity", "Datadog", "LLM", "GPT3.5"],
-      "screenshot": "/qatalyst-copilot.png",
+      "screenshot": "/images/career-timeline/qatalyst-copilot.png",
       "achievements": ["G2 Positioning in 1st Quadrant", "40% cost reduction", "Platform Vision", "CI/CD Pipeline Optimisation", "Explainability", "Tech Branding", "LLM Integration", "Copilot", "Qatalyst MVP", "GTM Strategy", "Figma Integration"]
     },
     "2023": {
@@ -30,7 +30,7 @@
       "organization": "Entropik",
       "logoUri": "/images/logos/entropik.svg",
       "techStack": ["AWS", "Serverless", "Python", "DynamoDB", "Microservices", "Docker", "Bash", "React", "Tailwind", "Chakra UI", "Jenkins", "LinearB", "Datadog", "Clarity", "LLM", "GPT3.5"],
-      "screenshot": "/decode.png",
+      "screenshot": "/images/career-timeline/entropik-copilot.png",
       "achievements": ["AI-powered Market Research", "Developer Productivity", "Org Building", "DevOps Maturity", "Metrics Driven Org", "Observability", "DORA", "LLM Integration", "Scalable Architecture"]
     },
     "2022": {
@@ -39,7 +39,7 @@
       "organization": "Entropik",
       "logoUri": "/images/logos/entropik.svg",
       "techStack": ["Java", "REST APIs", "React", "Redux", "Jest"],
-      "screenshot": "/mobile-app-interface.png",
+      "screenshot": "/images/career-timeline/vista-lending.png",
       "achievements": ["Finflux Integration", "Digital Onboarding", "Consumer Neobanking Explorations"]
     },
     "2021": {
@@ -48,7 +48,7 @@
       "organization": "PayU",
       "logoUri": "/images/logos/payu.svg",
       "techStack": ["Jenkins", "GitLab CI", "Microservices", "Java", "Kafka", "React", "Redux", "Jest", "Highcharts", "D3.js", "SCSS" ],
-      "screenshot": "/cicd-pipeline-dashboard.png",
+      "screenshot": "/images/career-timeline/vista-neobank.png",
       "achievements": ["Vista MVP", "Ecombooks Integration", "Domain Modeling", "AR & AP Flows", "Best Practices", "Engineering Metrics", "Automated testing"]
     },
     "2020": {
@@ -57,7 +57,7 @@
       "organization": "PayU",
       "logoUri": "/images/logos/payu.svg",
       "techStack": ["React", "Java", "Microservices", "Kafka", "MySQL"],
-      "screenshot": "/vista.png",
+      "screenshot": "/images/career-timeline/vista-neobank.png",
       "achievements": ["Architecture Blueprint", "Org Building", "Roadmap Planning", "Partnership Management", "Remote Work"]
     },
     "2019": {
@@ -66,7 +66,7 @@
       "organization": "Razorpay",
       "logoUri": "/images/logos/razorpay.svg",
       "techStack": ["PHP", "React", "Docker", "REST", "Go"],
-      "screenshot": "/razorpay-x.png",
+      "screenshot": "/images/career-timeline/x-dashboard.jpg",
       "achievements": ["RazorpayX Beta", "Payout Microservice in Go", "Recon Rearchitecture"]
     },
     "2018": {
@@ -75,7 +75,7 @@
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Kotlin", "DialogFlow", "REST", "Microservices", "React"],
-      "screenshot": "/qbo-reports-chatbot.png",
+      "screenshot": "/images/career-timeline/reports-target-state.png",
       "achievements": ["Reports Chatbot", "Patent Application", "Microservice Architecture Blueprint", "Roadmap Planning"]
     },
     "2017": {
@@ -84,8 +84,8 @@
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
       "techStack": ["REST", "Java", "Spring Boot", "Swagger", "Postman", "New Relic", "JMeter"],
-      "screenshot": "/api-gateway-monitoring-dashboard.png",
-      "achievements": ["1M+ daily requests", "2s TP99", "FC < 0.02%", "70%+ Unit Test Coverage", "Perf Test Suite", "Shift Left for QA"]
+      "screenshot": "/images/career-timeline/qbo-reports-api.png",
+      "achievements": ["V3 API", "1M+ daily requests", "2s TP99", "FC < 0.02%", "70%+ Unit Test Coverage", "Perf Test Suite", "Shift Left for QA"]
     },
     "2016": {
       "title": "QBO Reports Modernisation",
@@ -93,17 +93,17 @@
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Java", "Spring Boot", "JavaScript", "Dojo", "ORM", "JProfiler", "New Relic", "JUnit", "JMock"],
-      "screenshot": "/qbo-platform-modernisation.png",
-      "achievements": ["Tiered Architecture", "Reports Service", "6000 TPS", "250 TB Data", "30+ Clusters"]
+      "screenshot": "/images/career-timeline/reporting-pyramid.png",
+      "achievements": ["Tiered Architecture", "Reports Service Decomposition", "6000 TPS", "250 TB Data", "30+ Clusters"]
     },
     "2015": {
       "title": "QBO: Management Reports",
       "description": "Built a tag lib for embedding reports data in word documents. Created Report Books for accountant and business reporting usecases",
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
-      "techStack": ["Java", "Spring Boot", "DocX", "Aspose"],
-      "screenshot": "/ecommerce-website-interface.png",
-      "achievements": ["Management Reports", "PDF Export"]
+      "techStack": ["Java", "Spring Boot", "DocX", "Merge Fields", "Aspose"],
+      "screenshot": "/images/career-timeline/management-report-rich-editor.avif",
+      "achievements": ["Management Reports", "PDF Export", "Template Authoring Language", "Multi Page Table Layout"]
     },
     "2014": {
       "title": "QBO Reports Harmonization",
@@ -111,7 +111,7 @@
       "organization": "Intuit",
       "logoUri": "/images/logos/intuit.svg",
       "techStack": ["Spring Boot", "Java", "JavaScript", "Bootstrap", "jQuery", "Dojo", "Dgrid"],
-      "screenshot": "/qbo-harmonization.png",
+      "screenshot": "/images/career-timeline/qbo-harmonization.webp",
       "achievements": ["Reports Harmonization", "Single Page Architecture", "Large Scale Migration"]
     },
     "2013": {
@@ -120,7 +120,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "SSAS", "MySQL", "MDX"],
-      "screenshot": "/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/placeholder-szc62.png",
       "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Multi Dimensional Availability"]
     },
     "2012": {
@@ -129,7 +129,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "SSAS", "MySQL", "Java", "Hibernate", "MDX"],
-      "screenshot": "/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/placeholder-szc62.png",
       "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Operational Data Store", "Incremental Loading (of source data)", "Data Feed"]
     },
     "2011": {
@@ -138,7 +138,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "MySQL", "Java", "Hibernate", "ExtJS", "NTLM"],
-      "screenshot": "/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/placeholder-szc62.png",
       "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Cross Platform authN", "Hiring", "Organizational Leadership", "Basecamp Workshop on Hibernate"]
     },
     "2010": {
@@ -147,7 +147,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "MySQL", "Java", "Hibernate", "ExtJS"],
-      "screenshot": "/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/placeholder-szc62.png",
       "achievements": ["AdTech", "Data Modeling", "Data Lineage", "Hiring", "Organizational Leadership", "Operative acquired Solbright"]
     },
     "2009": {
@@ -156,7 +156,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "SpringGoot", "Hibernate", "MySQL", "Dozer", "SOA", "ExtJS"],
-      "screenshot": "/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/placeholder-szc62.png",
       "achievements": ["AdTech", "SOA", "System Design", "Hiring", "Organizational Leadership"]
     },
     "2008": {
@@ -165,7 +165,7 @@
       "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
-      "screenshot": "/cms-interface.png",
+      "screenshot": "/images/career-timeline/cms-interface.png",
       "achievements": ["Hyperion Reports", "Hyperion Central"]
     },
     "2007": {
@@ -174,7 +174,7 @@
       "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
-      "screenshot": "/cms-interface.png",
+      "screenshot": "/images/career-timeline/cms-interface.png",
       "achievements": ["Guided Analysis", "Self Service Reporting"]
     },
     "2006": {
@@ -183,7 +183,7 @@
       "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
-      "screenshot": "/cms-interface.png",
+      "screenshot": "/images/career-timeline/cms-interface.png",
       "achievements": ["Guided Analysis", "Self Service Reporting", "ScrumAlliance Certification"]
     },
     "2005": {
