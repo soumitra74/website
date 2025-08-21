@@ -13,7 +13,6 @@
       "logoUri": "/images/logos/zideas.svg",
       "techStack": ["Python", "React", "PostgreSQL", "Docker", "LLM", "GPT4o", "Crew.ai", "Cursor AI", "Elastic Search", "Pinecone"],
       "screenshot": "/images/career-timeline/knio-app.png",
-      "videoUrl": "https://example.com/ai-platform-demo.mp4",
       "achievements": ["RAG system", "Hallucination Reduction", "Agentic AI"]
     },
     "2024": {

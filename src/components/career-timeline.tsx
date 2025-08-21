@@ -401,7 +401,7 @@ export default function CareerTimeline() {
               isHovering ? "opacity-100 translate-x-0" : "opacity-30 translate-x-8"
             }`}
           >
-            <Card className="w-80 bg-slate-800/90 border-2 border-cyan-500/50 backdrop-blur-sm p-6 shadow-2xl">
+            <Card className="w-80 bg-gradient-to-b from-slate-200/90 to-slate-800/90 dark:from-slate-700/90 dark:to-slate-900/90 border-2 border-cyan-500/50 backdrop-blur-sm p-6 shadow-2xl">
               {/* Debug indicator */}
               {isHovering && (
                 <div className="absolute -top-2 -left-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>

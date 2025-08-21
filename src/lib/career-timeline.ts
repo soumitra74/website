@@ -19,7 +19,11 @@ export interface CareerTimelineData {
 
 export async function getCareerTimelineData(): Promise<CareerTimelineData> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/career-timeline/`, {
+    // Construct the proper API URL using URL class
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const apiUrl = new URL('/api/career-timeline', baseUrl).toString()
+    
+    const response = await fetch(apiUrl, {
       cache: 'no-store' // Ensure fresh data on each request
     })
     
