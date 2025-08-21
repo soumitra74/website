@@ -2,7 +2,8 @@
   "metadata": {
     "title": "Career Timeline - Soumitra Ghosh",
     "description": "Interactive timeline showcasing career progression and key projects from 1995 to 2025",
-    "years": [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995]
+    "years": [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995],
+    "delay": 1000
   },
   "projects": {
     "2025": {
@@ -165,8 +166,8 @@
       "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
-      "screenshot": "/images/career-timeline/cms-interface.png",
-      "achievements": ["Hyperion Reports", "Hyperion Central"]
+      "screenshot": "/images/career-timeline/hyperion-web-analysis.jpg",
+      "achievements": ["Hyperion Reports", "Hyperion Web Analysis", "Symphony Key Contributor Award", "Tech Talks"]
     },
     "2007": {
       "title": "Hyperion BI Tools",
@@ -174,8 +175,8 @@
       "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
-      "screenshot": "/images/career-timeline/cms-interface.png",
-      "achievements": ["Guided Analysis", "Self Service Reporting"]
+      "screenshot": "/images/career-timeline/self-service-reporting.png",
+      "achievements": ["Guided Analysis", "Self Service Reporting", "Symphony Key Contributor Award"]
     },
     "2006": {
       "title": "Hyperion BI Tools",
@@ -183,8 +184,8 @@
       "organization": "Symphony Services",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "Hibernate", "JavaScript", "DHTML"],
-      "screenshot": "/images/career-timeline/cms-interface.png",
-      "achievements": ["Guided Analysis", "Self Service Reporting", "ScrumAlliance Certification"]
+      "screenshot": "/images/career-timeline/csm-thescrumalliance.webp",
+      "achievements": ["Guided Analysis", "ScrumAlliance Certification"]
     },
     "2005": {
       "title": "Hyperion Central",
@@ -192,8 +193,8 @@
       "organization": "Hyperion Solutions",
       "logoUri": "/images/logos/hyperion-solutions.svg",
       "techStack": ["Java", "APIs", "XML", "DHTML", "Bindows", "Firebug"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["NFR", "Performance Tuning"]
+      "screenshot": "/images/career-timeline/hyperion-central.png",
+      "achievements": ["NFR", "SPA Performance Optimization"]
     },
     "2004": {
       "title": "Hyperion Central",
@@ -201,8 +202,8 @@
       "organization": "Hyperion Solutions",
       "logoUri": "/images/logos/hyperion-solutions.svg",
       "techStack": ["Java", "APIs", "XML", "DHTML", "Bindows", "JUnit", "JProfiler", "WinRunner","LoadRunner"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["Framework Components", "Performance Testing"]
+      "screenshot": "/images/career-timeline/hyperion-bpm-ui-mock.png",
+      "achievements": ["Framework Components", "BPM UI", "Performance Testing"]
     },
     "2003": {
       "title": "Hyperion Central: Other portlets",
@@ -210,7 +211,7 @@
       "organization": "Hyperion Solutions",
       "logoUri": "/images/logos/hyperion-solutions.svg",
       "techStack": ["Java", "JSP", "Servlets", "AppServer", "XML", "HTML", "JavaScript", "JUnit"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
+      "screenshot": "/images/career-timeline/avalanche-ui-layout.png",
       "achievements": ["Hyperion Planning portlet", "Hyperion Scorecard portlet"]
     },
     "2002": {
@@ -219,7 +220,7 @@
       "organization": "Hyperion Solutions",
       "logoUri": "/images/logos/hyperion-solutions.svg",
       "techStack": ["Java", "JSP", "Servlets", "AppServer", "XML", "HTML", "JavaScript"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
+      "screenshot": "/images/career-timeline/pov-toolbar.png",
       "achievements": ["POV portlet"]
     },
     "2001": {
@@ -228,7 +229,7 @@
       "organization": "Hyperion Solutions",
       "logoUri": "/images/logos/hyperion-solutions.svg",
       "techStack": ["Java", "JSP", "Servlets", "Apache HTTP Server", "XML", "HTML", "JavaScript"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
+      "screenshot": "/images/career-timeline/screen-scraping.png",
       "achievements": ["Explorations and POCs", "Web Page Viewer portlet", "Scrollomatic", "Reverse Proxy", "JS Namespacing"]
     },
     "2000": {
@@ -237,7 +238,7 @@
       "organization": "CES Computer Solutions",
       "logoUri": "/images/logos/ces-computer-solutions.svg",
       "techStack": ["Java", "Swing"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
+      "screenshot": "/images/career-timeline/swing-applet.png",
       "achievements": ["FTP client", "Realtime Monitoring Applet"]
     },
     "1999": {
@@ -245,27 +246,27 @@
       "description": "Feature development for Bell South.",
       "organization": "CES Computer Solutions",
       "logoUri": "/images/logos/ces-computer-solutions.svg",
-      "techStack": ["Java", "Swing"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["FTP client", "Realtime Monitoring Applet"]
+      "techStack": ["Java", "FTP"],
+      "screenshot": "/images/career-timeline/telecom-voip-network.webp",
+      "achievements": ["FTP client in Java", "VoIP Provisioning"]
     },
     "1998": {
       "title": "Project Management Part Paks",
       "description": "Gantt Chart and WBS beans for IBM AlphaWorks",
       "organization": "TISL / IBM Global Services",
       "logoUri": "/images/logos/ibm-global-services.svg",
-      "techStack": ["JDK", "Java Beans", "IBM Websphere"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["JavaBeans Around The World", "AlphaWorks"]
+      "techStack": ["JDK", "Java Beans", "IBM Websphere", "AWT", "Applet"],
+      "screenshot": "/images/career-timeline/gantt-chart.png",
+      "achievements": ["JavaBeans Around The World", "AlphaWorks", "Gantt Chart", "WBS"]
     },
     "1997": {
       "title": "Project Management Part Paks",
       "description": "Gantt Chart and WBS beans for IBM AlphaWorks",
       "organization": "TISL",
       "logoUri": "/images/logos/tisl.svg",
-      "techStack": ["JDK", "Java Beans", "IBM Websphere"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
-      "achievements": ["JavaBeans Around The World", "AlphaWorks"]
+      "techStack": ["Java", "Java Beans", "IBM Websphere", "AWT", "Applet"],
+      "screenshot": "/images/career-timeline/alphaworks.png",
+      "achievements": ["JavaBeans Around The World", "AlphaWorks", "WBS"]
     },
     "1996": {
       "title": "Software Engineer @ TISL",
@@ -273,7 +274,7 @@
       "organization": "TISL",
       "logoUri": "/images/logos/tisl.svg",
       "techStack": ["Java", "HTML", "JavaScript"],
-      "screenshot": "/images/career-timeline/placeholder.svg",
+      "screenshot": "/images/career-timeline/java-beans.gif",
       "achievements": ["Learning"]
     },
     "1995": {
@@ -282,7 +283,7 @@
       "organization": "IIT Kharagpur",
       "logoUri": "/images/logos/iit-kharagpur.svg",
       "techStack": ["C", "Telephony"],
-      "screenshot": "/images/career-timeline/final-year-project.svg",
+      "screenshot": "/images/career-timeline/digcom-at-night.png",
       "achievements": ["Circuit Design", "Telephony Integration"]
     }
   }
