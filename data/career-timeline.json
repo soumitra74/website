@@ -120,7 +120,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "SSAS", "MySQL", "MDX"],
-      "screenshot": "/images/career-timeline/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/o1-dashboard.jpg",
       "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Multi Dimensional Availability"]
     },
     "2012": {
@@ -129,7 +129,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "SSAS", "MySQL", "Java", "Hibernate", "MDX"],
-      "screenshot": "/images/career-timeline/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/o1-bi-architecture.png",
       "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Operational Data Store", "Incremental Loading (of source data)", "Data Feed"]
     },
     "2011": {
@@ -138,7 +138,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "SSRS", "MySQL", "Java", "Hibernate", "ExtJS", "NTLM"],
-      "screenshot": "/images/career-timeline/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/msbi.webp",
       "achievements": ["AdTech", "Data Modeling", "Semantic Report Model", "Cross Platform authN", "Hiring", "Organizational Leadership", "Basecamp Workshop on Hibernate"]
     },
     "2010": {
@@ -147,7 +147,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["MSSQL", "Transact SQL", "SSIS", "MySQL", "Java", "Hibernate", "ExtJS"],
-      "screenshot": "/images/career-timeline/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/o1-oltp-schema.png",
       "achievements": ["AdTech", "Data Modeling", "Data Lineage", "Hiring", "Organizational Leadership", "Operative acquired Solbright"]
     },
     "2009": {
@@ -156,7 +156,7 @@
       "organization": "Operative Media",
       "logoUri": "/images/logos/operative-media.svg",
       "techStack": ["Java", "SpringGoot", "Hibernate", "MySQL", "Dozer", "SOA", "ExtJS"],
-      "screenshot": "/images/career-timeline/placeholder-szc62.png",
+      "screenshot": "/images/career-timeline/adtech_software_how_it_works.jpg",
       "achievements": ["AdTech", "SOA", "System Design", "Hiring", "Organizational Leadership"]
     },
     "2008": {
