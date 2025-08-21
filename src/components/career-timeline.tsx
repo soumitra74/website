@@ -27,6 +27,29 @@ export default function CareerTimeline() {
   const circleRef = useRef<HTMLDivElement>(null)
   const playIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Function to get delay from URL parameters
+  const getDelayFromUrl = useCallback(() => {
+    if (typeof window === 'undefined') return null
+    
+    const urlParams = new URLSearchParams(window.location.search)
+    const delayParam = urlParams.get('delay')
+    
+    if (delayParam) {
+      const delay = parseInt(delayParam)
+      return isNaN(delay) ? null : delay
+    }
+    
+    return null
+  }, [])
+
+  // Function to get effective delay (URL override or metadata default)
+  const getEffectiveDelay = useCallback(() => {
+    const urlDelay = getDelayFromUrl()
+    const metadataDelay = timelineData?.metadata?.delay || 5000
+    
+    return urlDelay || metadataDelay
+  }, [getDelayFromUrl, timelineData?.metadata?.delay])
+
   // Load data on component mount
   useEffect(() => {
     const loadData = async () => {
@@ -125,8 +148,8 @@ export default function CareerTimeline() {
     playIntervalRef.current = setInterval(() => {
       currentIndex = currentIndex === 0 ? years.length - 1 : currentIndex - 1
       handleYearChange(years[currentIndex])
-    }, 5000) // 2 seconds interval
-  }, [isPlayingForward, selectedYear, years, handleYearChange, stopPlayback])
+    }, getEffectiveDelay())
+  }, [isPlayingForward, selectedYear, years, handleYearChange, stopPlayback, getEffectiveDelay])
 
   const handlePlayBackward = useCallback(() => {
     if (isPlayingBackward) {
@@ -144,8 +167,8 @@ export default function CareerTimeline() {
     playIntervalRef.current = setInterval(() => {
       currentIndex = (currentIndex + 1) % years.length
       handleYearChange(years[currentIndex])
-    }, 5000) // 1 second interval
-  }, [isPlayingBackward, selectedYear, years, handleYearChange, stopPlayback])
+    }, getEffectiveDelay())
+  }, [isPlayingBackward, selectedYear, years, handleYearChange, stopPlayback, getEffectiveDelay])
 
   // Early return after all hooks are defined
   if (loading || !timelineData || !content) {
@@ -308,56 +331,66 @@ export default function CareerTimeline() {
 
             {/* Play Controls - 100px below the circle center */}
             <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-[50px]">
-              <div className="flex items-center gap-[150px]">
-                {/* Play Forward Button */}
-                <button
-                  onClick={handlePlayForward}
-                  disabled={isPlayingBackward}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                    isPlayingForward
-                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
-                      : isPlayingBackward
-                      ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
-                      : 'bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl'
-                  }`}
-                >
-                  {isPlayingForward ? (
-                    <>
-                      <Square className="w-4 h-4" />
-                      Stop
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-4 h-4" />
-                      Play
-                    </>
-                  )}
-                </button>
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-[150px]">
+                  {/* Play Forward Button */}
+                  <button
+                    onClick={handlePlayForward}
+                    disabled={isPlayingBackward}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                      isPlayingForward
+                        ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                        : isPlayingBackward
+                        ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                        : 'bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl'
+                    }`}
+                  >
+                    {isPlayingForward ? (
+                      <>
+                        <Square className="w-4 h-4" />
+                        Stop
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-4 h-4" />
+                        Play
+                      </>
+                    )}
+                  </button>
 
-                {/* Play Backward Button */}
-                <button
-                  onClick={handlePlayBackward}
-                  disabled={isPlayingForward}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                    isPlayingBackward
-                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
-                      : isPlayingForward
-                      ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
-                      : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
-                  }`}
-                >
-                  {isPlayingBackward ? (
-                    <>
-                      <Square className="w-4 h-4" />
-                      Stop
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-4 h-4 rotate-180" />
-                      Rewind
-                    </>
+                  {/* Play Backward Button */}
+                  <button
+                    onClick={handlePlayBackward}
+                    disabled={isPlayingForward}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                      isPlayingBackward
+                        ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                        : isPlayingForward
+                        ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                        : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
+                    }`}
+                  >
+                    {isPlayingBackward ? (
+                      <>
+                        <Square className="w-4 h-4" />
+                        Stop
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-4 h-4 rotate-180" />
+                        Rewind
+                      </>
+                    )}
+                  </button>
+                </div>
+                
+                {/* Delay indicator */}
+                <div className="text-xs text-slate-400 bg-slate-800/50 px-3 py-1 rounded-lg border border-slate-600/30">
+                  Delay: {getEffectiveDelay()}ms
+                  {getDelayFromUrl() !== null && (
+                    <span className="text-cyan-400 ml-2">(URL override)</span>
                   )}
-                </button>
+                </div>
               </div>
             </div>
           </div>

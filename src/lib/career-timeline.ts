@@ -3,6 +3,7 @@ export interface CareerTimelineData {
     title: string
     description: string
     years: number[]
+    delay: number
   }
   projects: {
     [key: string]: {
