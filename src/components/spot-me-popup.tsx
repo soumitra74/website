@@ -30,6 +30,18 @@ interface DailySchedule {
     name: string
     type: string
   }>
+  business_travel?: Array<{
+    start_date: string
+    end_date: string
+    destination: string
+    purpose: string
+  }>
+  vacation?: Array<{
+    start_date: string
+    end_date: string
+    destination: string
+    purpose: string
+  }>
 }
 
 interface CurrentActivity {
@@ -102,6 +114,28 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
       const tzInfo = getTimezoneInfo(now)
       setTimezoneInfo(tzInfo)
       
+      // Detect vacation / business travel for current IST date
+      const activeVacation = findActivePeriod(istTime, scheduleData.vacation || [])
+      const activeBusinessTravel = findActivePeriod(istTime, scheduleData.business_travel || [])
+
+      if (activeVacation) {
+        setCurrentActivity({
+          type: 'other',
+          title: `On Vacation: ${activeVacation.destination}`,
+          description: `Soumitra is on vacation for ${activeVacation.purpose} (${formatDateRange(activeVacation.start_date, activeVacation.end_date)})`
+        })
+        return
+      }
+
+      if (activeBusinessTravel) {
+        setCurrentActivity({
+          type: 'other',
+          title: `On Business Travel: ${activeBusinessTravel.destination}`,
+          description: `Soumitra is traveling for ${activeBusinessTravel.purpose} (${formatDateRange(activeBusinessTravel.start_date, activeBusinessTravel.end_date)})`
+        })
+        return
+      }
+
       // Determine day type based on IST time
       const dayOfWeek = istTime.getDay()
       const isWeekend = dayOfWeek === 0 || dayOfWeek === 6
@@ -154,6 +188,33 @@ export default function SpotMePopup({ isOpen, onClose, refreshTrigger }: SpotMeP
     }
     
     return currentActivity
+  }
+
+  const isDateInRange = (date: Date, start: string, end: string) => {
+    const dateString = date.toISOString().split('T')[0]
+    return dateString >= start && dateString <= end
+  }
+
+  const findActivePeriod = (
+    date: Date,
+    periods: Array<{ start_date: string; end_date: string; destination: string; purpose: string }>
+  ) => {
+    for (const period of periods) {
+      if (isDateInRange(date, period.start_date, period.end_date)) return period
+    }
+    return null
+  }
+
+  const formatDateRange = (start: string, end: string) => {
+    try {
+      const startDate = new Date(`${start}T00:00:00`)
+      const endDate = new Date(`${end}T00:00:00`)
+      const startStr = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      const endStr = endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      return `${startStr}–${endStr}`
+    } catch {
+      return `${start} to ${end}`
+    }
   }
 
   const generateActivity = (description: string, scheduleData: DailySchedule): CurrentActivity => {

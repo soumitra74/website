@@ -20,18 +20,18 @@
       "description": "Built the AI-powered user research platform for Qatalyst. Enhanced platform capabiltiies across both products. Added new features to Copilot like charts and Excel support. Spearheaded cost optimisation for cloud infra, reducing costs by 40%.",
       "organization": "Entropik",
       "logoUri": "/images/logos/entropik.svg",
-      "techStack": ["AWS", "Terraform", "Docker", "Jenkins", "Python", "React", "Bash", "Clarity", "Datadog", "LLM", "GPT3.5"],
+      "techStack": ["AWS", "Terraform", "Docker", "Jenkins", "Python", "React", "Bash", "Clarity", "Datadog", "LLM", "GPT3.5", "Graphana"],
       "screenshot": "/images/career-timeline/qatalyst-copilot.png",
-      "achievements": ["G2 Positioning in 1st Quadrant", "40% cost reduction", "Platform Vision", "CI/CD Pipeline Optimisation", "Explainability", "Tech Branding", "LLM Integration", "Copilot", "Qatalyst MVP", "GTM Strategy", "Figma Integration"]
+      "achievements": ["G2 Positioning in 1st Quadrant", "40% cost reduction", "Platform Vision", "CI/CD Pipeline Optimisation", "Explainability", "Tech Branding", "LLM Integration", "Copilot", "Qatalyst MVP", "GTM Strategy", "PLG", "Figma Integration", "Observability", "Cloud Security"]
     },
     "2023": {
       "title": "Decode: AI-powered Market Research",
       "description": "Led engineering at a Bessemer funded AI Startup. Built a platform for Emotion AI (aka Human Insights) based on Facial Coding, Eye Tracking, Voice Tonality and Mouse Tracking techonolgies. Integrated GPT3.5 APIs for Decode copilot.",
       "organization": "Entropik",
       "logoUri": "/images/logos/entropik.svg",
-      "techStack": ["AWS", "Serverless", "Python", "DynamoDB", "Microservices", "Docker", "Bash", "React", "Tailwind", "Chakra UI", "Jenkins", "LinearB", "Datadog", "Clarity", "LLM", "GPT3.5"],
+      "techStack": ["AWS", "Serverless", "Python", "DynamoDB", "Microservices", "Docker", "Bash", "React", "Tailwind", "Chakra UI", "Jenkins", "LinearB", "Datadog", "Clarity", "LLM"],
       "screenshot": "/images/career-timeline/entropik-copilot.png",
-      "achievements": ["AI-powered Market Research", "Developer Productivity", "Org Building", "DevOps Maturity", "Metrics Driven Org", "Observability", "DORA", "LLM Integration", "Scalable Architecture"]
+      "achievements": ["AI-powered Market Research", "Developer Productivity", "Org Building", "DevOps Maturity", "Metrics Driven Org", "Observability", "DORA", "LLM Integration", "Scalable Architecture", "Cloud Security"]
     },
     "2022": {
       "title": "Vista Lending",
