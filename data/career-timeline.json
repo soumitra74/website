@@ -6,12 +6,21 @@
     "delay": 5000
   },
   "projects": {
+    "2026": {
+      "title": "SVP of Engineering",
+      "description": "Enhancing platform capabilities for Ailinq CMP",
+      "organization": "Airlinq",
+      "logoUri": "/images/logos/zideas.svg",
+      "techStack": ["Java", "React", "PostgreSQL", "Docker", "LLM", "AutoGen" ],
+      "screenshot": "/images/career-timeline/marketlinq.png",
+      "achievements": ["Marketlinq", "Fleet Managaer", "Billing Analytics"]
+    },
     "2025": {
       "title": "Fractional CTO",
       "description": "Leading development of social and business applications leveraging power of LLM and tools",
       "organization": "Knio, Zideas",
       "logoUri": "/images/logos/zideas.svg",
-      "techStack": ["Python", "React", "PostgreSQL", "Docker", "LLM", "GPT4o", "Crew.ai", "Cursor AI", "Elastic Search", "Pinecone"],
+      "techStack": ["Python", "React", "PostgreSQL", "Docker", "LLM", "Perplexity API", "Crew.ai", "Cursor AI", "Elastic Search", "Pinecone"],
       "screenshot": "/images/career-timeline/knio-app.png",
       "achievements": ["RAG system", "Hallucination Reduction", "Agentic AI"]
     },

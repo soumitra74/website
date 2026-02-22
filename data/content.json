@@ -79,7 +79,7 @@
           "Most recently served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
         ],
         "achievement": {
-          "text": "VP of Engineering - Entropik",
+          "text": "SVP; Head of Engineering - Airlinq",
           "icon": "Award"
         }
       },
@@ -101,6 +101,22 @@
     "title": "Experience",
     "subtitle": "Leadership roles at industry-leading organizations",
     "roles": [
+      {
+        "title": "SVP of Engineering",
+        "company": "Airlinq",
+        "duration": "2025-2026",
+        "description": "Head of Engineering for a distributed team working on iOT CMP (Connectivity Management Platform) focusing on new offerings.",
+        "products": [
+          {
+            "name": "Rapid Development Capabilities",
+            "description": "Built two new product lines, Subscription Manager and Fleet Orchestrator, using microservices architecture and modern development practices"
+          },
+          {
+            "name": "GenAI Capabilities",
+            "description": "An agent framework for data exploration and visualisation using text-to-SQL model"
+          }
+        ]
+      },
       {
         "title": "VP of Engineering",
         "company": "Entropik",

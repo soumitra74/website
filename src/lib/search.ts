@@ -3,15 +3,16 @@ import { ContentData } from './content'
 import { ChatbotData, DetailedContentData, ExperienceWithDatesData } from './types'
 import { getDetailedContent } from './content-detailed'
 import { getExperienceWithDates } from './experience-dates'
+import { getCareerTimelineData, CareerTimelineData } from './career-timeline'
 
 // Interface for searchable content items
 interface SearchableItem {
   id: string
-  type: 'experience' | 'portfolio' | 'expertise' | 'training' | 'events' | 'about'
+  type: 'experience' | 'portfolio' | 'expertise' | 'training' | 'events' | 'about' | 'career-timeline'
   title: string
   content: string
   keywords?: string[]
-  source: 'content' | 'chatbot' | 'detailed-content' | 'experience-dates'
+  source: 'content' | 'chatbot' | 'detailed-content' | 'experience-dates' | 'career-timeline'
 }
 
 // Fuse.js options for fuzzy searching - optimized for better accuracy
@@ -344,6 +345,35 @@ function transformExperienceWithDatesToSearchableItems(experienceDates: Experien
   return items
 }
 
+// Transform CareerTimelineData into searchable items
+function transformCareerTimelineToSearchableItems(careerTimeline: CareerTimelineData): SearchableItem[] {
+  const items: SearchableItem[] = []
+
+  // Iterate through the projects object by year
+  Object.entries(careerTimeline.projects).forEach(([year, project]) => {
+    const content = `${project.title} ${project.description} ${project.techStack.join(' ')} ${project.achievements.join(' ')}`
+    const keywords = [
+      project.title.toLowerCase(),
+      year,
+      'career', 'timeline', 'experience', 'role', 'position', 'work', 'project',
+      ...project.techStack.map(tech => tech.toLowerCase()),
+      ...project.achievements.map(achievement => achievement.toLowerCase()),
+      ...content.toLowerCase().split(' ').filter(word => word.length > 3)
+    ]
+
+    items.push({
+      id: `career-timeline-${year}`,
+      type: 'career-timeline',
+      title: project.title,
+      content: content,
+      keywords: keywords,
+      source: 'career-timeline'
+    })
+  })
+
+  return items
+}
+
 // Transform ChatbotData into searchable items with enhanced keywords
 function transformChatbotDataToSearchableItems(chatbotData: ChatbotData): SearchableItem[] {
   const items: SearchableItem[] = []
@@ -411,7 +441,7 @@ export async function searchContent(
   chatbotData: ChatbotData
 ): Promise<{
   results: SearchableItem[]
-  source: 'content' | 'chatbot' | 'both' | 'detailed-content' | 'experience-dates'
+  source: 'content' | 'chatbot' | 'both' | 'detailed-content' | 'experience-dates' | 'career-timeline'
   totalResults: number
 }> {
   if (!query.trim()) {
@@ -427,23 +457,26 @@ export async function searchContent(
   // Fetch and transform additional data sources
   let detailedContentItems: SearchableItem[] = []
   let experienceDatesItems: SearchableItem[] = []
+  let careerTimelineItems: SearchableItem[] = []
   
   try {
-    const [detailedContent, experienceDates] = await Promise.all([
+    const [detailedContent, experienceDates, careerTimeline] = await Promise.all([
       getDetailedContent(),
-      getExperienceWithDates()
+      getExperienceWithDates(),
+      getCareerTimelineData()
     ])
     
     detailedContentItems = transformDetailedContentToSearchableItems(detailedContent)
     experienceDatesItems = transformExperienceWithDatesToSearchableItems(experienceDates)
+    careerTimelineItems = transformCareerTimelineToSearchableItems(careerTimeline)
   } catch (error) {
     console.error('Error fetching additional data sources:', error)
     // Continue with available data
   }
 
   // Create Fuse instances with different configurations for different search strategies
-  const strictFuse = new Fuse([...contentItems, ...detailedContentItems, ...experienceDatesItems], { ...fuseOptions, threshold: 0.4 })
-  const lenientFuse = new Fuse([...contentItems, ...detailedContentItems, ...experienceDatesItems], { ...fuseOptions, threshold: 0.6 })
+  const strictFuse = new Fuse([...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems], { ...fuseOptions, threshold: 0.4 })
+  const lenientFuse = new Fuse([...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems], { ...fuseOptions, threshold: 0.6 })
   const chatbotFuse = new Fuse(chatbotItems, { ...fuseOptions, threshold: 0.5 })
 
   // Try multiple search strategies with different queries
@@ -509,7 +542,7 @@ export async function searchContent(
   }
 
   // Final fallback: very lenient search across all content
-  const allItems = [...contentItems, ...detailedContentItems, ...experienceDatesItems, ...chatbotItems]
+  const allItems = [...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems, ...chatbotItems]
   const fallbackFuse = new Fuse(allItems, { 
     ...fuseOptions, 
     threshold: 0.8,
@@ -532,6 +565,7 @@ export async function searchContent(
       contentItemsCount: contentItems.length,
       detailedContentItemsCount: detailedContentItems.length,
       experienceDatesItemsCount: experienceDatesItems.length,
+      careerTimelineItemsCount: careerTimelineItems.length,
       chatbotItemsCount: chatbotItems.length,
       fallbackMatchesCount: fallbackMatches.length,
       bestResultsCount: bestResults.length,
@@ -571,7 +605,7 @@ export function generateResponseFromSearch(
   // Generate response based on search results
   const topResult = searchResults[0]
   
-  if (topResult.source === 'content' || topResult.source === 'detailed-content' || topResult.source === 'experience-dates') {
+  if (topResult.source === 'content' || topResult.source === 'detailed-content' || topResult.source === 'experience-dates' || topResult.source === 'career-timeline') {
     // Format content-based response with more variety
     switch (topResult.type) {
       case 'experience':
@@ -616,6 +650,14 @@ export function generateResponseFromSearch(
       
       case 'about':
         return topResult.content
+      
+      case 'career-timeline':
+        const timelineResponses = [
+          `In ${topResult.title}, I worked on ${topResult.content}`,
+          `My career timeline includes ${topResult.title}. ${topResult.content}`,
+          `During my career, I was involved in ${topResult.title}. ${topResult.content}`
+        ]
+        return timelineResponses[Math.floor(Math.random() * timelineResponses.length)]
       
       default:
         return topResult.content
