@@ -10,6 +10,13 @@ import { getContentServer } from '@/lib/content-server'
 import { ContentData } from '@/lib/content'
 import Link from 'next/link'
 import { EventPhotoCarousel } from '@/components/event-photo-carousel'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Events & Speaking',
+  description:
+    'Talks, panels, and community events featuring Soumitra Ghosh — sharing insights on engineering leadership, AI, and product building.',
+}
 
 export default async function EventsPage() {
   const content: ContentData = await getContentServer()

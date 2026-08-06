@@ -3,14 +3,18 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ThemeProvider } from '@/components/theme-provider'
+import content from '../../data/content.json'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Engineering Leader - Innovation-Driven Technology Leadership',
-  description: '28 years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.',
-  keywords: 'Engineering Leader, CTO, Technology Leadership, SaaS, Backend Architecture, Cloud Computing, DevOps',
-  authors: [{ name: 'Engineering Leader' }],
+  title: {
+    default: content.metadata.title,
+    template: '%s | Soumitra Ghosh',
+  },
+  description: content.metadata.description,
+  keywords: content.metadata.keywords,
+  authors: [{ name: content.metadata.author }],
 }
 
 export const viewport: Viewport = {
@@ -34,4 +38,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}
