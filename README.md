@@ -1,6 +1,6 @@
 # Engineering Leader Website
 
-A modern, professional website showcasing the portfolio and expertise of an Engineering Leader with 28 years of experience in building scalable SaaS products, leading high-performing teams, and driving innovation across technology stacks.
+A modern, professional website showcasing the portfolio and expertise of an Engineering Leader with 30 years of experience in building scalable SaaS products, leading high-performing teams, and driving innovation across technology stacks.
 
 ## Features
 
