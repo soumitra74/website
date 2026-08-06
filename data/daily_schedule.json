@@ -308,102 +308,232 @@
   },
   "indian_holidays": [
     {
-      "date": "2025-01-26",
-      "name": "Republic Day",
-      "type": "National Holiday"
-    },
-    {
-      "date": "2025-03-08",
-      "name": "Holi",
-      "type": "Religious Holiday"
-    },
-    {
-      "date": "2025-04-14",
-      "name": "Ambedkar Jayanti",
-      "type": "National Holiday"
-    },
-    {
-      "date": "2025-05-01",
-      "name": "Labour Day",
-      "type": "National Holiday"
-    },
-    {
-      "date": "2025-08-15",
-      "name": "Independence Day",
-      "type": "National Holiday"
-    },
-    {
-      "date": "2025-10-02",
-      "name": "Gandhi Jayanti",
-      "type": "National Holiday"
-    },
-    {
-      "date": "2025-11-14",
-      "name": "Children's Day",
-      "type": "National Holiday"
-    },
-    {
-      "date": "2025-12-25",
-      "name": "Christmas",
-      "type": "Religious Holiday"
-    },
-    {
-      "date": "2025-01-15",
+      "date": "2026-01-15",
       "name": "Pongal",
       "type": "Regional Holiday"
     },
     {
-      "date": "2025-02-14",
+      "date": "2026-01-26",
+      "name": "Republic Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2026-02-14",
       "name": "Valentine's Day",
       "type": "Cultural Holiday"
     },
     {
-      "date": "2025-03-25",
+      "date": "2026-03-01",
+      "name": "Maha Shivaratri",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2026-03-28",
+      "name": "Holi",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2026-03-28",
       "name": "Ram Navami",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-04-09",
+      "date": "2026-04-03",
+      "name": "Good Friday",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2026-04-14",
+      "name": "Ambedkar Jayanti",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2026-04-19",
       "name": "Ramadan Eid",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-05-01",
+      "date": "2026-05-01",
+      "name": "Labour Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2026-05-01",
       "name": "Maharashtra Day",
       "type": "Regional Holiday"
     },
     {
-      "date": "2025-06-15",
+      "date": "2026-06-06",
       "name": "Bakrid",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-07-17",
+      "date": "2026-07-27",
       "name": "Muharram",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-08-26",
+      "date": "2026-08-15",
+      "name": "Independence Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2026-08-16",
       "name": "Raksha Bandhan",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-09-07",
+      "date": "2026-08-28",
+      "name": "Krishna Janmashtami",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2026-09-20",
       "name": "Ganesh Chaturthi",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-10-23",
+      "date": "2026-10-02",
+      "name": "Gandhi Jayanti",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2026-10-18",
+      "name": "Dussehra (Vijayadashami)",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2026-11-08",
       "name": "Diwali",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-11-27",
+      "date": "2026-11-17",
       "name": "Guru Nanak Jayanti",
       "type": "Religious Holiday"
     },
     {
-      "date": "2025-12-25",
+      "date": "2026-11-14",
+      "name": "Children's Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2026-12-25",
+      "name": "Christmas",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-01-15",
+      "name": "Pongal",
+      "type": "Regional Holiday"
+    },
+    {
+      "date": "2027-01-26",
+      "name": "Republic Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2027-02-14",
+      "name": "Valentine's Day",
+      "type": "Cultural Holiday"
+    },
+    {
+      "date": "2027-02-17",
+      "name": "Maha Shivaratri",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-03-17",
+      "name": "Holi",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-04-05",
+      "name": "Ram Navami",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-03-26",
+      "name": "Good Friday",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-04-14",
+      "name": "Ambedkar Jayanti",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2027-04-09",
+      "name": "Ramadan Eid",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-05-01",
+      "name": "Labour Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2027-05-01",
+      "name": "Maharashtra Day",
+      "type": "Regional Holiday"
+    },
+    {
+      "date": "2027-05-27",
+      "name": "Bakrid",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-07-17",
+      "name": "Muharram",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-08-15",
+      "name": "Independence Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2027-08-06",
+      "name": "Raksha Bandhan",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-08-18",
+      "name": "Krishna Janmashtami",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-09-09",
+      "name": "Ganesh Chaturthi",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-10-02",
+      "name": "Gandhi Jayanti",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2027-10-08",
+      "name": "Dussehra (Vijayadashami)",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-10-29",
+      "name": "Diwali",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-11-07",
+      "name": "Guru Nanak Jayanti",
+      "type": "Religious Holiday"
+    },
+    {
+      "date": "2027-11-14",
+      "name": "Children's Day",
+      "type": "National Holiday"
+    },
+    {
+      "date": "2027-12-25",
       "name": "Christmas",
       "type": "Religious Holiday"
     }
