@@ -4,10 +4,12 @@ import './globals.css'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ThemeProvider } from '@/components/theme-provider'
 import content from '../../data/content.json'
+import { siteUrl } from '@/lib/site'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: content.metadata.title,
     template: '%s | Soumitra Ghosh',
