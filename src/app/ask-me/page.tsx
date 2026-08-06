@@ -162,6 +162,7 @@ export default function AskMePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ambient:ambient-gradient-bg ambient:dark:ambient-gradient-bg-dark transition-colors duration-300 relative">
+      <h1 className="sr-only">Ask Me</h1>
       <AnimatedBackground />
       
       {/* Navigation */}
