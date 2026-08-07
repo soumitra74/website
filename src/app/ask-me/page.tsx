@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
-import { Send, ArrowLeft, Bot, User, MapPin } from 'lucide-react'
+import { Send, ArrowLeft, Bot, User, MapPin, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ChatTypingIndicator } from '@/components/chat-typing-indicator'
@@ -185,8 +185,8 @@ export default function AskMePage() {
               </Link>
             </div>
             
-            {/* Center CTA */}
-            <div className="flex-1 flex justify-center">
+            {/* Center CTAs */}
+            <div className="flex-1 flex justify-center items-center gap-2 sm:gap-3">
               <Button
                 onClick={handleSpotMeClick}
                 variant="outline"
@@ -195,6 +195,17 @@ export default function AskMePage() {
               >
                 <MapPin className="w-4 h-4 mr-2" />
                 Where is Soumitra?
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-200 shadow-sm hover:shadow-md"
+              >
+                <Link href="/now">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  In The Spotlight
+                </Link>
               </Button>
             </div>
             

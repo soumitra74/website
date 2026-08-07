@@ -10,6 +10,7 @@ const routes: Array<{
   { path: '/events', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/career-timeline', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/ask-me', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/now', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/spot-me', changeFrequency: 'weekly', priority: 0.6 },
 ]
 

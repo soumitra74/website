@@ -1,0 +1,35 @@
+{
+  "title": "Now",
+  "subtitle": "What Soumitra is focused on this month — without a blog post.",
+  "last_updated": "August 2026",
+  "intro": "Inspired by Derek Sivers' /now page. Updated about once a month.",
+  "sections": [
+    {
+      "id": "working-on",
+      "question": "What am I working on?",
+      "icon": "Briefcase",
+      "paragraphs": [
+        "Working on a personal finance manager utility to help me track important account balances and investments at a glance. All previous tools failed to satisfy my needs. So decided to build one just for me.",
+        "Also building a graph-based retrieval-augmented generation (GraphRAG) and agentic AI system designed to run entirely inside a sealed, air-gapped environment — with no external network connectivity at any point."
+      ]
+    },
+    {
+      "id": "learning",
+      "question": "What am I learning?",
+      "icon": "BookOpen",
+      "paragraphs": [
+        "I'm going deep on fine-tuning small language models (SLMs) — the discipline of taking a compact, open-weight model and specializing it for a narrow, high-precision task rather than relying on a large general-purpose model for everything.",
+        "Reading about the history of AI and the future of AI. And how to build a successful AI company."
+      ]
+    },
+    {
+      "id": "excites",
+      "question": "What excites me?",
+      "icon": "Sparkles",
+      "paragraphs": [
+        "The shift from \"AI as a feature\" to \"AI as a teammate\" — especially in domains where domain expertise still matters (connectivity, fintech, research).",
+        "The other constant is space and physics — the kind of \"how does the universe actually work\" content that has nothing to do with a deadline and everything to do with staying curious. Space-time continuum, cosmology, the physics of everyday things — it's the counterweight to the AI deep-dives, and honestly just as fun."
+      ]
+    }
+  ]
+}
