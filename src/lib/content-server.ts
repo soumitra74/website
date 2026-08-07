@@ -1,4 +1,5 @@
 import { ContentData } from './content'
+import { interpolateYearsOfExperience } from './years-of-experience'
 
 // Server-side function for fetching content during build
 export async function getContentServer(): Promise<ContentData> {
@@ -9,7 +10,7 @@ export async function getContentServer(): Promise<ContentData> {
       const path = await import('path')
       const filePath = path.join(process.cwd(), 'data', 'content.json')
       const fileContent = fs.readFileSync(filePath, 'utf-8')
-      return JSON.parse(fileContent)
+      return interpolateYearsOfExperience(JSON.parse(fileContent) as ContentData)
     }
     
     // During development, use the API route
@@ -22,7 +23,7 @@ export async function getContentServer(): Promise<ContentData> {
     }
     
     const content = await response.json()
-    return content
+    return interpolateYearsOfExperience(content as ContentData)
   } catch (error) {
     console.error('Error fetching content:', error)
     throw error

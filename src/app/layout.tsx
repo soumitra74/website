@@ -3,8 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ThemeProvider } from '@/components/theme-provider'
-import content from '../../data/content.json'
+import rawContent from '../../data/content.json'
 import { siteUrl } from '@/lib/site'
+import { interpolateYearsOfExperience } from '@/lib/years-of-experience'
+
+const content = interpolateYearsOfExperience(rawContent)
 
 const inter = Inter({ subsets: ['latin'] })
 

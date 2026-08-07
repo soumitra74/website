@@ -410,10 +410,19 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer — last updated is the build date (static export) */}
       <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 dark:text-slate-500 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
-          <p>{content.footer.copyright}</p>
+          <p>
+            {content.footer.copyright}
+            {' · '}
+            Last updated{' '}
+            {new Date().toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </p>
         </div>
       </footer>
     </div>

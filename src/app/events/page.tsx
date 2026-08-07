@@ -169,7 +169,7 @@ export default async function EventsPage() {
       {/* Footer */}
       <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 dark:text-slate-500 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
-          <p>© 2025 Soumitra Ghosh. All rights reserved.</p>
+          <p>© 2026 Soumitra Ghosh. All rights reserved.</p>
         </div>
       </footer>
     </div>

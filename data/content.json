@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Soumitra Ghosh - SVP of Engineering | Technologist | Builder",
-    "description": "30 years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
+    "description": "{{yearsOfExperience}}+ years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
     "keywords": "SVP of Engineering, Technology Leadership, SaaS, Backend Architecture, Cloud Computing, DevOps, AI/ML, Fintech",
     "author": "Soumitra Ghosh"
   },
@@ -40,7 +40,7 @@
       "main": "Engineering Leader & AI Evangelist",
       "highlight": "Technologist & Builder"
     },
-    "description": "30 years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
+    "description": "{{yearsOfExperience}}+ years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
     "buttons": [
       {
         "text": "Get In Touch",
@@ -75,7 +75,7 @@
       "journey": {
         "title": "Backstory",
         "paragraphs": [
-          "With 30+ years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
+          "With {{yearsOfExperience}}+ years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
           "In the recent past served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
         ],
         "achievement": {
@@ -578,6 +578,6 @@
     ]
   },
   "footer": {
-    "copyright": "© 2025 Soumitra Ghosh. All rights reserved."
+    "copyright": "© 2026 Soumitra Ghosh. All rights reserved."
   }
 } 
