@@ -233,6 +233,7 @@
       }
     ],
     "coding_activities": [
+      "Graph RAG",
       "Review pull requests",
       "Write unit tests",
       "Refactor legacy code",
@@ -257,7 +258,7 @@
   },
   "daily_routines": {
     "weekday": {
-      "8:00": "Wake up and morning routine",
+      "7:00": "Wake up and morning routine",
       "8:30": "Check emails and urgent messages",
       "9:00": "Team standup meeting",
       "9:30": "Deep work - coding/development",
