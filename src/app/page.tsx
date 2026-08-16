@@ -414,14 +414,50 @@ export default async function HomePage() {
 
           <Separator className="bg-slate-700 dark:bg-slate-600 mb-8" />
 
-          <div className="flex justify-center items-center gap-6 text-slate-400 dark:text-slate-500">
-            {content.contact.status.map((status, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <DynamicIcon name={status.icon} className="w-4 h-4" />
-                <span>{status.text}</span>
-              </div>
-            ))}
+          <div className="flex flex-wrap justify-center items-center gap-6 text-slate-400 dark:text-slate-500">
+            {content.contact.status.map((status, index) => {
+              const inner = (
+                <>
+                  <DynamicIcon name={status.icon} className="w-4 h-4" />
+                  <span>{status.text}</span>
+                </>
+              )
+
+              return status.href ? (
+                <a
+                  key={index}
+                  href={status.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-slate-200 transition-colors"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div key={index} className="flex items-center gap-2">
+                  {inner}
+                </div>
+              )
+            })}
           </div>
+
+          {content.contact.github && (
+            <a
+              href={content.contact.github.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 block mx-auto max-w-2xl opacity-90 hover:opacity-100 transition-opacity"
+              aria-label={`${content.contact.github.username} GitHub contributions`}
+            >
+              {/* External contribution calendar; native img avoids next/image remote config */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={content.contact.github.contributionsChartUrl}
+                alt={`${content.contact.github.username} GitHub contribution graph`}
+                className="w-full h-auto"
+              />
+            </a>
+          )}
         </div>
       </section>
 

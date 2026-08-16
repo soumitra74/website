@@ -144,7 +144,13 @@ export interface ContentData {
     status: Array<{
       text: string
       icon: string
+      href?: string
     }>
+    github?: {
+      username: string
+      profileUrl: string
+      contributionsChartUrl: string
+    }
   }
   footer: {
     copyright: string

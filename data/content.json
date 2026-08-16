@@ -483,8 +483,18 @@
       {
         "text": "Open to New Opportunities",
         "icon": "Calendar"
+      },
+      {
+        "text": "GitHub",
+        "icon": "Github",
+        "href": "https://github.com/soumitra74"
       }
-    ]
+    ],
+    "github": {
+      "username": "soumitra74",
+      "profileUrl": "https://github.com/soumitra74",
+      "contributionsChartUrl": "https://gh-heat.anishroy.com/api/soumitra74/svg?darkMode=true&transparent=true&showLegend=false&colors=1e293b,065f46,047857,10b981,34d399"
+    }
   },
   "events": {
     "title": "Events & Speaking",
