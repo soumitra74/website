@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowLeft, Calendar, MapPin, Users, ExternalLink, Mail } from 'lucide-react'
+import { ArrowLeft, Calendar, MapPin, Users, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -10,6 +10,7 @@ import { getContentServer } from '@/lib/content-server'
 import { ContentData } from '@/lib/content'
 import Link from 'next/link'
 import { EventPhotoCarousel } from '@/components/event-photo-carousel'
+import { EventSlidesViewer } from '@/components/event-slides-viewer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -124,6 +125,10 @@ export default async function EventsPage() {
                       ))}
                     </ul>
                   </div>
+
+                  {event.slides && (
+                    <EventSlidesViewer url={event.slides} title={event.title} />
+                  )}
                 </CardContent>
               </Card>
             ))}

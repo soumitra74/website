@@ -129,6 +129,7 @@ export interface ContentData {
       image: string
       photos?: string[]
       tags: string[]
+      slides?: string
       highlights: string[]
     }>
   }

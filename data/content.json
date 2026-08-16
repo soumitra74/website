@@ -549,9 +549,11 @@
           "/images/events/ProductTank2004-banner.jpg"
         ],
         "tags": ["Product Management", "Market Research", "Emotion AI"],
+        "slides": "https://drive.google.com/file/d/1Mlc4x6Gcuz8LvPcf_ANTtnNpTL3FGJwS/preview",
         "highlights": [
           "Uncovering the transformative power of user analytics on business decisions",
           "Product Prioritisation principles and frameworks",
+          "Emotion AI and its applications",
           "Community building and networking"
         ]
       },
@@ -582,7 +584,7 @@
         "date": "December 2024",
         "location": "Bangalore, India",
         "description": "GenAI",
-        "role": "Panelist",
+        "role": "Tech Talk; Panelist",
         "attendees": "300+",
         "institution": "Visionet",
         "image": "/images/events/visionet-summit.png",
@@ -590,9 +592,33 @@
           "/images/events/visionet-summit.png"
         ],
         "tags": ["LLM", "Innovation", "Future Trends"],
+        "slides": "https://drive.google.com/file/d/1rUUMXW3SrW9mwwV1fuuH7PZnwnq7nyvB/preview",
         "highlights": [
+          "Technical talk on GenAI and its applications",
           "Innovation showcase and demos",
-          "Strategic discussions on industry evolution"
+          "Strategic discussions on industry evolution and impact of GenAI"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Fresher Welcome Event",
+        "type": "Speech",
+        "date": "July 2026",
+        "location": "Bangalore, India",
+        "description": "Industry Expert Talk to Freshers on First Day of their Engineering Journey",
+        "role": "Speaker",
+        "attendees": "200+",
+        "institution": "Amruta University",
+        "image": "/images/events/datadog-live-banner.jpg",
+        "photos": [
+          "/images/events/datadog-live-banner.jpg"
+        ],
+        "tags": ["Motivational", "GenAI", "Industry Insights"],
+        "slides": "https://docs.google.com/presentation/d/1pPE-AoAnMGRFoqT-8minG2esvkUcGY231G29IIj3zS0/embed?start=false&loop=false&delayms=3000",
+        "highlights": [
+          "Motivational talk on first day of engineering journey",
+          "Industry insights and future trends",
+          "GenAI and its applications"
         ]
       }
     ]
