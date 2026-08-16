@@ -234,7 +234,12 @@
       {
         "name": "Tom Scott",
         "url": "https://www.youtube.com/@TomScottGo"
+      },
+      {
+        "name": "Alex Ziskind",
+        "url": "https://www.youtube.com/@AZisk"
       }
+
     ],
     "coding_activities": [
       "Graph RAG",
