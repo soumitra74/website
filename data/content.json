@@ -569,6 +569,7 @@
         "institution": "SAP",
         "image": "/images/events/SAPProductDay-group.jpg",
         "photos": [
+          "/images/events/SAPProductDay-group.jpg",
           "/images/events/SAPProductDay-banner.jpg"
         ],
         "tags": ["Product Management", "Entropik", "Technology"],
@@ -611,7 +612,6 @@
         "institution": "Amruta University",
         "image": "/images/events/datadog-live-banner.jpg",
         "photos": [
-          "/images/events/datadog-live-banner.jpg"
         ],
         "tags": ["Motivational", "GenAI", "Industry Insights"],
         "slides": "https://docs.google.com/presentation/d/1pPE-AoAnMGRFoqT-8minG2esvkUcGY231G29IIj3zS0/embed?start=false&loop=false&delayms=3000",
