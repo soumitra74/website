@@ -388,7 +388,7 @@ export default async function HomePage() {
                 size="lg"
                 className={`${
                   button.variant === 'primary' 
-                    ? 'bg-emerald-600 hover:bg-emerald-700' 
+                    ? 'bg-emerald-600 hover:bg-emerald-700 text-white' 
                     : button.text === 'LinkedIn Profile'
                       ? 'border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-transparent'
                       : button.text === 'Medium Profile'
