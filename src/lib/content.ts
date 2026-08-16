@@ -105,6 +105,7 @@ export interface ContentData {
       duration: string
       description: string
       achievement?: string
+      logo?: string
     }>
   }
   events: {

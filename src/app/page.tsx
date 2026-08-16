@@ -338,8 +338,23 @@ export default async function HomePage() {
             {content.training.certifications.map((cert, index) => (
               <Card key={index} className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
                 <CardHeader>
-                  <CardTitle className="text-xl dark:text-white transition-colors">{cert.title}</CardTitle>
-                  <CardDescription className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 transition-colors">{cert.institution}</CardDescription>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0 space-y-1.5">
+                      <CardTitle className="text-xl dark:text-white transition-colors">{cert.title}</CardTitle>
+                      <CardDescription className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 transition-colors">{cert.institution}</CardDescription>
+                    </div>
+                    {cert.logo && (
+                      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-white p-1 ring-1 ring-slate-200 dark:ring-white/20">
+                        <Image
+                          src={cert.logo}
+                          alt={`${cert.institution} logo`}
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-300 mb-4 transition-colors">{cert.description}</p>

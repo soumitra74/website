@@ -426,19 +426,29 @@
         "institution": "IIT Kharagpur",
         "duration": "1992-1996",
         "description": "Bachelor of Technology in Electronics Engineering",
-        "achievement": "AIR: 255"
+        "achievement": "AIR: 255",
+        "logo": "/images/career-timeline/iitkgp-logo.png"
       },
       {
         "title": "Executive Education",
         "institution": "ISB CTO Program",
-        "duration": "July 2024",
-        "description": "Chief Technology Officer Executive Program"
+        "duration": "Jan-July 2024",
+        "description": "Chief Technology Officer Executive Program",
+        "logo": "/images/career-timeline/isb-logo-mark.png"
       },
       {
         "title": "GenAI for Business Leaders",
         "institution": "Great Learning Institute",
-        "duration": "Feb 2025",
-        "description": "Generative AI for Business Leadership and Strategy"
+        "duration": "Nov 2024 - Feb 2025",
+        "description": "Generative AI for Business Leadership and Strategy",
+        "logo": "/images/career-timeline/greatlearning-logo-mark.png"
+      },
+      {
+        "title": "Certificate Program in Agentic AI",
+        "institution": "Johns Hopkins University",
+        "duration": "Mar-Aug 2026",
+        "description": "Generative AI for Business Leadership and Strategy",
+        "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
       }
     ]
   },
