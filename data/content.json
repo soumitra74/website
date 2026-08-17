@@ -76,7 +76,7 @@
         "title": "Backstory",
         "paragraphs": [
           "With {{yearsOfExperience}}+ years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
-          "In the recent past served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
+          "In the recent past I served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
         ],
         "achievement": {
           "text": "SVP; Head of Engineering - Airlinq",
@@ -129,7 +129,7 @@
           },
           {
             "name": "GenAI Integration",
-            "description": "Integrated GenAI using GPT3.5 with LangChain for text summarization, knowledge graph, image stiching, data analytics and copilot"
+            "description": "Integrated GenAI using GPT3.5 with LangChain for text summarization, knowledge graph, image stitching, data analytics and copilot"
           }
         ]
       },
@@ -153,7 +153,7 @@
         "title": "Director of Engineering",
         "company": "Razorpay",
         "duration": "2019-2020",
-        "description": "Led RazorpayX API Banking platform for early product-market fit, built payout microservices with layered approval workflows and dyanmic routing.",
+        "description": "Led RazorpayX API Banking platform for early product-market fit, built payout microservices with layered approval workflows and dynamic routing.",
         "companies": [
           {
             "name": "RazorpayX",
@@ -173,7 +173,7 @@
         "companies": [
           {
             "name": "Redesigned Reports",
-            "description": "Re-architected reporting stack in SPA (Single Page Architecture"
+            "description": "Re-architected reporting stack in SPA (Single Page Architecture)"
           },
           {
             "name": "Target State Architecture",
@@ -193,15 +193,15 @@
         "companies": [
           {
             "name": "Operative.One",
-            "description": "Architecture odernisation from legacy LAMP to SpringBoot based SoA"
+            "description": "Architecture modernisation from legacy LAMP to SpringBoot based SoA."
           },
           {
             "name": "DW & BI",
-            "description": "Integrated MSBI stack for Reports, Dashboards, Data Feeds and Multi Dimensional Analytics"
+            "description": "Integrated MSBI stack for Reports, Dashboards, Data Feeds and Multi Dimensional Analytics."
           },
           {
             "name": "GCC Growth",
-            "description": "Scaled team from 0 to 15+ engineers"
+            "description": "Scaled team from 0 to 15+ engineers."
           }
         ]
       },
@@ -213,11 +213,11 @@
         "companies": [
           {
             "name": "Enterprise BI",
-            "description": "Incubated Guided Analysis for Self Service Reporting"
+            "description": "Incubated Guided Analysis for Self Service Reporting."
           },
           {
             "name": "Offshore Delivery",
-            "description": "US and India team coordination"
+            "description": "US and India team coordination."
           }
         ]
       },
@@ -228,12 +228,12 @@
         "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products",
         "companies": [
           {
-            "name": "Webpage Viwer",
+            "name": "Webpage Viewer",
             "description": "Coded an HTML and JS parser and a reverse-proxy for a webscraping portlet with CTA"
           },
           {
             "name": "Hyperion Planning & Scorecard",
-            "description": "Integrated Hyperion Planning and Hyperion Scorecard views while maintaing browser interactions"
+            "description": "Integrated Hyperion Planning and Hyperion Scorecard views while maintaining browser interactions"
           },
           {
             "name": "SPA Migration",
@@ -261,7 +261,7 @@
         "title": "Software Engineer",
         "company": "IBM Global Services",
         "duration": "1996-1998",
-        "description": "Early-career experience in Java in Java Beans around the World project",
+        "description": "Early-career experience in Java Beans around the World project",
         "companies": [
           {
             "name": "IBM Alphaworks",
@@ -577,7 +577,7 @@
         "type": "Brown Bag Session",
         "date": "November 2023",
         "location": "Bangalore, India",
-        "description": "Impact of AI solutions in product managagment in enterprise",
+        "description": "Impact of AI solutions in product managegment in enterprise",
         "role": "Panelist",
         "attendees": "30+",
         "institution": "SAP",
@@ -633,7 +633,7 @@
         "tags": ["Motivational", "GenAI", "Industry Insights"],
         "slides": "https://docs.google.com/presentation/d/1pPE-AoAnMGRFoqT-8minG2esvkUcGY231G29IIj3zS0/embed?start=false&loop=false&delayms=3000",
         "highlights": [
-          "Inaugration Ceremony for ECE batch of students of Amrita University",
+          "Inauguration Ceremony for ECE batch of students of Amrita University",
           "Motivational talk on first day of engineering journey",
           "Industry insights and future trends",
           "GenAI and its applications"
@@ -667,7 +667,7 @@
         "type": "Presentation",
         "date": "June 2021",
         "location": "Online",
-        "description": "Capstone project presentation AI for Business Leaders coursework",
+        "description": "Capstone project presentation for AI for Business Leaders coursework",
         "role": "Learner",
         "institution": "Udacity for Enterprise",
         "image": "/images/events/udacity-enterprise-logo.jpg",
