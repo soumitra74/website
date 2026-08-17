@@ -70,7 +70,7 @@ export default async function EventsPage() {
              {content.events.events.map((event, index) => (
               <Card key={event.id} className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
                 <div className="relative">
-                  <EventPhotoCarousel photos={event.photos || [event.image]} />
+                  <EventPhotoCarousel photos={event.photos?.length ? event.photos : [event.image]} />
                   <Badge className="absolute top-4 right-4 bg-emerald-600 text-white z-10">
                     {event.role}
                   </Badge>

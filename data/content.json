@@ -432,7 +432,7 @@
       {
         "title": "Executive Education",
         "institution": "ISB CTO Program",
-        "duration": "Jan-July 2024",
+        "duration": "Jan-June 2024",
         "description": "Chief Technology Officer Executive Program",
         "logo": "/images/career-timeline/isb-logo-mark.png"
       },
@@ -449,6 +449,20 @@
         "duration": "Mar-Aug 2026",
         "description": "Generative AI for Business Leadership and Strategy",
         "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
+      },
+      {
+        "title": "AI Nanodegree for Business Leaders",
+        "institution": "Udacity for Enterprise",
+        "duration": "Mar-Aug 2026",
+        "description": "Generative AI for Business Leadership and Strategy",
+        "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
+      },
+      {
+        "title": "Certification in Big Data Analytics",
+        "institution": "Unicom Learning",
+        "duration": "July 2013",
+        "description": "Big Data Analytics – 2 Day Intensive Lab Based Workshop",
+        "logo": "/images/career-timeline/unicom-learning-logo.jpg"
       }
     ]
   },
@@ -602,23 +616,70 @@
       },
       {
         "id": 5,
-        "title": "Fresher Welcome Event",
+        "title": "Amrita Swagatham 2026",
         "type": "Speech",
         "date": "July 2026",
         "location": "Bangalore, India",
         "description": "Industry Expert Talk to Freshers on First Day of their Engineering Journey",
-        "role": "Speaker",
+        "role": "Chief Guest",
         "attendees": "200+",
-        "institution": "Amruta University",
-        "image": "/images/events/datadog-live-banner.jpg",
+        "institution": "Amrita University",
+        "image": "/images/events/amrita-event-1.jpg",
         "photos": [
+          "/images/events/amrita-event-1.jpg",
+          "/images/events/amrita-talk-1.jpg",
+          "/images/events/amrita-talk-2.jpg"
         ],
         "tags": ["Motivational", "GenAI", "Industry Insights"],
         "slides": "https://docs.google.com/presentation/d/1pPE-AoAnMGRFoqT-8minG2esvkUcGY231G29IIj3zS0/embed?start=false&loop=false&delayms=3000",
         "highlights": [
+          "Inaugration Ceremony for ECE batch of students of Amrita University",
           "Motivational talk on first day of engineering journey",
           "Industry insights and future trends",
           "GenAI and its applications"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Market Research Fraud Detection",
+        "type": "Presentation",
+        "date": "June 2024",
+        "location": "Online",
+        "description": "Capstone project presentation on Market Research Fraud Detection",
+        "role": "Learner",
+        "attendees": "50+",
+        "institution": "ISB Executive Education",
+        "image": "/images/events/isb-cto-program.jpg",
+        "photos": [
+          "/images/events/isb-cto-program.jpg"
+        ],
+        "tags": ["MarTech", "Fraud", "GenAI"],
+        "slides": "https://docs.google.com/presentation/d/13yNxSRBqZOSaeca_MShqeZc6sxU8Cy2Y/embed?start=false&loop=false&delayms=3000",
+        "highlights": [
+          "Market Research Fraud Detection using GenAI",
+          "Fraud detection techniques and applications",
+          "Guardrails and mitigation strategies"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Delivering an AI/ML Strategy",
+        "type": "Presentation",
+        "date": "June 2021",
+        "location": "Online",
+        "description": "Capstone project presentation AI for Business Leaders coursework",
+        "role": "Learner",
+        "institution": "Udacity for Enterprise",
+        "image": "/images/events/datadog-live-banner.jpg",
+        "photos": [
+        ],
+        "tags": ["MarTech", "Fraud", "GenAI"],
+        "slides": "https://docs.google.com/presentation/d/1XImyU4lgmLiBhAaZ4MkFbZDBUlun6HWG/embed?start=false&loop=false&delayms=3000",
+        "highlights": [
+          "Structured methodology for delivering an AI/ML Strategy",
+          "5V Framework, Complexity Analysis, and Risk Assessment",
+          "Architectural components of a Failure Predictor",
+          "Architectural components of a Grid Optimiser"
         ]
       }
     ]
