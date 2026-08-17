@@ -76,7 +76,7 @@
         "title": "Backstory",
         "paragraphs": [
           "With {{yearsOfExperience}}+ years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
-          "In the recent past I served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
+          "In the recent past I served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously I built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
         ],
         "achievement": {
           "text": "SVP; Head of Engineering - Airlinq",
@@ -99,13 +99,13 @@
   },
   "experience": {
     "title": "Context",
-    "subtitle": "Leadership roles at industry-leading organizations",
+    "subtitle": "Leadership roles at industry-leading organisations",
     "roles": [
       {
         "title": "SVP of Engineering",
         "company": "Airlinq",
         "duration": "2025-2026",
-        "description": "Head of Engineering for a distributed team working on iOT CMP (Connectivity Management Platform) focusing on new offerings.",
+        "description": "Head of Engineering for a distributed team working on IoT CMP (Connectivity Management Platform) focusing on new offerings.",
         "products": [
           {
             "name": "Rapid Development Capabilities",
@@ -129,7 +129,7 @@
           },
           {
             "name": "GenAI Integration",
-            "description": "Integrated GenAI using GPT3.5 with LangChain for text summarization, knowledge graph, image stitching, data analytics and copilot"
+            "description": "Integrated GenAI using GPT-3.5 with LangChain for text summarisation, knowledge graph, image stitching, data analytics and copilot"
           }
         ]
       },
@@ -169,7 +169,7 @@
         "title": "Senior Development Manager",
         "company": "Intuit",
         "duration": "2013-2018",
-        "description": "Headed engineering for QBO Reporting, focusing on modularity, personalization, and conversational data interfaces.",
+        "description": "Headed engineering for QBO Reporting, focusing on modularity, personalisation, and conversational data interfaces.",
         "companies": [
           {
             "name": "Redesigned Reports",
@@ -189,15 +189,15 @@
         "title": "Senior Development Manager",
         "company": "Operative Media",
         "duration": "2008-2013",
-        "description": "Led the BI and analytics re-architecture for Operative.One and scaled the India engineering center.",
+        "description": "Led the BI and analytics re-architecture for Operative.One and scaled the India engineering centre.",
         "companies": [
           {
             "name": "Operative.One",
-            "description": "Architecture modernisation from legacy LAMP to SpringBoot based SoA."
+            "description": "Architecture modernisation from legacy LAMP to Spring Boot based SOA."
           },
           {
             "name": "DW & BI",
-            "description": "Integrated MSBI stack for Reports, Dashboards, Data Feeds and Multi Dimensional Analytics."
+            "description": "Integrated MSBI stack for Reports, Dashboards, Data Feeds and Multi-Dimensional Analytics."
           },
           {
             "name": "GCC Growth",
@@ -209,11 +209,11 @@
         "title": "Engineering Manager",
         "company": "Symphony Services (Hyperion IDC)",
         "duration": "2005-2008",
-        "description": "Led offshore delivery strategy for Hyperion (Oracle) via Symphony Services, incubated Guided Analysis for adaptive visualizations.",
+        "description": "Led offshore delivery strategy for Hyperion (Oracle) via Symphony Services, incubated Guided Analysis for adaptive visualisations.",
         "companies": [
           {
             "name": "Enterprise BI",
-            "description": "Incubated Guided Analysis for Self Service Reporting."
+            "description": "Incubated Guided Analysis for Self-Service Reporting."
           },
           {
             "name": "Offshore Delivery",
@@ -225,11 +225,11 @@
         "title": "Senior Engineer",
         "company": "Hyperion Solutions (Oracle)",
         "duration": "2000-2005",
-        "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products",
+        "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products."
         "companies": [
           {
             "name": "Webpage Viewer",
-            "description": "Coded an HTML and JS parser and a reverse-proxy for a webscraping portlet with CTA"
+            "description": "Coded an HTML and JS parser and a reverse-proxy for a web scraping portlet with CTA"
           },
           {
             "name": "Hyperion Planning & Scorecard",
@@ -245,15 +245,15 @@
         "title": "Senior Engineer",
         "company": "CES Computer Solutions (ServiceSpan)",
         "duration": "1998-2000",
-        "description": "Built point solutions for Bell South, implemented state machine in Java for provisioning voice mail boxes",
+        "description": "Built point solutions for BellSouth, implemented a state machine in Java for provisioning voicemail boxes."
         "companies": [
           {
-            "name": "Bell South Projects",
+            "name": "BellSouth Projects",
             "description": "Voice mail provisioning system"
           },
           {
             "name": "Admin Console",
-            "description": "Realtime monitoring for remote services (Java Swing application)"
+            "description": "Real-time monitoring for remote services (Java Swing application)"
           }
         ]
       },
@@ -261,11 +261,11 @@
         "title": "Software Engineer",
         "company": "IBM Global Services",
         "duration": "1996-1998",
-        "description": "Early-career experience in Java Beans around the World project",
+        "description": "Early-career experience in the JavaBeans Around the World project."
         "companies": [
           {
-            "name": "IBM Alphaworks",
-            "description": "Built complex Project Management Partpaks like Gantt Chart and Work Breakdown Structure"
+            "name": "IBM alphaWorks",
+            "description": "Built complex Project Management PartPaks like Gantt Chart and Work Breakdown Structure"
           }
         ]
       }
@@ -279,9 +279,9 @@
         "name": "Entropik AI Platform",
         "type": "AI-First Consumer Research",
         "image": "decode.png",
-        "description": "AI-powered consumer research platform with GenAI integrations for real-time emotion and behavior analytics",
+        "description": "AI-powered consumer research platform with GenAI integrations for real-time emotion and behaviour analytics",
         "challenge": "Traditional research methods were time-consuming and provided limited insights. Brands needed real-time, accurate emotional analytics with AI-native experiences.",
-        "solution": "Led the development of an AI-first platform with gaze tracking, video summarization, and GenAI integration using AWS Bedrock and LangChain. Built scalable microservices architecture for video content analysis.",
+        "solution": "Led the development of an AI-first platform with gaze tracking, video summarisation, and GenAI integration using AWS Bedrock and LangChain. Built scalable microservices architecture for video content analysis.",
         "technologies": [
           "Python",
           "FastAPI",
@@ -298,7 +298,7 @@
         },
         "achievements": [
           "Transformed legacy workflows into AI-native experiences",
-          "Integrated GenAI for knowledge graph and summarization",
+          "Integrated GenAI for knowledge graph and summarisation",
           "Built RAG-based assistant",
           "DORA Elite engineering practices around CI/CD and observability"
         ]
@@ -403,7 +403,7 @@
       {
         "title": "Cloud Architecture",
         "icon": "Cloud",
-        "description": "Cloud-native architectures and infrastructure optimization across AWS and other platforms"
+        "description": "Cloud-native architectures and infrastructure optimisation across AWS and other platforms"
       },
       {
         "title": "Product Strategy",
@@ -447,14 +447,14 @@
         "title": "Certificate Program in Agentic AI",
         "institution": "Johns Hopkins University",
         "duration": "Mar-Aug 2026",
-        "description": "Generative AI for Business Leadership and Strategy",
+        "description": "Agentic AI implementation practical guide",
         "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
       },
       {
         "title": "AI Nanodegree for Business Leaders",
         "institution": "Udacity for Enterprise",
         "duration": "Mar-Aug 2026",
-        "description": "Generative AI for Business Leadership and Strategy",
+        "description": "Practical AI/ML strategy and implementation",
         "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
       },
       {
@@ -543,7 +543,7 @@
         "tags": ["Observability", "Monitoring", "Engineering Culture"],
         "highlights": [
           "Panel discussion on modern monitoring strategies",
-          "Managing and nurturing high performing teams",
+          "Managing and nurturing high-performing teams"
           "DevSecOps and Observability"
         ]
       },
@@ -553,7 +553,7 @@
         "type": "Community Event",
         "date": "February 2024",
         "location": "Bangalore, India",
-        "description": "Leveraging User Metrics for Effective Product Prioritization",
+        "description": "Leveraging User Metrics for Effective Product Prioritisation",
         "role": "Speaker",
         "attendees": "30+",
         "institution": "Product Tank",
@@ -577,7 +577,7 @@
         "type": "Brown Bag Session",
         "date": "November 2023",
         "location": "Bangalore, India",
-        "description": "Impact of AI solutions in product managegment in enterprise",
+        "description": "Impact of AI solutions in product management in the enterprise",
         "role": "Panelist",
         "attendees": "30+",
         "institution": "SAP",
