@@ -225,7 +225,7 @@
         "title": "Senior Engineer",
         "company": "Hyperion Solutions (Oracle)",
         "duration": "2000-2005",
-        "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products."
+        "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products.",
         "companies": [
           {
             "name": "Webpage Viewer",
@@ -245,7 +245,7 @@
         "title": "Senior Engineer",
         "company": "CES Computer Solutions (ServiceSpan)",
         "duration": "1998-2000",
-        "description": "Built point solutions for BellSouth, implemented a state machine in Java for provisioning voicemail boxes."
+        "description": "Built point solutions for BellSouth, implemented a state machine in Java for provisioning voicemail boxes.",
         "companies": [
           {
             "name": "BellSouth Projects",
@@ -261,7 +261,7 @@
         "title": "Software Engineer",
         "company": "IBM Global Services",
         "duration": "1996-1998",
-        "description": "Early-career experience in the JavaBeans Around the World project."
+        "description": "Early-career experience in the JavaBeans Around the World project.",
         "companies": [
           {
             "name": "IBM alphaWorks",
@@ -363,7 +363,7 @@
       "description": "Under my engineering leadership, multiple products achieved market-leading positions and significant business impact across fintech and AI domains",
       "metrics": [
         {
-          "value": "4",
+          "value": "5",
           "label": "Zero-to-One Builds"
         },
         {
@@ -422,10 +422,10 @@
     "subtitle": "Continuous learning and professional development",
     "certifications": [
       {
-        "title": "B. Tech. (Electronics)",
+        "title": "B. Tech. (ECE)",
         "institution": "IIT Kharagpur",
         "duration": "1992-1996",
-        "description": "Bachelor of Technology in Electronics Engineering",
+        "description": "Bachelor of Technology in Electronics and Communication Engineering",
         "achievement": "AIR: 255",
         "logo": "/images/career-timeline/iitkgp-logo.png"
       },
@@ -453,9 +453,9 @@
       {
         "title": "AI Nanodegree for Business Leaders",
         "institution": "Udacity for Enterprise",
-        "duration": "Mar-Aug 2026",
+        "duration": "Aug 2021-Aug 2022",
         "description": "Practical AI/ML strategy and implementation",
-        "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
+        "logo": "/images/career-timeline/udacity-logo-small.png"
       },
       {
         "title": "Certification in Big Data Analytics",
@@ -543,7 +543,7 @@
         "tags": ["Observability", "Monitoring", "Engineering Culture"],
         "highlights": [
           "Panel discussion on modern monitoring strategies",
-          "Managing and nurturing high-performing teams"
+          "Managing and nurturing high-performing teams",
           "DevSecOps and Observability"
         ]
       },
