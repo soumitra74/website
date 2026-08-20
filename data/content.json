@@ -106,7 +106,7 @@
         "company": "Airlinq",
         "duration": "2025-2026",
         "description": "Head of Engineering for a distributed team working on IoT CMP (Connectivity Management Platform) focusing on new offerings.",
-        "products": [
+        "highlights": [
           {
             "name": "Rapid Development Capabilities",
             "description": "Built two new product lines, Subscription Manager and Fleet Orchestrator, using microservices architecture and modern development practices"
@@ -122,7 +122,7 @@
         "company": "Entropik",
         "duration": "2022-2024",
         "description": "Led engineering for AI-first consumer research platform, managing full-stack product development and GenAI integrations.",
-        "products": [
+        "highlights": [
           {
             "name": "AI Research Platform",
             "description": "Transformed legacy research workflows into AI-native experiences with facial coding, voice tonality, gaze tracking, STT and mouse tracking"
@@ -138,7 +138,7 @@
         "company": "PayU",
         "duration": "2020-2022",
         "description": "Zero-to-one build of the neo banking platform for PayU, architected Vista platform and led GTM strategy.",
-        "companies": [
+        "highlights": [
           {
             "name": "Vista Platform",
             "description": "Neo Banking Platform"
@@ -154,7 +154,7 @@
         "company": "Razorpay",
         "duration": "2019-2020",
         "description": "Led RazorpayX API Banking platform for early product-market fit, built payout microservices with layered approval workflows and dynamic routing.",
-        "companies": [
+        "highlights": [
           {
             "name": "RazorpayX",
             "description": "API Banking Platform"
@@ -170,7 +170,7 @@
         "company": "Intuit",
         "duration": "2013-2018",
         "description": "Headed engineering for QBO Reporting, focusing on modularity, personalisation, and conversational data interfaces.",
-        "companies": [
+        "highlights": [
           {
             "name": "Redesigned Reports",
             "description": "Re-architected reporting stack in SPA (Single Page Architecture)"
@@ -190,7 +190,7 @@
         "company": "Operative Media",
         "duration": "2008-2013",
         "description": "Led the BI and analytics re-architecture for Operative.One and scaled the India engineering centre.",
-        "companies": [
+        "highlights": [
           {
             "name": "Operative.One",
             "description": "Architecture modernisation from legacy LAMP to Spring Boot based SOA."
@@ -210,7 +210,7 @@
         "company": "Symphony Services (Hyperion IDC)",
         "duration": "2005-2008",
         "description": "Led offshore delivery strategy for Hyperion (Oracle) via Symphony Services, incubated Guided Analysis for adaptive visualisations.",
-        "companies": [
+        "highlights": [
           {
             "name": "Enterprise BI",
             "description": "Incubated Guided Analysis for Self-Service Reporting."
@@ -226,7 +226,7 @@
         "company": "Hyperion Solutions (Oracle)",
         "duration": "2000-2005",
         "description": "Built interactive portlets for an enterprise portal solution for all of Hyperion's products.",
-        "companies": [
+        "highlights": [
           {
             "name": "Webpage Viewer",
             "description": "Coded an HTML and JS parser and a reverse-proxy for a web scraping portlet with CTA"
@@ -246,7 +246,7 @@
         "company": "CES Computer Solutions (ServiceSpan)",
         "duration": "1998-2000",
         "description": "Built point solutions for BellSouth, implemented a state machine in Java for provisioning voicemail boxes.",
-        "companies": [
+        "highlights": [
           {
             "name": "BellSouth Projects",
             "description": "Voice mail provisioning system"
@@ -262,7 +262,7 @@
         "company": "IBM Global Services",
         "duration": "1996-1998",
         "description": "Early-career experience in the JavaBeans Around the World project.",
-        "companies": [
+        "highlights": [
           {
             "name": "IBM alphaWorks",
             "description": "Built complex Project Management PartPaks like Gantt Chart and Work Breakdown Structure"

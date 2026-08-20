@@ -89,15 +89,9 @@ function transformContentDataToSearchableItems(contentData: ContentData): Search
         )
       ]
       
-      // Add products and companies as keywords if available
-      if (role.products) {
-        role.products.forEach(product => {
-          roleKeywords.push(product.name.toLowerCase(), product.description.toLowerCase())
-        })
-      }
-      if (role.companies) {
-        role.companies.forEach(company => {
-          roleKeywords.push(company.name.toLowerCase(), company.description.toLowerCase())
+      if (role.highlights) {
+        role.highlights.forEach(highlight => {
+          roleKeywords.push(highlight.name.toLowerCase(), highlight.description.toLowerCase())
         })
       }
       

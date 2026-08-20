@@ -53,11 +53,7 @@ export interface ContentData {
       company: string
       duration?: string
       description?: string
-      products?: Array<{
-        name: string
-        description: string
-      }>
-      companies?: Array<{
+      highlights?: Array<{
         name: string
         description: string
       }>

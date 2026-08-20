@@ -171,22 +171,12 @@ export default async function HomePage() {
                       {role.description}
                     </p>
                   )}
-                  {role.products && (
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {role.products.map((product, productIndex) => (
-                        <div key={productIndex} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                          <span className="font-semibold dark:text-white transition-colors">{product.name}</span> - <span className="dark:text-slate-300 transition-colors">{product.description}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {role.companies && (
-                    <div className="grid md:grid-cols-3 gap-6">
-                      {role.companies.map((company, companyIndex) => (
-                        <div key={companyIndex} className="text-center p-4 bg-slate-50 dark:bg-slate-700 ambient:glass-card ambient:dark:glass-card-dark rounded-lg transition-colors">
-                          <div className="font-bold text-lg text-slate-900 dark:text-white transition-colors">{company.name}</div>
-                          <p className="text-slate-600 dark:text-slate-300 text-sm transition-colors">{company.description}</p>
+                  {role.highlights && (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {role.highlights.map((highlight, highlightIndex) => (
+                        <div key={highlightIndex} className="text-center p-4 bg-slate-50 dark:bg-slate-700 ambient:glass-card ambient:dark:glass-card-dark rounded-lg transition-colors">
+                          <div className="font-bold text-lg text-slate-900 dark:text-white transition-colors">{highlight.name}</div>
+                          <p className="text-slate-600 dark:text-slate-300 text-sm transition-colors">{highlight.description}</p>
                         </div>
                       ))}
                     </div>
