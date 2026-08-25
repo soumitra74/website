@@ -628,7 +628,8 @@
         "photos": [
           "/images/events/amrita-event-1.jpg",
           "/images/events/amrita-talk-1.jpg",
-          "/images/events/amrita-talk-2.jpg"
+          "/images/events/amrita-talk-2.jpg",
+          "/images/events/amrita-talk-3.jpg"
         ],
         "tags": ["Motivational", "GenAI", "Industry Insights"],
         "slides": "https://docs.google.com/presentation/d/1pPE-AoAnMGRFoqT-8minG2esvkUcGY231G29IIj3zS0/embed?start=false&loop=false&delayms=3000",
