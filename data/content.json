@@ -108,11 +108,11 @@
         "description": "Head of Engineering for a distributed team working on IoT CMP (Connectivity Management Platform) focusing on new offerings.",
         "highlights": [
           {
-            "name": "Rapid Development Capabilities",
+            "name": "Fast Paced Development",
             "description": "Built two new product lines, Subscription Manager and Fleet Orchestrator, using microservices architecture and modern development practices"
           },
           {
-            "name": "GenAI Capabilities",
+            "name": "Capabilities Building",
             "description": "An agent framework for data exploration and visualisation using text-to-SQL model"
           }
         ]
@@ -499,7 +499,7 @@
         "icon": "Calendar"
       },
       {
-        "text": "GitHub",
+        "text": "Coding for Fun",
         "icon": "Github",
         "href": "https://github.com/soumitra74"
       }
