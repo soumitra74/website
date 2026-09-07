@@ -448,7 +448,9 @@
         "institution": "Johns Hopkins University",
         "duration": "Mar-Aug 2026",
         "description": "Agentic AI implementation practical guide",
-        "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png"
+        "logo": "/images/career-timeline/johns-hopkins-university-logo-in-circle.png",
+        "certificate_url": "https://online.lifelonglearning.jhu.edu/certificate/verify/RZYBCHCK",
+        "certificate_image": "https://d9jmtjs5r4cgq.cloudfront.net/CertificateAndTranscript/204891/original/SOUMITRA_GHOSH_certificate20260826-648-7mq65s.jpg"
       },
       {
         "title": "AI Nanodegree for Business Leaders",
