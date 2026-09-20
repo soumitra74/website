@@ -118,6 +118,22 @@
         ]
       },
       {
+        "title": "Fractional CTO",
+        "company": "Knio Infotech",
+        "duration": "Apr 2025 - Present",
+        "description": "Fractional CTO engagement architecting the backend and RAG-based AI retrieval system for YRE (Your Risk Expert), a workplace security application, run concurrently with full-time leadership roles.",
+        "highlights": [
+          {
+            "name": "RAG Architecture",
+            "description": "Designed retrieval-augmented generation pipeline using ElasticSearch hybrid search and LangChain, with experiments in domain-specific fine-tuning of Mistral 7B"
+          },
+          {
+            "name": "Architecture Evolution",
+            "description": "Redesigned the pipeline from an agentic tool-calling approach (Tavily search) to a single-call architecture using Perplexity's Sonar model to resolve latency and reliability issues"
+          }
+        ]
+      },
+      {
         "title": "VP of Engineering",
         "company": "Entropik",
         "duration": "2022-2024",
@@ -542,7 +558,11 @@
         "photos": [
           "/images/events/datadog-live-banner.jpg"
         ],
-        "tags": ["Observability", "Monitoring", "Engineering Culture"],
+        "tags": [
+          "Observability",
+          "Monitoring",
+          "Engineering Culture"
+        ],
         "highlights": [
           "Panel discussion on modern monitoring strategies",
           "Managing and nurturing high-performing teams",
@@ -564,7 +584,11 @@
           "/images/events/ProductTank2004-group.jpg",
           "/images/events/ProductTank2004-banner.jpg"
         ],
-        "tags": ["Product Management", "Market Research", "Emotion AI"],
+        "tags": [
+          "Product Management",
+          "Market Research",
+          "Emotion AI"
+        ],
         "slides": "https://drive.google.com/file/d/1Mlc4x6Gcuz8LvPcf_ANTtnNpTL3FGJwS/preview",
         "highlights": [
           "Uncovering the transformative power of user analytics on business decisions",
@@ -588,7 +612,11 @@
           "/images/events/SAPProductDay-group.jpg",
           "/images/events/SAPProductDay-banner.jpg"
         ],
-        "tags": ["Product Management", "Entropik", "Technology"],
+        "tags": [
+          "Product Management",
+          "Entropik",
+          "Technology"
+        ],
         "highlights": [
           "Technical deep-dive on AI integration patterns",
           "Industry case studies and success stories"
@@ -608,7 +636,11 @@
         "photos": [
           "/images/events/visionet-summit.png"
         ],
-        "tags": ["LLM", "Innovation", "Future Trends"],
+        "tags": [
+          "LLM",
+          "Innovation",
+          "Future Trends"
+        ],
         "slides": "https://drive.google.com/file/d/1rUUMXW3SrW9mwwV1fuuH7PZnwnq7nyvB/preview",
         "highlights": [
           "Technical talk on GenAI and its applications",
@@ -633,7 +665,11 @@
           "/images/events/amrita-talk-2.jpg",
           "/images/events/amrita-talk-3.jpg"
         ],
-        "tags": ["Motivational", "GenAI", "Industry Insights"],
+        "tags": [
+          "Motivational",
+          "GenAI",
+          "Industry Insights"
+        ],
         "slides": "https://docs.google.com/presentation/d/1pPE-AoAnMGRFoqT-8minG2esvkUcGY231G29IIj3zS0/embed?start=false&loop=false&delayms=3000",
         "highlights": [
           "Inauguration Ceremony for ECE batch of students of Amrita University",
@@ -656,7 +692,11 @@
         "photos": [
           "/images/events/isb-cto-program.jpg"
         ],
-        "tags": ["MarTech", "Fraud", "GenAI"],
+        "tags": [
+          "MarTech",
+          "Fraud",
+          "GenAI"
+        ],
         "slides": "https://docs.google.com/presentation/d/13yNxSRBqZOSaeca_MShqeZc6sxU8Cy2Y/embed?start=false&loop=false&delayms=3000",
         "highlights": [
           "Market Research Fraud Detection using GenAI",
@@ -674,9 +714,12 @@
         "role": "Learner",
         "institution": "Udacity for Enterprise",
         "image": "/images/events/udacity-enterprise-logo.jpg",
-        "photos": [
+        "photos": [],
+        "tags": [
+          "AIML",
+          "Architecture",
+          "Strategy"
         ],
-        "tags": ["MarTech", "Fraud", "GenAI"],
         "slides": "https://docs.google.com/presentation/d/1XImyU4lgmLiBhAaZ4MkFbZDBUlun6HWG/embed?start=false&loop=false&delayms=3000",
         "highlights": [
           "Structured methodology for delivering an AI/ML Strategy",
@@ -690,4 +733,4 @@
   "footer": {
     "copyright": "© 2026 Soumitra Ghosh. All rights reserved."
   }
-} 
+}
