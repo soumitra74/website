@@ -181,7 +181,7 @@ export default function AskMePage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <span className="text-xl font-bold text-slate-900 dark:text-white">{chatbotData.navigation.back_link}</span>
+                <span className="hidden sm:inline text-xl font-bold text-slate-900 dark:text-white">{chatbotData.navigation.back_link}</span>
               </Link>
             </div>
             
@@ -189,12 +189,13 @@ export default function AskMePage() {
             <div className="flex-1 flex justify-center items-center gap-2 sm:gap-3">
               <Button
                 onClick={handleSpotMeClick}
+                aria-label="Where is Soumitra?"
                 variant="outline"
                 size="sm"
                 className="bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                <MapPin className="w-4 h-4 mr-2" />
-                Where is Soumitra?
+                <MapPin className="w-4 h-4 md:mr-2" />
+                <span className="hidden md:inline">Where is Soumitra?</span>
               </Button>
               <Button
                 asChild
@@ -202,15 +203,15 @@ export default function AskMePage() {
                 size="sm"
                 className="bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                <Link href="/now">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  In The Spotlight
+                <Link href="/now" aria-label="In The Spotlight">
+                  <Sparkles className="w-4 h-4 md:mr-2" />
+                  <span className="hidden md:inline">In The Spotlight</span>
                 </Link>
               </Button>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">{chatbotData.navigation.page_title}</span>
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <span className="hidden lg:inline text-sm text-slate-600 dark:text-slate-400 font-medium">{chatbotData.navigation.page_title}</span>
               <ThemeToggle />
             </div>
           </div>
@@ -277,6 +278,7 @@ export default function AskMePage() {
               />
               <Button
                 type="submit"
+                aria-label="Send message"
                 disabled={!input.trim() || isLoading || isSpotMeOpen}
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 p-0 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 dark:disabled:bg-slate-600 ambient:glass-button ambient:dark:glass-button-dark"
               >
