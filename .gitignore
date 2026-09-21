@@ -9,3 +9,4 @@ test-results/
 playwright-report/
 smoke-results.json
 nfr/current*.json
+nfr/.metrics/

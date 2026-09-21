@@ -18,6 +18,8 @@ if (!isLocal && process.env.ALLOW_NFR_REMOTE !== '1') {
 
 export default defineConfig({
   testDir: './nfr',
+  globalSetup: './nfr/global-setup.ts',
+  globalTeardown: './nfr/global-teardown.ts',
   timeout: 60_000,
   fullyParallel: false,
   workers: 1, // parallel pages compete for CPU and skew timing metrics

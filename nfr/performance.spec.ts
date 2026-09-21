@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test'
+import { measureMedian, perfRuns } from './baseline-lib'
 import { pages } from './pages'
+import { recordMetric } from './record'
 
 // Budgets follow Google's "good" Core Web Vitals thresholds, plus a page-weight cap.
 const budget = {
@@ -10,35 +12,22 @@ const budget = {
   requests: 80,
 }
 
-for (const path of pages) {
-  test(`${path} meets performance budgets`, async ({ page }) => {
-    await page.addInitScript(() => {
-      ;(window as any).__lcp = 0
-      new PerformanceObserver((list) => {
-        const entries = list.getEntries()
-        ;(window as any).__lcp = entries[entries.length - 1].startTime
-      }).observe({ type: 'largest-contentful-paint', buffered: true })
-    })
-    await page.goto(path, { waitUntil: 'load' })
-    await page.waitForLoadState('networkidle')
-    await page.waitForTimeout(1000) // let late layout shifts and LCP candidates settle
+// Playwright tracing adds ~300ms to client-rendered pages' LCP, which would skew every measurement.
+test.use({ trace: 'off' })
 
-    const m = await page.evaluate(() => {
-      const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
-      const shifts = performance.getEntriesByType('layout-shift') as any[]
-      const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[]
-      return {
-        ttfb: nav.responseStart,
-        lcp: (window as any).__lcp as number,
-        cls: shifts.filter((s) => !s.hadRecentInput).reduce((sum, s) => sum + s.value, 0),
-        transferKB: (nav.transferSize + resources.reduce((s, r) => s + r.transferSize, 0)) / 1024,
-        requests: resources.length + 1,
-      }
-    })
+for (const path of pages) {
+  test(`${path} meets performance budgets`, async ({ browser, baseURL }) => {
+    test.setTimeout(30_000 * perfRuns() + 30_000)
+    // Median of several cold loads, the same method as the baseline, so the comparison is like for like.
+    const m = await measureMedian(browser, baseURL + path)
     console.log(
       `${path}: ttfb=${m.ttfb.toFixed(0)}ms lcp=${m.lcp.toFixed(0)}ms cls=${m.cls.toFixed(3)} ` +
         `transfer=${m.transferKB.toFixed(0)}KB requests=${m.requests}`
     )
+
+    for (const key of ['ttfb', 'lcp', 'cls', 'transferKB', 'requests'] as const) {
+      recordMetric(path, key, m[key])
+    }
 
     expect.soft(m.ttfb, 'TTFB (ms)').toBeLessThan(budget.ttfbMs)
     expect.soft(m.lcp, 'LCP (ms)').toBeGreaterThan(0)

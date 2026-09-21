@@ -1,6 +1,7 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 import { pages } from './pages'
+import { recordMetric } from './record'
 
 // Serious/critical WCAG 2.x A/AA violations are reported as warnings so they don't block
 // pushes or deploy checks. Set STRICT_A11Y=1 to make them fail the run.
@@ -20,6 +21,7 @@ for (const theme of ['light', 'dark'] as const) {
       const serious = results.violations.filter(
         (v) => v.impact === 'serious' || v.impact === 'critical'
       )
+      recordMetric(path, 'a11y', serious.reduce((n, v) => n + v.nodes.length, 0), theme)
       const summary = serious.map(
         (v) => `${v.id} [${v.impact}] x${v.nodes.length}: ${v.help}\n    e.g. ${v.nodes[0].target.join(' ')}`
       )
