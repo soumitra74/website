@@ -49,8 +49,8 @@ export default async function HomePage() {
             <div className="text-xl font-bold text-slate-900 dark:text-white transition-colors">
               {content.navigation.brand}
             </div>
-            <div className="flex items-center space-x-8">
-              <div className="hidden md:flex space-x-8">
+            <div className="flex items-center space-x-3 lg:space-x-8">
+              <div className="hidden md:flex space-x-3 lg:space-x-8">
                 {content.navigation.links.map((link, index) => (
                   <a 
                     key={index}
@@ -97,7 +97,7 @@ export default async function HomePage() {
             <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors">
               {content.hero.description}
             </p>
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center">
             {content.hero.buttons.map((button, index) => (
               <Button 
                 key={index}

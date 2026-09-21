@@ -12,6 +12,10 @@ import Link from "next/link"
 import Image from "next/image"
 import SpotMePopup from "@/components/spot-me-popup"
 
+const DIAL_SIZE = 600
+// Year labels sit just outside the ring, so fit the scaled dial with room for them.
+const DIAL_FIT_WIDTH = DIAL_SIZE + 60
+
 export default function CareerTimeline() {
   const [selectedYear, setSelectedYear] = useState(2025)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -25,7 +29,16 @@ export default function CareerTimeline() {
   const [isSpotMeOpen, setIsSpotMeOpen] = useState(false)
   const [spotMeRefreshTrigger, setSpotMeRefreshTrigger] = useState(0)
   const circleRef = useRef<HTMLDivElement>(null)
+  const [dialScale, setDialScale] = useState(1)
   const playIntervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  // The dial's geometry is fixed at DIAL_SIZE px, so shrink it to fit narrow viewports.
+  useEffect(() => {
+    const update = () => setDialScale(Math.min(1, (document.documentElement.clientWidth - 32) / DIAL_FIT_WIDTH))
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
 
   // Function to get delay from URL parameters
   const getDelayFromUrl = useCallback(() => {
@@ -205,7 +218,7 @@ export default function CareerTimeline() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <span className="text-xl font-bold text-slate-900 dark:text-white">Back to Home</span>
+                <span className="hidden sm:inline text-xl font-bold text-slate-900 dark:text-white">Back to Home</span>
               </Link>
             </div>
             
@@ -213,17 +226,18 @@ export default function CareerTimeline() {
             <div className="flex-1 flex justify-center">
               <Button
                 onClick={handleSpotMeClick}
+                aria-label="Where is Soumitra?"
                 variant="outline"
                 size="sm"
                 className="bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                <MapPin className="w-4 h-4 mr-2" />
-                Where is Soumitra?
+                <MapPin className="w-4 h-4 md:mr-2" />
+                <span className="hidden md:inline">Where is Soumitra?</span>
               </Button>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">Career Timeline</span>
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <span className="hidden lg:inline text-sm text-slate-600 dark:text-slate-400 font-medium">Career Timeline</span>
               <ThemeToggle />
             </div>
           </div>
@@ -232,9 +246,17 @@ export default function CareerTimeline() {
 
       {/* Timeline Content */}
       <div className="flex items-center justify-center p-4">
-        <div className="relative flex items-center gap-8 min-h-[800px]">
-          {/* Main Circle Container */}
-          <div ref={circleRef} className="relative w-96 h-96 md:w-[600px] md:h-[600px]">
+        <div className="relative flex flex-col lg:flex-row items-center gap-8 lg:min-h-[800px]">
+          {/* Main Circle Container (scaled to fit the viewport) */}
+          <div
+            className="relative shrink-0"
+            style={{ width: DIAL_SIZE * dialScale, height: DIAL_SIZE * dialScale }}
+          >
+          <div
+            ref={circleRef}
+            className="relative w-[600px] h-[600px]"
+            style={dialScale < 1 ? { transform: `scale(${dialScale})`, transformOrigin: 'top left' } : undefined}
+          >
             {/* Outer Ring with Year Markers */}
             <div className="absolute inset-0 rounded-full border-[20px] border-slate-700/50 bg-gradient-to-br from-slate-800 to-slate-900">
               {years.map((year, index) => {
@@ -395,14 +417,15 @@ export default function CareerTimeline() {
               </div>
             </div>
           </div>
+          </div>
 
-          {/* Hover details card on the right side */}
+          {/* Hover details card: beside the dial from lg, below it on smaller screens */}
           <div
-            className={`transition-all duration-300 ease-out z-50 ${
-              isHovering ? "opacity-100 translate-x-0" : "opacity-30 translate-x-8"
+            className={`transition-all duration-300 ease-out z-50 max-w-full ${
+              isHovering ? "opacity-100 lg:translate-x-0" : "opacity-30 lg:translate-x-8"
             }`}
           >
-            <Card className="w-80 bg-gradient-to-b from-slate-200/90 to-slate-800/90 dark:from-slate-700/90 dark:to-slate-900/90 border-2 border-cyan-500/50 backdrop-blur-sm p-6 shadow-2xl">
+            <Card className="w-80 max-w-full bg-gradient-to-b from-slate-200/90 to-slate-800/90 dark:from-slate-700/90 dark:to-slate-900/90 border-2 border-cyan-500/50 backdrop-blur-sm p-6 shadow-2xl">
               {/* Debug indicator */}
               {isHovering && (
                 <div className="absolute -top-2 -left-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
