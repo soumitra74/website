@@ -1,0 +1,35 @@
+name: Post-deploy smoke tests
+
+# Vercel's GitHub integration reports each deployment as a deployment_status event.
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: URL to test
+        default: https://soumitraghosh.in
+
+jobs:
+  smoke:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://soumitraghosh.in' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm install --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:smoke
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: smoke-traces
+          path: test-results/

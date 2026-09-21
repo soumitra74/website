@@ -28,7 +28,20 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-`npm run generate` builds a static export into `dist/` (`output: 'export'`). Push to `main` deploys via GitHub Actions.
+`npm run generate` builds a static export into `dist/` (`output: 'export'`). Push to `main` deploys via GitHub Actions (GitHub Pages) and Vercel.
+
+## Testing
+
+| Command | What it runs |
+| --- | --- |
+| `npm test` | Unit tests ([Vitest](https://vitest.dev)) for `src/lib` — timezone conversion, years of experience, data fetching |
+| `npm run test:e2e` | End-to-end tests ([Playwright](https://playwright.dev), Chromium) in `e2e/`. Starts `npm run dev` on port 3000, or reuses a running server |
+| `npm run test:smoke` | Read-only sanity checks in `smoke/` against the live site |
+
+First time only: `npx playwright install chromium`.
+
+- **Pre-push hook:** `npm install` installs `.githooks/pre-push` into `.git/hooks/`, which runs the e2e suite before every push. Bypass with `SKIP_E2E=1 git push` or `git push --no-verify`.
+- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after each successful Vercel production deployment. It can also be started manually from the Actions tab. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
 
 ## Edit content
 
