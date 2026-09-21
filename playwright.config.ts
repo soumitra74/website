@@ -13,11 +13,15 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
-  // Pages fetch their own /api routes on localhost:3000, so the dev server must own that port.
-  webServer: {
-    command: 'npm run dev',
-    url: `http://localhost:${PORT}`,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  // Local runs (including pre-push) expect `npm run dev` already on PORT. CI can start it.
+  ...(process.env.CI
+    ? {
+        webServer: {
+          command: 'npm run dev',
+          url: `http://localhost:${PORT}`,
+          reuseExistingServer: false,
+          timeout: 120_000,
+        },
+      }
+    : {}),
 })
