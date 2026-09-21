@@ -11,6 +11,29 @@ import { ContentData } from "@/lib/content"
 import TrainingCertCards from "@/components/TrainingCertCards"
 import Image from "next/image"
 import Link from "next/link"
+import type { Metadata } from "next"
+import rawContent from "../../data/content.json"
+import { interpolateYearsOfExperience } from "@/lib/years-of-experience"
+
+const { metadata: pageMeta } = interpolateYearsOfExperience(rawContent)
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: pageMeta.title,
+    description: pageMeta.description,
+    siteName: pageMeta.author,
+    images: [{ url: "/images/profile.png", alt: pageMeta.author }],
+  },
+  twitter: {
+    card: "summary",
+    title: pageMeta.title,
+    description: pageMeta.description,
+    images: ["/images/profile.png"],
+  },
+}
 
 export default async function HomePage() {
   const content: ContentData = await getContentServer()
