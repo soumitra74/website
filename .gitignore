@@ -5,3 +5,5 @@ dist/
 out/
 tsconfig.tsbuildinfo
 next-env.d.ts
+test-results/
+playwright-report/

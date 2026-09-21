@@ -10,6 +10,8 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "prepare": "node scripts/install-hooks.js",
     "export": "next export",
     "deploy": "gh-pages -d dist",
     "generate": "next build"
@@ -28,6 +30,7 @@
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/lunr": "^2.3.7",
     "@types/node": "^20",
     "@types/react": "^18",
