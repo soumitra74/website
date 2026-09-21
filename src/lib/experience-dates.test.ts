@@ -22,7 +22,7 @@ describe('getExperienceWithDates', () => {
     fetchMock.mockResolvedValue({ ok: true, json: async () => payload })
 
     await expect(getExperienceWithDates()).resolves.toBe(payload)
-    expect(fetchMock).toHaveBeenCalledWith('http://localhost:4000/api/experience-dates', {
+    expect(fetchMock).toHaveBeenCalledWith('http://localhost:3000/api/experience-dates', {
       cache: 'no-store',
     })
   })
