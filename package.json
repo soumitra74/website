@@ -12,6 +12,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:smoke": "playwright test -c playwright.smoke.config.ts",
+    "test:nfr": "playwright test -c playwright.nfr.config.ts",
     "prepare": "node scripts/install-hooks.js",
     "export": "next export",
     "deploy": "gh-pages -d dist",
@@ -32,6 +33,7 @@
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
     "@types/lunr": "^2.3.7",
     "@types/node": "^20",

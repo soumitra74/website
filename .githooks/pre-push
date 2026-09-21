@@ -1,7 +1,19 @@
 #!/bin/sh
-echo "pre-push: running e2e tests against http://localhost:3000 (start npm run dev first; skip with SKIP_E2E=1 or git push --no-verify)"
+# Requires `npm run dev` on http://localhost:3000.
+# Skip everything with SKIP_E2E=1, only the NFR checks with SKIP_NFR=1, or git push --no-verify.
 [ "$SKIP_E2E" = "1" ] && exit 0
-npm run test:e2e || {
-  echo "pre-push: e2e tests failed, push aborted"
-  exit 1
-}
+
+failed=0
+
+echo "pre-push: running e2e tests against http://localhost:3000"
+npm run test:e2e || { echo "pre-push: e2e tests failed"; failed=1; }
+
+if [ "$SKIP_NFR" != "1" ]; then
+  echo "pre-push: running NFR checks (accessibility, SEO, responsive) against http://localhost:3000"
+  BASE_URL=http://localhost:3000 npm run test:nfr -- \
+    nfr/accessibility.spec.ts nfr/seo.spec.ts nfr/responsive.spec.ts \
+    || { echo "pre-push: NFR checks failed"; failed=1; }
+fi
+
+[ "$failed" = "1" ] && { echo "pre-push: push aborted"; exit 1; }
+exit 0

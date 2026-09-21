@@ -37,6 +37,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm test` | Unit tests ([Vitest](https://vitest.dev)) for `src/lib` — timezone conversion, years of experience, data fetching |
 | `npm run test:e2e` | End-to-end tests ([Playwright](https://playwright.dev), Chromium) in `e2e/`. Requires `npm run dev` on port 3000 (the pre-push hook does not start it) |
 | `npm run test:smoke` | Read-only sanity checks in `smoke/` against the live site |
+| `npm run test:nfr` | Non-functional checks in `nfr/` against the live site: performance budgets (TTFB, LCP, CLS, page weight), accessibility ([axe](https://github.com/dequelabs/axe-core-npm), light and dark), SEO metadata, responsive overflow, and delivery (compression, HSTS, caching). Run on demand; not part of the hook or deploy workflow |
 
 First time only: `npx playwright install chromium`.
 
