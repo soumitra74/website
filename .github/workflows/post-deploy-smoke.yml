@@ -1,8 +1,11 @@
 name: Post-deploy smoke tests
 
-# Vercel's GitHub integration reports each deployment as a deployment_status event.
+# Vercel sends repository_dispatch on deploy success. deployment_status is too noisy:
+# GitHub Pages and pending/preview events create skipped runs that look like failures.
 on:
-  deployment_status:
+  repository_dispatch:
+    types:
+      - vercel.deployment.success
   workflow_dispatch:
     inputs:
       base_url:
@@ -13,14 +16,15 @@ jobs:
   smoke:
     if: >
       github.event_name == 'workflow_dispatch' ||
-      (github.event.deployment_status.state == 'success' &&
-       github.event.deployment.environment == 'Production')
+      github.event.client_payload.environment != 'preview'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      BASE_URL: ${{ github.event.inputs.base_url || 'https://soumitraghosh.in' }}
+      BASE_URL: ${{ github.event.inputs.base_url || github.event.client_payload.url || 'https://soumitraghosh.in' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.client_payload.git.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
