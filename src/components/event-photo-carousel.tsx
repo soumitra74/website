@@ -6,9 +6,10 @@ import Image from 'next/image'
 
 interface EventPhotoCarouselProps {
   photos: string[]
+  priority?: boolean
 }
 
-export function EventPhotoCarousel({ photos }: EventPhotoCarouselProps) {
+export function EventPhotoCarousel({ photos, priority = false }: EventPhotoCarouselProps) {
   const [currentIndex, setCurrentIndex] = React.useState(0)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -58,6 +59,9 @@ export function EventPhotoCarousel({ photos }: EventPhotoCarouselProps) {
           src={getImageUrl(photos[currentIndex])}
           alt={`Event photo ${currentIndex + 1}`}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority={priority}
+          loading={priority ? undefined : 'lazy'}
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
         
