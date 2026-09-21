@@ -21,14 +21,14 @@ jobs:
     env:
       BASE_URL: ${{ github.event.inputs.base_url || github.event.client_payload.url || 'https://about.soumitraghosh.in' }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.client_payload.git.sha || github.sha }}
-      - uses: actions/setup-node@v4
+      # Checkout the default branch (this workflow), not the Vercel SHA.
+      # Smoke tests hit BASE_URL; the runner must have the latest email script and lockfile.
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: npm
-      - run: npm install --ignore-scripts
+      - run: npm ci --ignore-scripts
       - run: npx playwright install --with-deps chromium
       - run: npm run test:smoke
       - name: Email sanity results
@@ -40,7 +40,7 @@ jobs:
           REQUIRE_SMOKE_EMAIL: '1'
           GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: npm run email:smoke
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: failure()
         with:
           name: smoke-traces

@@ -12,7 +12,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:smoke": "playwright test -c playwright.smoke.config.ts",
-    "email:smoke": "vite-node scripts/send-smoke-email.ts",
+    "email:smoke": "node ./node_modules/vite-node/vite-node.mjs scripts/send-smoke-email.ts",
     "test:nfr": "playwright test -c playwright.nfr.config.ts",
     "nfr:baseline": "vite-node scripts/nfr-metrics.ts baseline",
     "nfr:compare": "vite-node scripts/nfr-metrics.ts compare",
