@@ -1,7 +1,6 @@
 name: Post-deploy smoke tests
 
-# Vercel sends repository_dispatch on deploy success. deployment_status is too noisy:
-# GitHub Pages and pending/preview events create skipped runs that look like failures.
+# Triggered by Vercel after a successful deployment. Preview events are skipped below.
 on:
   repository_dispatch:
     types:

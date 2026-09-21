@@ -28,7 +28,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-`npm run generate` builds a static export into `dist/` (`output: 'export'`). Push to `main` deploys via GitHub Actions (GitHub Pages) and Vercel.
+`npm run generate` builds a static export into `dist/` (`output: 'export'`). Push to `main` deploys on Vercel. GitHub Actions only runs post-deploy smoke tests.
 
 ## Testing
 
@@ -44,7 +44,7 @@ First time only: `npx playwright install chromium`.
 Both Playwright suites use the fixture in `support/diagnostics.ts`: any test that uses `page` fails if the browser logged a console error, threw an uncaught exception, had a request fail, or got an HTTP 4xx/5xx. The captured entries are attached to the test report. If a test expects such noise (for example a deliberate 404), call `diagnostics.ignore(/regex/)` in that test.
 
 - **Pre-push hook:** `npm install` installs `.githooks/pre-push` into `.git/hooks/`, which runs the e2e suite before every push. Bypass with `SKIP_E2E=1 git push` or `git push --no-verify`.
-- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after a successful Vercel production deployment (`vercel.deployment.success`), then emails the results through [Resend](https://resend.com). Run it immediately from the Actions tab with **Run workflow**. GitHub Pages and Vercel preview events do not start this job. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
+- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after a successful Vercel production deployment (`vercel.deployment.success`), then emails the results through [Resend](https://resend.com). Run it immediately from the Actions tab with **Run workflow**. Vercel preview events do not start this job. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
 
   Required GitHub Actions secret: `RESEND_API_KEY`. Optional repository variables: `RESEND_FROM` (defaults to `Website Sanity <onboarding@resend.dev>`) and `RESEND_TO` (defaults to `soumitra.ghosh.iit@gmail.com`; comma-separated for multiple recipients). After verifying `soumitraghosh.in` in Resend, set `RESEND_FROM` to something like `Website Sanity <sanity@soumitraghosh.in>`. Locally, `RESEND_API_KEY=re_... npm run email:smoke` runs the smoke suite if `smoke-results.json` is missing, then emails the report.
 
