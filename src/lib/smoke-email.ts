@@ -185,7 +185,7 @@ export function buildSmokeEmail(summary: SmokeReportSummary, ctx: SmokeEmailCont
 const DEFAULT_FROM = 'Website Sanity <onboarding@resend.dev>'
 const DEFAULT_TO = 'soumitra.ghosh.iit@gmail.com'
 const DEFAULT_REPORT = 'smoke-results.json'
-const DEFAULT_BASE_URL = 'https://soumitraghosh.in'
+const DEFAULT_BASE_URL = 'https://about.soumitraghosh.in'
 
 export type SmokeEmailCliDeps = {
   runSmokeTests?: () => void | Promise<void>

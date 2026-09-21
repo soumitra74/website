@@ -36,8 +36,8 @@ Open [http://localhost:3000](http://localhost:3000).
 | --- | --- |
 | `npm test` | Unit tests ([Vitest](https://vitest.dev)) for `src/lib` — timezone conversion, years of experience, data fetching |
 | `npm run test:e2e` | End-to-end tests ([Playwright](https://playwright.dev), Chromium) in `e2e/`. Requires `npm run dev` on port 3000 (the pre-push hook does not start it) |
-| `npm run test:smoke` | Read-only sanity checks in `smoke/` against the live site |
-| `npm run test:nfr` | Non-functional checks in `nfr/` against the live site: performance budgets (TTFB, LCP, CLS, page weight), accessibility ([axe](https://github.com/dequelabs/axe-core-npm), light and dark), SEO metadata, responsive overflow, and delivery (compression, HSTS, caching). Accessibility violations are printed as warnings and don't fail the run; set `STRICT_A11Y=1` to enforce them. The hook runs the accessibility, SEO and responsive specs against `localhost:3000` |
+| `npm run test:smoke` | Read-only sanity checks in `smoke/` against the **public site** (`https://about.soumitraghosh.in`). Refuses localhost — use e2e/nfr for local. Override with `BASE_URL=https://<preview>.vercel.app`. |
+| `npm run test:nfr` | Non-functional checks in `nfr/` against **localhost:3000** only (requires `npm run dev`). Refuses public/prod URLs unless `ALLOW_NFR_REMOTE=1`. CDN-only delivery checks (HSTS, compression, immutable cache) are skipped locally. Accessibility violations are warnings unless `STRICT_A11Y=1`. |
 
 First time only: `npx playwright install chromium`.
 

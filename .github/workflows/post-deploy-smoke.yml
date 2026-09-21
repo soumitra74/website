@@ -9,7 +9,7 @@ on:
     inputs:
       base_url:
         description: URL to test
-        default: https://soumitraghosh.in
+        default: https://about.soumitraghosh.in
 
 jobs:
   smoke:
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      BASE_URL: ${{ github.event.inputs.base_url || github.event.client_payload.url || 'https://soumitraghosh.in' }}
+      BASE_URL: ${{ github.event.inputs.base_url || github.event.client_payload.url || 'https://about.soumitraghosh.in' }}
     steps:
       - uses: actions/checkout@v4
         with:

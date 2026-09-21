@@ -111,15 +111,15 @@ describe('summarizePlaywrightReport', () => {
 describe('buildSmokeEmail', () => {
   it('builds a failing subject and includes the failed test error', () => {
     const email = buildSmokeEmail(summarizePlaywrightReport(report), {
-      baseUrl: 'https://soumitraghosh.in',
+      baseUrl: 'https://about.soumitraghosh.in',
       runUrl: 'https://github.com/soumitra74/website/actions/runs/1',
       sha: 'abc1234deadbeef',
     })
 
-    expect(email.subject).toBe('Sanity FAIL · soumitraghosh.in (1 failed)')
+    expect(email.subject).toBe('Sanity FAIL · about.soumitraghosh.in (1 failed)')
     expect(email.text).toContain('unknown route returns 404')
     expect(email.text).toContain('expected 404, received 200')
-    expect(email.text).toContain('https://soumitraghosh.in')
+    expect(email.text).toContain('https://about.soumitraghosh.in')
     expect(email.html).toContain('expected 404, received 200')
     expect(email.html).toContain('https://github.com/soumitra74/website/actions/runs/1')
     expect(email.html).toContain('abc1234')
@@ -172,7 +172,7 @@ describe('sendSmokeEmail', () => {
         apiKey: 're_test',
         from: 'Sanity <onboarding@resend.dev>',
         to: ['soumitra.ghosh.iit@gmail.com'],
-        subject: 'Sanity PASS · soumitraghosh.in',
+        subject: 'Sanity PASS · about.soumitraghosh.in',
         html: '<p>ok</p>',
         text: 'ok',
       })
@@ -187,7 +187,7 @@ describe('sendSmokeEmail', () => {
       body: JSON.stringify({
         from: 'Sanity <onboarding@resend.dev>',
         to: ['soumitra.ghosh.iit@gmail.com'],
-        subject: 'Sanity PASS · soumitraghosh.in',
+        subject: 'Sanity PASS · about.soumitraghosh.in',
         html: '<p>ok</p>',
         text: 'ok',
       }),
@@ -270,14 +270,14 @@ describe('runSmokeEmailCli', () => {
       {
         RESEND_API_KEY: 're_test',
         SMOKE_RESULTS_PATH: reportPath,
-        BASE_URL: 'https://soumitraghosh.in',
+        BASE_URL: 'https://about.soumitraghosh.in',
       },
       { runSmokeTests }
     )
 
     expect(runSmokeTests).toHaveBeenCalledOnce()
     const body = JSON.parse(fetchMock.mock.calls[0][1].body)
-    expect(body.subject).toBe('Sanity PASS · soumitraghosh.in')
+    expect(body.subject).toBe('Sanity PASS · about.soumitraghosh.in')
     expect(body.text).toContain('pages › /')
   })
 
@@ -287,12 +287,12 @@ describe('runSmokeEmailCli', () => {
       RESEND_FROM: 'Sanity <onboarding@resend.dev>',
       RESEND_TO: 'me@example.com',
       SMOKE_RESULTS_PATH: join(tmpdir(), 'missing-smoke-results.json'),
-      BASE_URL: 'https://soumitraghosh.in',
+      BASE_URL: 'https://about.soumitraghosh.in',
     })
 
     const body = JSON.parse(fetchMock.mock.calls[0][1].body)
     expect(body.to).toEqual(['me@example.com'])
-    expect(body.subject).toBe('Sanity FAIL · soumitraghosh.in (1 failed)')
+    expect(body.subject).toBe('Sanity FAIL · about.soumitraghosh.in (1 failed)')
     expect(body.text).toContain('No report found')
   })
 

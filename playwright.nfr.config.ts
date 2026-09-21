@@ -1,9 +1,20 @@
 import { defineConfig, devices } from '@playwright/test'
 
-// Non-functional checks (performance, accessibility, SEO, responsiveness, delivery) against
-// a live URL. Override with BASE_URL=https://... Run from a normal machine: timings from
-// a throttled CI runner or a cold cache can exceed budgets, hence the retries.
-const baseURL = (process.env.BASE_URL || 'https://soumitraghosh.in').replace(/\/+$/, '')
+// Local-only NFR suite. Expect `npm run dev` on PORT (same as e2e / pre-push).
+// Public/prod URLs are rejected — use smoke for post-deploy checks.
+// Escape hatch (rare): ALLOW_NFR_REMOTE=1 BASE_URL=https://about.soumitraghosh.in npm run test:nfr
+const PORT = 3000
+const baseURL = (process.env.BASE_URL || `http://localhost:${PORT}`).replace(/\/+$/, '')
+
+const isLocal =
+  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(baseURL)
+
+if (!isLocal && process.env.ALLOW_NFR_REMOTE !== '1') {
+  throw new Error(
+    `NFR tests must target localhost, not ${baseURL}. ` +
+      `Unset BASE_URL (defaults to http://localhost:${PORT}), or set ALLOW_NFR_REMOTE=1 to override.`
+  )
+}
 
 export default defineConfig({
   testDir: './nfr',

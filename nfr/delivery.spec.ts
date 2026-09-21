@@ -1,6 +1,10 @@
 import { expect, test } from '@playwright/test'
 
-test('HTML is served compressed', async ({ request }) => {
+const isLocal = (baseURL?: string) =>
+  !!baseURL && (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(baseURL) || baseURL.includes('localhost'))
+
+test('HTML is served compressed', async ({ request, baseURL }) => {
+  test.skip(isLocal(baseURL), 'next dev does not compress responses')
   const res = await request.get('/', { headers: { 'accept-encoding': 'br, gzip' } })
   expect(res.headers()['content-encoding']).toMatch(/br|gzip/)
 })
@@ -21,7 +25,8 @@ test('http redirects to https', async ({ request, baseURL }) => {
   expect(res.headers()['location']).toMatch(/^https:\/\//)
 })
 
-test('fingerprinted static assets are cached immutably', async ({ page }) => {
+test('fingerprinted static assets are cached immutably', async ({ page, baseURL }) => {
+  test.skip(isLocal(baseURL), 'immutable cache headers are set by the CDN/host, not next dev')
   const assets = new Map<string, string>()
   page.on('response', (res) => {
     const url = new URL(res.url())
@@ -37,7 +42,8 @@ test('fingerprinted static assets are cached immutably', async ({ page }) => {
   expect(weak, 'static assets without long-lived caching').toEqual([])
 })
 
-test('JS and CSS assets over 1 KB are compressed', async ({ page }) => {
+test('JS and CSS assets over 1 KB are compressed', async ({ page, baseURL }) => {
+  test.skip(isLocal(baseURL), 'next dev does not compress responses')
   const uncompressed: string[] = []
   page.on('response', (res) => {
     const type = res.headers()['content-type'] ?? ''

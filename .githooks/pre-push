@@ -10,7 +10,7 @@ npm run test:e2e || { echo "pre-push: e2e tests failed"; failed=1; }
 
 if [ "$SKIP_NFR" != "1" ]; then
   echo "pre-push: running NFR checks (accessibility, SEO, responsive) against http://localhost:3000"
-  BASE_URL=http://localhost:3000 npm run test:nfr -- \
+  npm run test:nfr -- \
     nfr/accessibility.spec.ts nfr/seo.spec.ts nfr/responsive.spec.ts \
     || { echo "pre-push: NFR checks failed"; failed=1; }
 fi
