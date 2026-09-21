@@ -71,7 +71,7 @@ export default async function EventsPage() {
               <Card key={event.id} className="hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
                 <div className="relative">
                   <EventPhotoCarousel photos={event.photos?.length ? event.photos : [event.image]} />
-                  <Badge className="absolute top-4 right-4 bg-emerald-600 text-white z-10">
+                  <Badge className="absolute top-4 right-4 bg-emerald-700 text-white z-10">
                     {event.role}
                   </Badge>
                 </div>
@@ -82,7 +82,7 @@ export default async function EventsPage() {
                       {event.type}
                     </Badge>
                   </div>
-                  <CardDescription className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 transition-colors">
+                  <CardDescription className="text-lg font-semibold text-emerald-700 dark:text-emerald-400 transition-colors">
                     {event.institution}
                   </CardDescription>
                 </CardHeader>
@@ -149,7 +149,7 @@ export default async function EventsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              className="bg-emerald-600 hover:bg-emerald-700 ambient:glass-button ambient:dark:glass-button-dark"
+              className="bg-emerald-700 hover:bg-emerald-800 text-white ambient:glass-button ambient:dark:glass-button-dark"
               asChild
             >
               <a href="mailto:soumitra@ghosh.blog?subject=Speaking%20Opportunity">
@@ -172,7 +172,7 @@ export default async function EventsPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 dark:text-slate-500 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
+      <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <p>© 2026 Soumitra Ghosh. All rights reserved.</p>
         </div>

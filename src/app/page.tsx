@@ -62,7 +62,7 @@ export default async function HomePage() {
                 ))}
                 <a 
                   href="/ask-me"
-                  className="flex items-center gap-2 text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors font-medium"
+                  className="flex items-center gap-2 text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors font-medium"
                 >
                   <MessageCircle className="w-4 h-4" />
                   Ask Me (beta)
@@ -92,7 +92,7 @@ export default async function HomePage() {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">
               {content.hero.title.main}
-              <span className="block text-emerald-600 dark:text-emerald-400">{content.hero.title.highlight}</span>
+              <span className="block text-emerald-700 dark:text-emerald-400">{content.hero.title.highlight}</span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors">
               {content.hero.description}
@@ -102,7 +102,7 @@ export default async function HomePage() {
               <Button 
                 key={index}
                 size="lg" 
-                className={`${button.variant === 'primary' ? 'bg-emerald-600 hover:bg-emerald-700' : 'border-slate-300 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700 dark:bg-slate-500'} ambient:glass-button ambient:dark:glass-button-dark ${button.text === 'Career Timeline' ? 'hidden md:flex' : ''}`}
+                className={`${button.variant === 'primary' ? 'bg-emerald-700 hover:bg-emerald-800 text-white' : 'border-slate-300 dark:border-slate-600 dark:text-white dark:hover:bg-slate-700 dark:bg-slate-500'} ambient:glass-button ambient:dark:glass-button-dark ${button.text === 'Career Timeline' ? 'hidden md:flex' : ''}`}
                 asChild={!!button.href}
               >
                 {button.href ? (
@@ -142,7 +142,7 @@ export default async function HomePage() {
                   {paragraph}
                 </p>
               ))}
-              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold transition-colors">
+              <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-semibold transition-colors">
                 <DynamicIcon name={content.about.content.journey.achievement.icon} className="w-5 h-5" />
                 {content.about.content.journey.achievement.text}
               </div>
@@ -153,7 +153,7 @@ export default async function HomePage() {
                 <Card key={index} className="dark:bg-slate-800 dark:border-slate-700 ambient:glass-card ambient:dark:glass-card-dark transition-colors floating-glass-delayed">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 dark:text-white transition-colors">
-                      <DynamicIcon name={card.icon} className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                      <DynamicIcon name={card.icon} className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
                       {card.title}
                     </CardTitle>
                   </CardHeader>
@@ -184,7 +184,7 @@ export default async function HomePage() {
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-xl dark:text-white transition-colors">{role.title}</CardTitle>
-                      <CardDescription className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 transition-colors">{role.company}</CardDescription>
+                      <CardDescription className="text-lg font-semibold text-emerald-700 dark:text-emerald-400 transition-colors">{role.company}</CardDescription>
                     </div>
                     {role.duration && <Badge variant="secondary" className="dark:bg-slate-700 dark:text-slate-300">{role.duration}</Badge>}
                   </div>
@@ -272,7 +272,7 @@ export default async function HomePage() {
                         <div className="grid grid-cols-2 gap-4 text-center">
                           {Object.entries(project.metrics).map(([key, value], metricIndex) => (
                             <div key={metricIndex} className="bg-white dark:bg-slate-800 ambient:glass-card ambient:dark:glass-card-dark p-4 rounded-lg transition-colors">
-                              <div className={`text-2xl font-bold ${index === 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-purple-600 dark:text-purple-400'} transition-colors`}>{value}</div>
+                              <div className={`text-2xl font-bold ${index === 0 ? 'text-emerald-700 dark:text-emerald-400' : 'text-purple-600 dark:text-purple-400'} transition-colors`}>{value}</div>
                               <div className="text-sm text-slate-600 dark:text-slate-300 transition-colors">{key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</div>
                             </div>
                           ))}
@@ -306,7 +306,7 @@ export default async function HomePage() {
               <div className="grid md:grid-cols-4 gap-6 text-center">
                 {content.portfolio.combined_impact.metrics.map((metric, index) => (
                   <div key={index}>
-                    <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2 transition-colors">{metric.value}</div>
+                    <div className="text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-2 transition-colors">{metric.value}</div>
                     <div className="text-slate-600 dark:text-slate-300 transition-colors">{metric.label}</div>
                   </div>
                 ))}
@@ -328,7 +328,7 @@ export default async function HomePage() {
             {content.expertise.areas.map((area, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
                 <CardHeader>
-                  <DynamicIcon name={area.icon} className="w-12 h-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4 transition-colors" />
+                  <DynamicIcon name={area.icon} className="w-12 h-12 text-emerald-700 dark:text-emerald-400 mx-auto mb-4 transition-colors" />
                   <CardTitle className="dark:text-white transition-colors">{area.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -367,9 +367,9 @@ export default async function HomePage() {
                 size="lg"
                 className={`${
                   button.variant === 'primary' 
-                    ? 'bg-emerald-600 hover:bg-emerald-700 text-white' 
+                    ? 'bg-emerald-700 hover:bg-emerald-800 text-white' 
                     : button.text === 'LinkedIn Profile'
-                      ? 'border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-transparent'
+                      ? 'border-blue-600 dark:border-blue-500 text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-transparent'
                       : button.text === 'Medium Profile'
                         ? 'border-orange-600 dark:border-orange-500 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20 bg-transparent'
                         : 'border-slate-600 dark:border-slate-500 text-slate-300 dark:text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 bg-transparent'
@@ -393,7 +393,7 @@ export default async function HomePage() {
 
           <Separator className="bg-slate-700 dark:bg-slate-600 mb-8" />
 
-          <div className="flex flex-wrap justify-center items-center gap-6 text-slate-400 dark:text-slate-500">
+          <div className="flex flex-wrap justify-center items-center gap-6 text-slate-400">
             {content.contact.status.map((status, index) => {
               const inner = (
                 <>
@@ -441,7 +441,7 @@ export default async function HomePage() {
       </section>
 
       {/* Footer — last updated is the build date (static export) */}
-      <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 dark:text-slate-500 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
+      <footer className="bg-slate-950 dark:bg-black ambient:glass-bg ambient:dark:glass-bg-dark text-slate-400 py-8 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <p>
             {content.footer.copyright}

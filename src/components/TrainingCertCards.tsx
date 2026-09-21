@@ -110,7 +110,7 @@
          <div className="flex items-start justify-between gap-4">
            <div className="min-w-0 space-y-1.5">
              <CardTitle className="text-xl dark:text-white transition-colors">{cert.title}</CardTitle>
-             <CardDescription className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 transition-colors">
+             <CardDescription className="text-lg font-semibold text-emerald-700 dark:text-emerald-400 transition-colors">
                {cert.institution}
              </CardDescription>
            </div>

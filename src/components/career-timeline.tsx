@@ -200,7 +200,7 @@ export default function CareerTimeline() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-slate-900 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <h1 className="sr-only">Career Timeline</h1>
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 ambient:glass-nav ambient:dark:glass-nav-dark backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-colors duration-300">
@@ -365,7 +365,7 @@ export default function CareerTimeline() {
                         ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
                         : isPlayingBackward
                         ? 'bg-slate-600 text-slate-400 cursor-not-allowed'
-                        : 'bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg hover:shadow-xl'
+                        : 'bg-cyan-700 hover:bg-cyan-800 text-white shadow-lg hover:shadow-xl'
                     }`}
                   >
                     {isPlayingForward ? (
@@ -408,7 +408,7 @@ export default function CareerTimeline() {
                 </div>
                 
                 {/* Delay indicator */}
-                <div className="text-xs text-slate-400 bg-slate-800/50 px-3 py-1 rounded-lg border border-slate-600/30">
+                <div className="text-xs text-slate-400 bg-slate-800 px-3 py-1 rounded-lg border border-slate-600/30">
                   Delay: {getEffectiveDelay()}ms
                   {getDelayFromUrl() !== null && (
                     <span className="text-cyan-400 ml-2">(URL override)</span>
