@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "baseUrl": "https://soumitraghosh.in",
+    "capturedAt": "2026-09-21T07:02:43.371Z",
+    "runs": 3
+  },
+  "pages": {
+    "/": {
+      "ttfb": 91.90000000596046,
+      "lcp": 392,
+      "cls": 0,
+      "transferKB": 253.1982421875,
+      "requests": 19,
+      "a11y": 0
+    },
+    "/ask-me": {
+      "ttfb": 100.5,
+      "lcp": 404,
+      "cls": 0,
+      "transferKB": 253.4404296875,
+      "requests": 20,
+      "a11y": 0
+    },
+    "/spot-me": {
+      "ttfb": 107.40000000596046,
+      "lcp": 436,
+      "cls": 0,
+      "transferKB": 223.3115234375,
+      "requests": 15,
+      "a11y": 0
+    },
+    "/now": {
+      "ttfb": 93.20000000298023,
+      "lcp": 328,
+      "cls": 0,
+      "transferKB": 220.388671875,
+      "requests": 15,
+      "a11y": 0
+    },
+    "/now/archive": {
+      "ttfb": 95.59999999403954,
+      "lcp": 204,
+      "cls": 0,
+      "transferKB": 150.5927734375,
+      "requests": 9,
+      "a11y": 0
+    },
+    "/events": {
+      "ttfb": 98.3999999910593,
+      "lcp": 708,
+      "cls": 0,
+      "transferKB": 3319.7197265625,
+      "requests": 20,
+      "a11y": 0
+    },
+    "/career-timeline": {
+      "ttfb": 95,
+      "lcp": 400,
+      "cls": 0,
+      "transferKB": 323.2001953125,
+      "requests": 18,
+      "a11y": 0
+    }
+  }
+}

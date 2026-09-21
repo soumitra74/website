@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "baseUrl": "http://localhost:3000",
+    "capturedAt": "2026-09-21T07:06:32.213Z",
+    "runs": 3
+  },
+  "pages": {
+    "/": {
+      "ttfb": 134.59999999403954,
+      "lcp": 348,
+      "cls": 0,
+      "transferKB": 2062.5185546875,
+      "requests": 11,
+      "a11y": 0
+    },
+    "/ask-me": {
+      "ttfb": 58.1000000089407,
+      "lcp": 704,
+      "cls": 0,
+      "transferKB": 2190.6376953125,
+      "requests": 14,
+      "a11y": 0
+    },
+    "/spot-me": {
+      "ttfb": 64.80000001192093,
+      "lcp": 668,
+      "cls": 0,
+      "transferKB": 2073.9775390625,
+      "requests": 12,
+      "a11y": 0
+    },
+    "/now": {
+      "ttfb": 63.099999994039536,
+      "lcp": 616,
+      "cls": 0,
+      "transferKB": 2047.0517578125,
+      "requests": 12,
+      "a11y": 0
+    },
+    "/now/archive": {
+      "ttfb": 77.3999999910593,
+      "lcp": 688,
+      "cls": 0,
+      "transferKB": 2048.48046875,
+      "requests": 12,
+      "a11y": 0
+    },
+    "/events": {
+      "ttfb": 106.79999999701977,
+      "lcp": 292,
+      "cls": 0,
+      "transferKB": 2750.994140625,
+      "requests": 16,
+      "a11y": 0
+    },
+    "/career-timeline": {
+      "ttfb": 70.29999999701977,
+      "lcp": 708,
+      "cls": 0,
+      "transferKB": 2241.2236328125,
+      "requests": 15,
+      "a11y": 0
+    }
+  }
+}

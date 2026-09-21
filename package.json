@@ -14,6 +14,10 @@
     "test:smoke": "playwright test -c playwright.smoke.config.ts",
     "email:smoke": "vite-node scripts/send-smoke-email.ts",
     "test:nfr": "playwright test -c playwright.nfr.config.ts",
+    "nfr:baseline": "vite-node scripts/nfr-metrics.ts baseline",
+    "nfr:compare": "vite-node scripts/nfr-metrics.ts compare",
+    "nfr:baseline:local": "vite-node scripts/nfr-metrics.ts baseline --local",
+    "nfr:compare:local": "vite-node scripts/nfr-metrics.ts compare --local",
     "prepare": "node scripts/install-hooks.js",
     "export": "next export",
     "generate": "next build"
