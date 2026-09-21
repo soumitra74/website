@@ -15,11 +15,12 @@ jobs:
   smoke:
     if: >
       github.event_name == 'workflow_dispatch' ||
-      github.event.client_payload.environment != 'preview'
+      github.event.client_payload.environment == 'production'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      BASE_URL: ${{ github.event.inputs.base_url || github.event.client_payload.url || 'https://about.soumitraghosh.in' }}
+      # Unique *.vercel.app URLs are behind Vercel SSO. Sanity checks the public domain.
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://about.soumitraghosh.in' }}
     steps:
       # Checkout the default branch (this workflow), not the Vercel SHA.
       # Smoke tests hit BASE_URL; the runner must have the latest email script and lockfile.

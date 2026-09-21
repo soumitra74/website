@@ -17,6 +17,10 @@ test.describe('pages', () => {
     test(`${path} renders without errors`, async ({ page }) => {
       const response = await page.goto(path)
       expect(response?.status()).toBe(200)
+      expect(
+        page.url(),
+        'landed on Vercel SSO — smoke must use the public domain, not a protected *.vercel.app URL'
+      ).not.toMatch(/vercel\.com\/(login|sso)/i)
       await expect(page).toHaveTitle(/.+/)
       await expect(page.locator('h1').first()).toBeAttached()
       await page.waitForLoadState('networkidle')

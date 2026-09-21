@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
 // Post-deployment sanity checks against the public site. Read-only: no server is started.
-// Override with BASE_URL=https://... (e.g. a Vercel preview). Localhost is rejected —
+// Override with BASE_URL=https://... only for a public deployment. Localhost is rejected —
 // use `npm run test:e2e` or `npm run test:nfr` for local runs.
 export const PUBLIC_SITE_URL = 'https://about.soumitraghosh.in'
 
