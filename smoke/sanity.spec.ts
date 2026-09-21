@@ -1,6 +1,6 @@
 import { expect, test } from '../support/diagnostics'
 
-const pages = ['/', '/ask-me', '/spot-me', '/now', '/events', '/career-timeline']
+const pages = ['/', '/ask-me', '/spot-me', '/now', '/now/archive', '/events', '/career-timeline']
 const apis = [
   '/api/content',
   '/api/content-detailed',
@@ -9,6 +9,7 @@ const apis = [
   '/api/chatbot',
   '/api/daily-schedule',
   '/api/now',
+  '/api/now-archive',
 ]
 
 test.describe('pages', () => {

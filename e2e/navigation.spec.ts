@@ -5,6 +5,7 @@ const routes = [
   { path: '/ask-me', title: /Ask Me/ },
   { path: '/spot-me', title: /Spot Me/ },
   { path: '/now', title: /Now/ },
+  { path: '/now/archive', title: /Now Archive/ },
   { path: '/events', title: /.+/ },
   { path: '/career-timeline', title: /.+/ },
 ]

@@ -151,11 +151,17 @@ export default function NowPage() {
           })}
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Badge variant="outline" className="dark:border-slate-600 dark:text-slate-300">
             <Calendar className="w-3 h-3 mr-2" />
             Last updated: {nowData.last_updated}
           </Badge>
+          <Link
+            href="/now/archive"
+            className="text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors"
+          >
+            Browse past months →
+          </Link>
         </div>
       </div>
     </div>

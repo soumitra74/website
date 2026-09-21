@@ -6,7 +6,7 @@ Personal site of [Soumitra Ghosh](https://www.linkedin.com/in/soumitraghosh) —
 
 ## What is distinctive
 
-- **`/now`** — a monthly status page in the [Derek Sivers](https://sive.rs/now) style: what I am working on, learning, and excited about.
+- **`/now`** — a monthly status page in the [Derek Sivers](https://sive.rs/now) style: what I am working on, learning, and excited about. Past months live on `/now/archive`.
 - **`/spot-me`** — timezone-aware “what I’m doing right now,” mapped from a daily schedule in IST to the visitor’s local time.
 - **`/ask-me`** — keyword search over the site’s own content (Fuse.js). No LLM, no API keys.
 - **`/career-timeline`** — a dial view of my years of work
@@ -54,7 +54,8 @@ Both Playwright suites use the fixture in `support/diagnostics.ts`: any test tha
 | --- | --- |
 | `data/content.json` | Homepage, contact, events list |
 | `data/career-timeline.json` | `/career-timeline` |
-| `data/now.json` | `/now` |
+| `data/now.json` | `/now` (current month only) |
+| `data/now-archive.json` | `/now/archive` — prepend last month here before rewriting `now.json` |
 | `data/daily_schedule.json` | `/spot-me` |
 | `data/chatbot.json` | `/ask-me` copy and canned replies |
 | `data/soumitra_content_detailed.json` | Longer about/career copy used by search |

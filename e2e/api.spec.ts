@@ -8,6 +8,7 @@ const endpoints = [
   '/api/chatbot',
   '/api/daily-schedule',
   '/api/now',
+  '/api/now-archive',
 ]
 
 for (const endpoint of endpoints) {

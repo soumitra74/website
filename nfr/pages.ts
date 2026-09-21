@@ -1,1 +1,1 @@
-export const pages = ['/', '/ask-me', '/spot-me', '/now', '/events', '/career-timeline']
+export const pages = ['/', '/ask-me', '/spot-me', '/now', '/now/archive', '/events', '/career-timeline']

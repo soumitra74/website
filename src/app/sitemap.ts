@@ -11,6 +11,7 @@ const routes: Array<{
   { path: '/career-timeline', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/ask-me', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/now', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/now/archive', changeFrequency: 'monthly', priority: 0.5 },
   { path: '/spot-me', changeFrequency: 'weekly', priority: 0.6 },
 ]
 
