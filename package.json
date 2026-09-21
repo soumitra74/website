@@ -12,6 +12,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:smoke": "playwright test -c playwright.smoke.config.ts",
+    "email:smoke": "vite-node scripts/send-smoke-email.ts",
     "test:nfr": "playwright test -c playwright.nfr.config.ts",
     "prepare": "node scripts/install-hooks.js",
     "export": "next export",

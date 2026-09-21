@@ -28,6 +28,15 @@ jobs:
       - run: npm install --ignore-scripts
       - run: npx playwright install --with-deps chromium
       - run: npm run test:smoke
+      - name: Email sanity results
+        if: always()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM: ${{ vars.RESEND_FROM }}
+          RESEND_TO: ${{ vars.RESEND_TO }}
+          REQUIRE_SMOKE_EMAIL: '1'
+          GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: npm run email:smoke
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

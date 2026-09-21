@@ -9,7 +9,7 @@ export default defineConfig({
   timeout: 30_000,
   fullyParallel: true,
   retries: 2,
-  reporter: [['list']],
+  reporter: [['list'], ['json', { outputFile: 'smoke-results.json' }]],
   use: {
     baseURL,
     trace: 'retain-on-failure',

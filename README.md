@@ -44,7 +44,9 @@ First time only: `npx playwright install chromium`.
 Both Playwright suites use the fixture in `support/diagnostics.ts`: any test that uses `page` fails if the browser logged a console error, threw an uncaught exception, had a request fail, or got an HTTP 4xx/5xx. The captured entries are attached to the test report. If a test expects such noise (for example a deliberate 404), call `diagnostics.ignore(/regex/)` in that test.
 
 - **Pre-push hook:** `npm install` installs `.githooks/pre-push` into `.git/hooks/`, which runs the e2e suite before every push. Bypass with `SKIP_E2E=1 git push` or `git push --no-verify`.
-- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after each successful Vercel production deployment. It can also be started manually from the Actions tab. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
+- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after each successful Vercel production deployment, then emails the results through [Resend](https://resend.com). It can also be started manually from the Actions tab. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
+
+  Required GitHub Actions secret: `RESEND_API_KEY`. Optional repository variables: `RESEND_FROM` (defaults to `Website Sanity <onboarding@resend.dev>`) and `RESEND_TO` (defaults to `soumitra.ghosh.iit@gmail.com`; comma-separated for multiple recipients). After verifying `soumitraghosh.in` in Resend, set `RESEND_FROM` to something like `Website Sanity <sanity@soumitraghosh.in>`. Locally, `RESEND_API_KEY=re_... npm run email:smoke` runs the smoke suite if `smoke-results.json` is missing, then emails the report.
 
 ## Edit content
 
