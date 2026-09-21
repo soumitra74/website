@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from '../support/diagnostics'
 
 test.describe('ask-me chatbot', () => {
   test('loads and shows the input with submit disabled while empty', async ({ page }) => {

@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test } from '../support/diagnostics'
 
 const pages = ['/', '/ask-me', '/spot-me', '/now', '/events', '/career-timeline']
 const apis = [
@@ -11,33 +11,19 @@ const apis = [
   '/api/now',
 ]
 
-// Collects uncaught exceptions and CSP violations, which are the failures a
-// deploy most often introduces (vercel.json ships a strict Content-Security-Policy).
-function watch(page: Page) {
-  const problems: string[] = []
-  page.on('pageerror', (err) => problems.push(`pageerror: ${err.message}`))
-  page.on('console', (msg) => {
-    if (msg.type() === 'error' && /content security policy/i.test(msg.text())) {
-      problems.push(`csp: ${msg.text()}`)
-    }
-  })
-  return problems
-}
-
 test.describe('pages', () => {
   for (const path of pages) {
     test(`${path} renders without errors`, async ({ page }) => {
-      const problems = watch(page)
       const response = await page.goto(path)
       expect(response?.status()).toBe(200)
       await expect(page).toHaveTitle(/.+/)
       await expect(page.locator('h1').first()).toBeAttached()
       await page.waitForLoadState('networkidle')
-      expect(problems).toEqual([])
     })
   }
 
-  test('unknown route returns 404', async ({ page }) => {
+  test('unknown route returns 404', async ({ page, diagnostics }) => {
+    diagnostics.ignore(/this-page-does-not-exist/)
     const response = await page.goto('/this-page-does-not-exist')
     expect(response?.status()).toBe(404)
   })
@@ -72,13 +58,11 @@ test.describe('home page', () => {
 
 test.describe('ask-me', () => {
   test('chatbot data loads and the input is usable', async ({ page }) => {
-    const problems = watch(page)
     await page.goto('/ask-me')
     const input = page.locator('form input[type="text"]')
     await expect(input).toBeVisible({ timeout: 15_000 })
     await input.fill('hello')
     await expect(page.locator('form button[type="submit"]')).toBeEnabled()
-    expect(problems).toEqual([])
   })
 })
 

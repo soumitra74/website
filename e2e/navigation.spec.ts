@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from '../support/diagnostics'
 
 const routes = [
   { path: '/', title: /Soumitra Ghosh/ },
@@ -11,18 +11,15 @@ const routes = [
 
 for (const { path, title } of routes) {
   test(`${path} loads without errors`, async ({ page }) => {
-    const pageErrors: string[] = []
-    page.on('pageerror', (err) => pageErrors.push(err.message))
-
     const response = await page.goto(path)
     expect(response?.status()).toBe(200)
     await expect(page).toHaveTitle(title)
     await expect(page.locator('h1').first()).toBeAttached()
-    expect(pageErrors).toEqual([])
   })
 }
 
-test('unknown route returns 404', async ({ page }) => {
+test('unknown route returns 404', async ({ page, diagnostics }) => {
+  diagnostics.ignore(/does-not-exist/)
   const response = await page.goto('/does-not-exist')
   expect(response?.status()).toBe(404)
 })

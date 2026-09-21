@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from '../support/diagnostics'
 
 test.describe('home page', () => {
   test('renders hero, nav brand and About section from content', async ({ page }) => {

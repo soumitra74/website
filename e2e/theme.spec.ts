@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from '../support/diagnostics'
 
 const html = (page: import('@playwright/test').Page) => page.locator('html')
 
