@@ -37,14 +37,14 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm test` | Unit tests ([Vitest](https://vitest.dev)) for `src/lib` — timezone conversion, years of experience, data fetching |
 | `npm run test:e2e` | End-to-end tests ([Playwright](https://playwright.dev), Chromium) in `e2e/`. Requires `npm run dev` on port 3000 (the pre-push hook does not start it) |
 | `npm run test:smoke` | Read-only sanity checks in `smoke/` against the live site |
-| `npm run test:nfr` | Non-functional checks in `nfr/` against the live site: performance budgets (TTFB, LCP, CLS, page weight), accessibility ([axe](https://github.com/dequelabs/axe-core-npm), light and dark), SEO metadata, responsive overflow, and delivery (compression, HSTS, caching). Run on demand; not part of the hook or deploy workflow |
+| `npm run test:nfr` | Non-functional checks in `nfr/` against the live site: performance budgets (TTFB, LCP, CLS, page weight), accessibility ([axe](https://github.com/dequelabs/axe-core-npm), light and dark), SEO metadata, responsive overflow, and delivery (compression, HSTS, caching). Accessibility violations are printed as warnings and don't fail the run; set `STRICT_A11Y=1` to enforce them. The hook runs the accessibility, SEO and responsive specs against `localhost:3000` |
 
 First time only: `npx playwright install chromium`.
 
 Both Playwright suites use the fixture in `support/diagnostics.ts`: any test that uses `page` fails if the browser logged a console error, threw an uncaught exception, had a request fail, or got an HTTP 4xx/5xx. The captured entries are attached to the test report. If a test expects such noise (for example a deliberate 404), call `diagnostics.ignore(/regex/)` in that test.
 
 - **Pre-push hook:** `npm install` installs `.githooks/pre-push` into `.git/hooks/`, which runs the e2e suite before every push. Bypass with `SKIP_E2E=1 git push` or `git push --no-verify`.
-- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after each successful Vercel production deployment, then emails the results through [Resend](https://resend.com). It can also be started manually from the Actions tab. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
+- **Post-deploy smoke tests:** `.github/workflows/post-deploy-smoke.yml` runs `npm run test:smoke` after a successful Vercel production deployment (`vercel.deployment.success`), then emails the results through [Resend](https://resend.com). Run it immediately from the Actions tab with **Run workflow**. GitHub Pages and Vercel preview events do not start this job. To test another deployment locally: `BASE_URL=https://<preview>.vercel.app npm run test:smoke`.
 
   Required GitHub Actions secret: `RESEND_API_KEY`. Optional repository variables: `RESEND_FROM` (defaults to `Website Sanity <onboarding@resend.dev>`) and `RESEND_TO` (defaults to `soumitra.ghosh.iit@gmail.com`; comma-separated for multiple recipients). After verifying `soumitraghosh.in` in Resend, set `RESEND_FROM` to something like `Website Sanity <sanity@soumitraghosh.in>`. Locally, `RESEND_API_KEY=re_... npm run email:smoke` runs the smoke suite if `smoke-results.json` is missing, then emails the report.
 
