@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ErrorBoundary } from '@/components/error-boundary'
@@ -40,6 +41,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </ErrorBoundary>
+        <Analytics />
       </body>
     </html>
   )
