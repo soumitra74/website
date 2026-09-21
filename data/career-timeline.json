@@ -71,7 +71,7 @@
     },
     "2019": {
       "title": "RazorpayX, Payouts, Refunds, Recon",
-      "description": "Grew RazorpayX team from 4 to 30. Led Bank integrations for X and Payouts. Also worked on Post Payments features like Refunds and Reconciliation",
+      "description": "Grew RazorpayX team from 4 to 15+. Led Bank integrations for X and Payouts. Also worked on Post Payments features like Refunds and Reconciliation",
       "organization": "Razorpay",
       "logoUri": "/images/logos/razorpay.svg",
       "techStack": ["PHP", "React", "Docker", "REST", "Go"],

@@ -361,14 +361,14 @@
           "AWS"
         ],
         "metrics": {
-          "team_growth": "30+",
+          "team_growth": "15+",
           "bank_integrations": "3",
           "transaction_volume": "1M+",
           "uptime_sla": "99.9%"
         },
         "achievements": [
           "Built payout engine with layered approval workflows",
-          "Grew team from 4 to 30+ within six months",
+          "Grew team from 4 to 15+ within six months",
           "Designed services for transaction tracing and reconciliation",
           "Led banking partnerships focusing on scalability and compliance"
         ]
