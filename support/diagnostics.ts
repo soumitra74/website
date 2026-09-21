@@ -10,7 +10,8 @@ export type Diagnostics = {
 
 export const test = base.extend<{ diagnostics: Diagnostics }>({
   diagnostics: async ({}, use) => {
-    const patterns: RegExp[] = []
+    // Vercel Analytics loads its debug script from this host in dev only, and Chromium blocks it.
+    const patterns: RegExp[] = [/va\.vercel-scripts\.com/]
     await use({ ignore: (pattern) => patterns.push(pattern), patterns })
   },
 
