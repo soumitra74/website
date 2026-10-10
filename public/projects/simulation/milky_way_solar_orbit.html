@@ -87,14 +87,17 @@
 
   <div id="controls-panel" class="overlay-panel">
     <div class="slider-row">
-      <span style="font-size:0.75rem; color:#94a3b8; width:75px;">T = <b id="time-display" style="color:#f59e0b;">0 Myr</b></span>
+      <span style="font-size:0.75rem; color:#94a3b8; width:62px;">-500 Myr<br><small style="color:#64748b;">Cambrian</small></span>
       <input type="range" id="time-scrubber" min="0" max="500" step="0.2" value="0">
-      <span style="font-size:0.75rem; color:#64748b;">-500 Myr (Cambrian)</span>
+      <span style="font-size:0.75rem; color:#94a3b8;">Now<br><small style="color:#64748b;">t = 0</small></span>
+    </div>
+    <div class="slider-row" style="margin-bottom:4px;">
+      <span id="time-display" style="font-size:0.8rem; font-weight:700; color:#f59e0b; width:100%; text-align:center;">-500 Myr</span>
     </div>
     <div class="btn-row">
       <div class="btn-group">
-        <button id="btn-play">▶ Play Orbit</button>
-        <button id="btn-reset">↺ Present (t=0)</button>
+        <button id="btn-play">▶ Play Forward</button>
+        <button id="btn-reset">↺ Start (-500 Myr)</button>
         <button id="btn-speed-1" class="active">1x</button>
         <button id="btn-speed-5">5x</button>
         <button id="btn-speed-20">20x</button>
@@ -321,6 +324,27 @@
     gridHelper.position.y = -0.01;
     milkyWayGroup.add(gridHelper);
 
+    // Expanding disk-edge reference ring: makes inside-out growth unmistakable
+    const diskEdgeRingGeo = new THREE.RingGeometry(0.0, 0.0, 128);
+    // We rebuild radii in code; start with an empty ring and update via updateDiskEdge()
+    const diskEdgeRing = new THREE.Mesh(
+      new THREE.RingGeometry(0.999, 1.0, 128),
+      new THREE.MeshBasicMaterial({ color: 0x22d3ee, side: THREE.DoubleSide, transparent: true, opacity: 0.85 })
+    );
+    diskEdgeRing.rotation.x = -Math.PI / 2;
+    diskEdgeRing.position.y = 0.02;
+    milkyWayGroup.add(diskEdgeRing);
+
+    // Glow-filled inner disk to make area change obvious in face-on view
+    const diskFillGeo = new THREE.CircleGeometry(1.0, 96);
+    const diskFill = new THREE.Mesh(
+      diskFillGeo,
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.10 })
+    );
+    diskFill.rotation.x = -Math.PI / 2;
+    diskFill.position.y = 0.01;
+    milkyWayGroup.add(diskFill);
+
     // Sun's Galactocentric Orbit Path Ribbon/Line (in galactic frame)
     let orbitLine;
     let cosmicOrbitLine;
@@ -440,8 +464,8 @@
     });
 
     // --- 4. SIMULATION PLAYBACK & TELEMETRY ---
-    let isPlaying = true;
-    let currentTime = 0; // 0 to 500 Myr
+    let isPlaying = false;
+    let currentTime = 0; // progress: 0 = -500 Myr, TOTAL_TIME = Now
     let playSpeed = 1.0; // multiplier
     let diskGrowthEnabled = true;
 
@@ -483,17 +507,21 @@
       syncState(currentTime);
     });
 
-    function syncState(myr) {
-      currentTime = Math.max(0, Math.min(TOTAL_TIME, myr));
-      const idx = Math.min(activeTrajectory.length - 1, Math.round((currentTime / TOTAL_TIME) * (activeTrajectory.length - 1)));
+    function syncState(progress) {
+      // progress ranges 0 ( = -500 Myr, start) to TOTAL_TIME ( = Now, present)
+      currentTime = Math.max(0, Math.min(TOTAL_TIME, progress));
+      // trajectory is built backward: index 0 = Now (t=0), last index = 500 Myr ago.
+      // To play forward, invert: lookback = TOTAL_TIME - currentTime.
+      const lookback = TOTAL_TIME - currentTime;
+      const idx = Math.min(activeTrajectory.length - 1, Math.round((lookback / TOTAL_TIME) * (activeTrajectory.length - 1)));
       const p = activeTrajectory[idx];
 
       sunMesh.position.set(p.x, p.z * Z_VISUAL_EXAGGERATION, p.y);
       sunGlowMesh.position.copy(sunMesh.position);
 
       // Inside-Out Disk physical & visual scaling
-      // Gas inflow adds ~0.8 kpc/Gyr to outer radius (~5-11% shrinkage going back 500 Myr)
-      const lookbackFraction = currentTime / TOTAL_TIME;
+      // Gas inflow adds ~0.8 kpc/Gyr to outer radius; disk grows from compact (start) to full (now)
+      const lookbackFraction = lookback / TOTAL_TIME;
       const diskScaleFactor = diskGrowthEnabled ? (1.0 - 0.11 * lookbackFraction) : 1.0;
       const curRd = a_d0 * diskScaleFactor;
       const curOuterRad = 15.0 * diskScaleFactor;
@@ -502,14 +530,22 @@
       galaxyStars.scale.set(diskScaleFactor, 1.0, diskScaleFactor);
       gridHelper.scale.set(diskScaleFactor, 1.0, diskScaleFactor);
 
+      // Update the expanding reference ring + filled disk so growth is plainly visible
+      const outerEdge = 15.0 * diskScaleFactor;
+      const innerEdge = outerEdge * 0.97;
+      diskEdgeRing.geometry.dispose();
+      diskEdgeRing.geometry = new THREE.RingGeometry(innerEdge, outerEdge, 160);
+      diskFill.geometry.dispose();
+      diskFill.geometry = new THREE.CircleGeometry(outerEdge, 96);
+
       telRd.innerText = `${curRd.toFixed(2)} kpc`;
       telDiskRad.innerText = `${curOuterRad.toFixed(1)} kpc (${(diskScaleFactor * 100).toFixed(0)}%)`;
 
-      const actualDriftKpc = V_MW_KPC_MYR * currentTime; // in physical kpc
+      const actualDriftKpc = V_MW_KPC_MYR * lookback; // physical drift over elapsed lookback
       if (mwCosmicMotionEnabled) {
-        const visualDriftX = -MW_DRIFT_DIR.x * V_MW_KPC_MYR * currentTime * DRIFT_VISUAL_SCALE;
-        const visualDriftY = -MW_DRIFT_DIR.y * V_MW_KPC_MYR * currentTime * DRIFT_VISUAL_SCALE;
-        const visualDriftZ = -MW_DRIFT_DIR.z * V_MW_KPC_MYR * currentTime * DRIFT_VISUAL_SCALE;
+        const visualDriftX = -MW_DRIFT_DIR.x * V_MW_KPC_MYR * lookback * DRIFT_VISUAL_SCALE;
+        const visualDriftY = -MW_DRIFT_DIR.y * V_MW_KPC_MYR * lookback * DRIFT_VISUAL_SCALE;
+        const visualDriftZ = -MW_DRIFT_DIR.z * V_MW_KPC_MYR * lookback * DRIFT_VISUAL_SCALE;
         milkyWayGroup.position.set(visualDriftX, visualDriftY, visualDriftZ);
         telDrift.innerText = `${actualDriftKpc.toFixed(1)} kpc (${(actualDriftKpc * 3262).toFixed(0)} kly)`;
       } else {
@@ -517,10 +553,11 @@
         telDrift.innerText = `0.0 kpc (Off)`;
       }
 
+      const displayTime = currentTime - TOTAL_TIME; // negative Myr (e.g. -500 at start, 0 at Now)
       timeScrubber.value = currentTime.toFixed(1);
-      timeDisplay.innerText = `-${currentTime.toFixed(1)} Myr`;
-      telTime.innerText = `-${currentTime.toFixed(1)} Myr`;
-      telEra.innerText = getEra(currentTime);
+      timeDisplay.innerText = (displayTime >= -0.05 ? 'Now (t = 0)' : `${displayTime.toFixed(1)} Myr`);
+      telTime.innerText = (displayTime >= -0.05 ? 'Now (t = 0)' : `${displayTime.toFixed(1)} Myr`);
+      telEra.innerText = getEra(lookback);
       telR.innerText = `${p.R.toFixed(2)} kpc`;
       telZ.innerText = `${(p.z * 1000).toFixed(1)} pc`;
       telV.innerText = `${p.speedKm.toFixed(1)} km/s`;
@@ -546,21 +583,21 @@
       pctx.lineTo(w, h/2);
       pctx.stroke();
 
-      // Oscillation curve
+      // Oscillation curve (rendered forward: x-axis 0 = -500 Myr -> w = Now)
       pctx.strokeStyle = '#38bdf8';
       pctx.lineWidth = 1.5;
       pctx.beginPath();
       for (let i = 0; i < activeTrajectory.length; i += 8) {
-        const pt = activeTrajectory[i];
-        const px = (pt.t / TOTAL_TIME) * w;
-        // z varies between roughly -0.09 to +0.09 kpc (-90 to +90 pc)
+        const pt = activeTrajectory[i];          // pt.t = lookback Myr (0..500)
+        const progress = TOTAL_TIME - pt.t;       // forward progress (0..500)
+        const px = (progress / TOTAL_TIME) * w;
         const py = (h/2) - (pt.z / 0.12) * (h/2);
         if (i === 0) pctx.moveTo(px, py);
         else pctx.lineTo(px, py);
       }
       pctx.stroke();
 
-      // Current scrubber cursor
+      // Current scrubber cursor (progress 0..TOTAL_TIME maps to x 0..w)
       const cx = (curTime / TOTAL_TIME) * w;
       pctx.strokeStyle = '#f59e0b';
       pctx.lineWidth = 2;
@@ -573,17 +610,19 @@
     // Controls Event Listeners
     timeScrubber.addEventListener('input', e => {
       isPlaying = false;
-      btnPlay.innerText = '▶ Play Orbit';
+      btnPlay.innerText = '▶ Play Forward';
       syncState(parseFloat(e.target.value));
     });
 
     btnPlay.addEventListener('click', () => {
       isPlaying = !isPlaying;
-      btnPlay.innerText = isPlaying ? '⏸ Pause' : '▶ Play Orbit';
+      btnPlay.innerText = isPlaying ? '⏸ Pause' : '▶ Play Forward';
     });
 
     document.getElementById('btn-reset').addEventListener('click', () => {
-      syncState(0);
+      isPlaying = false;
+      btnPlay.innerText = '▶ Play Forward';
+      syncState(0); // back to -500 Myr
     });
 
     ['1', '5', '20'].forEach(spd => {
@@ -628,9 +667,9 @@
       lastClock = now;
 
       if (isPlaying) {
-        // Base speed: 12 Myr per second at 1x
+        // Play forward: currentTime runs 0 (-500 Myr) -> TOTAL_TIME (Now)
         currentTime += deltaSec * 12.0 * playSpeed;
-        if (currentTime > TOTAL_TIME) currentTime = 0;
+        if (currentTime > TOTAL_TIME) currentTime = TOTAL_TIME;
         syncState(currentTime);
       }
 
