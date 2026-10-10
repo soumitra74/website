@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milky Way: Sun's 500-Million-Year Trajectory</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body { background: #030611; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; overflow: hidden; height: 100vh; }
+    #canvas-container { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; }
+    .overlay-panel { position: absolute; background: rgba(8, 14, 30, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(70, 110, 180, 0.35); border-radius: 10px; padding: 14px 18px; z-index: 10; pointer-events: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    #header-panel { top: 16px; left: 16px; max-width: 420px; }
+    #header-panel h1 { font-size: 1.15rem; color: #f6ad55; letter-spacing: 0.5px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    #header-panel p { font-size: 0.78rem; color: #94a3b8; line-height: 1.35; }
+    #telemetry-panel { top: 16px; right: 16px; width: 290px; }
+    .tel-row { display: flex; justify-content: space-between; font-size: 0.78rem; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .tel-label { color: #94a3b8; }
+    .tel-val { font-family: monospace; font-weight: 600; color: #38bdf8; }
+    .tel-era { color: #f472b6; font-weight: bold; }
+    #controls-panel { bottom: 18px; left: 50%; transform: translateX(-50%); width: min(880px, 92vw); padding: 12px 20px; }
+    .slider-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .slider-row input[type=range] { flex: 1; accent-color: #f59e0b; cursor: pointer; height: 6px; }
+    .btn-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .btn-group { display: flex; gap: 6px; align-items: center; }
+    button { background: rgba(30, 48, 80, 0.8); border: 1px solid #3b82f6; color: #e2e8f0; font-size: 0.74rem; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+    button:hover { background: #2563eb; color: #fff; }
+    button.active { background: #f59e0b; border-color: #f59e0b; color: #000; font-weight: bold; }
+    #plots-panel { position: absolute; bottom: 135px; left: 16px; width: 280px; padding: 10px; font-size: 0.72rem; }
+    #plots-panel h3 { font-size: 0.75rem; color: #cbd5e1; margin-bottom: 6px; }
+    canvas.mini-plot { width: 100%; height: 65px; background: rgba(3, 7, 18, 0.85); border-radius: 4px; display: block; margin-top: 4px; }
+    .legend-item { display: inline-flex; align-items: center; gap: 4px; margin-right: 10px; font-size: 0.7rem; color: #94a3b8; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .switch-container { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.73rem; }
+    .switch { position: relative; display: inline-block; width: 34px; height: 18px; flex-shrink: 0; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .25s; border-radius: 18px; }
+    .switch-slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background-color: white; transition: .25s; border-radius: 50%; }
+    input:checked + .switch-slider { background-color: #10b981; }
+    input:checked + .switch-slider:before { transform: translateX(16px); }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <div id="header-panel" class="overlay-panel">
+    <h1><span style="color:#fbbf24;">☉</span> Solar Galactic Orbit Simulator</h1>
+    <p>Simulating the backward orbital path of the Sun in the Milky Way potential (Bulge + Miyamoto-Nagai Disk + NFW Dark Matter Halo) over the past 500 Million Years (Cambrian to Present).</p>
+  </div>
+
+  <div id="telemetry-panel" class="overlay-panel">
+    <div class="tel-row"><span class="tel-label">Lookback Time:</span><span id="tel-time" class="tel-val">0.0 Myr</span></div>
+    <div class="tel-row"><span class="tel-label">Earth Geological Era:</span><span id="tel-era" class="tel-era">Anthropocene / Quaternary</span></div>
+    <div class="tel-row"><span class="tel-label">Galactocentric Radius R:</span><span id="tel-r" class="tel-val">8.18 kpc</span></div>
+    <div class="tel-row"><span class="tel-label">Vertical Distance z:</span><span id="tel-z" class="tel-val">+20.8 pc</span></div>
+    <div class="tel-row"><span class="tel-label">Disk Scale Radius R_d:</span><span id="tel-rd" class="tel-val">3.50 kpc</span></div>
+    <div class="tel-row"><span class="tel-label">Disk Outer Radius:</span><span id="tel-disk-rad" class="tel-val">15.0 kpc (100%)</span></div>
+    <div class="tel-row"><span class="tel-label">Orbital Speed v:</span><span id="tel-v" class="tel-val">238.2 km/s</span></div>
+    <div class="tel-row"><span class="tel-label">Milky Way Cosmic Drift:</span><span id="tel-drift" class="tel-val">0.0 kpc</span></div>
+    <div class="tel-row"><span class="tel-label">Galactic Revolutions:</span><span id="tel-rev" class="tel-val">0.00</span></div>
+    <div class="tel-row"><span class="tel-label">Midplane Crossings:</span><span id="tel-cross" class="tel-val">0</span></div>
+  </div>
+
+  <div id="plots-panel" class="overlay-panel">
+    <h3>Vertical Bobbing z(t) [±100 pc]</h3>
+    <canvas id="z-plot" class="mini-plot" width="260" height="65"></canvas>
+    <div style="margin-top:6px;">
+      <span class="legend-item"><span class="dot" style="background:#eab308"></span>Sun</span>
+      <span class="legend-item"><span class="dot" style="background:#38bdf8"></span>Orbit</span>
+      <span class="legend-item"><span class="dot" style="background:#ef4444"></span>Galactic Core</span>
+    </div>
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="toggle-mw-motion">
+        <span class="switch-slider"></span>
+      </label>
+      <span style="color:#cbd5e1; font-weight:500;">Milky Way Cosmic Motion (CMB Drift ~600 km/s)</span>
+    </div>
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="toggle-disk-growth" checked>
+        <span class="switch-slider"></span>
+      </label>
+      <span style="color:#cbd5e1; font-weight:500;">Inside-Out Disk Growth (dR/dt ~ 0.8 kpc/Gyr)</span>
+    </div>
+  </div>
+
+  <div id="controls-panel" class="overlay-panel">
+    <div class="slider-row">
+      <span style="font-size:0.75rem; color:#94a3b8; width:75px;">T = <b id="time-display" style="color:#f59e0b;">0 Myr</b></span>
+      <input type="range" id="time-scrubber" min="0" max="500" step="0.2" value="0">
+      <span style="font-size:0.75rem; color:#64748b;">-500 Myr (Cambrian)</span>
+    </div>
+    <div class="btn-row">
+      <div class="btn-group">
+        <button id="btn-play">▶ Play Orbit</button>
+        <button id="btn-reset">↺ Present (t=0)</button>
+        <button id="btn-speed-1" class="active">1x</button>
+        <button id="btn-speed-5">5x</button>
+        <button id="btn-speed-20">20x</button>
+      </div>
+      <div class="btn-group">
+        <button id="btn-view-persp" class="active">Perspective 3D</button>
+        <button id="btn-view-top">Face-on (Top)</button>
+        <button id="btn-view-side">Edge-on (Disk)</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- 1. GALACTIC NUMERICAL INTEGRATION (RK4) ---
+    // Physical Units: distance in kpc, time in Myr, velocity in kpc/Myr
+    // 1 km/s = 0.001022712 kpc/Myr
+    const KM_PER_S = 0.001022712;
+
+    // Potential parameters: Bulge (Hernquist), Disk (Miyamoto-Nagai), Halo (NFW)
+    // Inside-out growth model:
+    // Over the last 500 Myr, the disk scale length a_d and disk mass GM_d grew by ~5-10%
+    // At lookback time t (Myr ago):
+    // a_d(t) = a_d0 * (1 - 0.12 * (t / 500))
+    // GM_d(t) = GM_d0 * (1 - 0.08 * (t / 500))
+    const GM_b = 0.055;     // Bulge strength (Hernquist)
+    const c_b  = 0.6;       // Bulge scale length (kpc)
+    const GM_d0 = 0.72;     // Present disk strength (Miyamoto-Nagai)
+    const a_d0  = 3.5;      // Present disk scale length (kpc)
+    const b_d   = 0.30;     // Disk scale height (kpc)
+    const GM_h  = 0.65;     // Dark matter halo strength
+    const r_h   = 16.0;     // Halo scale radius (kpc)
+
+    function getAccelerationWithGrowth(x, y, z, tLookback, enableGrowth) {
+      const R2 = x*x + y*y;
+      const R = Math.sqrt(R2) + 1e-6;
+      const r = Math.sqrt(R2 + z*z) + 1e-6;
+
+      // Bulge (formed very early, assumed constant over last 500 Myr)
+      const a_b_mag = -GM_b / ((r + c_b) * (r + c_b) * r);
+
+      // Time-dependent disk parameters (smaller and slightly less massive in the past)
+      const growthFrac = enableGrowth ? (tLookback / TOTAL_TIME) : 0;
+      const cur_a_d = a_d0 * (1.0 - 0.11 * growthFrac);   // ~11% smaller scale length 500 Ma
+      const cur_GM_d = GM_d0 * (1.0 - 0.07 * growthFrac); // ~7% less disk stellar mass 500 Ma
+
+      // Miyamoto-Nagai Disk
+      const zeta = Math.sqrt(z*z + b_d*b_d);
+      const az_fac = cur_a_d + zeta;
+      const denom_d = Math.pow(R2 + az_fac*az_fac, 1.5);
+      const aR_d = -cur_GM_d / denom_d;
+      const az_d = -cur_GM_d * az_fac / (denom_d * zeta);
+
+      // NFW Halo approximation
+      const a_h_mag = -GM_h * (Math.log(1.0 + r/r_h) - (r/(r + r_h))) / (r*r*r);
+
+      const ax = a_b_mag*x + aR_d*x + a_h_mag*x;
+      const ay = a_b_mag*y + aR_d*y + a_h_mag*y;
+      const az = a_b_mag*z + az_d*z + a_h_mag*z;
+      return [ax, ay, az];
+    }
+
+    // Precompute both trajectories (with and without disk growth) for instantaneous toggle
+    const TOTAL_TIME = 500.0; // Myr
+    const DT = -0.05;         // Myr per step
+    const STEPS = Math.round(TOTAL_TIME / Math.abs(DT));
+
+    function computeOrbit(withGrowth) {
+      let init_state = {
+        x: 8.178, y: 0.0, z: 0.0208,
+        vx: -11.1 * KM_PER_S,
+        vy: 238.0 * KM_PER_S,
+        vz: 7.25 * KM_PER_S
+      };
+      const traj = [];
+      let cur = { ...init_state };
+      let totalCrossings = 0;
+      let prevZ = cur.z;
+      let cumulativeAngle = 0;
+      let prevAngle = Math.atan2(cur.y, cur.x);
+
+      traj.push({ t: 0, ...cur, R: 8.178, speedKm: 238.0, crossings: 0, revs: 0 });
+
+      for (let i = 1; i <= STEPS; i++) {
+        const t = i * Math.abs(DT);
+        const dt = DT;
+
+        const [ax1, ay1, az1] = getAccelerationWithGrowth(cur.x, cur.y, cur.z, t, withGrowth);
+        const k1_vx = ax1*dt, k1_vy = ay1*dt, k1_vz = az1*dt;
+        const k1_x  = cur.vx*dt, k1_y  = cur.vy*dt, k1_z  = cur.vz*dt;
+
+        const [ax2, ay2, az2] = getAccelerationWithGrowth(cur.x + 0.5*k1_x, cur.y + 0.5*k1_y, cur.z + 0.5*k1_z, t, withGrowth);
+        const k2_vx = ax2*dt, k2_vy = ay2*dt, k2_vz = az2*dt;
+        const k2_x  = (cur.vx + 0.5*k1_vx)*dt, k2_y  = (cur.vy + 0.5*k1_vy)*dt, k2_z  = (cur.vz + 0.5*k1_vz)*dt;
+
+        const [ax3, ay3, az3] = getAccelerationWithGrowth(cur.x + 0.5*k2_x, cur.y + 0.5*k2_y, cur.z + 0.5*k2_z, t, withGrowth);
+        const k3_vx = ax3*dt, k3_vy = ay3*dt, k3_vz = az3*dt;
+        const k3_x  = (cur.vx + 0.5*k2_vx)*dt, k3_y  = (cur.vy + 0.5*k2_vy)*dt, k3_z  = (cur.vz + 0.5*k2_vz)*dt;
+
+        const [ax4, ay4, az4] = getAccelerationWithGrowth(cur.x + k3_x, cur.y + k3_y, cur.z + k3_z, t, withGrowth);
+        const k4_vx = ax4*dt, k4_vy = ay4*dt, k4_vz = az4*dt;
+        const k4_x  = (cur.vx + k3_vx)*dt, k4_y  = (cur.vy + k3_vy)*dt, k4_z  = (cur.vz + k3_vz)*dt;
+
+        cur.x += (k1_x + 2*k2_x + 2*k3_x + k4_x)/6;
+        cur.y += (k1_y + 2*k2_y + 2*k3_y + k4_y)/6;
+        cur.z += (k1_z + 2*k2_z + 2*k3_z + k4_z)/6;
+        cur.vx += (k1_vx + 2*k2_vx + 2*k3_vx + k4_vx)/6;
+        cur.vy += (k1_vy + 2*k2_vy + 2*k3_vy + k4_vy)/6;
+        cur.vz += (k1_vz + 2*k2_vz + 2*k3_vz + k4_vz)/6;
+
+        if ((prevZ > 0 && cur.z <= 0) || (prevZ < 0 && cur.z >= 0)) totalCrossings++;
+        prevZ = cur.z;
+
+        const currentAngle = Math.atan2(cur.y, cur.x);
+        let dTheta = currentAngle - prevAngle;
+        if (dTheta > Math.PI) dTheta -= 2*Math.PI;
+        if (dTheta < -Math.PI) dTheta += 2*Math.PI;
+        cumulativeAngle += Math.abs(dTheta);
+        prevAngle = currentAngle;
+
+        const R = Math.sqrt(cur.x*cur.x + cur.y*cur.y);
+        const speedKm = Math.sqrt(cur.vx*cur.vx + cur.vy*cur.vy + cur.vz*cur.vz) / KM_PER_S;
+
+        traj.push({
+          t: t,
+          x: cur.x, y: cur.y, z: cur.z,
+          R: R,
+          speedKm: speedKm,
+          crossings: totalCrossings,
+          revs: cumulativeAngle / (2 * Math.PI)
+        });
+      }
+      return traj;
+    }
+
+    const trajectoryWithGrowth = computeOrbit(true);
+    const trajectoryStatic = computeOrbit(false);
+    let activeTrajectory = trajectoryWithGrowth;
+
+    function getEra(myr) {
+      if (myr < 2.6) return "Quaternary (Humans)";
+      if (myr < 23.0) return "Neogene (Mammals expand)";
+      if (myr < 66.0) return "Paleogene (Asteroid impact ~66Ma)";
+      if (myr < 145.0) return "Cretaceous (T-Rex, Triceratops)";
+      if (myr < 201.0) return "Jurassic (Stegosaurus, Sauropods)";
+      if (myr < 252.0) return "Triassic (First Dinosaurs / Extinction)";
+      if (myr < 299.0) return "Permian (Pangaea assembly)";
+      if (myr < 359.0) return "Carboniferous (Vast Coal Forests)";
+      if (myr < 419.0) return "Devonian (Age of Fishes)";
+      if (myr < 444.0) return "Silurian (First Land Plants)";
+      if (myr < 485.0) return "Ordovician (Marine Radiation)";
+      return "Cambrian Explosion (~500 Ma)";
+    }
+
+    // --- 2. THREE.JS 3D VISUALIZATION ---
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x030611, 0.012);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 18, 22);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    // Coordinate scaling: 1 kpc = 1 Three.js unit. Vertical z is scaled up by 15x so pc-level oscillations are clearly visible in 3D!
+    const Z_VISUAL_EXAGGERATION = 18.0;
+
+    // Group for Milky Way components so the entire galaxy can translate as a unit
+    const milkyWayGroup = new THREE.Group();
+    scene.add(milkyWayGroup);
+
+    // Galactic Core
+    const coreGeo = new THREE.SphereGeometry(0.5, 32, 32);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0xffddaa });
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    milkyWayGroup.add(coreMesh);
+
+    const coreGlowGeo = new THREE.SphereGeometry(1.2, 32, 32);
+    const coreGlowMat = new THREE.MeshBasicMaterial({ color: 0xff8833, transparent: true, opacity: 0.35 });
+    milkyWayGroup.add(new THREE.Mesh(coreGlowGeo, coreGlowMat));
+
+    // Galactic Disk particle simulation (spiral arms + bulge)
+    const starCount = 35000;
+    const starGeo = new THREE.BufferGeometry();
+    const starPos = new Float32Array(starCount * 3);
+    const starCol = new Float32Array(starCount * 3);
+
+    for (let i = 0; i < starCount; i++) {
+      const isBulge = Math.random() < 0.25;
+      let r, theta, z;
+      if (isBulge) {
+        r = Math.pow(Math.random(), 1.8) * 2.5;
+        theta = Math.random() * Math.PI * 2;
+        z = (Math.random() - 0.5) * 1.2 * (1.0 - r/2.5);
+      } else {
+        r = 1.5 + Math.pow(Math.random(), 1.2) * 13.0;
+        const armOffset = (Math.floor(Math.random() * 4) * Math.PI / 2);
+        const spiralAngle = 2.4 * Math.log(r / 1.5);
+        theta = armOffset + spiralAngle + (Math.random() - 0.5) * (0.45 + r * 0.05);
+        z = (Math.random() - 0.5) * (0.2 + 0.04 * r) * Z_VISUAL_EXAGGERATION;
+      }
+      starPos[i*3] = r * Math.cos(theta);
+      starPos[i*3 + 1] = z;
+      starPos[i*3 + 2] = r * Math.sin(theta);
+
+      // Color variation (warm inner, blue-white spiral young stars)
+      if (r < 3.0) {
+        starCol[i*3] = 1.0; starCol[i*3+1] = 0.8; starCol[i*3+2] = 0.5;
+      } else {
+        starCol[i*3] = 0.6 + Math.random()*0.4;
+        starCol[i*3+1] = 0.75 + Math.random()*0.25;
+        starCol[i*3+2] = 1.0;
+      }
+    }
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    starGeo.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
+    const starMat = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.75 });
+    const galaxyStars = new THREE.Points(starGeo, starMat);
+    milkyWayGroup.add(galaxyStars);
+
+    // Galactic reference grid
+    const gridHelper = new THREE.PolarGridHelper(14, 14, 8, 64, 0x1e3a8a, 0x0f172a);
+    gridHelper.position.y = -0.01;
+    milkyWayGroup.add(gridHelper);
+
+    // Sun's Galactocentric Orbit Path Ribbon/Line (in galactic frame)
+    let orbitLine;
+    let cosmicOrbitLine;
+
+    function buildOrbitLines(traj) {
+      if (orbitLine) milkyWayGroup.remove(orbitLine);
+      if (cosmicOrbitLine) scene.remove(cosmicOrbitLine);
+
+      const pathPoints = [];
+      const pathColors = [];
+      for (let i = 0; i < traj.length; i++) {
+        const pt = traj[i];
+        pathPoints.push(new THREE.Vector3(pt.x, pt.z * Z_VISUAL_EXAGGERATION, pt.y));
+        const alpha = i / traj.length;
+        pathColors.push(1.0 - 0.7 * alpha, 0.8 - 0.1 * alpha, 0.2 + 0.8 * alpha);
+      }
+      const pathGeo = new THREE.BufferGeometry().setFromPoints(pathPoints);
+      pathGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(pathColors), 3));
+      const pathMat = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 2, transparent: true, opacity: 0.9 });
+      orbitLine = new THREE.Line(pathGeo, pathMat);
+      orbitLine.visible = !mwCosmicMotionEnabled;
+      milkyWayGroup.add(orbitLine);
+
+      // Cosmic trajectory
+      const cosmicPathPoints = [];
+      const cosmicPathColors = [];
+      for (let i = 0; i < traj.length; i++) {
+        const pt = traj[i];
+        const galDispX = -MW_DRIFT_DIR.x * V_MW_KPC_MYR * pt.t * DRIFT_VISUAL_SCALE;
+        const galDispY = -MW_DRIFT_DIR.y * V_MW_KPC_MYR * pt.t * DRIFT_VISUAL_SCALE;
+        const galDispZ = -MW_DRIFT_DIR.z * V_MW_KPC_MYR * pt.t * DRIFT_VISUAL_SCALE;
+        cosmicPathPoints.push(new THREE.Vector3(
+          pt.x + galDispX,
+          (pt.z * Z_VISUAL_EXAGGERATION) + galDispY,
+          pt.y + galDispZ
+        ));
+        const alpha = i / traj.length;
+        cosmicPathColors.push(1.0, 0.4 + 0.5 * alpha, 0.1 + 0.9 * alpha);
+      }
+      const cosmicPathGeo = new THREE.BufferGeometry().setFromPoints(cosmicPathPoints);
+      cosmicPathGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(cosmicPathColors), 3));
+      const cosmicPathMat = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 2, transparent: true, opacity: 0.85 });
+      cosmicOrbitLine = new THREE.Line(cosmicPathGeo, cosmicPathMat);
+      cosmicOrbitLine.visible = mwCosmicMotionEnabled;
+      scene.add(cosmicOrbitLine);
+    }
+
+    // Current Sun marker
+    const sunMarkerGeo = new THREE.SphereGeometry(0.18, 16, 16);
+    const sunMarkerMat = new THREE.MeshBasicMaterial({ color: 0xfff044 });
+    const sunMesh = new THREE.Mesh(sunMarkerGeo, sunMarkerMat);
+    milkyWayGroup.add(sunMesh);
+
+    // Glow corona around Sun
+    const sunGlowGeo = new THREE.SphereGeometry(0.4, 16, 16);
+    const sunGlowMat = new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.45 });
+    const sunGlowMesh = new THREE.Mesh(sunGlowGeo, sunGlowMat);
+    milkyWayGroup.add(sunGlowMesh);
+
+    // Cosmic drift constants (declared BEFORE buildOrbitLines)
+    const V_MW_KPC_MYR = 600.0 * KM_PER_S; // ~0.6136 kpc/Myr
+    const MW_DRIFT_DIR = new THREE.Vector3(0.85, 0.15, -0.50).normalize();
+    const DRIFT_VISUAL_SCALE = 0.12; 
+    let mwCosmicMotionEnabled = false;
+
+    buildOrbitLines(activeTrajectory);
+
+    // Cosmic frame static grid marker
+    const cosmicGrid = new THREE.GridHelper(100, 20, 0x334155, 0x1e293b);
+    cosmicGrid.position.y = -8;
+    cosmicGrid.visible = false;
+    scene.add(cosmicGrid);
+
+    // --- 3. CAMERA INTERACTION & CONTROLS ---
+    let cameraMode = 'perspective';
+    let isMouseDown = false;
+    let prevMouseX = 0, prevMouseY = 0;
+    let camSpherical = { radius: 28, theta: 0.8, phi: 1.1 };
+
+    function updateCamera() {
+      if (cameraMode === 'perspective') {
+        camera.position.x = camSpherical.radius * Math.sin(camSpherical.phi) * Math.sin(camSpherical.theta);
+        camera.position.y = camSpherical.radius * Math.cos(camSpherical.phi);
+        camera.position.z = camSpherical.radius * Math.sin(camSpherical.phi) * Math.cos(camSpherical.theta);
+        camera.lookAt(0, 0, 0);
+      } else if (cameraMode === 'top') {
+        camera.position.set(0, 32, 0.001);
+        camera.lookAt(0, 0, 0);
+      } else if (cameraMode === 'side') {
+        camera.position.set(0, 0.5, 32);
+        camera.lookAt(0, 0, 0);
+      }
+    }
+    updateCamera();
+
+    window.addEventListener('mousedown', e => {
+      if (e.target.closest('.overlay-panel')) return;
+      isMouseDown = true;
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+    });
+    window.addEventListener('mouseup', () => isMouseDown = false);
+    window.addEventListener('mousemove', e => {
+      if (!isMouseDown || cameraMode !== 'perspective') return;
+      const dx = (e.clientX - prevMouseX) * 0.006;
+      const dy = (e.clientY - prevMouseY) * 0.006;
+      camSpherical.theta -= dx;
+      camSpherical.phi = Math.max(0.05, Math.min(Math.PI - 0.05, camSpherical.phi - dy));
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+      updateCamera();
+    });
+    window.addEventListener('wheel', e => {
+      if (e.target.closest('.overlay-panel')) return;
+      camSpherical.radius = Math.max(6, Math.min(65, camSpherical.radius + e.deltaY * 0.03));
+      updateCamera();
+    });
+
+    // --- 4. SIMULATION PLAYBACK & TELEMETRY ---
+    let isPlaying = true;
+    let currentTime = 0; // 0 to 500 Myr
+    let playSpeed = 1.0; // multiplier
+    let diskGrowthEnabled = true;
+
+    const timeScrubber = document.getElementById('time-scrubber');
+    const timeDisplay = document.getElementById('time-display');
+    const telTime = document.getElementById('tel-time');
+    const telEra = document.getElementById('tel-era');
+    const telR = document.getElementById('tel-r');
+    const telZ = document.getElementById('tel-z');
+    const telRd = document.getElementById('tel-rd');
+    const telDiskRad = document.getElementById('tel-disk-rad');
+    const telV = document.getElementById('tel-v');
+    const telDrift = document.getElementById('tel-drift');
+    const telRev = document.getElementById('tel-rev');
+    const telCross = document.getElementById('tel-cross');
+    const btnPlay = document.getElementById('btn-play');
+    const toggleMwMotion = document.getElementById('toggle-mw-motion');
+    const toggleDiskGrowth = document.getElementById('toggle-disk-growth');
+
+    toggleDiskGrowth.addEventListener('change', e => {
+      diskGrowthEnabled = e.target.checked;
+      activeTrajectory = diskGrowthEnabled ? trajectoryWithGrowth : trajectoryStatic;
+      buildOrbitLines(activeTrajectory);
+      syncState(currentTime);
+    });
+
+    toggleMwMotion.addEventListener('change', e => {
+      mwCosmicMotionEnabled = e.target.checked;
+      cosmicOrbitLine.visible = mwCosmicMotionEnabled;
+      cosmicGrid.visible = mwCosmicMotionEnabled;
+      orbitLine.visible = !mwCosmicMotionEnabled;
+      if (mwCosmicMotionEnabled) {
+        camSpherical.radius = 42;
+      } else {
+        camSpherical.radius = 28;
+        milkyWayGroup.position.set(0, 0, 0);
+      }
+      updateCamera();
+      syncState(currentTime);
+    });
+
+    function syncState(myr) {
+      currentTime = Math.max(0, Math.min(TOTAL_TIME, myr));
+      const idx = Math.min(activeTrajectory.length - 1, Math.round((currentTime / TOTAL_TIME) * (activeTrajectory.length - 1)));
+      const p = activeTrajectory[idx];
+
+      sunMesh.position.set(p.x, p.z * Z_VISUAL_EXAGGERATION, p.y);
+      sunGlowMesh.position.copy(sunMesh.position);
+
+      // Inside-Out Disk physical & visual scaling
+      // Gas inflow adds ~0.8 kpc/Gyr to outer radius (~5-11% shrinkage going back 500 Myr)
+      const lookbackFraction = currentTime / TOTAL_TIME;
+      const diskScaleFactor = diskGrowthEnabled ? (1.0 - 0.11 * lookbackFraction) : 1.0;
+      const curRd = a_d0 * diskScaleFactor;
+      const curOuterRad = 15.0 * diskScaleFactor;
+
+      // Physically scale disk stellar positions horizontally (preserving central bulge)
+      galaxyStars.scale.set(diskScaleFactor, 1.0, diskScaleFactor);
+      gridHelper.scale.set(diskScaleFactor, 1.0, diskScaleFactor);
+
+      telRd.innerText = `${curRd.toFixed(2)} kpc`;
+      telDiskRad.innerText = `${curOuterRad.toFixed(1)} kpc (${(diskScaleFactor * 100).toFixed(0)}%)`;
+
+      const actualDriftKpc = V_MW_KPC_MYR * currentTime; // in physical kpc
+      if (mwCosmicMotionEnabled) {
+        const visualDriftX = -MW_DRIFT_DIR.x * V_MW_KPC_MYR * currentTime * DRIFT_VISUAL_SCALE;
+        const visualDriftY = -MW_DRIFT_DIR.y * V_MW_KPC_MYR * currentTime * DRIFT_VISUAL_SCALE;
+        const visualDriftZ = -MW_DRIFT_DIR.z * V_MW_KPC_MYR * currentTime * DRIFT_VISUAL_SCALE;
+        milkyWayGroup.position.set(visualDriftX, visualDriftY, visualDriftZ);
+        telDrift.innerText = `${actualDriftKpc.toFixed(1)} kpc (${(actualDriftKpc * 3262).toFixed(0)} kly)`;
+      } else {
+        milkyWayGroup.position.set(0, 0, 0);
+        telDrift.innerText = `0.0 kpc (Off)`;
+      }
+
+      timeScrubber.value = currentTime.toFixed(1);
+      timeDisplay.innerText = `-${currentTime.toFixed(1)} Myr`;
+      telTime.innerText = `-${currentTime.toFixed(1)} Myr`;
+      telEra.innerText = getEra(currentTime);
+      telR.innerText = `${p.R.toFixed(2)} kpc`;
+      telZ.innerText = `${(p.z * 1000).toFixed(1)} pc`;
+      telV.innerText = `${p.speedKm.toFixed(1)} km/s`;
+      telRev.innerText = `${p.revs.toFixed(2)}`;
+      telCross.innerText = `${p.crossings}`;
+
+      drawMiniPlot(currentTime);
+    }
+
+    // Mini canvas plot for z(t) oscillations
+    const plotCanvas = document.getElementById('z-plot');
+    const pctx = plotCanvas.getContext('2d');
+    function drawMiniPlot(curTime) {
+      const w = plotCanvas.width;
+      const h = plotCanvas.height;
+      pctx.clearRect(0, 0, w, h);
+
+      // Midplane zero line
+      pctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      pctx.lineWidth = 1;
+      pctx.beginPath();
+      pctx.moveTo(0, h/2);
+      pctx.lineTo(w, h/2);
+      pctx.stroke();
+
+      // Oscillation curve
+      pctx.strokeStyle = '#38bdf8';
+      pctx.lineWidth = 1.5;
+      pctx.beginPath();
+      for (let i = 0; i < activeTrajectory.length; i += 8) {
+        const pt = activeTrajectory[i];
+        const px = (pt.t / TOTAL_TIME) * w;
+        // z varies between roughly -0.09 to +0.09 kpc (-90 to +90 pc)
+        const py = (h/2) - (pt.z / 0.12) * (h/2);
+        if (i === 0) pctx.moveTo(px, py);
+        else pctx.lineTo(px, py);
+      }
+      pctx.stroke();
+
+      // Current scrubber cursor
+      const cx = (curTime / TOTAL_TIME) * w;
+      pctx.strokeStyle = '#f59e0b';
+      pctx.lineWidth = 2;
+      pctx.beginPath();
+      pctx.moveTo(cx, 0);
+      pctx.lineTo(cx, h);
+      pctx.stroke();
+    }
+
+    // Controls Event Listeners
+    timeScrubber.addEventListener('input', e => {
+      isPlaying = false;
+      btnPlay.innerText = '▶ Play Orbit';
+      syncState(parseFloat(e.target.value));
+    });
+
+    btnPlay.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      btnPlay.innerText = isPlaying ? '⏸ Pause' : '▶ Play Orbit';
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      syncState(0);
+    });
+
+    ['1', '5', '20'].forEach(spd => {
+      document.getElementById(`btn-speed-${spd}`).addEventListener('click', (e) => {
+        playSpeed = parseFloat(spd);
+        document.querySelectorAll('[id^=btn-speed-]').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+      });
+    });
+
+    document.getElementById('btn-view-persp').addEventListener('click', (e) => {
+      cameraMode = 'perspective';
+      updateCamera();
+      document.querySelectorAll('#controls-panel .btn-group:last-child button').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+    document.getElementById('btn-view-top').addEventListener('click', (e) => {
+      cameraMode = 'top';
+      updateCamera();
+      document.querySelectorAll('#controls-panel .btn-group:last-child button').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+    document.getElementById('btn-view-side').addEventListener('click', (e) => {
+      cameraMode = 'side';
+      updateCamera();
+      document.querySelectorAll('#controls-panel .btn-group:last-child button').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Main animation loop
+    let lastClock = performance.now();
+    function animate() {
+      requestAnimationFrame(animate);
+      const now = performance.now();
+      const deltaSec = (now - lastClock) / 1000.0;
+      lastClock = now;
+
+      if (isPlaying) {
+        // Base speed: 12 Myr per second at 1x
+        currentTime += deltaSec * 12.0 * playSpeed;
+        if (currentTime > TOTAL_TIME) currentTime = 0;
+        syncState(currentTime);
+      }
+
+      // Gentle galaxy ambient rotation
+      galaxyStars.rotation.y += 0.0003;
+
+      renderer.render(scene, camera);
+    }
+
+    syncState(0);
+    animate();
+  </script>
+</body>
+</html>
