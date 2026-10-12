@@ -85,6 +85,10 @@
     <div class="tel-row"><span class="tel-label">Vertical Distance z:</span><span id="tel-z" class="tel-val">+20.8 pc</span></div>
     <div class="tel-row"><span class="tel-label">Disk Scale Radius R_d:</span><span id="tel-rd" class="tel-val">3.50 kpc</span></div>
     <div class="tel-row"><span class="tel-label">Disk Outer Radius:</span><span id="tel-disk-rad" class="tel-val">15.0 kpc (100%)</span></div>
+    <div class="tel-row"><span class="tel-label">Solar Age:</span><span id="tel-solar-age" class="tel-val">4.57 Gyr</span></div>
+    <div class="tel-row"><span class="tel-label">Solar Luminosity:</span><span id="tel-luminosity" class="tel-val">100% L☉</span></div>
+    <div class="tel-row"><span class="tel-label">Solar Radius:</span><span id="tel-solar-radius" class="tel-val">100% R☉</span></div>
+    <div class="tel-row"><span class="tel-label">Earth Insolation:</span><span id="tel-insolation" class="tel-val">100%</span></div>
     <div class="tel-row"><span class="tel-label">Orbital Speed v:</span><span id="tel-v" class="tel-val">238.2 km/s</span></div>
     <div class="tel-row"><span class="tel-label">Milky Way Cosmic Drift:</span><span id="tel-drift" class="tel-val">0.0 kpc</span></div>
     <div class="tel-row"><span class="tel-label">Galactic Revolutions:</span><span id="tel-rev" class="tel-val">0.00</span></div>
@@ -112,6 +116,13 @@
         <span class="switch-slider"></span>
       </label>
       <span style="color:#cbd5e1; font-weight:500;">Inside-Out Disk Growth (dR/dt ~ 0.8 kpc/Gyr)</span>
+    </div>
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="toggle-solar-evolution" checked>
+        <span class="switch-slider"></span>
+      </label>
+      <span style="color:#cbd5e1; font-weight:500;">Solar Evolution (luminosity, radius & color)</span>
     </div>
   </div>
 
@@ -428,6 +439,20 @@
       scene.add(cosmicOrbitLine);
     }
 
+    // Solar-evolution approximation: main-sequence Sun over the past 2 Gyr.
+    // Uses a simple calibrated trend: at 2 Ga ago L ~82%, R ~94%, and a slightly warmer orange-yellow color.
+    // These changes are visual/educational and do not materially alter the Sun's galactic orbit.
+    function getSolarEvolution(lookbackMyr, enabled) {
+      const ageGyr = 4.57 - lookbackMyr / 1000;
+      if (!enabled) return { ageGyr, luminosity: 1, radius: 1, temperature: 5772, color: new THREE.Color(0xfff044) };
+      const fraction = Math.max(0, Math.min(1, lookbackMyr / 2000));
+      const luminosity = 1.0 - 0.18 * fraction;
+      const radius = 1.0 - 0.06 * fraction;
+      const temperature = 5772 - 180 * fraction;
+      const color = new THREE.Color().setHSL(0.13 - 0.025 * fraction, 0.95, 0.60 - 0.05 * fraction);
+      return { ageGyr, luminosity, radius, temperature, color };
+    }
+
     // Current Sun marker
     const sunMarkerGeo = new THREE.SphereGeometry(0.18, 16, 16);
     const sunMarkerMat = new THREE.MeshBasicMaterial({ color: 0xfff044 });
@@ -513,6 +538,10 @@
     const telZ = document.getElementById('tel-z');
     const telRd = document.getElementById('tel-rd');
     const telDiskRad = document.getElementById('tel-disk-rad');
+    const telSolarAge = document.getElementById('tel-solar-age');
+    const telLuminosity = document.getElementById('tel-luminosity');
+    const telSolarRadius = document.getElementById('tel-solar-radius');
+    const telInsolation = document.getElementById('tel-insolation');
     const telV = document.getElementById('tel-v');
     const telDrift = document.getElementById('tel-drift');
     const telRev = document.getElementById('tel-rev');
@@ -520,6 +549,9 @@
     const btnPlay = document.getElementById('btn-play');
     const toggleMwMotion = document.getElementById('toggle-mw-motion');
     const toggleDiskGrowth = document.getElementById('toggle-disk-growth');
+    const toggleSolarEvolution = document.getElementById('toggle-solar-evolution');
+
+    toggleSolarEvolution.addEventListener('change', () => syncState(currentTime));
 
     toggleDiskGrowth.addEventListener('change', e => {
       diskGrowthEnabled = e.target.checked;
@@ -554,6 +586,17 @@
 
       sunMesh.position.set(p.x, p.z * Z_VISUAL_EXAGGERATION, p.y);
       sunGlowMesh.position.copy(sunMesh.position);
+
+      const solar = getSolarEvolution(lookback, toggleSolarEvolution.checked);
+      sunMarkerMat.color.copy(solar.color);
+      sunGlowMat.color.copy(solar.color);
+      sunMesh.scale.setScalar(solar.radius);
+      sunGlowMesh.scale.setScalar(solar.radius * (0.92 + 0.16 * solar.luminosity));
+      sunGlowMat.opacity = 0.25 + 0.20 * solar.luminosity;
+      telSolarAge.innerText = `${solar.ageGyr.toFixed(2)} Gyr`;
+      telLuminosity.innerText = `${(solar.luminosity * 100).toFixed(0)}% L☉`;
+      telSolarRadius.innerText = `${(solar.radius * 100).toFixed(0)}% R☉`;
+      telInsolation.innerText = `${(solar.luminosity * 100).toFixed(0)}%`;
 
       // Inside-Out Disk physical & visual scaling
       // Gas inflow grows the disk from compact (2 Ga ago) to full (now): ~30% radial growth
@@ -726,8 +769,8 @@
         syncState(currentTime);
       }
 
-      // Gentle galaxy ambient rotation
-      galaxyStars.rotation.y += 0.0003;
+      // Ambient disk rotation: matches the Sun's orbital sense (co-rotation), slow and decorative
+      galaxyStars.rotation.y -= 0.0003;
 
       renderer.render(scene, camera);
     }
