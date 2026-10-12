@@ -67,6 +67,7 @@
         <li><strong>Disk growth is schematic:</strong> The ~30% radial growth over 2 Gyr is a representative trend, not a precise measurement of the Milky Way's own growth history.</li>
         <li><strong>Cosmic drift:</strong> The ~600 km/s CMB dipole is a real measurement, but its direction and the Local Group's path through space are approximations.</li>
         <li><strong>Star field is procedural:</strong> Background stars follow an empirical density distribution, not a real star catalog.</li>
+        <li><strong>Sun size is not to scale:</strong> At the scene's scale (the disk spans ~15 kpc), a true-scale Sun would be a single invisible sub-pixel point. The Sun marker is enlarged enormously for visibility, and its solar-evolution size changes are relative to that marker, not to true scale.</li>
       </ul>
       <p>Therefore the <strong>endpoint (present-day) state is accurate</strong>, while midpoints — midplane crossings, spiral-arm passages, and cumulative drift — should be read as <strong>illustrative</strong>.</p>
       <button id="caveat-close">Got it</button>
@@ -139,9 +140,9 @@
       <div class="btn-group">
         <button id="btn-play">▶ Play Forward</button>
         <button id="btn-reset">↺ Start (-2 Gyr)</button>
+        <button id="btn-speed-0.5">0.5x</button>
         <button id="btn-speed-1" class="active">1x</button>
         <button id="btn-speed-5">5x</button>
-        <button id="btn-speed-20">20x</button>
       </div>
       <div class="btn-group">
         <button id="btn-view-persp" class="active">Perspective 3D</button>
@@ -371,15 +372,15 @@
     gridHelper.position.y = -0.01;
     milkyWayGroup.add(gridHelper);
 
-    // Expanding disk-edge reference ring: makes inside-out growth unmistakable
+    // Expanding disk-edge reference ring: makes inside-out growth unmistakable (hidden until toggled)
     const diskEdgeRingGeo = new THREE.RingGeometry(0.0, 0.0, 128);
-    // We rebuild radii in code; start with an empty ring and update via updateDiskEdge()
     const diskEdgeRing = new THREE.Mesh(
       new THREE.RingGeometry(0.999, 1.0, 128),
       new THREE.MeshBasicMaterial({ color: 0x22d3ee, side: THREE.DoubleSide, transparent: true, opacity: 0.85 })
     );
     diskEdgeRing.rotation.x = -Math.PI / 2;
     diskEdgeRing.position.y = 0.02;
+    diskEdgeRing.visible = false;
     milkyWayGroup.add(diskEdgeRing);
 
     // Glow-filled inner disk to make area change obvious in face-on view
@@ -528,6 +529,7 @@
     let isPlaying = false;
     let currentTime = 0; // progress: 0 = -500 Myr, TOTAL_TIME = Now
     let playSpeed = 1.0; // multiplier
+    let lastSunAngle = null; // for co-rotating the stellar disk with the Sun
     let diskGrowthEnabled = true;
 
     const timeScrubber = document.getElementById('time-scrubber');
@@ -587,6 +589,16 @@
       sunMesh.position.set(p.x, p.z * Z_VISUAL_EXAGGERATION, p.y);
       sunGlowMesh.position.copy(sunMesh.position);
 
+      // Co-rotate the stellar disk with the Sun's actual motion along its trajectory
+      const sunAngle = Math.atan2(sunMesh.position.x, sunMesh.position.z);
+      if (lastSunAngle !== null) {
+        let dTheta = sunAngle - lastSunAngle;
+        if (dTheta > Math.PI) dTheta -= 2 * Math.PI;
+        else if (dTheta < -Math.PI) dTheta += 2 * Math.PI;
+        galaxyStars.rotation.y += dTheta;
+      }
+      lastSunAngle = sunAngle;
+
       const solar = getSolarEvolution(lookback, toggleSolarEvolution.checked);
       sunMarkerMat.color.copy(solar.color);
       sunGlowMat.color.copy(solar.color);
@@ -612,6 +624,7 @@
       // Update the expanding reference ring + filled disk so growth is plainly visible
       const outerEdge = 15.0 * diskScaleFactor;
       const innerEdge = outerEdge * 0.97;
+      diskEdgeRing.visible = diskGrowthEnabled;
       diskEdgeRing.geometry.dispose();
       diskEdgeRing.geometry = new THREE.RingGeometry(innerEdge, outerEdge, 160);
       diskFill.geometry.dispose();
@@ -708,7 +721,7 @@
       syncState(0); // back to -500 Myr
     });
 
-    ['1', '5', '20'].forEach(spd => {
+    ['0.5', '1', '5'].forEach(spd => {
       document.getElementById(`btn-speed-${spd}`).addEventListener('click', (e) => {
         playSpeed = parseFloat(spd);
         document.querySelectorAll('[id^=btn-speed-]').forEach(b => b.classList.remove('active'));
@@ -769,8 +782,8 @@
         syncState(currentTime);
       }
 
-      // Ambient disk rotation: matches the Sun's orbital sense (co-rotation), slow and decorative
-      galaxyStars.rotation.y -= 0.0003;
+      // Disk rotation is now driven by the Sun's actual angular motion (see syncState),
+      // so the stellar field co-rotates exactly with the Sun and freezes when paused.
 
       renderer.render(scene, camera);
     }
