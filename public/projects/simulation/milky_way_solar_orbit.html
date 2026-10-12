@@ -413,7 +413,7 @@
       pathGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(pathColors), 3));
       const pathMat = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 2, transparent: true, opacity: 0.9 });
       orbitLine = new THREE.Line(pathGeo, pathMat);
-      orbitLine.visible = !mwCosmicMotionEnabled;
+      orbitLine.visible = false; // hidden during playback; shown at end via syncState
       milkyWayGroup.add(orbitLine);
 
       // Cosmic trajectory
@@ -436,7 +436,7 @@
       cosmicPathGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(cosmicPathColors), 3));
       const cosmicPathMat = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 2, transparent: true, opacity: 0.85 });
       cosmicOrbitLine = new THREE.Line(cosmicPathGeo, cosmicPathMat);
-      cosmicOrbitLine.visible = mwCosmicMotionEnabled;
+      cosmicOrbitLine.visible = false; // hidden during playback; shown at end via syncState
       scene.add(cosmicOrbitLine);
     }
 
@@ -473,6 +473,30 @@
     let mwCosmicMotionEnabled = false;
 
     buildOrbitLines(activeTrajectory);
+
+    // Dynamic Sun trail: only the most recent 100 Myr of path behind the Sun
+    let sunTrail = null;
+    function updateSunTrail(lookback) {
+      if (sunTrail) { milkyWayGroup.remove(sunTrail); sunTrail.geometry.dispose(); }
+      const startLook = Math.min(TOTAL_TIME, lookback + 100);
+      const count = 60;
+      const pts = [];
+      const cols = [];
+      for (let i = 0; i <= count; i++) {
+        const lb = lookback + (startLook - lookback) * (i / count);
+        const idx = Math.min(activeTrajectory.length - 1, Math.round((lb / TOTAL_TIME) * (activeTrajectory.length - 1)));
+        const pt = activeTrajectory[idx];
+        pts.push(new THREE.Vector3(pt.x, pt.z * Z_VISUAL_EXAGGERATION, pt.y));
+        const a = i / count; // 1 = at Sun, 0 = oldest
+        cols.push(1.0, 0.85 * a + 0.1, 0.25 * a);
+      }
+      const geo = new THREE.BufferGeometry().setFromPoints(pts);
+      geo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(cols), 3));
+      const mat = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 3, transparent: true, opacity: 0.95 });
+      sunTrail = new THREE.Line(geo, mat);
+      sunTrail.visible = false; // visibility governed by syncState
+      milkyWayGroup.add(sunTrail);
+    }
 
     // Cosmic frame static grid marker
     const cosmicGrid = new THREE.GridHelper(100, 20, 0x334155, 0x1e293b);
@@ -580,6 +604,11 @@
     function syncState(progress) {
       // progress ranges 0 ( = -500 Myr, start) to TOTAL_TIME ( = Now, present)
       currentTime = Math.max(0, Math.min(TOTAL_TIME, progress));
+      // Full orbit lines only appear once playback has reached "Now"; before that they stay hidden
+      const showFullOrbit = currentTime >= TOTAL_TIME - 0.5;
+      orbitLine.visible = showFullOrbit && !mwCosmicMotionEnabled;
+      cosmicOrbitLine.visible = showFullOrbit && mwCosmicMotionEnabled;
+      if (sunTrail) sunTrail.visible = !mwCosmicMotionEnabled && !showFullOrbit;
       // trajectory is built backward: index 0 = Now (t=0), last index = 500 Myr ago.
       // To play forward, invert: lookback = TOTAL_TIME - currentTime.
       const lookback = TOTAL_TIME - currentTime;
@@ -588,6 +617,8 @@
 
       sunMesh.position.set(p.x, p.z * Z_VISUAL_EXAGGERATION, p.y);
       sunGlowMesh.position.copy(sunMesh.position);
+
+      updateSunTrail(lookback);
 
       // Co-rotate the stellar disk with the Sun's actual motion along its trajectory
       const sunAngle = Math.atan2(sunMesh.position.x, sunMesh.position.z);
