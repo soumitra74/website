@@ -77,6 +77,9 @@
   <div id="header-panel" class="overlay-panel">
     <h1><span style="color:#fbbf24;">☉</span> Solar Galactic Orbit Simulator</h1>
     <p>Simulating the backward orbital path of the Sun in the Milky Way potential (Bulge + Miyamoto-Nagai Disk + NFW Dark Matter Halo) over the past 2 Billion Years (Paleoproterozoic to Present).</p>
+    <p style="margin-top:8px; font-size:0.72rem; color:#fb923c; background:rgba(249,115,22,0.10); border:1px solid rgba(249,115,22,0.35); border-radius:6px; padding:6px 10px;">
+      🔥 Trail = Sun's last <strong>100 Myr</strong> (white-hot → red); full orbit shown at end.
+    </p>
   </div>
 
   <div id="telemetry-panel" class="overlay-panel">
@@ -487,16 +490,29 @@
         const idx = Math.min(activeTrajectory.length - 1, Math.round((lb / TOTAL_TIME) * (activeTrajectory.length - 1)));
         const pt = activeTrajectory[idx];
         pts.push(new THREE.Vector3(pt.x, pt.z * Z_VISUAL_EXAGGERATION, pt.y));
-        const a = i / count; // 1 = at Sun, 0 = oldest
-        cols.push(1.0, 0.85 * a + 0.1, 0.25 * a);
+        const fade = Math.pow(i / count, 1.6); // eased fade: dim tail, bright head
+        cols.push(1.0, 0.25 + 0.75 * fade, 0.03 + 0.97 * fade);
       }
       const geo = new THREE.BufferGeometry().setFromPoints(pts);
       geo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(cols), 3));
       const mat = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 3, transparent: true, opacity: 0.95 });
       sunTrail = new THREE.Line(geo, mat);
-      sunTrail.visible = false; // visibility governed by syncState
+      sunTrail.visible = !mwCosmicMotionEnabled && !(currentTime >= TOTAL_TIME - 0.5);
       milkyWayGroup.add(sunTrail);
     }
+
+    // Faint "static disk" ghost orbit: the Sun's path if the disk had never grown,
+    // drawn for direct comparison against the growing-disk trajectory
+    const ghostPoints = [];
+    for (let i = 0; i < trajectoryStatic.length; i++) {
+      const pt = trajectoryStatic[i];
+      ghostPoints.push(new THREE.Vector3(pt.x, pt.z * Z_VISUAL_EXAGGERATION, pt.y));
+    }
+    const ghostGeo = new THREE.BufferGeometry().setFromPoints(ghostPoints);
+    const ghostMat = new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.28 });
+    const ghostOrbitLine = new THREE.Line(ghostGeo, ghostMat);
+    ghostOrbitLine.visible = false; // shown at playback end (like the main orbit lines)
+    milkyWayGroup.add(ghostOrbitLine);
 
     // Cosmic frame static grid marker
     const cosmicGrid = new THREE.GridHelper(100, 20, 0x334155, 0x1e293b);
@@ -608,6 +624,7 @@
       const showFullOrbit = currentTime >= TOTAL_TIME - 0.5;
       orbitLine.visible = showFullOrbit && !mwCosmicMotionEnabled;
       cosmicOrbitLine.visible = showFullOrbit && mwCosmicMotionEnabled;
+      ghostOrbitLine.visible = showFullOrbit && !mwCosmicMotionEnabled && diskGrowthEnabled;
       if (sunTrail) sunTrail.visible = !mwCosmicMotionEnabled && !showFullOrbit;
       // trajectory is built backward: index 0 = Now (t=0), last index = 500 Myr ago.
       // To play forward, invert: lookback = TOTAL_TIME - currentTime.
