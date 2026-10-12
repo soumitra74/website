@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milky Way: Sun's 500-Million-Year Trajectory</title>
+  <title>Milky Way: Sun's 2-Billion-Year Trajectory</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
@@ -38,14 +38,44 @@
     .switch-slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background-color: white; transition: .25s; border-radius: 50%; }
     input:checked + .switch-slider { background-color: #10b981; }
     input:checked + .switch-slider:before { transform: translateX(16px); }
+    #caveat-pill { position: absolute; right: 16px; bottom: 130px; z-index: 11; background: rgba(251, 191, 36, 0.16); border: 1px solid rgba(251, 191, 36, 0.6); color: #fcd34d; font-size: 0.74rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; letter-spacing: 0.3px; }
+    #caveat-pill:hover { background: rgba(251, 191, 36, 0.3); color: #fde68a; }
+    #caveat-overlay { position: absolute; inset: 0; z-index: 50; background: rgba(2, 6, 16, 0.7); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; pointer-events: auto; }
+    #caveat-overlay.open { display: flex; }
+    #caveat-modal { background: rgba(10, 16, 34, 0.97); border: 1px solid rgba(251, 191, 36, 0.5); border-radius: 14px; max-width: 620px; width: min(620px, 92vw); padding: 26px 28px; box-shadow: 0 24px 70px rgba(0,0,0,0.7); }
+    #caveat-modal h2 { color: #fcd34d; font-size: 1.05rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    #caveat-modal p { color: #cbd5e1; font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px; }
+    #caveat-modal p strong { color: #fde68a; }
+    #caveat-modal ul { margin: 0 0 14px 18px; padding: 0; }
+    #caveat-modal li { color: #cbd5e1; font-size: 0.85rem; line-height: 1.6; margin-bottom: 8px; }
+    #caveat-close { background: #f59e0b; border: none; color: #000; font-weight: 700; font-size: 0.8rem; padding: 8px 22px; border-radius: 7px; cursor: pointer; transition: all 0.2s; }
+    #caveat-close:hover { background: #fbbf24; }
   </style>
 </head>
 <body>
   <div id="canvas-container"></div>
 
+  <button id="caveat-pill">⚠ Scientific Caveat</button>
+
+  <div id="caveat-overlay">
+    <div id="caveat-modal">
+      <h2>⚠ Scientific Caveat</h2>
+      <p>This simulation blends <strong>real, measured kinematics</strong> with a <strong>smooth, analytic galactic potential</strong>. It is an educational reconstruction, not an exact historical record. Key limitations:</p>
+      <ul>
+        <li><strong>Orbital phase uncertainty:</strong> Over 2 billion years the Sun completes ~8–9 galactic revolutions. Neglected perturbations — the rotating central bar, transient spiral arms, passing giant molecular clouds, and dwarf-galaxy mergers (Sgr, Magellanic Clouds) — accumulate phase errors of many kiloparsecs, so the Sun's <em>exact</em> position at any past epoch is not recoverable.</li>
+        <li><strong>Static potential:</strong> The bulge/disk/halo mass is treated as axisymmetric and slowly varying (inside-out growth only). Real galaxy evolution and non-axisymmetric torques are not modeled.</li>
+        <li><strong>Disk growth is schematic:</strong> The ~30% radial growth over 2 Gyr is a representative trend, not a precise measurement of the Milky Way's own growth history.</li>
+        <li><strong>Cosmic drift:</strong> The ~600 km/s CMB dipole is a real measurement, but its direction and the Local Group's path through space are approximations.</li>
+        <li><strong>Star field is procedural:</strong> Background stars follow an empirical density distribution, not a real star catalog.</li>
+      </ul>
+      <p>Therefore the <strong>endpoint (present-day) state is accurate</strong>, while midpoints — midplane crossings, spiral-arm passages, and cumulative drift — should be read as <strong>illustrative</strong>.</p>
+      <button id="caveat-close">Got it</button>
+    </div>
+  </div>
+
   <div id="header-panel" class="overlay-panel">
     <h1><span style="color:#fbbf24;">☉</span> Solar Galactic Orbit Simulator</h1>
-    <p>Simulating the backward orbital path of the Sun in the Milky Way potential (Bulge + Miyamoto-Nagai Disk + NFW Dark Matter Halo) over the past 500 Million Years (Cambrian to Present).</p>
+    <p>Simulating the backward orbital path of the Sun in the Milky Way potential (Bulge + Miyamoto-Nagai Disk + NFW Dark Matter Halo) over the past 2 Billion Years (Paleoproterozoic to Present).</p>
   </div>
 
   <div id="telemetry-panel" class="overlay-panel">
@@ -87,17 +117,17 @@
 
   <div id="controls-panel" class="overlay-panel">
     <div class="slider-row">
-      <span style="font-size:0.75rem; color:#94a3b8; width:62px;">-500 Myr<br><small style="color:#64748b;">Cambrian</small></span>
-      <input type="range" id="time-scrubber" min="0" max="500" step="0.2" value="0">
+      <span style="font-size:0.75rem; color:#94a3b8; width:62px;">-2 Gyr<br><small style="color:#64748b;">Paleoproterozoic</small></span>
+      <input type="range" id="time-scrubber" min="0" max="2000" step="0.5" value="0">
       <span style="font-size:0.75rem; color:#94a3b8;">Now<br><small style="color:#64748b;">t = 0</small></span>
     </div>
     <div class="slider-row" style="margin-bottom:4px;">
-      <span id="time-display" style="font-size:0.8rem; font-weight:700; color:#f59e0b; width:100%; text-align:center;">-500 Myr</span>
+      <span id="time-display" style="font-size:0.8rem; font-weight:700; color:#f59e0b; width:100%; text-align:center;">-2 Gyr</span>
     </div>
     <div class="btn-row">
       <div class="btn-group">
         <button id="btn-play">▶ Play Forward</button>
-        <button id="btn-reset">↺ Start (-500 Myr)</button>
+        <button id="btn-reset">↺ Start (-2 Gyr)</button>
         <button id="btn-speed-1" class="active">1x</button>
         <button id="btn-speed-5">5x</button>
         <button id="btn-speed-20">20x</button>
@@ -118,10 +148,10 @@
 
     // Potential parameters: Bulge (Hernquist), Disk (Miyamoto-Nagai), Halo (NFW)
     // Inside-out growth model:
-    // Over the last 500 Myr, the disk scale length a_d and disk mass GM_d grew by ~5-10%
-    // At lookback time t (Myr ago):
-    // a_d(t) = a_d0 * (1 - 0.12 * (t / 500))
-    // GM_d(t) = GM_d0 * (1 - 0.08 * (t / 500))
+    // Over 2 Gyr the disk scale length and mass grow more substantially than over 500 Myr.
+    // At lookback time t (Myr ago), linearly interpolated from a more compact past:
+    // a_d(t) = a_d0 * (1 - 0.30 * (t / 2000))   -> ~30% smaller scale length at 2 Ga
+    // GM_d(t) = GM_d0 * (1 - 0.20 * (t / 2000)) -> ~20% less disk stellar mass at 2 Ga
     const GM_b = 0.055;     // Bulge strength (Hernquist)
     const c_b  = 0.6;       // Bulge scale length (kpc)
     const GM_d0 = 0.72;     // Present disk strength (Miyamoto-Nagai)
@@ -135,13 +165,13 @@
       const R = Math.sqrt(R2) + 1e-6;
       const r = Math.sqrt(R2 + z*z) + 1e-6;
 
-      // Bulge (formed very early, assumed constant over last 500 Myr)
+      // Bulge (formed early, assumed constant over the last 2 Gyr)
       const a_b_mag = -GM_b / ((r + c_b) * (r + c_b) * r);
 
       // Time-dependent disk parameters (smaller and slightly less massive in the past)
       const growthFrac = enableGrowth ? (tLookback / TOTAL_TIME) : 0;
-      const cur_a_d = a_d0 * (1.0 - 0.11 * growthFrac);   // ~11% smaller scale length 500 Ma
-      const cur_GM_d = GM_d0 * (1.0 - 0.07 * growthFrac); // ~7% less disk stellar mass 500 Ma
+      const cur_a_d = a_d0 * (1.0 - 0.30 * growthFrac);   // ~30% smaller scale length at 2 Ga
+      const cur_GM_d = GM_d0 * (1.0 - 0.20 * growthFrac); // ~20% less disk stellar mass at 2 Ga
 
       // Miyamoto-Nagai Disk
       const zeta = Math.sqrt(z*z + b_d*b_d);
@@ -160,7 +190,7 @@
     }
 
     // Precompute both trajectories (with and without disk growth) for instantaneous toggle
-    const TOTAL_TIME = 500.0; // Myr
+    const TOTAL_TIME = 2000.0; // Myr  (2 billion years)
     const DT = -0.05;         // Myr per step
     const STEPS = Math.round(TOTAL_TIME / Math.abs(DT));
 
@@ -248,7 +278,13 @@
       if (myr < 419.0) return "Devonian (Age of Fishes)";
       if (myr < 444.0) return "Silurian (First Land Plants)";
       if (myr < 485.0) return "Ordovician (Marine Radiation)";
-      return "Cambrian Explosion (~500 Ma)";
+      if (myr < 541.0) return "Cambrian Explosion (~500 Ma)";
+      if (myr < 635.0) return "Ediacaran (First Complex Animals)";
+      if (myr < 720.0) return "Cryogenian (Snowball Earth)";
+      if (myr < 1000.0) return "Tonian (Rodinia Breakup)";
+      if (myr < 1600.0) return "Stenian (Eukaryotes Diversify)";
+      if (myr < 1800.0) return "Orosirian (~2 Ga, Great Oxidation)";
+      return "Rhyacian / Paleoproterozoic (~2 Ga)";
     }
 
     // --- 2. THREE.JS 3D VISUALIZATION ---
@@ -520,9 +556,9 @@
       sunGlowMesh.position.copy(sunMesh.position);
 
       // Inside-Out Disk physical & visual scaling
-      // Gas inflow adds ~0.8 kpc/Gyr to outer radius; disk grows from compact (start) to full (now)
+      // Gas inflow grows the disk from compact (2 Ga ago) to full (now): ~30% radial growth
       const lookbackFraction = lookback / TOTAL_TIME;
-      const diskScaleFactor = diskGrowthEnabled ? (1.0 - 0.11 * lookbackFraction) : 1.0;
+      const diskScaleFactor = diskGrowthEnabled ? (1.0 - 0.30 * lookbackFraction) : 1.0;
       const curRd = a_d0 * diskScaleFactor;
       const curOuterRad = 15.0 * diskScaleFactor;
 
@@ -553,10 +589,14 @@
         telDrift.innerText = `0.0 kpc (Off)`;
       }
 
-      const displayTime = currentTime - TOTAL_TIME; // negative Myr (e.g. -500 at start, 0 at Now)
+      const displayTime = currentTime - TOTAL_TIME; // negative Myr (e.g. -2000 at start, 0 at Now)
       timeScrubber.value = currentTime.toFixed(1);
-      timeDisplay.innerText = (displayTime >= -0.05 ? 'Now (t = 0)' : `${displayTime.toFixed(1)} Myr`);
-      telTime.innerText = (displayTime >= -0.05 ? 'Now (t = 0)' : `${displayTime.toFixed(1)} Myr`);
+      const displayLabel = (displayTime >= -0.05) ? 'Now (t = 0)'
+        : (Math.abs(displayTime) >= 1000)
+          ? `${(displayTime / 1000).toFixed(2)} Gyr`
+          : `${displayTime.toFixed(1)} Myr`;
+      timeDisplay.innerText = displayLabel;
+      telTime.innerText = displayLabel;
       telEra.innerText = getEra(lookback);
       telR.innerText = `${p.R.toFixed(2)} kpc`;
       telZ.innerText = `${(p.z * 1000).toFixed(1)} pc`;
@@ -658,6 +698,18 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
+    // Scientific caveat pill + overlay toggle
+    const caveatOverlay = document.getElementById('caveat-overlay');
+    document.getElementById('caveat-pill').addEventListener('click', () => {
+      caveatOverlay.classList.add('open');
+    });
+    document.getElementById('caveat-close').addEventListener('click', () => {
+      caveatOverlay.classList.remove('open');
+    });
+    caveatOverlay.addEventListener('click', e => {
+      if (e.target === caveatOverlay) caveatOverlay.classList.remove('open');
+    });
+
     // Main animation loop
     let lastClock = performance.now();
     function animate() {
@@ -667,8 +719,9 @@
       lastClock = now;
 
       if (isPlaying) {
-        // Play forward: currentTime runs 0 (-500 Myr) -> TOTAL_TIME (Now)
-        currentTime += deltaSec * 12.0 * playSpeed;
+        // Play forward: currentTime runs 0 (-2 Gyr) -> TOTAL_TIME (Now)
+        // Base speed ~40 Myr/s at 1x so 2 Gyr plays in ~50 seconds
+        currentTime += deltaSec * 40.0 * playSpeed;
         if (currentTime > TOTAL_TIME) currentTime = TOTAL_TIME;
         syncState(currentTime);
       }
