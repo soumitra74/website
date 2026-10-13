@@ -346,9 +346,12 @@
     const PITCH = 14.0 * Math.PI / 180;   // ~14° pitch angle (radians)
     const TAN_PITCH = Math.tan(PITCH);
     const R0 = 2.0;                        // reference radius for the spiral
-    // Pattern speed (rigid rotation of the wave), rad per Myr * sim-direction.
-    // ~25 km/s/kpc at 8 kpc ≃ 2.5e-3 rad/Myr — very slow vs stellar Ω(~28 rad/Myr).
-    const OMEGA_P = 2.5e-3;
+    // Observationally plausible spiral-pattern speed. The Sun's circular angular speed
+    // is ~26.9 km/s/kpc (220 km/s at 8.178 kpc); use 23 km/s/kpc for the arms.
+    // For four arms this gives a nominal arm-to-arm passage interval of ~350 Myr,
+    // not multiple crossings per 100 Myr. Both values remain model-dependent.
+    const ARM_PATTERN_SPEED = 23.0; // km/s/kpc
+    const ARM_PATTERN_RATIO = ARM_PATTERN_SPEED / (V_CIRC / 8.178);
 
     for (let i = 0; i < starCount; i++) {
       // Three populations: bulge, arm-band stars (trace the density wave), and
@@ -417,9 +420,9 @@
         if (starIsBulge[i]) continue; // bulge is assumed slowly/rigidly rotating
         const r0 = starRadii[i];      // nominal (present-day) radius
         if (starIsArm[i]) {
-          // Keep the spiral density-wave pattern coherent while it co-rotates
-          // rigidly with the Milky Way at the Sun's orbital angular speed.
-          starAzimuth[i] += sunAngleChange;
+          // A coherent density-wave pattern rotates rigidly, but more slowly
+          // than the Sun: Ωp = 23 km/s/kpc versus Ω☉ ≈ 26.9 km/s/kpc.
+          starAzimuth[i] += sunAngleChange * ARM_PATTERN_RATIO;
         } else {
           // ratio = R_sun / R_star : inner stars advance MORE than the Sun
           const ratio = R_SUN_REF / Math.max(r0, 0.3);
@@ -695,8 +698,10 @@
         if (differentialRotationEnabled) {
           applyDifferentialRotation(dTheta);
         } else {
-          // Solid-body fallback: entire field co-rotates with the Sun
-          galaxyStars.rotation.y += dTheta;
+          // Solid-body fallback: entire field co-rotates with the Sun.
+          // Negated because a THREE Y-rotation advances atan2(z,x) in the
+          // opposite direction to starAzimuth += dTheta.
+          galaxyStars.rotation.y -= dTheta;
         }
       }
       lastSunAngle = sunAngle;
