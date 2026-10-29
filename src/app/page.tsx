@@ -317,7 +317,7 @@ export default async function HomePage() {
       </section>
 
       {/* Patents & Publications Section */}
-      <section id="patents" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
+      <section id="patents" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.patents_publications.section}</h2>
@@ -326,10 +326,10 @@ export default async function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {content.patents_publications.items.map((item, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all dark:bg-slate-800 dark:border-slate-700 dark:hover:shadow-slate-900/50 ambient:glass-card ambient:dark:glass-card-dark ambient:hover:shadow-2xl ambient:dark:hover:shadow-slate-900/50 floating-glass">
+              <Card key={index} className="dark:bg-slate-800 dark:border-slate-700 ambient:glass-card ambient:dark:glass-card-dark transition-colors floating-glass">
                 <CardHeader>
-                  <Badge className="mx-auto mb-4 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400 transition-colors">{item.type}</Badge>
-                  <CardTitle className="dark:text-white transition-colors">{item.title}</CardTitle>
+                  <Badge className="w-fit bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400 mb-2 transition-colors">{item.type}</Badge>
+                  <CardTitle className="text-xl dark:text-white transition-colors">{item.title}</CardTitle>
                   <CardDescription className="text-slate-600 dark:text-slate-300 transition-colors">{item.detail}</CardDescription>
                 </CardHeader>
                 <CardContent>
