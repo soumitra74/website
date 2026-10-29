@@ -316,6 +316,38 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Patents & Publications Section */}
+      <section id="patents" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-800 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{content.patents_publications.section}</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 transition-colors">{content.patents_publications.subtitle}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {content.patents_publications.items.map((item, index) => (
+              <Card key={index} className="dark:bg-slate-800 dark:border-slate-700 ambient:glass-card ambient:dark:glass-card-dark transition-colors floating-glass">
+                <CardHeader>
+                  <Badge className="w-fit bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400 mb-2 transition-colors">{item.type}</Badge>
+                  <CardTitle className="text-xl dark:text-white transition-colors">{item.title}</CardTitle>
+                  <CardDescription className="text-slate-600 dark:text-slate-300 transition-colors">{item.detail}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-semibold hover:underline transition-colors"
+                  >
+                    View {item.type.toLowerCase()} <ArrowRight className="w-4 h-4" />
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Expertise Section */}
       <section id="expertise" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 ambient:glass-bg ambient:dark:glass-bg-dark transition-colors duration-300 relative z-10">
         <div className="max-w-6xl mx-auto">

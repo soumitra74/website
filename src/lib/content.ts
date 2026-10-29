@@ -83,6 +83,16 @@ export interface ContentData {
       }>
     }
   }
+  patents_publications: {
+    section: string
+    subtitle: string
+    items: Array<{
+      type: string
+      title: string
+      detail: string
+      link: string
+    }>
+  }
   expertise: {
     title: string
     subtitle: string
