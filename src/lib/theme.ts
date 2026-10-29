@@ -23,6 +23,14 @@ export function getThemeFromLocalStorage(): Theme {
   return 'light'
 }
 
+export function getThemeFromUrl(search: string): Theme | null {
+  const param = new URLSearchParams(search).get('theme')
+  if (param === 'dark' || param === 'light' || param === 'ambient') {
+    return param
+  }
+  return null
+}
+
 export function setThemeInLocalStorage(theme: Theme) {
   if (typeof window === 'undefined') return
   localStorage.setItem('theme', theme)

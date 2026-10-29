@@ -38,6 +38,18 @@ test.describe('theme toggle', () => {
     await expect(page.getByRole('button', { name: 'Dark' })).toBeHidden()
   })
 
+  test('?theme= URL parameter overrides the stored theme', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('theme', 'light'))
+    await page.goto('/?theme=dark')
+    await expect(html(page)).toHaveClass(/\bdark\b/)
+    expect(await page.evaluate(() => localStorage.getItem('theme'))).toBe('dark')
+  })
+
+  test('invalid ?theme= value is ignored', async ({ page }) => {
+    await page.goto('/?theme=neon')
+    await expect(html(page)).toHaveClass(/\blight\b/)
+  })
+
   test('stored theme is honoured on first load', async ({ page }) => {
     await page.addInitScript(() => localStorage.setItem('theme', 'dark'))
     await page.goto('/')

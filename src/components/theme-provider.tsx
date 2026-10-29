@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { Theme, getThemeFromLocalStorage, setThemeInLocalStorage, getEffectiveTheme } from '@/lib/theme'
+import { Theme, getThemeFromLocalStorage, getThemeFromUrl, setThemeInLocalStorage, getEffectiveTheme } from '@/lib/theme'
 
 interface ThemeContextType {
   theme: Theme
@@ -16,9 +16,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [effectiveTheme, setEffectiveTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
-    const storedTheme = getThemeFromLocalStorage()
-    setThemeState(storedTheme)
-    setEffectiveTheme(getEffectiveTheme(storedTheme))
+    const urlTheme = getThemeFromUrl(window.location.search)
+    if (urlTheme) {
+      setThemeInLocalStorage(urlTheme)
+    }
+    const initialTheme = urlTheme ?? getThemeFromLocalStorage()
+    setThemeState(initialTheme)
+    setEffectiveTheme(getEffectiveTheme(initialTheme))
   }, [])
 
   useEffect(() => {
