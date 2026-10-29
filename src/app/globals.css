@@ -187,24 +187,23 @@
   .profile-light-pulse-fade::before {
     content: '';
     position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
     border-radius: 50%;
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
-      transparent 45deg,
-      rgba(16, 185, 129, 0.8) 45deg,
-      rgba(16, 185, 129, 1) 60deg,
-      rgba(16, 185, 129, 0.8) 60deg,
-      transparent 75deg,
-      transparent 360deg
+      transparent 330deg,
+      rgba(0, 120, 255, 0.15) 343deg,
+      rgba(0, 120, 255, 0.5) 352deg,
+      rgba(60, 160, 255, 1) 357deg,
+      #ffffff 360deg
     );
-    animation: light-pulse-rotate 5s linear infinite;
+    animation: light-pulse-rotate 3s linear infinite;
     z-index: -1;
-    filter: blur(3px);
+    filter: blur(0.5px);
   }
   
   @keyframes light-pulse-rotate {
