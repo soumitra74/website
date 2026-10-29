@@ -346,6 +346,20 @@
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
+  /* Daytime ambient: darken muted text and accents for contrast on the blue gradient */
+  .ambient:not(.dark) .text-slate-400,
+  .ambient:not(.dark) .text-slate-500,
+  .ambient:not(.dark) .text-slate-600,
+  .ambient:not(.dark) .text-slate-700 {
+    color: #1e293b;
+  }
+
+  .ambient:not(.dark) .text-emerald-600,
+  .ambient:not(.dark) .text-emerald-700,
+  .ambient:not(.dark) .text-emerald-500 {
+    color: #022c22;
+  }
+
   /* Animated Gradient Background for Ambient Theme */
   .ambient-gradient-bg {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
