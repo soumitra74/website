@@ -80,6 +80,12 @@ describe('ask-me answer accuracy', () => {
     expect(reply).not.toMatch(/CES|Entropik|RazorpayX/)
   })
 
+  it('no fallback reply fabricates a personal anecdote', () => {
+    for (const reply of chatbot.responses.default) {
+      expect(reply).not.toMatch(/encountered similar challenges/)
+    }
+  })
+
   it('never leaks template placeholders', async () => {
     const queries = [...answerable.map(([q]) => q), ...unanswerable, 'about you', 'experience']
     for (const q of queries) {
