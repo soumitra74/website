@@ -49,8 +49,8 @@ export default async function HomePage() {
             <div className="text-xl font-bold text-slate-900 dark:text-white transition-colors">
               {content.navigation.brand}
             </div>
-            <div className="flex items-center space-x-3 lg:space-x-8">
-              <div className="hidden md:flex space-x-3 lg:space-x-8">
+            <div className="flex items-center space-x-2 lg:space-x-8">
+              <div className="hidden md:flex space-x-1 lg:space-x-8">
                 {content.navigation.links.map((link, index) => (
                   <a 
                     key={index}
