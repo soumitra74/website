@@ -46,13 +46,14 @@ async function ask(q: string) {
 }
 
 // Questions whose answer is in the site data: the reply must mention the key fact.
-const answerable: Array<[string, string]> = [
+const answerable: Array<[string, string | RegExp]> = [
   ['What is your experience with cloud?', 'cloud'],
   ['Do you know Kubernetes?', 'Kubernetes'],
   ['Have you worked with AWS?', 'AWS'],
   ['Any certifications?', 'Certification'],
-  ['Have you spoken at events?', 'Product Tank'],
+  ['Have you spoken at events?', /Product Tank|DataDog Live/],
   ['Who are you?', 'years of experience'],
+  ['When did you work in Seedling Labs?', /Apr 2026.*Jul 2026/],
 ]
 
 // Questions with no answer in the site data: the reply must be a canned fallback, not an unrelated item.
@@ -61,7 +62,9 @@ const unanswerable = ['Do you know Azure?', 'What do you think about blockchain?
 describe('ask-me answer accuracy', () => {
   describe('answerable questions mention the key fact', () => {
     it.each(answerable)('%s -> mentions %s', async (q, term) => {
-      expect(await ask(q)).toContain(term)
+      const reply = await ask(q)
+      if (typeof term === 'string') expect(reply).toContain(term)
+      else expect(reply).toMatch(term)
     })
   })
 

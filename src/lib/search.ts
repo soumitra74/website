@@ -15,25 +15,6 @@ interface SearchableItem {
   source: 'content' | 'chatbot' | 'detailed-content' | 'experience-dates' | 'career-timeline'
 }
 
-// Fuse.js options for fuzzy searching - optimized for better accuracy
-const fuseOptions = {
-  keys: [
-    { name: 'title', weight: 0.7 },
-    { name: 'content', weight: 0.5 },
-    { name: 'keywords', weight: 0.3 },
-    { name: 'type', weight: 0.1 }
-  ],
-  threshold: 0.3, // Lower threshold = more strict matching
-  includeScore: true,
-  includeMatches: true,
-  minMatchCharLength: 2,
-  shouldSort: true,
-  findAllMatches: true,
-  useExtendedSearch: true, // Enable extended search features
-  ignoreLocation: true, // Ignore location of matches for better results
-  distance: 200 // Allow matches at greater distance
-}
-
 // Transform ContentData into searchable items with enhanced content
 function transformContentDataToSearchableItems(contentData: ContentData): SearchableItem[] {
   const items: SearchableItem[] = []
@@ -47,7 +28,7 @@ function transformContentDataToSearchableItems(contentData: ContentData): Search
       title: contentData.about.title,
       content: journeyContent,
       keywords: [
-        'journey', 'career', 'background', 'about', 'story', 'path',
+        'journey', 'career', 'background', 'about', 'story', 'path', 'who', 'introduction', 'yourself',
         ...journeyContent.toLowerCase().split(' ').filter(word => word.length > 3)
       ],
       source: 'content'
@@ -75,7 +56,7 @@ function transformContentDataToSearchableItems(contentData: ContentData): Search
   // Add experience roles with enhanced content
   if (contentData.experience) {
     contentData.experience.roles.forEach((role, index) => {
-      const roleContent = role.description || ''
+      const roleContent = [role.description, role.duration].filter(Boolean).join(' ')
       // Filter out overly broad keywords that cause too many matches
       const broadKeywords = ['experience', 'work', 'job', 'position', 'role', 'career', 'team', 'product', 'company', 'business', 'technology', 'development', 'engineering', 'leadership', 'management']
       
@@ -231,7 +212,7 @@ function transformDetailedContentToSearchableItems(detailedContent: DetailedCont
       title: about.title,
       content: `${about.intro} ${about.body}`,
       keywords: [
-        'about', 'profile', 'background', 'career', 'journey',
+        'about', 'profile', 'background', 'career', 'journey', 'who', 'introduction', 'yourself',
         ...about.body.toLowerCase().split(' ').filter(word => word.length > 3)
       ],
       source: 'detailed-content'
@@ -393,42 +374,110 @@ function transformChatbotDataToSearchableItems(chatbotData: ChatbotData): Search
   return items
 }
 
-// Preprocess query for better search results
-function preprocessQuery(query: string): string[] {
-  const cleanQuery = query.toLowerCase().trim()
-  
-  // Split into words and filter out common stop words
-  const stopWords = ['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'can', 'what', 'when', 'where', 'why', 'how', 'tell', 'me', 'about', 'your', 'you']
-  
-  const words = cleanQuery.split(/\s+/).filter(word => 
-    word.length > 2 && !stopWords.includes(word)
-  )
-  
-  // Return both the original query and individual words for different search strategies
-  return [cleanQuery, ...words]
+// Fuse.js options for fuzzy searching - optimized for better accuracy
+const fuseOptions = {
+  keys: [
+    { name: 'title', weight: 0.7 },
+    { name: 'content', weight: 0.5 },
+    { name: 'keywords', weight: 0.3 },
+    { name: 'type', weight: 0.1 }
+  ],
+  threshold: 0.3, // Lower threshold = more strict matching
+  includeScore: true,
+  includeMatches: true,
+  minMatchCharLength: 2,
+  shouldSort: true,
+  findAllMatches: true,
+  useExtendedSearch: true, // Enable extended search features
+  ignoreLocation: true, // Ignore location of matches for better results
+  distance: 200 // Allow matches at greater distance
+}
+
+// Words dropped from queries before matching
+const STOP_WORDS = new Set([
+  'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were',
+  'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'can',
+  'what', 'when', 'where', 'why', 'how', 'tell', 'me', 'about', 'your', 'you', 'any', 'know', 'there', 'ever', 'its',
+  'his', 'her', 'this', 'that', 'it', 'my', 'worked', 'working', 'spoken',
+])
+
+function rawTokens(text: string): string[] {
+  return text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean)
+}
+
+function normalizeToken(word: string): string {
+  return word.length > 3 && word.endsWith('s') && !word.endsWith('ss') ? word.slice(0, -1) : word
+}
+
+function queryTerms(query: string): string[] {
+  const words = rawTokens(query).filter(word => word.length > 2 && !STOP_WORDS.has(word))
+  return Array.from(new Set(words.map(normalizeToken)))
+}
+
+// Most query terms must match, so one shared word ("computing") cannot pull in an unrelated item
+function hasCoverage(matched: number, total: number): boolean {
+  return total === 1 ? matched >= 1 : matched * 2 > total
+}
+
+function itemWords(item: SearchableItem) {
+  const title = new Set(rawTokens(item.title).map(normalizeToken))
+  const keywords = new Set((item.keywords ?? []).flatMap(rawTokens).map(normalizeToken))
+  const content = new Set(rawTokens(item.content).map(normalizeToken))
+  return { title, keywords, content, all: new Set(Array.from(title).concat(Array.from(keywords), Array.from(content))) }
+}
+
+function editDistance(a: string, b: string): number {
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j)
+  for (let i = 1; i <= a.length; i++) {
+    const curr = [i]
+    for (let j = 1; j <= b.length; j++) {
+      curr[j] = Math.min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1))
+    }
+    prev = curr
+  }
+  return prev[b.length]
+}
+
+// Exact term hits, weighted by where they occur: title > keywords > content
+function rankByTermMatch(terms: string[], items: SearchableItem[]): SearchableItem[] {
+  return items
+    .map((item, index) => {
+      const { title, keywords, content } = itemWords(item)
+      let score = 0
+      let matched = 0
+      for (const term of terms) {
+        const hit = title.has(term) || keywords.has(term) || content.has(term)
+        if (hit) matched++
+        score += (title.has(term) ? 3 : 0) + (keywords.has(term) ? 2 : 0) + (content.has(term) ? 1 : 0)
+      }
+      return { item, index, score, matched }
+    })
+    .filter(entry => entry.score > 0 && hasCoverage(entry.matched, terms.length))
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .map(entry => entry.item)
 }
 
 // Ensure result diversity by avoiding repeated content types
 function ensureResultDiversity(results: SearchableItem[], maxPerType: number = 1): SearchableItem[] {
   const typeCounts: { [key: string]: number } = {}
   const diverseResults: SearchableItem[] = []
-  
+
   for (const result of results) {
     const type = result.type
     if (!typeCounts[type]) {
       typeCounts[type] = 0
     }
-    
+
     if (typeCounts[type] < maxPerType) {
       diverseResults.push(result)
       typeCounts[type]++
     }
   }
-  
+
   return diverseResults
 }
 
-// Main search function with improved scoring and filtering
+// Main search: exact term ranking, then fuzzy, then chatbot canned answers; no match returns no results
 export async function searchContent(
   query: string,
   contentData: ContentData,
@@ -442,91 +491,63 @@ export async function searchContent(
     return { results: [], source: 'content', totalResults: 0 }
   }
 
-  const searchQueries = preprocessQuery(query)
+  const terms = queryTerms(query)
 
-  // Transform data into searchable items
   const contentItems = transformContentDataToSearchableItems(contentData)
   const chatbotItems = transformChatbotDataToSearchableItems(chatbotData)
-  
-  // Fetch and transform additional data sources
+
   let detailedContentItems: SearchableItem[] = []
   let experienceDatesItems: SearchableItem[] = []
   let careerTimelineItems: SearchableItem[] = []
-  
+
   try {
     const [detailedContent, experienceDates, careerTimeline] = await Promise.all([
       getDetailedContent(),
       getExperienceWithDates(),
       getCareerTimelineData()
     ])
-    
+
     detailedContentItems = transformDetailedContentToSearchableItems(detailedContent)
     experienceDatesItems = transformExperienceWithDatesToSearchableItems(experienceDates)
     careerTimelineItems = transformCareerTimelineToSearchableItems(careerTimeline)
   } catch (error) {
     console.error('Error fetching additional data sources:', error)
-    // Continue with available data
   }
 
-  // Create Fuse instances with different configurations for different search strategies
-  const strictFuse = new Fuse([...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems], { ...fuseOptions, threshold: 0.4 })
-  const lenientFuse = new Fuse([...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems], { ...fuseOptions, threshold: 0.6 })
-  const chatbotFuse = new Fuse(chatbotItems, { ...fuseOptions, threshold: 0.5 })
+  const siteItems = [...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems]
 
-  // Try multiple search strategies with different queries
-  let bestResults: SearchableItem[] = []
-  let bestScore = 1.0
-
-  for (const searchQuery of searchQueries) {
-    // Try strict search first for exact matches
-    const strictResults = strictFuse.search(searchQuery)
-    const strictMatches = strictResults
-      .filter(result => result.score && result.score < 0.4)
-      .map(result => result.item)
-
-    if (strictMatches.length > 0) {
-      const diverseResults = ensureResultDiversity(strictMatches, 1)
-      return {
-        results: diverseResults.slice(0, 3),
-        source: 'content',
-        totalResults: strictMatches.length
-      }
-    }
-
-    // Try lenient search for broader matches
-    const lenientResults = lenientFuse.search(searchQuery)
-    const lenientMatches = lenientResults
-      .filter(result => result.score && result.score < 0.6)
-      .map(result => result.item)
-
-    if (lenientMatches.length > 0) {
-      // Keep track of the best results across all queries
-      const avgScore = lenientResults
-        .filter(result => result.score && result.score < 0.6)
-        .reduce((sum, result) => sum + (result.score || 0), 0) / lenientMatches.length
-      
-      if (avgScore < bestScore) {
-        bestResults = lenientMatches
-        bestScore = avgScore
-      }
-    }
-  }
-
-  if (bestResults.length > 0) {
-    const diverseResults = ensureResultDiversity(bestResults, 1)
+  const exactMatches = rankByTermMatch(terms, siteItems)
+  if (exactMatches.length > 0) {
     return {
-      results: diverseResults.slice(0, 3),
+      results: ensureResultDiversity(exactMatches, 1).slice(0, 3),
       source: 'content',
-      totalResults: bestResults.length
+      totalResults: exactMatches.length
     }
   }
 
-  // Try chatbot data as fallback
-  const chatbotResults = chatbotFuse.search(query)
-  const chatbotMatches = chatbotResults
-    .filter(result => result.score && result.score < 0.5)
-    .map(result => result.item)
+  const fuzzyFuse = new Fuse(siteItems, fuseOptions)
+  const fuzzyHits = new Map<SearchableItem, Set<string>>()
+  for (const term of terms.filter(term => term.length >= 4)) {
+    const maxDistance = term.length > 6 ? 2 : 1
+    for (const result of fuzzyFuse.search(term)) {
+      if (result.score === undefined || result.score >= fuseOptions.threshold) continue
+      const words = Array.from(itemWords(result.item).all)
+      if (!words.some(word => word.length >= 5 && editDistance(word, term) <= maxDistance)) continue
+      fuzzyHits.set(result.item, (fuzzyHits.get(result.item) ?? new Set<string>()).add(term))
+    }
+  }
+  const fuzzyMatches = Array.from(fuzzyHits)
+    .filter(([, hits]) => hasCoverage(hits.size, terms.length))
+    .map(([item]) => item)
+  if (fuzzyMatches.length > 0) {
+    return {
+      results: ensureResultDiversity(fuzzyMatches, 1).slice(0, 3),
+      source: 'content',
+      totalResults: fuzzyMatches.length
+    }
+  }
 
+  const chatbotMatches = rankByTermMatch(terms, chatbotItems)
   if (chatbotMatches.length > 0) {
     return {
       results: chatbotMatches.slice(0, 3),
@@ -535,43 +556,7 @@ export async function searchContent(
     }
   }
 
-  // Final fallback: very lenient search across all content
-  const allItems = [...contentItems, ...detailedContentItems, ...experienceDatesItems, ...careerTimelineItems, ...chatbotItems]
-  const fallbackFuse = new Fuse(allItems, { 
-    ...fuseOptions, 
-    threshold: 0.8,
-    distance: 300,
-    ignoreLocation: true
-  })
-  
-  const fallbackResults = fallbackFuse.search(query)
-  const fallbackMatches = fallbackResults
-    .filter(result => result.score && result.score < 0.8)
-    .map(result => result.item)
-
-  const diverseFallbackResults = ensureResultDiversity(fallbackMatches, 1)
-
-  // Debug logging (only in development)
-  if (process.env.NODE_ENV === 'development') {
-    console.log('Search Debug:', {
-      query,
-      searchQueries,
-      contentItemsCount: contentItems.length,
-      detailedContentItemsCount: detailedContentItems.length,
-      experienceDatesItemsCount: experienceDatesItems.length,
-      careerTimelineItemsCount: careerTimelineItems.length,
-      chatbotItemsCount: chatbotItems.length,
-      fallbackMatchesCount: fallbackMatches.length,
-      bestResultsCount: bestResults.length,
-      diverseResultsCount: diverseFallbackResults.length
-    })
-  }
-
-  return {
-    results: diverseFallbackResults.slice(0, 2),
-    source: 'both',
-    totalResults: fallbackMatches.length
-  }
+  return { results: [], source: 'both', totalResults: 0 }
 }
 
 // Generate response based on search results with improved variety
