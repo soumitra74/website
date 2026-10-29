@@ -1,7 +1,7 @@
 {
   "title": "Now",
   "subtitle": "What Soumitra is focused on this month — without a blog post.",
-  "last_updated": "September 2026",
+  "last_updated": "October 2026",
   "intro": "Inspired by Derek Sivers' /now page. Updated about once a month.",
   "sections": [
     {
@@ -9,9 +9,8 @@
       "question": "What am I working on?",
       "icon": "Briefcase",
       "paragraphs": [
-        "Personal finance manager is done and dusted. Made git repo public.",
-        "Built an youtube video summarizer tool using ollama and gpt-4o-mini. Next up is personal health tracker app.",
-        "Also building a graph-based retrieval-augmented generation (GraphRAG) and agentic AI system designed to run entirely inside a sealed, air-gapped environment — with no external network connectivity at any point."
+        "Youtube summarizer can now handle public tweets with embedded video. Also added a verifier to check claims in the video",
+        "Expanded GraphRAG project. Shaped into a harness to measure effectivensss of a GraphRAG. Works with any corpus."
       ]
     },
     {
@@ -19,7 +18,7 @@
       "question": "What am I learning?",
       "icon": "BookOpen",
       "paragraphs": [
-        "Fine tuning was an amazing experience, between local ollama and google colab's T4. A few project ideas popped up.",
+        "Harness building for GraphRAG.",
         "Reading about the history of AI and the future of AI. And how to build a successful AI company."
       ]
     },
@@ -28,6 +27,7 @@
       "question": "What excites me?",
       "icon": "Sparkles",
       "paragraphs": [
+        "Quantum computing and AI are not mutually exclusive!",
         "The shift from \"AI as a feature\" to \"AI as a teammate\" — especially in domains where domain expertise still matters (connectivity, fintech, research).",
         "The other constant is space and physics — the kind of \"how does the universe actually work\" content that has nothing to do with a deadline and everything to do with staying curious. Space-time continuum, cosmology, the physics of everyday things — it's the counterweight to the AI deep-dives, and honestly just as fun. Have to finish watching the sci fi short films in my youtube playlist."
       ]
