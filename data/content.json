@@ -21,6 +21,10 @@
         "href": "#portfolio"
       },
       {
+        "text": "Patents",
+        "href": "#patents"
+      },
+      {
         "text": "Expertise",
         "href": "#expertise"
       },
@@ -37,10 +41,10 @@
   "hero": {
     "initials": "SG",
     "title": {
-      "main": "Engineering Leader & AI Evangelist",
+      "main": "Engineering Leader & Product Architect",
       "highlight": "Technologist & Builder"
     },
-    "description": "{{yearsOfExperience}}+ years of experience building scalable SaaS products, leading high-performing teams, and driving innovation across backend/frontend architectures, cloud computing, and DevOps processes.",
+    "description": "I turn early thought into shipped product, shaping AI and fintech platforms from zero to scale and growing the engineering cultures behind them.",
     "buttons": [
       {
         "text": "Get In Touch",
@@ -70,13 +74,13 @@
   },
   "about": {
     "title": "About Me",
-    "subtitle": "Forward-thinking engineering leader with deep expertise in building and scaling technology products",
+    "subtitle": "Forward-thinking engineering leader with deep expertise in building and scaling SaaS platforms",
     "content": {
       "journey": {
         "title": "Backstory",
         "paragraphs": [
           "With {{yearsOfExperience}}+ years of experience across various domains and scales of product development, I've established myself as an innovation-driven engineering leader. My expertise spans SaaS web applications, backend and frontend architectures, cloud computing, developer productivity, and DevOps processes.",
-          "In the recent past I served as VP of Engineering at Entropik, leading AI-first consumer research platform development. Previously I built and scaled fintech platforms at PayU and Razorpay, and led engineering teams at Intuit for QBO Reporting."
+          "Fractional CTO at Knio Infotech; previously Head of Engineering at Seedling Labs and SVP of Engineering at Airlinq. Before that I led AI-first platforms at Entropik and built fintech platforms at PayU and Razorpay."
         ],
         "achievement": {
           "text": "SVP; Head of Engineering - Airlinq",
@@ -101,6 +105,23 @@
     "title": "Context",
     "subtitle": "Leadership roles at industry-leading organisations",
     "roles": [
+      {
+        "title": "Head of Engineering",
+        "company": "Seedling Labs",
+        "period": "Apr 2026 - Jul 2026",
+        "description": "Led engineering for an agentic AI product studio, shaping 0→1 products with Claude Code-driven development and infra cost optimisation.",
+        "highlights": [
+          {
+            "name": "Orchard",
+            "description": "Shipped a horizontally scalable, LLM-powered, self-healing test automation platform where agents author, run and repair tests as the product changes",
+            "link": "https://orchard.seedlinglabs.com/"
+          },
+          {
+            "name": "AI-Native Engineering",
+            "description": "Built a high-performing team around agentic development workflows, raising delivery speed while embedding engineering rigour"
+          }
+        ]
+      },
       {
         "title": "SVP of Engineering",
         "company": "Airlinq",
@@ -144,8 +165,8 @@
             "description": "Transformed legacy research workflows into AI-native experiences with facial coding, voice tonality, gaze tracking, STT and mouse tracking"
           },
           {
-            "name": "GenAI Integration",
-            "description": "Integrated GenAI using GPT-3.5 with LangChain for text summarisation, knowledge graph, image stitching, data analytics and copilot"
+            "name": "LLM Integration",
+            "description": "GPT + LangChain for text summarisation, knowledge graph, image stitching, data analytics and copilot"
           }
         ]
       },
@@ -196,8 +217,9 @@
             "description": "Reports Microservices and Reports APIs for scale and performance"
           },
           {
-            "name": "Chatbot Interface",
-            "description": "Conversational assistance for business insights (patented)"
+            "name": "Smart Agents for Data Exploration",
+            "description": "Built QBO's first conversational assistant; granted US Patent 10762581 for intent-based data exploration using smart agents, an early precursor to today's agentic analytics",
+            "link": "https://patents.google.com/patent/US10762581"
           }
         ]
       },
@@ -380,7 +402,7 @@
       "metrics": [
         {
           "value": "5",
-          "label": "Zero-to-One Builds"
+          "label": "Zero-to-One Products"
         },
         {
           "value": "60+",
@@ -396,6 +418,24 @@
         }
       ]
     }
+  },
+  "patents_publications": {
+    "section": "Patents & Publications",
+    "subtitle": "Original work shaping how people explore data and understand behaviour",
+    "items": [
+      {
+        "type": "Patent",
+        "title": "Intent-based data exploration using smart agents",
+        "detail": "US 10762581 · Intuit",
+        "link": "https://patents.google.com/patent/US10762581"
+      },
+      {
+        "type": "Publication",
+        "title": "Real-time eye tracking using representation learning and regression",
+        "detail": "Real-time eye-gaze tracking · CODS-COMAD 2024",
+        "link": "https://dl.acm.org/doi/fullHtml/10.1145/3632410.3632416"
+      }
+    ]
   },
   "expertise": {
     "title": "Core Expertise",
