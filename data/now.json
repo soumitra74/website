@@ -9,7 +9,7 @@
       "question": "What am I working on?",
       "icon": "Briefcase",
       "paragraphs": [
-        "Youtube summarizer can now handle public tweets with embedded video. Also added a verifier to check claims in the video",
+        "Youtube summarizer can now handle public tweets with embedded video. Also added a verifier to check claims in the video.",
         "Expanded GraphRAG project. Shaped into a harness to measure effectivensss of a GraphRAG. Works with any corpus."
       ]
     },
@@ -29,7 +29,7 @@
       "paragraphs": [
         "Quantum computing and AI are not mutually exclusive!",
         "The shift from \"AI as a feature\" to \"AI as a teammate\" — especially in domains where domain expertise still matters (connectivity, fintech, research).",
-        "The other constant is space and physics — the kind of \"how does the universe actually work\" content that has nothing to do with a deadline and everything to do with staying curious. Space-time continuum, cosmology, the physics of everyday things — it's the counterweight to the AI deep-dives, and honestly just as fun. Have to finish watching the sci fi short films in my youtube playlist."
+        "The other constant is space and physics — the kind of \"how does the universe actually work\" content that has nothing to do with a deadline and everything to do with staying curious. Space-time continuum, cosmology, the physics of everyday things — it's the counterweight to the AI deep-dives, and honestly just as fun."
       ]
     }
   ]
